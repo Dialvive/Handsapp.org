@@ -1,1 +1,108 @@
-<p>word-category-crud works!</p>
+<app-header></app-header>
+<div class="container-fluid clearfix" style="margin-top:76px" >
+        <div class="row justify-content-center">
+            <div class="col-lg-1 col-xl-2 d-none d-lg-block d-xl-block flex"> </div>
+    <div class="card-header" >
+        <h3> Categorías de palabras</h3>
+    </div>
+
+    <div class="card-body">
+        <div class=" d-flex justify-content-between">
+            <h4>Lista de Categorías de palabras</h4><button class="btn btn-outline-info" (click)="openCreateModal(crear)">Crear Categoría</button>
+        </div>
+
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Nombre</th>
+                    <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let wordCategory of wordCategories ">
+                    <td class="text-center">{{ wordCategory.nombre_es }}</td>
+                    <td>
+                        <div class=" d-inline-flex">
+                            <button class="btn btn-outline-info" (click)="openEditModal(editar,wordCategory.id)">Editar</button> &nbsp; &nbsp;
+                            <button (click)="openDeleteModal(eliminar,wordCategory.id)" type="button" class="btn btn-outline-danger">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!-- Columna de anuncios -->
+        <div class="col-lg-3 col-xl-2 d-none d-lg-block d-xl-block">
+            <img src="./assets/img/300x600.png" class="image" style="width: 300; height: 600;" alt="Anuncio">
+        </div>
+<br><br>
+
+    <!-- MODAL PARA CREAR -->
+    <ng-template #crear let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Crear nueva categoría</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="fcategoriaForm" (ngSubmit)="createWordCategory();modal.close('Save click')" class="card-body">
+                <div class="form-group">
+                    <label for="nombre">Nombre Español*</label>
+                    <input type="text" formControlName="nombre" class="form-control" [ngValue]="nombre_es" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+                    <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombre.errors.required">El nombre de la categoría es obligatorio.</div>
+                    </div>
+                </div>
+                <p>* Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-info">Crear</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA EDITAR -->
+    <ng-template #editar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar Categoría</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="fcategoriaForm" (ngSubmit)="updateWordCategory(wordCategory);modal.close('Save click')" class="card-body">
+                <div class="form-group">
+                    <label for="nombre">Nombre*</label>
+                    <input type="text" formControlName="nombre" class="form-control" [ngValue]="nombre_es" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+                    <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombre.errors.required">El nombre de la categoría es obligatorio.</div>
+                    </div>
+                </div>
+                <p>* Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-warning">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA ELIMINAR -->
+    <ng-template #eliminar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Eliminar Categoría</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            ¿Estás seguro que quieres eliminar la categoría?
+            <div class=" d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-danger" (click)="deleteWordCategory(); modal.close('Save click')">ELIMINAR</button>
+            </div>
+        </div>
+    </ng-template>
+  </div>
+</div>

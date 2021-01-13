@@ -34,6 +34,7 @@ import { SuperUserHomeComponent } from './_components/super-user-home/super-user
 import { EditorHomeComponent } from './_components/editor-home/editor-home.component';
 import { AdvertisementsComponent } from './_components/advertisements/advertisements.component';
 import { WordCategoryCrudComponent } from './_components/CRUD/word-category-crud/word-category-crud.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { WordCategoryCrudComponent } from './_components/CRUD/word-category-crud
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
