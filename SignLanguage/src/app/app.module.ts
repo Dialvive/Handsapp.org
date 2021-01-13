@@ -25,7 +25,6 @@ import { SignLanguageCrudComponent } from './_components/CRUD/sign-language-crud
 import { SpokenLanguageCrudComponent } from './_components/CRUD/spoken-language-crud/spoken-language-crud.component';
 import { UserCrudComponent } from './_components/CRUD/user-crud/user-crud.component';
 import { WordByRegionCrudComponent } from './_components/CRUD/word-by-region-crud/word-by-region-crud.component';
-import { WordCategoryCrudComponent } from './_components/CRUD/word-category-crud/word-category-crud.component';
 import { CategoriesComponent } from './_components/categories/categories.component';
 import { ListsComponent } from './_components/lists/lists.component';
 import { SearchComponent } from './_components/search/search.component';
@@ -34,6 +33,8 @@ import { UserHomeComponent } from './_components/user-home/user-home.component';
 import { SuperUserHomeComponent } from './_components/super-user-home/super-user-home.component';
 import { EditorHomeComponent } from './_components/editor-home/editor-home.component';
 import { AdvertisementsComponent } from './_components/advertisements/advertisements.component';
+import { WordCategoryCrudComponent } from './_components/CRUD/word-category-crud/word-category-crud.component';
+
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import { AdvertisementsComponent } from './_components/advertisements/advertisem
     UserHomeComponent,
     SuperUserHomeComponent,
     EditorHomeComponent,
-    AdvertisementsComponent
+    AdvertisementsComponent,
   ],
   imports: [
     BrowserModule,
