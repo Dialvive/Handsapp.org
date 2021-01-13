@@ -1,4 +1,4 @@
-export class SignLanguage{    
+export class Region{    
     //Attributes 
     id: number;
     country_id: number;

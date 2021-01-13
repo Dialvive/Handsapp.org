@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PhraseCategory } from '../../../_models/phraseCategory'
+import { PhraseCategory } from '../../_models/phraseCategory'
 
 @Injectable({
   providedIn: 'root'
