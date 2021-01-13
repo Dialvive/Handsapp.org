@@ -11,7 +11,7 @@ export class WordCategoryService {
   API_URI = 'http://localhost:8080';
   
   constructor(private http: HttpClient) { }
-  getCategories(){
+  getWordCategories(){
     return this.http.get(this.API_URI+'/wordcategory')
   }
   getWordCategory(id:number){
