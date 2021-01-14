@@ -27,7 +27,13 @@ export class WordCategoryCrudComponent implements OnInit {
   ngOnInit(): void {
     this.wordCategoryForm = this.formBuilder.group({
       id:[''],
-      nombre_es: ['',Validators.required]
+      nombre_de: ['',Validators.required],
+      nombre_es: ['',Validators.required],
+      nombre_en: ['',Validators.required],
+      nombre_fr: ['',Validators.required],
+      nombre_it: ['',Validators.required],
+      nombre_pt: ['',Validators.required],
+      modified: ['',Validators.required]
     })
     this.getWordCategories();
   }
