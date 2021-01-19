@@ -15,25 +15,25 @@ declare var $: any;
 
 export class WordCategoryCrudComponent implements OnInit {
 
-  wordCategories: WordCategory[]|any;
-  wordCategory: WordCategory| any;
+  wordCategories: WordCategory[] | any;
+  wordCategory: WordCategory | any;
   wordCategoryForm: FormGroup;
   submitted = false;
   closeResult = '';
   modal: NgbModalRef;
-
+  
   constructor(private wordCategoryService: WordCategoryService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.wordCategoryForm = this.formBuilder.group({
       id:[''],
-      nombre_de: ['',Validators.required],
-      nombre_es: ['',Validators.required],
-      nombre_en: ['',Validators.required],
-      nombre_fr: ['',Validators.required],
-      nombre_it: ['',Validators.required],
-      nombre_pt: ['',Validators.required],
-      modified: ['',Validators.required]
+      name_de: ['',Validators.required],
+      name_es: ['',Validators.required],
+      name_en: ['',Validators.required],
+      name_fr: ['',Validators.required],
+      name_it: ['',Validators.required],
+      name_pt: ['',Validators.required],
+      modified: ['']
     })
     this.getWordCategories();
   }
@@ -41,8 +41,9 @@ export class WordCategoryCrudComponent implements OnInit {
   getWordCategories() {
     this.wordCategories = [];
     this.wordCategoryService.getWordCategories().subscribe(
-      res => {
-        this.wordCategories = res;
+      (res : any) => {
+        console.log(res.data);
+        this.wordCategories = res.data;
       },
       err => console.error(err)
     )
@@ -51,15 +52,15 @@ export class WordCategoryCrudComponent implements OnInit {
   getWordCategory(id) {
     this.wordCategory = null;
     this.wordCategoryService.getWordCategory(id).subscribe(
-      res => {
-        this.wordCategory = res;
+      (res: any) => {
+        this.wordCategory = res.data;
       },
       err => console.error(err)
     )
   }
 
   deleteWordCategory() {
-    this.wordCategoryService.deleteCategory(this.wordCategory.id).subscribe(
+    this.wordCategoryService.deleteCategory(this.wordCategory.ID).subscribe(
       res => {
         this.getWordCategories();
       },
@@ -112,13 +113,16 @@ export class WordCategoryCrudComponent implements OnInit {
     });
   }
 
-  openEditModal(content, id) {
+  openEditModal(content, id : number) {
+    console.log("OpenEditModal: " + id + " content: " + content);
     this.wordCategoryForm.reset();
-    this.wordCategoryService.getWordCategory(id)
-    .pipe(first())
-    .subscribe(x => {
-      this.wordCategory = x;
-      this.wordCategoryForm.patchValue(x); } );
+    this.wordCategoryService.getWordCategory(id).pipe(first()).subscribe(
+      res => {
+        this.wordCategory = res;
+        this.wordCategoryForm.patchValue(res); 
+      },
+      err => console.error(err)
+    );
 
     this.modal = this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
     this.modal.result.then((result) => {
