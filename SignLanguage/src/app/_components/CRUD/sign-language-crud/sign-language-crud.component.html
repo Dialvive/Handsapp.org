@@ -1,1 +1,199 @@
-<p>sign-language-crud works!</p>
+<app-header></app-header>
+<div class="container-fluid clearfix" style="margin-top:76px" >
+        <div class="row justify-content-center">
+            <div class="col-lg-1 col-xl-2 d-none d-lg-block d-xl-block flex"> </div>
+    <div class="card-header" >
+        <h3> Lengua de señas </h3>
+    </div>
+
+    <div class="card-body">
+        <div class=" d-flex justify-content-between">
+            <h4>Lista de Lengua de señas</h4><button class="btn btn-outline-info" (click)="openCreateModal(crear)">Crear Lengua de seña</button>
+        </div>
+
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Aleman</th>
+                    <th class="text-center">Español</th>
+                    <th class="text-center">Ingles</th>
+                    <th class="text-center">Frances</th>
+                    <th class="text-center">Italiano</th>
+                    <th class="text-center">Portugues</th>
+                    <th class="text-center">Abreviación</th>
+                    <th class="text-center">Modificado</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let signLanguage of signLanguages">
+                    <td class="text-center">{{ signLanguage.ID }}</td>
+                    <td class="text-center">{{ signLanguage.name_de }}</td>
+                    <td class="text-center">{{ signLanguage.name_es }}</td>
+                    <td class="text-center">{{ signLanguage.name_en }}</td>
+                    <td class="text-center">{{ signLanguage.name_fr }}</td>
+                    <td class="text-center">{{ signLanguage.name_it }}</td>
+                    <td class="text-center">{{ signLanguage.name_pt }}</td>
+                    <td class="text-center">{{ signLanguage.abbreviation }}</td>
+                    <td class="text-center">{{ signLanguage.modified }}</td>
+                    <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
+                    <td>
+                        <div class=" d-inline-flex">
+                            <button class="btn btn-outline-info"   (click) = "openEditModal(editar,signLanguage)" type="button" >Editar</button> &nbsp; &nbsp;
+                            <button class="btn btn-outline-danger" (click) = "openDeleteModal(eliminar,signLanguage.ID)" type="button" >Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- MODAL PARA CREAR -->
+    <ng-template #crear let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Crear nuevo lengua de seña</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="signLanguageForm" (ngSubmit)="createSignLanguage();modal.close('Save click')" class="card-body">
+                <div class="form-group">
+                    <!-- Espacio para nombre en aleman -->
+                    <label for="name_de">Nombre de lengua de seña en aleman <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name_de" class="form-control" [ngValue]="name_de" [ngClass]="{ 'is-invalid': submitted && f.name_de.errors }">
+                    <div *ngIf="submitted && f.name_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_de.errors.required">El nombre en alemán del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en español -->
+                    <label for="name_es">Nombre de lengua de seña en español <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name_es" class="form-control" [ngValue]="name_es" [ngClass]="{ 'is-invalid': submitted && f.name_es.errors }">
+                    <div *ngIf="submitted && f.name_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_es.errors.required">El nombre en español del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en ingles -->
+                    <label for="name_en">Nombre de lengua de seña en ingles <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name_en" class="form-control" [ngValue]="name_en" [ngClass]="{ 'is-invalid': submitted && f.name_en.errors }">
+                    <div *ngIf="submitted && f.name_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_en.errors.required">El nombre en ingles del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en frances -->
+                    <label for="name_fr">Nombre de lengua de seña en frances <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name_fr" class="form-control" [ngValue]="name_fr" [ngClass]="{ 'is-invalid': submitted && f.name_fr.errors }">
+                    <div *ngIf="submitted && f.name_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_fr.errors.required">El nombre en frances del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en italiano -->
+                    <label for="name_it">Nombre de lengua de seña en italiano <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name_it" class="form-control" [ngValue]="name_it" [ngClass]="{ 'is-invalid': submitted && f.name_it.errors }">
+                    <div *ngIf="submitted && f.name_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_it.errors.required">El nombre en italiano del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en portugues -->
+                    <label for="name_pt">Nombre de lengua de seña en portugués <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name_pt" class="form-control" [ngValue]="name_pt" [ngClass]="{ 'is-invalid': submitted && f.name_pt.errors }">
+                    <div *ngIf="submitted && f.name_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_pt.errors.required">El nombre en portugués del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para la abreviación-->
+                    <label for="abbreviation">Abreviación<span class="text-danger">*</span></label>
+                    <input type="text" formControlName="abbreviation" class="form-control" [ngValue]="abbreviation" [ngClass]="{ 'is-invalid': submitted && f.abbreviation.errors }">
+                    <div *ngIf="submitted && f.abbreviation.errors" class="invalid-feedback">
+                        <div *ngIf="f.abbreviation.errors.required">El nombre en portugués del lengua de seña es obligatorio.</div>
+                    </div>
+                </div>
+                <p><span class="text-danger">*</span> Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-info">Crear</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA EDITAR -->
+    <ng-template #editar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar Lengua de seña</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="signLanguageForm" (ngSubmit) = "updateSignLanguage(signLanguage.ID); modal.close('Save click')" class="card-body">
+                <div class="form-group">
+                    Espacio para el id 
+                    <label for="id">ID del lengua de seña</label>
+                    <input type="text" value = {{signLanguage.ID}} readonly class="form-control" [ngValue]="ID" formControlName="ID">
+
+                    <!-- Espacio para nombre en aleman -->
+                    <label for="name_de">Nombre de lengua de seña en aleman<span class="text-danger">*</span></label>
+                    <input type="text" value = {{signLanguage.name_de}} formControlName="name_de" class="form-control" [ngValue]="name_de" [ngClass]="{ 'is-invalid': submitted && f.name_de.errors }">
+                    <div *ngIf="submitted && f.name_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_de.errors.required">El nombre del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en español -->
+                    <label for="name_es">Nombre de lengua de seña en español<span class="text-danger">*</span></label>
+                    <input type="text" value = {{signLanguage.name_es}} formControlName="name_es" class="form-control" [ngValue]="name_es" [ngClass]="{ 'is-invalid': submitted && f.name_es.errors }">
+                    <div *ngIf="submitted && f.name_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_es.errors.required">El nombre del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en ingles -->
+                    <label for="name_en">Nombre de lengua de seña en ingles<span class="text-danger">*</span></label>
+                    <input type="text" value = {{signLanguage.name_en}} formControlName="name_en" class="form-control" [ngValue]="name_en" [ngClass]="{ 'is-invalid': submitted && f.name_en.errors }">
+                    <div *ngIf="submitted && f.name_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_en.errors.required">El nombre del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en frances -->
+                    <label for="name_fr">Nombre de lengua de seña en frances<span class="text-danger">*</span></label>
+                    <input type="text" value = {{signLanguage.name_fr}} formControlName="name_fr" class="form-control" [ngValue]="name_fr" [ngClass]="{ 'is-invalid': submitted && f.name_fr.errors }">
+                    <div *ngIf="submitted && f.name_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_fr.errors.required">El nombre del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en italiano -->
+                    <label for="name_it">Nombre de lengua de seña en italiano<span class="text-danger">*</span></label>
+                    <input type="text" value = {{signLanguage.name_it}} formControlName="name_it" class="form-control" [ngValue]="name_it" [ngClass]="{ 'is-invalid': submitted && f.name_it.errors }">
+                    <div *ngIf="submitted && f.name_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_it.errors.required">El nombre del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para nombre en portugues -->
+                    <label for="name_pt">Nombre de lengua de seña en portugues<span class="text-danger">*</span></label>
+                    <input type="text" value = {{signLanguage.name_pt}} formControlName="name_pt" class="form-control" [ngValue]="name_pt" [ngClass]="{ 'is-invalid': submitted && f.name_pt.errors }">
+                    <div *ngIf="submitted && f.name_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.name_pt.errors.required">El nombre del lengua de seña es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para la abreviación -->
+                    <label for="name_pt">Abreviación<span class="text-danger">*</span></label>
+                    <input type="text" value = {{signLanguage.abbreviation}} formControlName="abbreviation" class="form-control" [ngValue]="abbreviation" [ngClass]="{ 'is-invalid': submitted && f.abbreviation.errors }">
+                    <div *ngIf="submitted && f.abbreviation.errors" class="invalid-feedback">
+                        <div *ngIf="f.abbreviation.errors.required">La abreviación es obligatoria.</div>
+                    </div>
+                    
+                </div>
+                <p><span class="text-danger">*</span>Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-warning">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA ELIMINAR -->
+    <ng-template #eliminar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Eliminar Lengua de seña</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            ¿Estás seguro que quieres eliminar la lengua de seña?
+            <div class=" d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-danger" (click)="deleteSignLanguage(); modal.close('Save click')">ELIMINAR</button>
+            </div>
+        </div>
+    </ng-template>
+  </div>
+</div>
