@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http'
 
 export class WordCategoryService {
   API_URI = 'http://localhost:8080';
-  API_V = '/v1/'
+  API_V = '/v1/';
   
   constructor(private http: HttpClient) { }
 

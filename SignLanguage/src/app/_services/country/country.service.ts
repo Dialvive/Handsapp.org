@@ -8,21 +8,21 @@ import { Country } from '../../_models/country'
 
 export class CountryService {
   API_URI = 'http://localhost:8080';
-  
+  API_V = '/v1';
   constructor(private http: HttpClient) { }
-  getCoutries(){
-    return this.http.get(this.API_URI+'/countries')
+  getCountries(){
+    return this.http.get(this.API_URI+ this.API_V +'/countries')
   }
   getCountry(id:number){
-    return this.http.get(this.API_URI+'/country/'+id)
+    return this.http.get(this.API_URI+this.API_V +'/country/'+id)
   }
   createCountry(country: Country){
-    return this.http.post(this.API_URI+'/country',country)
+    return this.http.post(this.API_URI+this.API_V +'/country',country)
   }
-  updateCountry(country: Country){
-    return this.http.patch(this.API_URI+'/country/'+country.ID,country)
+  updateCountry(country: Country, id : number){
+    return this.http.patch(this.API_URI+this.API_V +'/country/'+ id,country)
   }
   deleteCountry(id: number){
-    return this.http.delete(this.API_URI+'/country/'+id)
+    return this.http.delete(this.API_URI+this.API_V +'/country/'+id)
   }
 }
