@@ -2,14 +2,6 @@ import { Injectable } from '@angular/core';
 import { WordCategory } from '../../_models/wordCategory'
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 
-/* const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin': '*',
-    'Authorization':'authkey',
-    'userid':'1'
-  })
-}; */
-
 @Injectable({
   providedIn: 'root'
 })
