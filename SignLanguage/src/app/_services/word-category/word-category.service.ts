@@ -30,8 +30,8 @@ export class WordCategoryService {
   createWordCategory(category: WordCategory) {
     return this.http.post(this.API_URI+'/v1/word_category',category)
   }
-  updateWordCategory(category: WordCategory) {
-    return this.http.put(this.API_URI+'/v1/word_category/'+category.id,category)
+  updateWordCategory(category: WordCategory, id : number) {
+    return this.http.patch(this.API_URI+'/v1/word_category/'+id,category)
   }
   deleteCategory(id: number) {
     return this.http.delete(this.API_URI+'/v1/word_category/'+id)

@@ -40,7 +40,7 @@
                     <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
                     <td>
                         <div class=" d-inline-flex">
-                            <button class="btn btn-outline-info"   (click) = "openEditModal(editar,wordCategory.ID)" type="button" >Editar</button> &nbsp; &nbsp;
+                            <button class="btn btn-outline-info"   (click) = "openEditModal(editar,wordCategory)" type="button" >Editar</button> &nbsp; &nbsp;
                             <button class="btn btn-outline-danger" (click) = "openDeleteModal(eliminar,wordCategory.ID)" type="button" >Eliminar</button>
                         </div>
                     </td>
@@ -60,37 +60,37 @@
         <div class="modal-body">
             <form [formGroup]="wordCategoryForm" (ngSubmit)="createWordCategory();modal.close('Save click')" class="card-body">
                 <div class="form-group">
-                    <!-- Espacio para nombe en aleman -->
+                    <!-- Espacio para nombre en aleman -->
                     <label for="name_de">Nombre de categoría en aleman <span class="text-danger">*</span></label>
                     <input type="text" formControlName="name_de" class="form-control" [ngValue]="name_de" [ngClass]="{ 'is-invalid': submitted && f.name_de.errors }">
                     <div *ngIf="submitted && f.name_de.errors" class="invalid-feedback">
                         <div *ngIf="f.name_de.errors.required">El nombre en alemán de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en español -->
+                    <!-- Espacio para nombre en español -->
                     <label for="name_es">Nombre de categoría en español <span class="text-danger">*</span></label>
                     <input type="text" formControlName="name_es" class="form-control" [ngValue]="name_es" [ngClass]="{ 'is-invalid': submitted && f.name_es.errors }">
                     <div *ngIf="submitted && f.name_es.errors" class="invalid-feedback">
                         <div *ngIf="f.name_es.errors.required">El nombre en español de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en ingles -->
+                    <!-- Espacio para nombre en ingles -->
                     <label for="name_en">Nombre de categoría en ingles <span class="text-danger">*</span></label>
                     <input type="text" formControlName="name_en" class="form-control" [ngValue]="name_en" [ngClass]="{ 'is-invalid': submitted && f.name_en.errors }">
                     <div *ngIf="submitted && f.name_en.errors" class="invalid-feedback">
                         <div *ngIf="f.name_en.errors.required">El nombre en ingles de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en frances -->
+                    <!-- Espacio para nombre en frances -->
                     <label for="name_fr">Nombre de categoría en frances <span class="text-danger">*</span></label>
                     <input type="text" formControlName="name_fr" class="form-control" [ngValue]="name_fr" [ngClass]="{ 'is-invalid': submitted && f.name_fr.errors }">
                     <div *ngIf="submitted && f.name_fr.errors" class="invalid-feedback">
                         <div *ngIf="f.name_fr.errors.required">El nombre en frances de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en italiano -->
+                    <!-- Espacio para nombre en italiano -->
                     <label for="name_it">Nombre de categoría en italiano <span class="text-danger">*</span></label>
                     <input type="text" formControlName="name_it" class="form-control" [ngValue]="name_it" [ngClass]="{ 'is-invalid': submitted && f.name_it.errors }">
                     <div *ngIf="submitted && f.name_it.errors" class="invalid-feedback">
                         <div *ngIf="f.name_it.errors.required">El nombre en italiano de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en portugues -->
+                    <!-- Espacio para nombre en portugues -->
                     <label for="name_pt">Nombre de categoría en portugués <span class="text-danger">*</span></label>
                     <input type="text" formControlName="name_pt" class="form-control" [ngValue]="name_pt" [ngClass]="{ 'is-invalid': submitted && f.name_pt.errors }">
                     <div *ngIf="submitted && f.name_pt.errors" class="invalid-feedback">
@@ -114,41 +114,45 @@
           </button>
         </div>
         <div class="modal-body">
-            <form [formGroup]="wordCategoryForm" (ngSubmit)="updateWordCategory();modal.close('Save click')" class="card-body">
+            <form [formGroup]="wordCategoryForm" (ngSubmit) = "updateWordCategory(wordCategory.ID); modal.close('Save click')" class="card-body">
                 <div class="form-group">
-                    <!-- Espacio para nombe en aleman -->
+                    Espacio para el id 
+                    <label for="id">ID de la categoría</label>
+                    <input type="text" value = {{wordCategory.ID}} readonly class="form-control" [ngValue]="ID" formControlName="ID">
+
+                    <!-- Espacio para nombre en aleman -->
                     <label for="name_de">Nombre de categoría en aleman<span class="text-danger">*</span></label>
-                    <input type="text" value = {{wordCategory.data.name_de}} formControlName="name_de" class="form-control" [ngValue]="name_de" [ngClass]="{ 'is-invalid': submitted && f.name_de.errors }">
+                    <input type="text" value = {{wordCategory.name_de}} formControlName="name_de" class="form-control" [ngValue]="name_de" [ngClass]="{ 'is-invalid': submitted && f.name_de.errors }">
                     <div *ngIf="submitted && f.name_de.errors" class="invalid-feedback">
                         <div *ngIf="f.name_de.errors.required">El nombre de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en español -->
+                    <!-- Espacio para nombre en español -->
                     <label for="name_es">Nombre de categoría en español<span class="text-danger">*</span></label>
-                    <input type="text" value = {{wordCategory.data.name_es}} formControlName="name_es" class="form-control" [ngValue]="name_es" [ngClass]="{ 'is-invalid': submitted && f.name_es.errors }">
+                    <input type="text" value = {{wordCategory.name_es}} formControlName="name_es" class="form-control" [ngValue]="name_es" [ngClass]="{ 'is-invalid': submitted && f.name_es.errors }">
                     <div *ngIf="submitted && f.name_es.errors" class="invalid-feedback">
                         <div *ngIf="f.name_es.errors.required">El nombre de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en ingles -->
+                    <!-- Espacio para nombre en ingles -->
                     <label for="name_en">Nombre de categoría en ingles<span class="text-danger">*</span></label>
-                    <input type="text" value = {{wordCategory.data.name_en}} formControlName="name_en" class="form-control" [ngValue]="name_en" [ngClass]="{ 'is-invalid': submitted && f.name_en.errors }">
+                    <input type="text" value = {{wordCategory.name_en}} formControlName="name_en" class="form-control" [ngValue]="name_en" [ngClass]="{ 'is-invalid': submitted && f.name_en.errors }">
                     <div *ngIf="submitted && f.name_en.errors" class="invalid-feedback">
                         <div *ngIf="f.name_en.errors.required">El nombre de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en frances -->
+                    <!-- Espacio para nombre en frances -->
                     <label for="name_fr">Nombre de categoría en frances<span class="text-danger">*</span></label>
-                    <input type="text" value = {{wordCategory.data.name_fr}} formControlName="name_fr" class="form-control" [ngValue]="name_fr" [ngClass]="{ 'is-invalid': submitted && f.name_fr.errors }">
+                    <input type="text" value = {{wordCategory.name_fr}} formControlName="name_fr" class="form-control" [ngValue]="name_fr" [ngClass]="{ 'is-invalid': submitted && f.name_fr.errors }">
                     <div *ngIf="submitted && f.name_fr.errors" class="invalid-feedback">
                         <div *ngIf="f.name_fr.errors.required">El nombre de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en italiano -->
+                    <!-- Espacio para nombre en italiano -->
                     <label for="name_it">Nombre de categoría en italiano<span class="text-danger">*</span></label>
-                    <input type="text" value = {{wordCategory.data.name_it}} formControlName="name_it" class="form-control" [ngValue]="name_it" [ngClass]="{ 'is-invalid': submitted && f.name_it.errors }">
+                    <input type="text" value = {{wordCategory.name_it}} formControlName="name_it" class="form-control" [ngValue]="name_it" [ngClass]="{ 'is-invalid': submitted && f.name_it.errors }">
                     <div *ngIf="submitted && f.name_it.errors" class="invalid-feedback">
                         <div *ngIf="f.name_it.errors.required">El nombre de la categoría es obligatorio.</div>
                     </div>
-                    <!-- Espacio para nombe en portugues -->
+                    <!-- Espacio para nombre en portugues -->
                     <label for="name_pt">Nombre de categoría en portugues<span class="text-danger">*</span></label>
-                    <input type="text" value = {{wordCategory.data.name_pt}} formControlName="name_pt" class="form-control" [ngValue]="name_pt" [ngClass]="{ 'is-invalid': submitted && f.name_pt.errors }">
+                    <input type="text" value = {{wordCategory.name_pt}} formControlName="name_pt" class="form-control" [ngValue]="name_pt" [ngClass]="{ 'is-invalid': submitted && f.name_pt.errors }">
                     <div *ngIf="submitted && f.name_pt.errors" class="invalid-feedback">
                         <div *ngIf="f.name_pt.errors.required">El nombre de la categoría es obligatorio.</div>
                     </div>

@@ -85,17 +85,22 @@ export class WordCategoryCrudComponent implements OnInit {
     this.submitted = false;
   }
 
-  updateWordCategory() {
+  updateWordCategory(id) {
     this.submitted = true;
     if(this.wordCategoryForm.invalid) {
       console.log('Formulario Inválido');
       return;
     }
-    this.wordCategoryService.updateWordCategory(this.wordCategoryForm.value).subscribe(
+    console.log(this.wordCategoryForm.value)
+    this.wordCategoryService.updateWordCategory(this.wordCategoryForm.value, id).subscribe(
       res => {
+        console.log('97-get word categories');
         this.getWordCategories();
       },
-      err => console.error(err)
+      err => { 
+        console.error(err);
+        //console.log('10 error get word categories');
+      }
     )
     this.modal.close();
     this.submitted = false;
@@ -113,21 +118,25 @@ export class WordCategoryCrudComponent implements OnInit {
     });
   }
 
-  openEditModal(content, id : number) {
-    console.log("OpenEditModal: " + id + " content: " + content);
+  openEditModal(content, wc) {
+    console.log("OpenEditModal");
     this.wordCategoryForm.reset();
-    this.wordCategoryService.getWordCategory(id).pipe(first()).subscribe(
-      res => {
-        this.wordCategory = res;
-        this.wordCategoryForm.patchValue(res); 
+    this.wordCategoryService.getWordCategory(wc.ID).pipe(first()).subscribe(
+      (res : any) => {
+        console.log(res.data);
+        this.wordCategory = res.data;
+        this.wordCategoryForm.patchValue(res.data); 
       },
       err => console.error(err)
     );
 
     this.modal = this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-    this.modal.result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    
+    this.modal.result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, 
+      (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
