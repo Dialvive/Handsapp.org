@@ -21,7 +21,7 @@ export class PhraseCategoryService {
     return this.http.post(this.API_URI+'/PhraseCategory',category)
   }
   updatePhraseCategory(category: PhraseCategory){
-    return this.http.put(this.API_URI+'/PhraseCategory/'+category.id,category)
+    return this.http.patch(this.API_URI+'/PhraseCategory/'+category.ID,category)
   }
   deleteCategory(id: number){
     return this.http.delete(this.API_URI+'/PhraseCategory/'+id)

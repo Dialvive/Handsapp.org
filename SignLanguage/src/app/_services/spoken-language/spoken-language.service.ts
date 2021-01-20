@@ -11,7 +11,7 @@ export class SpokenLanguageService {
   
   constructor(private http: HttpClient) { }
   getSpokenLanguages(){
-    return this.http.get(this.API_URI+'/spokenLanguage')
+    return this.http.get(this.API_URI+'/spokenLanguages')
   }
   getSpokenLanguage(id:number){
     return this.http.get(this.API_URI+'/spokenLanguage/'+id)
@@ -20,7 +20,7 @@ export class SpokenLanguageService {
     return this.http.post(this.API_URI+'/spokenLanguage',spokenLanguage)
   }
   updateSpokenLanguage(spokenLanguage: SpokenLanguage){
-    return this.http.put(this.API_URI+'/spokenLanguage/'+spokenLanguage.id,spokenLanguage)
+    return this.http.patch(this.API_URI+'/spokenLanguage/'+spokenLanguage.ID,spokenLanguage)
   }
   deleteSpokenLanguage(id: number){
     return this.http.delete(this.API_URI+'/spokenLanguage/'+id)

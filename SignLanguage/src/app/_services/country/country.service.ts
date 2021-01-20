@@ -11,7 +11,7 @@ export class CountryService {
   
   constructor(private http: HttpClient) { }
   getCoutries(){
-    return this.http.get(this.API_URI+'/country')
+    return this.http.get(this.API_URI+'/countries')
   }
   getCountry(id:number){
     return this.http.get(this.API_URI+'/country/'+id)
@@ -20,7 +20,7 @@ export class CountryService {
     return this.http.post(this.API_URI+'/country',country)
   }
   updateCountry(country: Country){
-    return this.http.put(this.API_URI+'/country/'+country.id,country)
+    return this.http.patch(this.API_URI+'/country/'+country.ID,country)
   }
   deleteCountry(id: number){
     return this.http.delete(this.API_URI+'/country/'+id)

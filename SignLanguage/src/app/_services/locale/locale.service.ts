@@ -11,7 +11,7 @@ export class LocaleService {
   
   constructor(private http: HttpClient) { }
   getLocales(){
-    return this.http.get(this.API_URI+'/locale')
+    return this.http.get(this.API_URI+'/locales')
   }
   getLocale(id:number){
     return this.http.get(this.API_URI+'/locale/'+id)
@@ -20,7 +20,7 @@ export class LocaleService {
     return this.http.post(this.API_URI+'/locale',locale)
   }
   updateLocale(locale: Locale){
-    return this.http.put(this.API_URI+'/locale/'+locale.id,locale)
+    return this.http.patch(this.API_URI+'/locale/'+locale.ID,locale)
   }
   deleteLocale(id: number){
     return this.http.delete(this.API_URI+'/locale/'+id)

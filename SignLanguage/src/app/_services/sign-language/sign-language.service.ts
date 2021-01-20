@@ -11,7 +11,7 @@ export class signLanguageService {
   
   constructor(private http: HttpClient) { }
   getSignLanguages(){
-    return this.http.get(this.API_URI+'/signLanguage')
+    return this.http.get(this.API_URI+'/signLanguages')
   }
   getSignLanguage(id:number){
     return this.http.get(this.API_URI+'/signLanguage/'+id)
@@ -20,7 +20,7 @@ export class signLanguageService {
     return this.http.post(this.API_URI+'/signLanguage',signLanguage)
   }
   updateSignLanguage(signLanguage: SignLanguage){
-    return this.http.put(this.API_URI+'/signLanguage/'+signLanguage.id,signLanguage)
+    return this.http.patch(this.API_URI+'/signLanguage/'+signLanguage.ID,signLanguage)
   }
   deleteSignLanguage(id: number){
     return this.http.delete(this.API_URI+'/signLanguage/'+id)

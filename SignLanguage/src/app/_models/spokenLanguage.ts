@@ -1,6 +1,6 @@
 export class SpokenLanguage{    
     //Attributes 
-    id: number;
+    ID: number;
     name_de: string;
     name_es : string;
     name_en : string;
@@ -12,7 +12,7 @@ export class SpokenLanguage{
 
     //Constructor
     constructor(id: number, de: string, es: string, en: string, fr: string, it: string, pt: string, abb: string, modified: Date){
-        this.id = id;
+        this.ID = id;
         this.name_de = de;
         this.name_es  = es;
         this.name_en = en;
