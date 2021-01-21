@@ -124,7 +124,7 @@
         <div class="modal-body">
             <form [formGroup]="signLanguageForm" (ngSubmit) = "updateSignLanguage(signLanguage.ID); modal.close('Save click')" class="card-body">
                 <div class="form-group">
-                    Espacio para el id 
+                    <!-- Espacio para ID -->
                     <label for="id">ID del lengua de seña</label>
                     <input type="text" value = {{signLanguage.ID}} readonly class="form-control" [ngValue]="ID" formControlName="ID">
 
