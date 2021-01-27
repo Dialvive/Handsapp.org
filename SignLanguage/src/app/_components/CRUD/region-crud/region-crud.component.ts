@@ -25,7 +25,9 @@ export class RegionCrudComponent implements OnInit {
   submitted = false;
   closeResult = '';
   modal: NgbModalRef;
-  
+  countriesStr: String[][];
+  regionsStr: String[][];  
+
   constructor(private countryService: CountryService, private regionService: RegionService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -36,6 +38,22 @@ export class RegionCrudComponent implements OnInit {
       modified: ['']
     })
     this.getRegions();
+    this.getCountries();
+    //
+    this.countriesStr = new String[this.countries[this.countries.length-1].ID + 1][6] ;
+    
+    for(var i = 1; i < this.countriesStr.length; i++) {
+      this.countriesStr[i][0] = this.countries[i].name_de;
+      this.countriesStr[i][1] = this.countries[i].name_es;
+      this.countriesStr[i][2] = this.countries[i].name_en;
+      this.countriesStr[i][3] = this.countries[i].name_fr;
+      this.countriesStr[i][4] = this.countries[i].name_it;
+      this.countriesStr[i][5] = this.countries[i].name_pt;
+    }
+
+    //
+    this.regionsStr = new String[this.regions[this.regions.length-1].ID] ;
+
   }
 
   getRegions() {

@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PhraseCategoryCrudComponent } from './_components/CRUD/phrase-category-crud/phrase-category-crud.component';
 import { WordCategoryCrudComponent} from './_components/CRUD/word-category-crud/word-category-crud.component';
-import { RegionCrudComponent } from './_components/CRUD/region-crud/region-crud.component'
-import { CountryCrudComponent } from './_components/CRUD/country-crud/country-crud.component'
-import { SignLanguageCrudComponent } from './_components/CRUD/sign-language-crud/sign-language-crud.component'
-import { SpokenLanguageCrudComponent } from './_components/CRUD/spoken-language-crud/spoken-language-crud.component'
+import { RegionCrudComponent } from './_components/CRUD/region-crud/region-crud.component';
+import { CountryCrudComponent } from './_components/CRUD/country-crud/country-crud.component';
+import { SignLanguageCrudComponent } from './_components/CRUD/sign-language-crud/sign-language-crud.component';
+import { SpokenLanguageCrudComponent } from './_components/CRUD/spoken-language-crud/spoken-language-crud.component';
+import { LocaleCrudComponent } from './_components/CRUD/locale-crud/locale-crud.component';
 
 const routes: Routes = [
   { path: 'SU/CRUD/wordcategory', component: WordCategoryCrudComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'SU/CRUD/region', component: RegionCrudComponent},
   { path: 'SU/CRUD/country', component: CountryCrudComponent},
   { path: 'SU/CRUD/signlanguage', component: SignLanguageCrudComponent},
-  { path: 'SU/CRUD/spokenlanguage', component: SpokenLanguageCrudComponent}
+  { path: 'SU/CRUD/spokenlanguage', component: SpokenLanguageCrudComponent},
+  { path: 'SU/CRUD/locale', component: LocaleCrudComponent}
 ];
 
 @NgModule({

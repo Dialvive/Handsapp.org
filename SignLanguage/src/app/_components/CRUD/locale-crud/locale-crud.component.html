@@ -1,1 +1,147 @@
-<p>locale-crud works!</p>
+<app-header></app-header>
+<div class="container-fluid clearfix" style="margin-top:76px" >
+        <div class="row justify-content-center">
+            <div class="col-lg-1 col-xl-2 d-none d-lg-block d-xl-block flex"> </div>
+    <div class="card-header" >
+        <h3> Locales </h3>
+    </div>
+
+    <div class="card-body">
+        <div class=" d-flex justify-content-between">
+            <h4>Lista de Locales</h4><button class="btn btn-outline-info" (click)="openCreateModal(crear)">Crear local</button>
+        </div>
+
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Pais</th>
+                    <th class="text-center">Idioma</th>
+                    <th class="text-center">Lengua de señas</th>
+                    <th class="text-center">Modificado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let locale of locales">
+                    <td class="text-center">{{ locale.ID }}</td>
+                    <td class="text-center">{{ locale.country_ID }}</td>
+                    <td class="text-center">{{ locale.spoken_language_ID }}</td>
+                    <td class="text-center">{{ locale.sign_language_ID }}</td>
+                    <td class="text-center">{{ locale.modified }}</td>
+                    <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
+                    <td>
+                        <div class=" d-inline-flex">
+                            <button class="btn btn-outline-info"   (click) = "openEditModal(editar,locale)" type="button" >Editar</button> &nbsp; &nbsp;
+                            <button class="btn btn-outline-danger" (click) = "openDeleteModal(eliminar,locale.ID)" type="button" >Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- MODAL PARA CREAR -->
+    <ng-template #crear let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Crear nueva local</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="localeForm" (ngSubmit)="createLocale();modal.close('Save click')" class="card-body">
+                <div class="form-group">
+                    
+                    <!-- Elección de país correspondiente -->
+                    <label for="country_ID ">País<span class="text-danger">*</span></label>
+                    <select name = "country_ID" id = "country_ID" formControlName="country_ID" >
+                        <option value="" disabled>Elige un país</option>
+                        <option *ngFor=" let country of countries" [ngValue]="country.ID" [ngClass]="{ 'is-invalid': submitted && f.country_ID.errors }">{{country.name_es}}</option>
+                    </select>
+
+                    <!-- Elección de idioma correspondiente -->
+                    <label for="spoken_language_ID ">Idioma<span class="text-danger">*</span></label>
+                    <select name = "spoken_language_ID" id = "spoken_language_ID" formControlName="spoken_language_ID" >
+                        <option value="" disabled>Elige un idioma</option>
+                       <option *ngFor=" let spokenLanguage of spokenLanguages" [ngValue]="spokenLanguage.ID" [ngClass]="{ 'is-invalid': submitted && f.spoken_language_ID.errors }">{{spokenLanguage.name_es}}</option>
+                    </select>
+
+                    <!-- Elección de lengua de señas correspondiente -->
+                    <label for="sign_language_ID ">lengua de señas<span class="text-danger">*</span></label>
+                    <select name = "sign_language_ID" id = "sign_language_ID" formControlName="sign_language_ID" >
+                        <option value="" disabled>Elige una lengua de señas</option>
+                        <option *ngFor=" let signLanguage of signLanguages" [ngValue]="signLanguage.ID" [ngClass]="{ 'is-invalid': submitted && f.sign_language_ID.errors }">{{signLanguage.name_es}}</option>
+                    </select>
+                </div>
+                <p><span class="text-danger">*</span> Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-info">Crear</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA EDITAR -->
+    <ng-template #editar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar local</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="localeForm" (ngSubmit) = "updateLocale(locale.ID); modal.close('Save click')" class="card-body">
+                <div class="form-group">
+                    Espacio para el id 
+                    <label for="id">ID del locale</label>
+                    <input type="text" value = {{locale.ID}} readonly class="form-control" [ngValue]="ID" formControlName="ID">
+
+                    
+                    <!-- Elección de país correspondiente -->
+                    <label for="country_ID ">País<span class="text-danger">*</span></label>
+                    <select name = "country_ID" id = "country_ID" formControlName="country_ID" >
+                        <option value="" disabled>Elige un país</option>
+                        <option *ngFor=" let country of countries" [ngValue]="country.ID" [ngClass]="{ 'is-invalid': submitted && f.country_ID.errors }">{{country.name_es}}</option>
+                    </select>
+
+                    <!-- Elección de idioma correspondiente -->
+                    <label for="spoken_language_ID ">Idioma<span class="text-danger">*</span></label>
+                    <select name = "spoken_language_ID" id = "spoken_language_ID" formControlName="spoken_language_ID" >
+                        <option value="" disabled>Elige un idioma</option><option *ngFor=" let spokenLanguage of spokenLanguages" [ngValue]="spokenLanguage.ID" [ngClass]="{ 'is-invalid': submitted && f.spoken_language_ID.errors }">{{spokenLanguage.name_es}}</option>
+                    </select>
+
+                    <!-- Elección de lengua de señas correspondiente -->
+                    <label for="sign_language_ID ">lengua de señas<span class="text-danger">*</span></label>
+                    <select name = "sign_language_ID" id = "sign_language_ID" formControlName="sign_language_ID" >
+                        <option value="" disabled>Elige una lengua de señas</option>
+                        <option *ngFor=" let signLanguage of signLanguages" [ngValue]="signLanguage.ID" [ngClass]="{ 'is-invalid': submitted && f.sign_language_ID.errors }">{{signLanguage.name_es}}</option>
+                    </select>
+                </div>
+                <p><span class="text-danger">*</span>Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-warning">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA ELIMINAR -->
+    <ng-template #eliminar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Eliminar local</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            ¿Estás seguro que quieres eliminar la local?
+            <div class=" d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-danger" (click)="deleteLocale(); modal.close('Save click')">ELIMINAR</button>
+            </div>
+        </div>
+    </ng-template>
+  </div>
+</div>
+
