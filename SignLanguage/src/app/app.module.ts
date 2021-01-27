@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { FooterComponent } from './_components/footer/footer.component';
 import { HeaderComponent } from './_components/header/header.component';
 import { AdBannerComponent } from './_components/ad-banner/ad-banner.component';
@@ -72,7 +73,7 @@ import { AdvertisementsComponent } from './_components/advertisements/advertisem
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
