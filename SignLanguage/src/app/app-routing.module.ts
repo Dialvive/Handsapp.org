@@ -7,6 +7,8 @@ import { CountryCrudComponent } from './_components/CRUD/country-crud/country-cr
 import { SignLanguageCrudComponent } from './_components/CRUD/sign-language-crud/sign-language-crud.component';
 import { SpokenLanguageCrudComponent } from './_components/CRUD/spoken-language-crud/spoken-language-crud.component';
 import { LocaleCrudComponent } from './_components/CRUD/locale-crud/locale-crud.component';
+import { PhraseCrudComponent } from './_components/CRUD/phrase-crud/phrase-crud.component';
+import { WordCrudComponent } from './_components/CRUD/word-crud/word-crud.component';
 
 const routes: Routes = [
   { path: 'SU/CRUD/wordcategory', component: WordCategoryCrudComponent},
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'SU/CRUD/country', component: CountryCrudComponent},
   { path: 'SU/CRUD/signlanguage', component: SignLanguageCrudComponent},
   { path: 'SU/CRUD/spokenlanguage', component: SpokenLanguageCrudComponent},
-  { path: 'SU/CRUD/locale', component: LocaleCrudComponent}
+  { path: 'SU/CRUD/locale', component: LocaleCrudComponent},
+  { path: 'SU/CRUD/word', component: WordCrudComponent},
+  { path: 'SU/CRUD/phrase', component: PhraseCrudComponent},
 ];
 
 @NgModule({
