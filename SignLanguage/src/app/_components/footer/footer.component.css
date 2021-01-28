@@ -1,0 +1,48 @@
+/* FOOTER ######################################################## */
+
+.memphis-dark {
+    background: url(/assets/img/memphis_dark.png);
+    background-image: url(/assets/svg/memphis_dark.svg), none;
+    background-color: var(--carbon);
+    background-size: 900px;
+    background-repeat: repeat;
+    color: #fff;
+    font-weight: 800;
+}
+
+.memphis-light {
+    background: url(/assets/img/memphis_light.png);
+    background-image: url(/assets/svg/memphis_light.svg), none;
+    background-color: var(--cream-dark);
+    background-size: 900px;
+    background-repeat: repeat;
+    color: #000;
+    font-weight: 800;
+}
+
+footer {
+    display: block;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    clear: both;
+    margin-top: 32px;
+    padding-top: 16px;
+    margin-bottom: 0px;
+    text-shadow: 0 0 5px var(--carbon-dark);
+}
+
+.footer-col {
+    display: block;
+    text-align: center;
+    justify-content: center;
+}
+
+.footer-header {
+    margin-bottom: 0px;
+}
+
+.footer-select {
+    margin-bottom: 16px;
+}

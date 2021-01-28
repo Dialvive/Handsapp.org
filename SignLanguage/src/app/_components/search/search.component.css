@@ -1,0 +1,33 @@
+.search-input {
+    border: none;
+    box-shadow: none;
+    height: 35px;
+    outline-width: 0px;
+    width: 120%;
+    background-color: transparent;
+}
+
+.search-reset-btn {
+    display: flex;
+    margin-top: 0;
+    margin-left: 19px;
+    margin-right: 15px;
+    margin-bottom: 2px;
+    text-align: center;
+    width: 33px;
+    height: 33px;
+    background-color: var(--cream-dark) !important;
+    border-radius: 2rem;
+    outline: var(--cream);
+}
+
+.search-reset-i {
+    display: inline-block;
+    align-self: center;
+    justify-self: center;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-width: 0px;
+    color: var(--carbon-dark);
+}
