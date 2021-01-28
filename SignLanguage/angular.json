@@ -21,7 +21,10 @@
                         "aot": true,
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets/svg/memphis_light.svg",
+                            "src/assets/svg/memphis_dark.svg",
+                            "src/assets/img/memphis_light.png",
+                            "src/assets/img/memphis_dark.png"
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
