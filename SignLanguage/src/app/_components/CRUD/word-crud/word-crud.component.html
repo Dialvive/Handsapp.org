@@ -1,1 +1,397 @@
-<p>word-crud works!</p>
+<app-header></app-header>
+<div class="container-fluid clearfix" style="margin-top:76px" >
+        <div class="row justify-content-center">
+            <div class="col-lg-1 col-xl-2 d-none d-lg-block d-xl-block flex"> </div>
+    <div class="card-header" >
+        <h3> Palabras </h3>
+    </div>
+
+    <div class="card-body">
+        <div class=" d-flex justify-content-between">
+            <h4>Lista de Palabras</h4><button class="btn btn-outline-info" (click)="openCreateModal(crear)">Crear Palabra</button>
+        </div>
+
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">locale_ID</th>
+                    <th class="text-center">word_category_ID</th>
+                    <th class="text-center">text_es</th>
+                    <th class="text-center">context_es</th>
+                    <th class="text-center">definition_es</th>
+                    <th class="text-center">Modificado</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let word of words" >
+                    <td class="text-center">{{ word.ID }}</td>
+                    <td class="text-center">{{ word.locale_ID }}</td>
+                    <td class="text-center">{{ word.word_category_ID}}</td>
+                    <td class="text-center">{{ word.text_es}}</td>
+                    <td class="text-center">{{ word.context_es}}</td>
+                    <td class="text-center">{{ word.definition_es}}</td>
+                    <td class="text-center">{{ word.modified }}</td>
+                    <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
+                    <td>
+                        <div class=" d-inline-flex">
+                            <button class="btn btn-outline-info"   (click) = "openEditModal(editar,word)" type="button" >Editar</button> &nbsp; &nbsp;
+                            <button class="btn btn-outline-danger" (click) = "openDeleteModal(eliminar,word.ID)" type="button" >Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- MODAL PARA CREAR -->
+    <ng-template #crear let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Crear nueva frase</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="wordForm" (ngSubmit)="createWord();modal.close('Save click')" class="card-body">
+                <div class="form-group">
+ 
+                    
+                    <!-- Elección de locale correspondiente -->
+                    <label for="locale_ID ">Locale: <span class="text-danger">*</span></label>
+                    <select name = "locale_ID" id = "locale_ID" formControlName="locale_ID" >
+                        <option value="" disabled>Elige un locale</option>
+                        <option *ngFor=" let locale of locales" [ngValue]="locale.ID" [ngClass]="{ 'is-invalid': submitted && f.locale_ID.errors }">País: {{locale.country_ID}} lengua de señas: {{locale.sign_language_ID}}</option>
+                    </select>
+                    <br>
+                    <!-- Elección de wordCategory correspondiente -->
+                    <label for="word_category_ID ">Categoria<span class="text-danger">*</span></label>
+                    <select name = "word_category_ID" id = "word_category_ID" formControlName="word_category_ID" >
+                        <option value="" disabled>Elige una categoria</option>
+                        <option *ngFor=" let wordCategory of wordCategories" [ngValue]="wordCategory.ID" [ngClass]="{ 'is-invalid': submitted && f.word_category_ID.errors }">{{wordCategory.name_es}}</option>
+
+                    </select>
+                    <br>
+                    
+                    <!-- Espacio para text_de  -->
+                    <label for="text_de"> text_de<span class="text-danger">*</span></label>
+                    <input type="text_de" formControlName="text_de" class="form-control" [ngValue]="text_de" [ngClass]="{ 'is-invalid': submitted && f.text_de.errors }">
+                    <div *ngIf="submitted && f.text_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_de.errors.required">text_de es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_es  -->
+                    <label for="text_es"> text_es<span class="text-danger">*</span></label>
+                    <input type="text_es" formControlName="text_es" class="form-control" [ngValue]="text_es" [ngClass]="{ 'is-invalid': submitted && f.text_es.errors }">
+                    <div *ngIf="submitted && f.text_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_es.errors.required">text_es es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_en  -->
+                    <label for="text_en"> text_en<span class="text-danger">*</span></label>
+                    <input type="text_en" formControlName="text_en" class="form-control" [ngValue]="text_en" [ngClass]="{ 'is-invalid': submitted && f.text_en.errors }">
+                    <div *ngIf="submitted && f.text_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_en.errors.required">text_en es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_fr  -->
+                    <label for="text_fr"> text_fr<span class="text-danger">*</span></label>
+                    <input type="text_fr" formControlName="text_fr" class="form-control" [ngValue]="text_fr" [ngClass]="{ 'is-invalid': submitted && f.text_fr.errors }">
+                    <div *ngIf="submitted && f.text_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_fr.errors.required">text_fr es obligatorio.</div>
+                    </div>
+                    
+                    <!-- Espacio para text_it  -->
+                    <label for="text_it"> text_it<span class="text-danger">*</span></label>
+                    <input type="text_it" formControlName="text_it" class="form-control" [ngValue]="text_it" [ngClass]="{ 'is-invalid': submitted && f.text_it.errors }">
+                    <div *ngIf="submitted && f.text_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_it.errors.required">text_it es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_pt  -->
+                    <label for="text_pt"> text_pt<span class="text-danger">*</span></label>
+                    <input type="text_pt" formControlName="text_pt" class="form-control" [ngValue]="text_pt" [ngClass]="{ 'is-invalid': submitted && f.text_pt.errors }">
+                    <div *ngIf="submitted && f.text_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_pt.errors.required">text_pt es obligatorio.</div>
+                    </div>   
+                    
+                    <!-- Espacio para context_de  -->
+                    <label for="context_de"> context_de<span class="text-danger">*</span></label>
+                    <input type="context_de" formControlName="context_de" class="form-control" [ngValue]="context_de" [ngClass]="{ 'is-invalid': submitted && f.context_de.errors }">
+                    <div *ngIf="submitted && f.context_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_de.errors.required">context_de es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_es  -->
+                    <label for="context_es"> context_es<span class="text-danger">*</span></label>
+                    <input type="context_es" formControlName="context_es" class="form-control" [ngValue]="context_es" [ngClass]="{ 'is-invalid': submitted && f.context_es.errors }">
+                    <div *ngIf="submitted && f.context_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_es.errors.required">context_es es obligatorio.</div>
+                    </div>
+                    <!-- Espacio para context_en  -->
+                    <label for="context_en"> context_en<span class="text-danger">*</span></label>
+                    <input type="context_en" formControlName="context_en" class="form-control" [ngValue]="context_en" [ngClass]="{ 'is-invalid': submitted && f.context_en.errors }">
+                    <div *ngIf="submitted && f.context_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_en.errors.required">context_en es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_fr  -->
+                    <label for="context_fr"> context_fr<span class="text-danger">*</span></label>
+                    <input type="context_fr" formControlName="context_fr" class="form-control" [ngValue]="context_fr" [ngClass]="{ 'is-invalid': submitted && f.context_fr.errors }">
+                    <div *ngIf="submitted && f.context_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_fr.errors.required">context_fr es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_it  -->
+                    <label for="context_it"> context_it<span class="text-danger">*</span></label>
+                    <input type="context_it" formControlName="context_it" class="form-control" [ngValue]="context_it" [ngClass]="{ 'is-invalid': submitted && f.context_it.errors }">
+                    <div *ngIf="submitted && f.context_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_it.errors.required">context_it es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_pt  -->
+                    <label for="context_pt"> context_pt<span class="text-danger">*</span></label>
+                    <input type="context_pt" formControlName="context_pt" class="form-control" [ngValue]="context_pt" [ngClass]="{ 'is-invalid': submitted && f.context_pt.errors }">
+                    <div *ngIf="submitted && f.context_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_pt.errors.required">context_pt es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_de  -->
+                    <label for="definition_de"> definition_de<span class="text-danger">*</span></label>
+                    <input type="definition_de" formControlName="definition_de" class="form-control" [ngValue]="definition_de" [ngClass]="{ 'is-invalid': submitted && f.definition_de.errors }">
+                    <div *ngIf="submitted && f.definition_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_de.errors.required">definition_de es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_es  -->
+                    <label for="definition_es"> definition_es<span class="text-danger">*</span></label>
+                    <input type="definition_es" formControlName="definition_es" class="form-control" [ngValue]="definition_es" [ngClass]="{ 'is-invalid': submitted && f.definition_es.errors }">
+                    <div *ngIf="submitted && f.definition_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_es.errors.required">definition_es es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_en  -->
+                    <label for="definition_en"> definition_en<span class="text-danger">*</span></label>
+                    <input type="definition_en" formControlName="definition_en" class="form-control" [ngValue]="definition_en" [ngClass]="{ 'is-invalid': submitted && f.definition_en.errors }">
+                    <div *ngIf="submitted && f.definition_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_en.errors.required">definition_en es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_fr  -->
+                    <label for="definition_fr"> definition_fr<span class="text-danger">*</span></label>
+                    <input type="definition_fr" formControlName="definition_fr" class="form-control" [ngValue]="definition_fr" [ngClass]="{ 'is-invalid': submitted && f.definition_fr.errors }">
+                    <div *ngIf="submitted && f.definition_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_fr.errors.required">definition_fr es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_it  -->
+                    <label for="definition_it"> definition_it<span class="text-danger">*</span></label>
+                    <input type="definition_it" formControlName="definition_it" class="form-control" [ngValue]="definition_it" [ngClass]="{ 'is-invalid': submitted && f.definition_it.errors }">
+                    <div *ngIf="submitted && f.definition_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_it.errors.required">definition_it es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_pt  -->
+                    <label for="definition_pt"> definition_pt<span class="text-danger">*</span></label>
+                    <input type="definition_pt" formControlName="definition_pt" class="form-control" [ngValue]="definition_pt" [ngClass]="{ 'is-invalid': submitted && f.definition_pt.errors }">
+                    <div *ngIf="submitted && f.definition_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_pt.errors.required">definition_pt es obligatorio.</div>
+                    </div>
+
+                </div>
+                <p><span class="text-danger">*</span> Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-info">Crear</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA EDITAR -->
+    <ng-template #editar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar Palabra</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="wordForm" (ngSubmit) = "updateWord(word.ID); modal.close('Save click')" class="card-body">
+                <div class="form-group">
+                    Espacio para el id 
+                    <label for="id">ID del word</label>
+                    <input type="text" value = {{word.ID}} readonly class="form-control" [ngValue]="ID" formControlName="ID">
+
+            
+                    
+                    <!-- Elección de locale correspondiente -->
+                    <label for="locale_ID ">Locale: <span class="text-danger">*</span></label>
+                    <select name = "locale_ID" id = "locale_ID" formControlName="locale_ID" >
+                        <option value="" disabled>Elige un locale</option>
+                        <option *ngFor=" let locale of locales" [ngValue]="locale.ID" [ngClass]="{ 'is-invalid': submitted && f.locale_ID.errors }">País: {{locale.country_ID}} lengua de señas: {{locale.sign_language_ID}}</option>
+                    </select>
+                    <br>
+                    <!-- Elección de wordCategory correspondiente -->
+                    <label for="word_category_ID ">Categoria:<span class="text-danger">*</span></label>
+                    <select name = "word_category_ID" id = "word_category_ID" formControlName="word_category_ID" >
+                        <option value="" disabled>Elige una categoria</option>
+                        <option *ngFor=" let wordCategory of wordCategories" [ngValue]="wordCategory.ID" [ngClass]="{ 'is-invalid': submitted && f.word_category_ID.errors }">{{wordCategory.name_es}}</option>
+
+                    </select>
+                    <br>
+
+                    <!-- Espacio para text_de -->
+                    <label for="text_de">text_de<span class="text-danger">*</span></label>
+                    <input type="text_de" value = {{word.text_de}} formControlName="text_de" class="form-control" [ngValue]="text_de" [ngClass]="{ 'is-invalid': submitted && f.text_de.errors }">
+                    <div *ngIf="submitted && f.text_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_de.errors.required">El text_de es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_es -->
+                    <label for="text_es">text_es<span class="text-danger">*</span></label>
+                    <input type="text_es" value = {{word.text_es}} formControlName="text_es" class="form-control" [ngValue]="text_es" [ngClass]="{ 'is-invalid': submitted && f.text_es.errors }">
+                    <div *ngIf="submitted && f.text_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_es.errors.required">El text_es es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_en -->
+                    <label for="text_en">text_en<span class="text-danger">*</span></label>
+                    <input type="text_en" value = {{word.text_en}} formControlName="text_en" class="form-control" [ngValue]="text_en" [ngClass]="{ 'is-invalid': submitted && f.text_en.errors }">
+                    <div *ngIf="submitted && f.text_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_en.errors.required">El text_en es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_fr -->
+                    <label for="text_fr">text_fr<span class="text-danger">*</span></label>
+                    <input type="text_fr" value = {{word.text_fr}} formControlName="text_fr" class="form-control" [ngValue]="text_fr" [ngClass]="{ 'is-invalid': submitted && f.text_fr.errors }">
+                    <div *ngIf="submitted && f.text_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_fr.errors.required">El text_fr es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_it -->
+                    <label for="text_it">text_it<span class="text-danger">*</span></label>
+                    <input type="text_it" value = {{word.text_it}} formControlName="text_it" class="form-control" [ngValue]="text_it" [ngClass]="{ 'is-invalid': submitted && f.text_it.errors }">
+                    <div *ngIf="submitted && f.text_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_it.errors.required">El text_it es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para text_pt -->
+                    <label for="text_pt">text_pt<span class="tex-danger">*</span></label>
+                    <input type="text_pt" value = {{word.text_pt}} formControlName="text_pt" class="form-control" [ngValue]="text_pt" [ngClass]="{ 'is-invalid': submitted && f.text_pt.errors }">
+                    <div *ngIf="submitted && f.text_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.text_pt.errors.required">El text_pt es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_de -->
+                    <label for="context_de">context_de<span class="text-danger">*</span></label>
+                    <input type="context_de" value = {{word.context_de}} formControlName="context_de" class="form-control" [ngValue]="context_de" [ngClass]="{ 'is-invalid': submitted && f.context_de.errors }">
+                    <div *ngIf="submitted && f.context_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_de.errors.required">El context_de es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_es -->
+                    <label for="context_es">context_es<span class="text-danger">*</span></label>
+                    <input type="context_es" value = {{word.context_es}} formControlName="context_es" class="form-control" [ngValue]="context_es" [ngClass]="{ 'is-invalid': submitted && f.context_es.errors }">
+                    <div *ngIf="submitted && f.context_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_es.errors.required">El context_es es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_en -->
+                    <label for="context_en">context_en<span class="text-danger">*</span></label>
+                    <input type="context_en" value = {{word.context_en}} formControlName="context_en" class="form-control" [ngValue]="context_en" [ngClass]="{ 'is-invalid': submitted && f.context_en.errors }">
+                    <div *ngIf="submitted && f.context_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_en.errors.required">El context_en es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_fr -->
+                    <label for="context_fr">context_fr<span class="text-danger">*</span></label>
+                    <input type="context_fr" value = {{word.context_fr}} formControlName="context_fr" class="form-control" [ngValue]="context_fr" [ngClass]="{ 'is-invalid': submitted && f.context_fr.errors }">
+                    <div *ngIf="submitted && f.context_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_fr.errors.required">El context_fr es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_it -->
+                    <label for="context_it">context_it<span class="text-danger">*</span></label>
+                    <input type="context_it" value = {{word.context_it}} formControlName="context_it" class="form-control" [ngValue]="context_it" [ngClass]="{ 'is-invalid': submitted && f.context_it.errors }">
+                    <div *ngIf="submitted && f.context_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_it.errors.required">El context_it es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para context_pt -->
+                    <label for="context_pt">context_pt<span class="text-danger">*</span></label>
+                    <input type="context_pt" value = {{word.context_pt}} formControlName="context_pt" class="form-control" [ngValue]="context_pt" [ngClass]="{ 'is-invalid': submitted && f.context_pt.errors }">
+                    <div *ngIf="submitted && f.context_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.context_pt.errors.required">El context_pt es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_de -->
+                    <label for="definition_de">definition_de<span class="text-danger">*</span></label>
+                    <input type="definition_de" value = {{word.definition_de}} formControlName="definition_de" class="form-control" [ngValue]="definition_de" [ngClass]="{ 'is-invalid': submitted && f.definition_de.errors }">
+                    <div *ngIf="submitted && f.definition_de.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_de.errors.required">El definition_de es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_es -->
+                    <label for="definition_es">definition_es<span class="text-danger">*</span></label>
+                    <input type="definition_es" value = {{word.definition_es}} formControlName="definition_es" class="form-control" [ngValue]="definition_es" [ngClass]="{ 'is-invalid': submitted && f.definition_es.errors }">
+                    <div *ngIf="submitted && f.definition_es.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_es.errors.required">El definition_es es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_en -->
+                    <label for="definition_en">definition_en<span class="text-danger">*</span></label>
+                    <input type="definition_en" value = {{word.definition_en}} formControlName="definition_en" class="form-control" [ngValue]="definition_en" [ngClass]="{ 'is-invalid': submitted && f.definition_en.errors }">
+                    <div *ngIf="submitted && f.definition_en.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_en.errors.required">El definition_en es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_fr -->
+                    <label for="definition_fr">definition_fr<span class="text-danger">*</span></label>
+                    <input type="definition_fr" value = {{word.definition_fr}} formControlName="definition_fr" class="form-control" [ngValue]="definition_fr" [ngClass]="{ 'is-invalid': submitted && f.definition_fr.errors }">
+                    <div *ngIf="submitted && f.definition_fr.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_fr.errors.required">El definition_fr es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_it -->
+                    <label for="definition_it">definition_it<span class="text-danger">*</span></label>
+                    <input type="definition_it" value = {{word.definition_it}} formControlName="definition_it" class="form-control" [ngValue]="definition_it" [ngClass]="{ 'is-invalid': submitted && f.definition_it.errors }">
+                    <div *ngIf="submitted && f.definition_it.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_it.errors.required">El definition_it es obligatorio.</div>
+                    </div>
+
+                    <!-- Espacio para definition_pt -->
+                    <label for="definition_pt">definition_pt<span class="tex-danger">*</span></label>
+                    <input type="definition_pt" value = {{word.definition_pt}} formControlName="definition_pt" class="form-control" [ngValue]="definition_pt" [ngClass]="{ 'is-invalid': submitted && f.definition_pt.errors }">
+                    <div *ngIf="submitted && f.definition_pt.errors" class="invalid-feedback">
+                        <div *ngIf="f.definition_pt.errors.required">El definition_pt es obligatorio.</div>
+                    </div>
+
+                </div>
+                <p><span class="text-danger">*</span>Campos requeridos</p>
+                <div class=" d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-warning">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+
+    <!-- MODAL PARA ELIMINAR -->
+    <ng-template #eliminar let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Eliminar frase</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            ¿Estás seguro que quieres eliminar la frase?
+            <div class=" d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-danger" (click)="deleteWord(); modal.close('Save click')">ELIMINAR</button>
+            </div>
+        </div>
+    </ng-template>
+  </div>
+</div>
