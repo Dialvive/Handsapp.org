@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { HeaderComponent } from './_components/header/header.component';
 import { AdBannerComponent } from './_components/ad-banner/ad-banner.component';
-import { AdColumnComponent } from './_components/ad-column/ad-column.component';
 import { WordComponent } from './_components/word/word.component';
 import { PhraseComponent } from './_components/phrase/phrase.component';
 import { WordCrudComponent } from './_components/CRUD/word-crud/word-crud.component';
@@ -42,7 +41,6 @@ import { AdvertisementsComponent } from './_components/advertisements/advertisem
     FooterComponent,
     HeaderComponent,
     AdBannerComponent,
-    AdColumnComponent,
     WordComponent,
     PhraseComponent,
     WordCrudComponent,
