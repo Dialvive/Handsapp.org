@@ -47,6 +47,14 @@
 
 /* GRT ########################################################### */
 
+.ligrt {
+    max-width: 560px;
+    font-family: var(--font-family-sans-serif);
+    font-size: 16px;
+    line-height: 27px;
+    padding: 8px;
+}
+
 .grt {
     max-width: 560px;
     font-family: var(--font-family-sans-serif);
@@ -56,10 +64,10 @@
 }
 
 h1 {
-    font-family: var(--font-family-display) !important;
-    font-size: 33px;
-    line-height: 51px;
-    margin-bottom: 27px;
+    font-family: var(--font-family-sans-serif) !important;
+    font-size: 42px;
+    margin-bottom: 18.5px;
+    font-weight: 800;
 }
 
 .title {
@@ -71,13 +79,41 @@ h1 {
 
 h2 {
     font-size: 26px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+h5 {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.h1grt {
+    font-family: var(--font-family-display) !important;
+    font-size: 33px;
+    line-height: 51px;
+    margin-bottom: 27px;
+}
+
+.h2grt {
+    font-size: 26px;
     line-height: 41px;
     margin-top: 44px;
     margin-bottom: 17px;
     font-weight: 700;
 }
 
-h3 {
+.h3grt {
     font-size: 20px;
     line-height: 33px;
     margin-top: 27px;
@@ -85,14 +121,14 @@ h3 {
     font-weight: 800;
 }
 
-h4 {
+.h4grt {
     font-size: 16px;
     line-height: 27px;
     margin-bottom: 7px;
     font-weight: 900;
 }
 
-h5 {
+.h5grt {
     font-size: 26px;
     word-wrap: normal;
     font-weight: 600;
@@ -293,27 +329,93 @@ ul {
 }
 
 
-/* RESULTS ####################################################### */
+/* VIDEO ######################################################### */
 
-.results-card {
-    width: 25rem;
-    margin: 1.618%;
+video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url(/assets/img/loader.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.video-container {
+    padding-top: 56.25%;
+    height: 0px;
+    position: relative;
+    border: solid;
+    border-width: 1px;
+    border-color: var(--cream-dark);
+    background-image: url(/assets/img/static.gif);
     border-radius: 1rem;
-    text-decoration: none;
-    -webkit-animation: shadow-drop-2-bottom-alt 1s cubic-bezier(0, 0, 0, 0) both;
-    animation: shadow-drop-2-bottom-alt 1s cubic-bezier(0, 0, 0, 0) both;
 }
 
-.results-card:hover {
-    -webkit-animation: shadow-drop-2-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: shadow-drop-2-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.video-btn {
+    background-color: #fff;
+    border-radius: 2rem;
+    border-color: var(--cream-dark);
+    border-width: 3px;
+    justify-content: center;
+    align-content: center;
+    padding-bottom: 10px;
+    margin: 16px;
 }
 
-.results-link {
-    width: 25rem;
-    height: fit-content;
+.video-btn:hover {
+    color: #fff;
+    background-color: var(--accent);
+}
+
+.heart-btn {
+    background-color: #fff;
+    top: 0;
+    border-radius: 2rem;
+    border-color: var(--cream-dark);
+    border-width: 3px;
+    justify-content: center;
+    align-content: center;
+    padding-bottom: 10px;
+    margin-left: 16px;
+}
+
+.heart-btn:hover {
+    color: #fff;
+    background-color: var(--rose);
+}
+
+.flag-btn {
+    top: 0;
+    border-radius: 2rem;
+    border-color: var(--cream-dark);
+    border-width: 3px;
+    justify-content: center;
+    align-content: center;
+    padding-bottom: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: #fff;
+}
+
+.flag-btn:hover {
+    color: var(--red);
+}
+
+
+/* PALABRAS ###################################################### */
+
+.word-card {
+    border-radius: 1rem;
+    width: 100%;
+    margin-top: 1.618%;
+    margin-bottom: 1.618%;
     text-decoration: none;
-    color: var(--carbon-dark) !important;
+}
+
+.word-card-header {
+    background-color: transparent;
 }
 
 

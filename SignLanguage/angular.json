@@ -39,7 +39,9 @@
                             "src/assets/img/android-chorme-512x12.png",
                             "src/assets/img/android-chrome-192x192.png",
                             "src/assets/img/mstile-310x150.png",
-                            "src/assets/img/mstile-310x310.png"
+                            "src/assets/img/mstile-310x310.png",
+                            "src/assets/img/loader.gif",
+                            "src/assets/img/static.gif"
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
