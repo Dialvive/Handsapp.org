@@ -240,6 +240,11 @@ body {
     overflow-x: hidden;
     background-color: var(--cream);
     min-height: 100vh;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 a {

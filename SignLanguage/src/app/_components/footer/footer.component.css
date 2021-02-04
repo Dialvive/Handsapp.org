@@ -28,8 +28,8 @@ footer {
     left: 0;
     clear: both;
     margin-top: 32px;
-    padding-top: 16px;
-    margin-bottom: 0px;
+    padding-top: 32px;
+    padding-bottom: 32px;
     text-shadow: 0 0 5px var(--carbon-dark);
 }
 
