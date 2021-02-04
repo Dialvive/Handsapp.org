@@ -33,6 +33,9 @@ export class LocaleCrudComponent implements OnInit {
     spokenLanguages: SpokenLanguage[] | any;
     signLanguage: SignLanguage | any;
     signLanguages: SignLanguage[] | any;
+    countriesStr: any[];
+    spokenLanguagesStr: any[];
+    signLanguagesStr: any[];
 
     constructor(private signLanguageService: SignLanguageService, private spokenLanguageService: SpokenLanguageService ,private countryService: CountryService, private localeService: LocaleService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
@@ -45,6 +48,9 @@ export class LocaleCrudComponent implements OnInit {
         modified: ['']
       })
       this.getLocales();
+      this.getCountries();
+      this.getSpokenLanguages();
+      this.getSignLanguages();
     }
 
     getLocales() {
@@ -182,59 +188,111 @@ export class LocaleCrudComponent implements OnInit {
     this.countryService.getCountries().subscribe(
       (res : any) => {
         this.countries = res.data;
+        console.log(this.countries);
+        this.getCountriesStr();
       },
       err => console.error(err)
     )
   }
 
-    getCountry(id) {
-      this.country = null;
-      this.countryService.getCountry(id).subscribe(
-        (res: any) => {
-          this.country = res.data;
-        },
-        err => console.error(err)
-      )
-    }
+  getCountry(id) {
+    this.country = null;
+    this.countryService.getCountry(id).subscribe(
+      (res: any) => {
+        this.country = res.data;
+      },
+      err => console.error(err)
+    )
+  }
 
-    getSpokenLanguages() {
-      this.spokenLanguages = [];
-      this.spokenLanguageService.getSpokenLanguages().subscribe(
-        (res : any) => {
-          this.spokenLanguages = res.data;
-        },
-        err => console.error(err)
-      )
+  getCountriesStr() {
+    var lastID = this.countries[this.countries.length-1].ID;
+    this.countriesStr = new Array(lastID) ;
+    console.log(this.countriesStr);
+    for(var i = 0; i < this.countries.length ; i++) {
+      this.countriesStr.splice(this.countries[i].ID, 1, [
+                                                          this.countries[i].name_de, 
+                                                          this.countries[i].name_es, 
+                                                          this.countries[i].name_en, 
+                                                          this.countries[i].name_fr, 
+                                                          this.countries[i].name_it, 
+                                                          this.countries[i].name_pt
+                                                        ]);
     }
+  }
 
-    getSpokenLanguage(id) {
-      this.spokenLanguage = null;
-      this.spokenLanguageService.getSpokenLanguage(id).subscribe(
-        (res: any) => {
-          this.spokenLanguage = res.data;
-        },
-        err => console.error(err)
-      )
-    }
+  getSpokenLanguages() {
+    this.spokenLanguages = [];
+    this.spokenLanguageService.getSpokenLanguages().subscribe(
+      (res : any) => {
+        this.spokenLanguages = res.data;
+        this.getSpokenStr();
+      },
+      err => console.error(err)
+    )
+  }
 
-    getSignLanguages() {
-      this.signLanguages = [];
-      this.signLanguageService.getSignLanguages().subscribe(
-        (res : any) => {
-          this.signLanguages = res.data;
-        },
-        err => console.error(err)
-      )
-    }
+  getSpokenLanguage(id) {
+    this.spokenLanguage = null;
+    this.spokenLanguageService.getSpokenLanguage(id).subscribe(
+      (res: any) => {
+        this.spokenLanguage = res.data;
+      },
+      err => console.error(err)
+    )
+  }
 
-    getSignLanguage(id) {
-      this.signLanguage = null;
-      this.signLanguageService.getSignLanguage(id).subscribe(
-        (res: any) => {
-          this.signLanguage = res.data;
-        },
-        err => console.error(err)
-      )
+  getSpokenStr() {
+    var lastID = this.spokenLanguages[this.spokenLanguages.length-1].ID;
+    this.spokenLanguagesStr = new Array(lastID) ;
+    console.log(this.spokenLanguagesStr);
+    for(var i = 0; i < this.spokenLanguages.length ; i++) {
+      this.spokenLanguagesStr.splice(this.spokenLanguages[i].ID, 1, [
+                                                          this.spokenLanguages[i].name_de, 
+                                                          this.spokenLanguages[i].name_es, 
+                                                          this.spokenLanguages[i].name_en, 
+                                                          this.spokenLanguages[i].name_fr, 
+                                                          this.spokenLanguages[i].name_it, 
+                                                          this.spokenLanguages[i].name_pt
+                                                        ]);
     }
+  }
+
+  getSignLanguages() {
+    this.signLanguages = [];
+    this.signLanguageService.getSignLanguages().subscribe(
+      (res : any) => {
+        this.signLanguages = res.data;
+        this.getSignStr();
+      },
+      err => console.error(err)
+    )
+  }
+
+  getSignLanguage(id) {
+    this.signLanguage = null;
+    this.signLanguageService.getSignLanguage(id).subscribe(
+      (res: any) => {
+        this.signLanguage = res.data;
+      },
+      err => console.error(err)
+    )
+  }
+
+  getSignStr() {
+    var lastID = this.signLanguages[this.signLanguages.length-1].ID;
+    this.signLanguagesStr = new Array(lastID) ;
+    console.log(this.signLanguagesStr);
+    for(var i = 0; i < this.signLanguages.length ; i++) {
+      this.signLanguagesStr.splice(this.signLanguages[i].ID, 1, [
+                                                          this.signLanguages[i].name_de, 
+                                                          this.signLanguages[i].name_es, 
+                                                          this.signLanguages[i].name_en, 
+                                                          this.signLanguages[i].name_fr, 
+                                                          this.signLanguages[i].name_it, 
+                                                          this.signLanguages[i].name_pt
+                                                        ]);
+    }
+  }
 
 }

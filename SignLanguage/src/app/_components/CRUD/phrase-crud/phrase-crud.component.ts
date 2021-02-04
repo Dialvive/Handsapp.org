@@ -28,7 +28,9 @@ export class PhraseCrudComponent implements OnInit {
   locales: Locale[] | any;
   phraseCategory: PhraseCategory | any;
   phraseCategories: PhraseCategory[] | any;
-  
+  phraseCategoriesStr: any[];
+  localesStr: any[];
+
   constructor(private phraseService: PhraseService, private phraseCategoryService: PhraseCategoryService , private localeService: LocaleService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -36,7 +38,6 @@ export class PhraseCrudComponent implements OnInit {
       ID:[''],
       locale_ID: ['',Validators.required],
       phrase_category_ID: ['',Validators.required],
-      text: ['',Validators.required],
       text_de: ['',Validators.required],
       text_es: ['',Validators.required],
       text_en: ['',Validators.required],
@@ -83,6 +84,7 @@ export class PhraseCrudComponent implements OnInit {
       (res : any) => {
         console.log(res.data);
         this.phraseCategories = res.data;
+        this.getPhraseCategoriesStr();
       },
       err => console.error(err)
     )
@@ -96,6 +98,24 @@ export class PhraseCrudComponent implements OnInit {
       },
       err => console.error(err)
     )
+  }
+
+  getPhraseCategoriesStr() {
+    var lastID = this.phraseCategories[this.phraseCategories.length-1].ID;
+    this.phraseCategoriesStr = new Array(lastID) ;
+    console.log("HOLA");
+    
+    for(var i = 0; i < this.phraseCategories.length ; i++) {
+      this.phraseCategoriesStr.splice(this.phraseCategories[i].ID, 1, [
+                                                          this.phraseCategories[i].name_de, 
+                                                          this.phraseCategories[i].name_es, 
+                                                          this.phraseCategories[i].name_en, 
+                                                          this.phraseCategories[i].name_fr, 
+                                                          this.phraseCategories[i].name_it, 
+                                                          this.phraseCategories[i].name_pt
+                                                        ]);
+    }
+    console.log(this.phraseCategoriesStr[1][1]);
   }
 
   getPhrases() {

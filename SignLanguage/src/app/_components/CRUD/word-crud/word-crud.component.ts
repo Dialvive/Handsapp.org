@@ -28,7 +28,9 @@ export class WordCrudComponent implements OnInit {
   locales: Locale[] | any;
   wordCategory: WordCategory | any;
   wordCategories: WordCategory[] | any;
-  
+  wordCategoriesStr: any[];
+  localesStr: any[];
+
   constructor(private wordService: WordService, private wordCategoryService: WordCategoryService , private localeService: LocaleService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -88,6 +90,7 @@ export class WordCrudComponent implements OnInit {
       (res : any) => {
         console.log(res.data);
         this.wordCategories = res.data;
+        this.getWordCategoriesStr();
       },
       err => console.error(err)
     )
@@ -101,6 +104,24 @@ export class WordCrudComponent implements OnInit {
       },
       err => console.error(err)
     )
+  }
+
+  getWordCategoriesStr() {
+    var lastID = this.wordCategories[this.wordCategories.length-1].ID;
+    this.wordCategoriesStr = new Array(lastID) ;
+    console.log("HOLA");
+    
+    for(var i = 0; i < this.wordCategories.length ; i++) {
+      this.wordCategoriesStr.splice(this.wordCategories[i].ID, 1, [
+                                                          this.wordCategories[i].name_de, 
+                                                          this.wordCategories[i].name_es, 
+                                                          this.wordCategories[i].name_en, 
+                                                          this.wordCategories[i].name_fr, 
+                                                          this.wordCategories[i].name_it, 
+                                                          this.wordCategories[i].name_pt
+                                                        ]);
+    }
+    console.log(this.wordCategoriesStr[1][1]);
   }
 
   getWords() {

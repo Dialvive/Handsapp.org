@@ -18,7 +18,7 @@
                 <tr>
                     <th class="text-center">Id</th>
                     <th class="text-center">locale_ID</th>
-                    <th class="text-center">word_category_ID</th>
+                    <th class="text-center">word category</th>
                     <th class="text-center">text_es</th>
                     <th class="text-center">context_es</th>
                     <th class="text-center">definition_es</th>
@@ -30,7 +30,7 @@
                 <tr *ngFor=" let word of words" >
                     <td class="text-center">{{ word.ID }}</td>
                     <td class="text-center">{{ word.locale_ID }}</td>
-                    <td class="text-center">{{ word.word_category_ID}}</td>
+                    <td class="text-center">{{ this.wordCategoriesStr[word.word_category_ID][1] }}</td>
                     <td class="text-center">{{ word.text_es}}</td>
                     <td class="text-center">{{ word.context_es}}</td>
                     <td class="text-center">{{ word.definition_es}}</td>

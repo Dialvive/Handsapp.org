@@ -26,9 +26,9 @@
             <tbody>
                 <tr *ngFor=" let locale of locales">
                     <td class="text-center">{{ locale.ID }}</td>
-                    <td class="text-center">{{ locale.country_ID }}</td>
-                    <td class="text-center">{{ locale.spoken_language_ID }}</td>
-                    <td class="text-center">{{ locale.sign_language_ID }}</td>
+                    <td class="text-center">{{ this.countriesStr[locale.country_ID][1] }}</td>
+                    <td class="text-center">{{ this.spokenLanguagesStr[locale.spoken_language_ID][1] }}</td>
+                    <td class="text-center">{{ this.signLanguagesStr[locale.sign_language_ID][1] }}</td>
                     <td class="text-center">{{ locale.modified }}</td>
                     <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
                     <td>

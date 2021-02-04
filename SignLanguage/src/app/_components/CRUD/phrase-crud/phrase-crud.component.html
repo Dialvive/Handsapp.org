@@ -29,7 +29,7 @@
                 <tr *ngFor=" let phrase of phrases" >
                     <td class="text-center">{{ phrase.ID }}</td>
                     <td class="text-center">{{ phrase.locale_ID }}</td>
-                    <td class="text-center">{{ phrase.phrase_category_ID}}</td>
+                    <td class="text-center">{{ this.phraseCategoriesStr[phrase.phrase_category_ID][1] }}</td>
                     <td class="text-center">{{ phrase.text_es}}</td>
                     <td class="text-center">{{ phrase.context_es}}</td>
                     <td class="text-center">{{ phrase.modified }}</td>
