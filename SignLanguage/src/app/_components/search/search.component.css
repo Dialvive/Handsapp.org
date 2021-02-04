@@ -2,8 +2,13 @@
 
 .search-logo {
     width: 200px;
+    height: 200px;
     margin-top: 8vh;
     margin-bottom: 0;
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/logo.png);
 }
 
 .search-searchbar {
