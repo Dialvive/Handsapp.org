@@ -1,0 +1,22 @@
+/* RESULTS ####################################################### */
+
+.results-card {
+    width: 25rem;
+    margin: 1.618%;
+    border-radius: 1rem;
+    text-decoration: none;
+    -webkit-animation: shadow-drop-2-bottom-alt 1s cubic-bezier(0, 0, 0, 0) both;
+    animation: shadow-drop-2-bottom-alt 1s cubic-bezier(0, 0, 0, 0) both;
+}
+
+.results-card:hover {
+    -webkit-animation: shadow-drop-2-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.results-link {
+    width: 25rem;
+    height: fit-content;
+    text-decoration: none;
+    color: var(--carbon-dark) !important;
+}
