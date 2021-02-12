@@ -1,4 +1,8 @@
-runtime: nodejs14
+runtime: nodejs12
 
 handlers:
-- url: /dist/LenguaDeSenas
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+  static-dir: /LenguaDeSenas/dist/LenguaDeSenas/
