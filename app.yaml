@@ -4,8 +4,3 @@ handlers:
 - url: /
   static_files: SignLanguage/dist/SignLanguage/index.html
   upload: SignLanguage/dist/SignLanguage/index.html
-
-skip_files:
-- ^.*node_modules(/.*)?
-- ^.*json_data(/.*)?
-- ^.*e2e(/.*)?
