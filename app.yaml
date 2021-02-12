@@ -2,8 +2,8 @@ runtime: nodejs14
 
 handlers:
 - url: /
-  static_files: /SignLanguage-Website/dist/LenguaDeSenas/index.html
-  upload: /SignLanguage-Website/dist/LenguaDeSenas/index.html
+  static_files: /lenguaDeSenas/dist/LenguaDeSenas/index.html
+  upload: /lenguaDeSenas/dist/LenguaDeSenas/index.html
 
 - url: /
-  static_dir: /SignLanguage-Website/dist/LenguaDeSenas/index.html
+  static_dir: /lenguaDeSenas/dist/LenguaDeSenas/index.html
