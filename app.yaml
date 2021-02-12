@@ -2,11 +2,11 @@ runtime: nodejs12
 
 handlers:
 - url: /
-  static_files: dist/LenguaDeSenas/index.html
-  upload: dist/LenguaDeSenas/index.html
+  static_files: dist/SignLanguage/index.html
+  upload: dist/SignLanguage/index.html
   
 - url: /
-  static_dir: dist/LenguaDeSenas/
+  static_dir: dist/SignLanguage/
 
 - url: /.*
   secure: always
