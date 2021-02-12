@@ -2,5 +2,5 @@ runtime: nodejs12
 
 handlers:
 - url: /
-  static_files: SignLanguage/dist/SignLanguage/index.html
-  upload: SignLanguage/dist/SignLanguage/index.html
+  static_files: .*/dist/SignLanguage/index.html
+  upload: .*/dist/SignLanguage/index.html
