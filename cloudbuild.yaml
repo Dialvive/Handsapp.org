@@ -1,3 +1,3 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', '--project=326606861566', '--version=$SHORT_SHA']
+  args: ['app', 'deploy', '--project=lengua-de-senas-2020', '--version=$SHORT_SHA']
