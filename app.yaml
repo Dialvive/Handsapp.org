@@ -1,9 +1,8 @@
 runtime: nodejs14
 
 handlers:
-- url: /
-  static_files: /lenguaDeSenas/dist/LenguaDeSenas/index.html
-  upload: /lenguaDeSenas/dist/LenguaDeSenas/index.html
+- url: /dist/LenguaDeSenas
 
-- url: /
-  static_dir: /lenguaDeSenas/dist/LenguaDeSenas/index.html
+app = webapp2.WSGIApplication([
+    ('/dist/LenguaDeSenas', MainHandler)
+], debug=True)
