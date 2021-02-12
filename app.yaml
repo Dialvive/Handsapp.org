@@ -2,6 +2,9 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+- url: /
+  static_dir: dist/SignLanguage-Website
+
 skip_files:
   - e2e/
   - node_modules/
