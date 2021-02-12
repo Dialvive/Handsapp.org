@@ -1,6 +1,14 @@
 runtime: nodejs12
+threadsafe: true
 
 handlers:
+- url: /
+  static_files: dist/LenguaDeSenas/index.html
+  upload: dist/LenguaDeSenas/index.html
+  
+- url: /
+  static_dir: dist/LenguaDeSenas/
+
 - url: /.*
   secure: always
   redirect_http_response_code: 301
