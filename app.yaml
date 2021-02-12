@@ -2,7 +2,3 @@ runtime: nodejs14
 
 handlers:
 - url: /dist/LenguaDeSenas
-
-app = webapp2.WSGIApplication([
-    ('/dist/LenguaDeSenas', MainHandler)
-], debug=True)
