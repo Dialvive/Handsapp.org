@@ -37,7 +37,8 @@ export class LocaleCrudComponent implements OnInit {
     spokenLanguagesStr: any[];
     signLanguagesStr: any[];
 
-    constructor(private signLanguageService: SignLanguageService, private spokenLanguageService: SpokenLanguageService ,private countryService: CountryService, private localeService: LocaleService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
+    constructor(
+      private signLanguageService: SignLanguageService, private countryService: CountryService, private spokenLanguageService: SpokenLanguageService, private localeService: LocaleService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
     ngOnInit(): void {
       this.localeForm = this.formBuilder.group({
