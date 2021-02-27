@@ -1,17 +1,18 @@
 /* RESULTS ####################################################### */
 
 .results-card {
-    width: 25rem;
-    margin: 1.618%;
+    min-width: 250px;
+    max-width: 100%;
+    width: 100%;
     border-radius: 1rem;
     text-decoration: none;
-    -webkit-animation: shadow-drop-2-bottom-alt 1s cubic-bezier(0, 0, 0, 0) both;
-    animation: shadow-drop-2-bottom-alt 1s cubic-bezier(0, 0, 0, 0) both;
+    -webkit-animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
+    animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
 }
 
 .results-card:hover {
-    -webkit-animation: shadow-drop-2-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: shadow-drop-2-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: shadow-drop-2-bottom 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-bottom 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .results-link {
@@ -19,4 +20,15 @@
     height: fit-content;
     text-decoration: none;
     color: var(--carbon-dark) !important;
+}
+
+.grid-container {
+    display: grid !important;
+    column-gap: minmax(5px, 1.618vh);
+    row-gap: 1.618vh;
+    list-style: none;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    padding-left: 0;
+    padding-top: 2.618vh;
 }
