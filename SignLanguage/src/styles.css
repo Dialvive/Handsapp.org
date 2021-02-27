@@ -96,6 +96,7 @@ h5 {
     font-size: 20px;
     font-weight: 600;
     color: var(--accent);
+    text-shadow: var(--cream-dark) 1px 1px;
 }
 
 .h1grt {
@@ -252,7 +253,7 @@ a {
     text-rendering: optimizeLegibility;
 }
 
-ul {
+ul ol li {
     list-style-type: none;
 }
 
@@ -429,6 +430,23 @@ video {
 
 .word-card-header {
     background-color: transparent;
+}
+
+
+/* INDICE DE PALABRAS ############################################ */
+
+.accordion-item {
+    background-color: #fff;
+    border-color: var(--cream-dark);
+    border-width: 3px;
+}
+
+.list-group-item-action:hover {
+    background-color: #fff;
+    color: var(--accent);
+    font-weight: 700;
+    text-shadow: var(--cream-dark) 1px 1px;
+    cursor: pointer;
 }
 
 

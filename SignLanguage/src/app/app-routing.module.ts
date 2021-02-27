@@ -4,12 +4,13 @@ import { PhraseComponent } from './_components/phrase/phrase.component';
 import { ResultsComponent } from './_components/results/results.component';
 import { SearchComponent } from './_components/search/search.component';
 import { WordComponent } from './_components/word/word.component';
+import { WordsComponent } from './_components/words/words.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },
   { path: 'search', component:  ResultsComponent },
   { path: 'word', component: WordComponent},
-  { path: 'phrase', component: PhraseComponent},
+  { path: 'words', component: WordsComponent},
 ];
 
 @NgModule({

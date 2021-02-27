@@ -6,7 +6,7 @@
     <div class="col-12 col-md-8 col-xl-6 first-column">
         <div class="d-flex justify-content-between align-items-start">
             <h1>
-                Frase
+                Palabra
             </h1>
             <div class="d-flex align-items-start">
                 <button type="button" class="btn flag-btn" name="flag">
@@ -18,28 +18,23 @@
             </div>
         </div>
         <div class="d-flex justify-content-center video-container">
-            <video autoplay loop muted>
-                <source type="video/mp4" src="">
+            <video id="sign-video" autoplay loop muted>
+                <source type="video/mp4" src="https://storage.googleapis.com/videos.signapp.site/LSM/words/1-hd.mp4">
+                <p>Error: Your browser doesn't support HTML5 video. 
             </video>
         </div>
         <div class="video-controls d-flex justify-content-center align-items-center">
-            <button type="button" class="btn video-btn" name="turtle" value="2">
-                <i class="bi bi-chevron-left"></i>
+            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0.5)">
+                <i class="video-bi bi bi-chevron-compact-right"></i>
             </button>
-            <button type="button" class="btn video-btn" name="play" value="1">
-                <i class="bi bi-play-fill"></i>
+            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1)">
+                <i class="video-bi bi bi-chevron-right"></i>
             </button>
-            <button type="button" class="btn video-btn" name="rabbit" value="2">
-                <i class="bi bi-chevron-compact-right"></i>
+            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1.5)">
+                <i class="video-bi bi bi-chevron-double-right"></i>
             </button>
-            <button type="button" class="btn video-btn" name="fox" value="2">
-                <i class="bi bi-chevron-right"></i>
-            </button>
-            <button type="button" class="btn video-btn" name="cheetah" value="2">
-                <i class="bi bi-chevron-double-right"></i>
-            </button>
-            <button type="button" class="btn video-btn" name="fullscreen" value="2">
-                <i class="bi bi-arrows-fullscreen"></i>
+            <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                <i class="video-bi bi bi-arrows-fullscreen"></i>
             </button>
         </div>
 
@@ -48,7 +43,7 @@
                 <div class="card word-card">
                     <div class="card-body">
                         <h3>
-                            Explicación de la seña
+                            Contexto de la seña
                         </h3>
                         <hr> Bla bla bla
                     </div>
@@ -71,9 +66,6 @@
                             <li class="ligrt">
                                 Lengua de Señas:
                             </li>
-                            <li class="ligrt">
-                                Región:
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -83,7 +75,7 @@
                 <div class="card word-card">
                     <div class="card-body">
                         <h3>
-                            Palabras Relacionadas
+                            Frases Relacionadas
                         </h3>
                         <hr>
                         <ul>
@@ -99,7 +91,7 @@
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <img class="ad-column" src="/assets/img/300x600.png" alt="">
+        <img class="mt-5 ad-column" src="/assets/img/300x600.png" alt="">
     </div>
 
     <div class="col-md-2 col-xl-2"></div>
