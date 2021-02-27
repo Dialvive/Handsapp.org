@@ -16,4 +16,26 @@
     <app-header></app-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAd8VrAM7QxxQYeIXydxz21sqwtNZD0q-Q",
+            authDomain: "signlanguage-2021.firebaseapp.com",
+            projectId: "signlanguage-2021",
+            storageBucket: "signlanguage-2021.appspot.com",
+            messagingSenderId: "885728768680",
+            appId: "1:885728768680:web:6eb11ed0edb70dce1f089d",
+            measurementId: "G-HL1Z9ZMTFC"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
 </body>
