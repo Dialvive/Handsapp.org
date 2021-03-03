@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Sitemap: http://xn--lenguadeseas-jhb.net/sitemap.xml
+Sitemap: http://lenguadesenas.net/sitemap.xml

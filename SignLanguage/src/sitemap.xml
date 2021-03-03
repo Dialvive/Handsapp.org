@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>http://lenguadeseñas.net/categorias</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/equipo</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/frase</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/frases</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/herramientas</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/index</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/palabra</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/palabras</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/preview</loc>
+    </url>
+    <url>
+        <loc>http://lenguadeseñas.net/resultados.html</loc>
+    </url>
+</urlset>

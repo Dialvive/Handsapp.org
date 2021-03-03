@@ -1,0 +1,40 @@
+<app-ad-banner></app-ad-banner>
+<div class="row">
+
+    <div class="col-md-2 col-xl-2"></div>
+
+    <div class="col-12 col-md-8 col-xl-6 first-column">
+        <h2 class="mb-5">
+            Índice temático de palabras
+        </h2>
+        <div>
+            <div class="accordion" id="words">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingadjetivos">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adjetivos" aria-expanded="false" aria-controls="adjetivos">
+                            <h3>
+                                Categoría 
+                            </h3>
+                        </button>
+                    </h2>
+                    <div id="adjetivos" class="accordion-collapse collapse" aria-labelledby="headingadjetivos" data-bs-parent="#words">
+                        <div class="accordion-body">
+                            <ol class="list-group list-group-flush">
+                                <li (click)="navigateIdTxt('/word','','')" class="list-group-item list-group-item-action">
+                                    <h4>A link item</h4>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-none d-xl-block col-xl-2 second-column">
+        <img class="mt-5 ad-column" src="/assets/img/300x600.png" alt="">
+    </div>
+
+    <div class="col-md-2 col-xl-2"></div>
+</div>
+<app-ad-banner></app-ad-banner>

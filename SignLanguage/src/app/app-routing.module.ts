@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+<<<<<<< HEAD
 import { PhraseCategoryCrudComponent } from './_components/CRUD/phrase-category-crud/phrase-category-crud.component';
 import { WordCategoryCrudComponent} from './_components/CRUD/word-category-crud/word-category-crud.component';
 import { RegionCrudComponent } from './_components/CRUD/region-crud/region-crud.component';
@@ -20,6 +21,19 @@ const routes: Routes = [
   { path: 'SU/CRUD/locale', component: LocaleCrudComponent},
   { path: 'SU/CRUD/word', component: WordCrudComponent},
   { path: 'SU/CRUD/phrase', component: PhraseCrudComponent},
+=======
+import { PhraseComponent } from './_components/phrase/phrase.component';
+import { ResultsComponent } from './_components/results/results.component';
+import { SearchComponent } from './_components/search/search.component';
+import { WordComponent } from './_components/word/word.component';
+import { WordsComponent } from './_components/words/words.component';
+
+const routes: Routes = [
+  { path: '', component:  SearchComponent },
+  { path: 'search', component:  ResultsComponent },
+  { path: 'word', component: WordComponent},
+  { path: 'words', component: WordsComponent},
+>>>>>>> origin/main
 ];
 
 @NgModule({
