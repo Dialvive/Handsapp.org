@@ -41,15 +41,16 @@
     color: var(--carbon-dark);
     border-width: 2px !important;
     border-color: var(--cream-dark) !important;
-    -webkit-animation: shadow-drop-2-bottom-alt 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: shadow-drop-2-bottom-alt 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .search-btn:hover {
     background-color: var(--accent);
+    border-color: var(--accent) !important;
     color: #fff;
-    -webkit-animation: shadow-drop-2-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: shadow-drop-2-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: shadow-drop-2-bottom 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-bottom 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .search-input {
