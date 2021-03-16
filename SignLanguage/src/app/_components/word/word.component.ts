@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WordService } from 'src/app/_services/word/word.service';
+import { Word } from '../../_models/word';
+
 
 @Component({
   selector: 'app-word',
@@ -8,13 +11,27 @@ import { Component, OnInit } from '@angular/core';
 
 export class WordComponent implements OnInit {
   
+  word: Word | any;
   video: any;
 
-  constructor() { }
+  constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
     this.video = document.getElementById("sign-video");
   }
+
+  /* Word Manager */
+  getWord(id) {
+    this.word = null;
+    this.wordService.getWord(id).subscribe(
+      (res: any) => {
+        this.word = res.data;
+      },
+      err => console.error(err)
+    )
+  }
+
+/* VIDEO MANAGER */
 
   setTurtle(){
     this.video.playbackRate = 0.5;
@@ -47,7 +64,9 @@ export class WordComponent implements OnInit {
     } else if (this.video.msRequestFullscreen) {
       this.video.msRequestFullscreen();
     }
-  } 
+  }
+
+  
 
 }
 

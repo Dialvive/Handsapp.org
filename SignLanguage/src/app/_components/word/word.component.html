@@ -6,7 +6,7 @@
     <div class="col-12 col-md-8 col-xl-6 first-column">
         <div class="d-flex justify-content-between align-items-start">
             <h1>
-                Palabra
+                {{ word.text_es }}
             </h1>
             <div class="d-flex align-items-start">
                 <button type="button" class="btn flag-btn" name="flag">
@@ -48,7 +48,7 @@
                         <h3>
                             Definición en Español
                         </h3>
-                        <hr> Bla bla bla
+                        <hr> {{word.definition_es}}
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         <hr>
                         <ul>
                             <li class="ligrt">
-                                Categoría:
+                                Categoría: {{ this.wordCategoriesStr[word.word_category_ID][1] }}
                             </li>
                             <li class="ligrt">
                                 Lengua de Señas:
