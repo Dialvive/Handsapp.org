@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoBootstrap, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -6,7 +6,6 @@ import { Word } from '../../_models/word';
 import { WordService } from '../../_services/word.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Carousel } from 'bootstrap'
 import Bootstrap from 'bootstrap/dist/js/bootstrap';
 
 @Component({
@@ -17,7 +16,7 @@ import Bootstrap from 'bootstrap/dist/js/bootstrap';
 export class WordComponent implements OnInit {
 
   vid: any;
-  carousel: Carousel | any;
+  carousel: Bootstrap.Carousel;
   private locale: string[] | any;   // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
   public word: Observable<Word> | any;
   public wordID: string | any;
