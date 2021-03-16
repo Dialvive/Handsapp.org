@@ -17,21 +17,24 @@
                 </button>
             </div>
         </div>
-        <div class="d-flex justify-content-center video-container">
+        <!-- autoplay loop mute-->
+        <div class="video-container" id = "vid-container">
             <video id="sign-video" autoplay loop muted>
-                <source type="video/mp4" src="https://storage.googleapis.com/videos.signapp.site/LSM/words/1-hd.mp4">
-                <p>Error: Your browser doesn't support HTML5 video. 
+                <source src="https://storage.googleapis.com/signa-mundi/LSM/words/100-A.mp4">
             </video>
         </div>
         <div class="video-controls d-flex justify-content-center align-items-center">
-            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0.5)">
-                <i class="video-bi bi bi-chevron-compact-right"></i>
+            <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
+                <i class="bi bi-chevron-left"></i>
             </button>
-            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1)">
-                <i class="video-bi bi bi-chevron-right"></i>
+            <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
+                <i id = "icon" class="bi bi-pause-fill"></i>
             </button>
-            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1.5)">
-                <i class="video-bi bi bi-chevron-double-right"></i>
+            <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
+                <i class="bi bi-chevron-compact-right"></i>
+            </button>
+            <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
+                <i class="bi bi-chevron-right"></i>
             </button>
             <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
                 <i class="video-bi bi bi-arrows-fullscreen"></i>
@@ -106,9 +109,23 @@
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <img class="mt-5 ad-column" src="/assets/img/300x600.png" alt="">
+        <img class="ad-column" src="/assets/img/300x600.png" alt="">
     </div>
 
     <div class="col-md-2 col-xl-2"></div>
 </div>
+
+<ng-template #crear let-modal>
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"><i class="bi bi-chevron-left"></i></button>
+    </div>
+    <div class="modal-body">
+        <div class="fullScreen">
+            <video #myVideo autoplay loop mute  >
+                <source src="https://storage.googleapis.com/videos.signapp.site/LSM/words/1-hd.mp4">
+            </video>
+        </div>
+    </div>
+</ng-template>
+
 <app-ad-banner></app-ad-banner>

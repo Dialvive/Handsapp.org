@@ -5,57 +5,47 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './word.component.html',
   styleUrls: ['./word.component.css']
 })
-export class WordComponent implements OnInit {
 
-  vid: any;
+export class WordComponent implements OnInit {
+  
+  video: any;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.vid = document.getElementById("sign-video");
+    this.video = document.getElementById("sign-video");
   }
 
-  public setPlaybackSpeed(speed: number){
-    switch (speed) {
-      case 0.5:
-        if (this.vid.playbackRate) {
-          this.vid.playbackRate = 0.5;
-        } else if (this.vid.webkitPlaybackRate) {
-          this.vid.webkitPlaybackRate = 0.5;
-        } else if (this.vid.msPlaybackRate) {
-          this.vid.msPlaybackRate = 0.5;
-        }
-        break;
-    
-      case 1.5:
-        if (this.vid.playbackRate) {
-          this.vid.playbackRate = 1.5;
-        } else if (this.vid.webkitPlaybackRate) {
-          this.vid.webkitPlaybackRate = 1.5;
-        } else if (this.vid.msPlaybackRate) {
-          this.vid.msPlaybackRate = 1.5;
-        }
-        break;
+  setTurtle(){
+    this.video.playbackRate = 0.5;
+  }
 
-      default:
-        if (this.vid.playbackRate) {
-          this.vid.playbackRate = 1;
-        } else if (this.vid.webkitPlaybackRate) {
-          this.vid.webkitPlaybackRate = 1;
-        } else if (this.vid.msPlaybackRate) {
-          this.vid.msPlaybackRate = 1;
-        }
-        break;
+  setPlay(){
+    if(this.video.paused){
+      document.getElementById("icon").className = "bi bi-pause-fill";
+      this.video.play();
+    } else {
+      this.video.pause();
+      document.getElementById("icon").className = "bi bi-play-fill";
     }
   }
 
+  setRabbit(){
+    this.video.playbackRate = 1;
+  }
+
+  setFox(){
+    this.video.playbackRate = 1.5;
+  }
+  
+
   public openFullscreen() {
-    if (this.vid.requestFullscreen) {
-      this.vid.requestFullscreen();
-    } else if (this.vid.webkitRequestFullscreen) {
-      this.vid.webkitRequestFullscreen();
-    } else if (this.vid.msRequestFullscreen) {
-      this.vid.msRequestFullscreen();
+    if (this.video.requestFullscreen) {
+      this.video.requestFullscreen();
+    } else if (this.video.webkitRequestFullscreen) {
+      this.video.webkitRequestFullscreen();
+    } else if (this.video.msRequestFullscreen) {
+      this.video.msRequestFullscreen();
     }
   } 
 

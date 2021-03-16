@@ -37,13 +37,11 @@ import { UserHomeComponent } from './_components/user-home/user-home.component';
 import { SuperUserHomeComponent } from './_components/super-user-home/super-user-home.component';
 import { EditorHomeComponent } from './_components/editor-home/editor-home.component';
 import { AdvertisementsComponent } from './_components/advertisements/advertisements.component';
-<<<<<<< HEAD
 import { WordCategoryCrudComponent } from './_components/CRUD/word-category-crud/word-category-crud.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-=======
 import { WordsComponent } from './_components/words/words.component';
->>>>>>> origin/main
+import { FilterPipe } from './filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -78,15 +76,13 @@ import { WordsComponent } from './_components/words/words.component';
     SuperUserHomeComponent,
     EditorHomeComponent,
     AdvertisementsComponent,
-<<<<<<< HEAD
-=======
-    WordsComponent
->>>>>>> origin/main
+    WordsComponent,
+    FilterPipe,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule, 
@@ -96,8 +92,7 @@ import { WordsComponent } from './_components/words/words.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule
-=======
->>>>>>> origin/main
+
   ],
   providers: [],
   bootstrap: [AppComponent]
