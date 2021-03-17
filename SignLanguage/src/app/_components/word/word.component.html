@@ -4,157 +4,138 @@
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
-        <div class="d-flex justify-content-between align-items-start">
-            <h1>
-                {{word.getText()[localeInt]}}
-            </h1>
-            <div class="d-flex align-items-start">
-                <button type="button" class="btn flag-btn" name="flag">
-                    <i class="bi bi-flag-fill"></i>
+        <ng-container *ngIf="ready">
+            <div class="d-flex justify-content-between align-items-start">
+                <h1>
+                    {{word.getText()[localeInt]}}
+                </h1>
+                <div class="d-flex align-items-start">
+                    <button type="button" class="btn flag-btn" name="flag">
+                        <i class="bi bi-flag-fill"></i>
+                    </button>
+                    <button type="button" class="btn heart-btn" name="heart">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                </div>
+            </div>
+
+                <div id="video-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" >
+                    <ng-container *ngIf="videos.length > 1">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                    </ng-container>
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center video-container">
+                            <video name="sign-video" autoplay loop muted>
+                                <source type="video/mp4" src={{videos}}>
+                                <p>Error: Your browser doesn't support HTML5 video. 
+                            </video>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                    </div>
+                    <ng-container *ngIf="videos.length > 1">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#video-carousel"  data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#video-carousel"  data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </ng-container>
+                </div>
+
+            <div class="video-controls d-flex justify-content-center align-items-center">
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0)">
+                    <i class="video-bi bi bi-pause"></i>
                 </button>
-                <button type="button" class="btn heart-btn" name="heart">
-                    <i class="bi bi-heart-fill"></i>
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0.5)">
+                    <i class="video-bi bi bi-chevron-compact-right"></i>
+                </button>
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1)">
+                    <i class="video-bi bi bi-chevron-right"></i>
+                </button>
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1.5)">
+                    <i class="video-bi bi bi-chevron-double-right"></i>
+                </button>
+                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                    <i class="video-bi bi bi-arrows-fullscreen"></i>
                 </button>
             </div>
-        </div>
 
-            <div id="video-carousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div class="d-flex justify-content-center video-container">
-                        <video id="sign-video" autoplay loop muted>
-                            <source type="video/mp4" src="https://storage.googleapis.com/video.handsapp.org/LSM/words/{{word.getID()}}-A.mp4">
-                            <p>Error: Your browser doesn't support HTML5 video. 
-                        </video>
+            <ng-container *ngIf="word.getDefinitions()[localeInt] !=''">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card word-card">
+                            <div class="card-body">
+                                <h3>
+                                    {{strDef[localeInt]}}
+                                </h3>
+                                <hr> {{word.getDefinitions()[localeInt]}}
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#video-carousel"  data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#video-carousel"  data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-
-
-        <div class="video-controls d-flex justify-content-center align-items-center">
-            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0.5)">
-                <i class="video-bi bi bi-chevron-compact-right"></i>
-            </button>
-            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1)">
-                <i class="video-bi bi bi-chevron-right"></i>
-            </button>
-            <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1.5)">
-                <i class="video-bi bi bi-chevron-double-right"></i>
-            </button>
-            <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
-                <i class="video-bi bi bi-arrows-fullscreen"></i>
-            </button>
-        </div>
-
-        <ng-container *ngIf="word.getDefinitions()[localeInt] !=''">
+            </ng-container>
+            <ng-container *ngIf="word.getContext()[localeInt] != ''">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card word-card">
+                            <div class="card-body">
+                                <h3>
+                                    {{strExp[localeInt]}}
+                                </h3>
+                                <hr> {{word.getContext()[localeInt]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="word">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card word-card">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
             <div class="row">
                 <div class="col-12">
                     <div class="card word-card">
                         <div class="card-body">
                             <h3>
-                                {{strDef[localeInt]}}
+                                {{strDet[localeInt]}}
                             </h3>
-                            <hr> {{word.getDefinitions()[localeInt]}}
+                            <hr>
+                            <ul>
+                                <li class="ligrt">
+                                    {{strCat[localeInt]}}:
+                                </li>
+                                <li class="ligrt">
+                                    {{strLen[localeInt]}}:
+                                </li>
+                                <li class="ligrt">
+                                    {{strReg[localeInt]}}:
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="word.getContext()[localeInt] != ''">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card word-card">
-                        <div class="card-body">
-                            <h3>
-                                {{strExp[localeInt]}}
-                            </h3>
-                            <hr> {{word.getContext()[localeInt]}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-        <ng-container *ngIf="word">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card word-card">
-                        <div class="card-body">
-                            <script src="https://apis.google.com/js/api.js"></script>
-                            <script>
-                                function loadClient() {
-                                    gapi.client.setApiKey("AIzaSyCYgBAuFbtTM6Th6CjAJvWOj2CyH44Vibg");
-                                    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
-                                        .then(function() { console.log("GAPI client loaded for API"); },
-                                            function(err) { console.error("Error loading GAPI client for API", err); });
-                                }
-                                // Make sure the client is loaded before calling this method.
-                                function execute() {
-                                    return gapi.client.search.cse.list({
-                                    "imgColorType": "color",
-                                    "imgType": "photo",
-                                    "q": "Eagle",
-                                    "safe": "high",
-                                    "searchType": "image"
-                                    })
-                                        .then(function(response) {
-                                                // Handle the results here (response.result has the parsed body).
-                                                console.log("Response", response);
-                                            },
-                                            function(err) { console.error("Execute error", err); });
-                                }
-                                gapi.load("client");
-                            </script>
-                            <button onclick="loadClient()">load</button>
-                            <button onclick="execute()">execute</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-        <div class="row">
-            <div class="col-12">
-                <div class="card word-card">
-                    <div class="card-body">
-                        <h3>
-                            {{strDet[localeInt]}}
-                        </h3>
-                        <hr>
-                        <ul>
-                            <li class="ligrt">
-                                {{strCat[localeInt]}}:
-                            </li>
-                            <li class="ligrt">
-                                {{strLen[localeInt]}}:
-                            </li>
-                            <li class="ligrt">
-                                {{strReg[localeInt]}}:
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-        </div>
+            </div>
+        </ng-container>
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
