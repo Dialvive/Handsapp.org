@@ -22,26 +22,25 @@
                 <div id="video-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" >
                     <ng-container *ngIf="videos.length > 1">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <div *ngFor="let item of videos; index as i">
+                                <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            </div>
                         </div>
+
                     </ng-container>
                     <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="d-flex justify-content-center video-container">
-                            <video name="sign-video" autoplay loop muted>
-                                <source type="video/mp4" src={{videos}}>
-                                <p>Error: Your browser doesn't support HTML5 video. 
-                            </video>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
+                    
+                        <ng-container *ngFor="let item of videos; index as i" [attr.data-slide-to]="i">
+                            <div class="carousel-item" *ngFor="let video of videos; let index = index; let isFirst = first" [ngClass]="{active:isFirst}">
+                                <div class="d-flex justify-content-center video-container">
+                                    <video name="sign-video" autoplay loop muted>
+                                        <source type="video/mp4" src={{video}}>
+                                        <p>Error: Your browser doesn't support HTML5 video. 
+                                    </video>
+                                </div>
+                            </div>
+                        </ng-container>
+
                     </div>
                     <ng-container *ngIf="videos.length > 1">
                         <button class="carousel-control-prev" type="button" data-bs-target="#video-carousel"  data-bs-slide="prev">
@@ -56,19 +55,19 @@
                 </div>
 
             <div class="video-controls d-flex justify-content-center align-items-center">
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0)">
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0, 0)">
                     <i class="video-bi bi bi-pause"></i>
                 </button>
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0.5)">
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0.5, 0)">
                     <i class="video-bi bi bi-chevron-compact-right"></i>
                 </button>
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1)">
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1, 0)">
                     <i class="video-bi bi bi-chevron-right"></i>
                 </button>
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1.5)">
+                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1.5, 0)">
                     <i class="video-bi bi bi-chevron-double-right"></i>
                 </button>
-                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen(0)">
                     <i class="video-bi bi bi-arrows-fullscreen"></i>
                 </button>
             </div>

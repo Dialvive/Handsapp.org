@@ -1,13 +1,11 @@
-import { Component, DoBootstrap, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { WordSignService } from 'src/app/_services/word-sign.service';
 import { Word } from '../../_models/word';
 import { WordService } from '../../_services/word.service';
-import { HttpClient } from '@angular/common/http';
-import { delayWhen, map } from 'rxjs/operators';
-import { WordSign } from 'src/app/_models/wordSign';
-import { WordSignService } from 'src/app/_services/word-sign.service';
 
 @Component({
   selector: 'app-word',
@@ -18,15 +16,16 @@ export class WordComponent implements OnInit {
 
   public word: Observable<Word> | any;
   public videos: String[] | any;
-
+   
   public wordID: string | any;
   public wordTXT: string | any;
   private locale: string[] | any; // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
   public localeInt: number | any; // 0: de, 1: es, 2: en, 3: fr, 4: it, 5: pt
   public ready: boolean = false;
-  public error: boolean = false;
-
-  vid: any;
+  public error: string = '';
+  //TODO: Get vidPosition from carousel
+  public vidPosition: number = 0;
+  vid: any; 
 
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
   public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication","Spiegazione", "Explicação"];
@@ -35,7 +34,6 @@ export class WordComponent implements OnInit {
   public strCat: string[] = ["Kategorie", "Categoría", "Category", "Catégorie", "Categoria", "Categoria"];
   public strLen: string[] = ["Zeichensprache", "Lengua de señas", "Sign Language", "Langage des signes", "Linguaggio dei segni", "Linguagem de sinais"];
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
-
 
   constructor(
     private route: ActivatedRoute,
@@ -51,14 +49,10 @@ export class WordComponent implements OnInit {
     this.getWord();
     this.createVideoURLs()
     this.vid = document.getElementsByName("sign-video");
+
     //TODO: Add a way to trigger the video loading after everything has been loaded.
     //TODO: Create event listener for videos or carousel to load only the video on focus on the carousel.
-
-
-
-    // TODO: What if txt doesn't match current locale txt?
-
-
+    //TODO: What if txt doesn't match current locale txt?
   }
 
   //Gets locale through params, or infers it using navigator or IP address.
@@ -67,9 +61,9 @@ export class WordComponent implements OnInit {
     var country: string | any;
     var loc = this.route.snapshot.queryParamMap.get('loc')
     if (loc == null) {
-      if (navigator.language.includes('-')) {
+      if (navigator.language.includes('-')) { // navigator.language == 'es-MX'
         var locale: string[] = navigator.language.split('-')
-        this.locale = [locale[0], null, locale[1]]
+        this.locale = [locale[0], '', locale[1]]
       } else {
         this.http.get("https://api.ipgeolocationapi.com/geolocate/").pipe(map((json: any): 
         Object => {
@@ -78,8 +72,8 @@ export class WordComponent implements OnInit {
           response => {
             country = response;
           }, 
-          err => console.error(err))
-          this.locale = [navigator.language, null, country]
+          err => console.error(err));
+        this.locale = [navigator.language, '', country]
       }
     } else {
       this.locale = loc.split('_')
@@ -108,11 +102,13 @@ export class WordComponent implements OnInit {
   }
 
   //Gets the id and txt parameters from the URL and instanciates it globally.
+  // I.E. route: https://handsapp.org/word?loc=es_LSM_MX&id=1&txt=Abeja
+  //TODO: manage incorrect id's
   private getIdTxt(): void {
     this.wordTXT = this.route.snapshot.queryParamMap.get('txt');
     this.wordID =  this.route.snapshot.queryParamMap.get('id');
 
-    if (this.wordID == null && this.wordTXT == null) {
+    if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '' ) {
       this.navigate("/404", this.locale, this.wordID, this.wordTXT);
     } else if (this.wordTXT != null && this.wordID == null) {
       this.navigate("/search", this.locale, this.wordID, this.wordTXT);
@@ -125,14 +121,15 @@ export class WordComponent implements OnInit {
       response => {
         this.word = new Word(response);
       }, 
-      err => console.error(err));
+      err => this.navigate("/404", this.locale, this.wordID, this.wordTXT));
+    
   }
 
   //Gets all the wordSigns of a word and instanciates the array of video URLs globally.
   //TODO: Create count versions route in API.
   private createVideoURLs(): void {
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const URL: string = "https://storage.googleapis.com/video.handsapp.org/LSM/words/";
+    const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + this.locale[1] + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
         this.videos = new Array(response.length);
@@ -145,46 +142,45 @@ export class WordComponent implements OnInit {
   }
 
   //Sets the playback speed of a video.
-  //TODO: Fix method to work with videos array.
-  public setPlaybackSpeed(speed: number){
+  public setPlaybackSpeed(speed: number, vidPos: number){
     switch (speed) {
       case 0:
-        if (this.vid.playbackRate) {
-          this.vid.playbackRate = 0;
-        } else if (this.vid.webkitPlaybackRate) {
-          this.vid.webkitPlaybackRate = 0;
-        } else if (this.vid.msPlaybackRate) {
-          this.vid.msPlaybackRate = 0;
+        if (this.vid[vidPos].playbackRate) {
+          this.vid[vidPos].playbackRate = 0;
+        } else if (this.vid[vidPos].webkitPlaybackRate) {
+          this.vid[vidPos].webkitPlaybackRate = 0;
+        } else if (this.vid[vidPos].msPlaybackRate) {
+          this.vid[vidPos].msPlaybackRate = 0;
         }
         break;
 
       case 0.5:
-        if (this.vid.playbackRate) {
-          this.vid.playbackRate = 0.5;
-        } else if (this.vid.webkitPlaybackRate) {
-          this.vid.webkitPlaybackRate = 0.5;
-        } else if (this.vid.msPlaybackRate) {
-          this.vid.msPlaybackRate = 0.5;
+        if (this.vid[vidPos].playbackRate) {
+          this.vid[vidPos].playbackRate = 0.5;
+        } else if (this.vid[vidPos].webkitPlaybackRate) {
+          this.vid[vidPos].webkitPlaybackRate = 0.5;
+        } else if (this.vid[vidPos].msPlaybackRate) {
+          this.vid[vidPos].msPlaybackRate = 0.5;
         }
         break;
     
       case 1.5:
-        if (this.vid.playbackRate) {
-          this.vid.playbackRate = 1.5;
-        } else if (this.vid.webkitPlaybackRate) {
-          this.vid.webkitPlaybackRate = 1.5;
-        } else if (this.vid.msPlaybackRate) {
-          this.vid.msPlaybackRate = 1.5;
+        if (this.vid[vidPos].playbackRate) {
+          this.vid[vidPos].playbackRate = 1.5;
+        } else if (this.vid[vidPos].webkitPlaybackRate) {
+          this.vid[vidPos].webkitPlaybackRate = 1.5;
+        } else if (this.vid[vidPos].msPlaybackRate) {
+          this.vid[vidPos].msPlaybackRate = 1.5;
         }
         break;
 
       default:
-        if (this.vid.playbackRate) {
-          this.vid.playbackRate = 1;
-        } else if (this.vid.webkitPlaybackRate) {
-          this.vid.webkitPlaybackRate = 1;
-        } else if (this.vid.msPlaybackRate) {
-          this.vid.msPlaybackRate = 1;
+        if (this.vid[vidPos].playbackRate) {
+          this.vid[vidPos].playbackRate = 1;
+        } else if (this.vid[vidPos].webkitPlaybackRate) {
+          this.vid[vidPos].webkitPlaybackRate = 1;
+        } else if (this.vid[vidPos].msPlaybackRate) {
+          this.vid[vidPos].msPlaybackRate = 1;
         }
         break;
     }
@@ -192,13 +188,13 @@ export class WordComponent implements OnInit {
 
   //Opens a video fullscreen.
   //TODO: Fix method to work with videos array.
-  public openFullscreen() {
-    if (this.vid.requestFullscreen) {
-      this.vid.requestFullscreen();
-    } else if (this.vid.webkitRequestFullscreen) {
-      this.vid.webkitRequestFullscreen();
-    } else if (this.vid.msRequestFullscreen) {
-      this.vid.msRequestFullscreen();
+  public openFullscreen(vidPos: number) {
+    if (this.vid[vidPos].requestFullscreen) {
+      this.vid[vidPos].requestFullscreen();
+    } else if (this.vid[vidPos].webkitRequestFullscreen) {
+      this.vid[vidPos].webkitRequestFullscreen();
+    } else if (this.vid[vidPos].msRequestFullscreen) {
+      this.vid[vidPos].msRequestFullscreen();
     }
   }
   
