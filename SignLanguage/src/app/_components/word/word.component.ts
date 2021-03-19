@@ -145,60 +145,16 @@ export class WordComponent implements OnInit {
       err => console.error(err));
   }
 
-  //Sets the playback speed of a video.
-  public setPlaybackSpeed(speed: number, vidPos: number){
-    switch (speed) {
-      case 0:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 0;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 0;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 0;
-        }
-        break;
-
-      case 0.5:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 0.5;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 0.5;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 0.5;
-        }
-        break;
-    
-      case 1.5:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 1.5;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 1.5;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 1.5;
-        }
-        break;
-
-      default:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 1;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 1;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 1;
-        }
-        break;
-    }
-  }
-
   //Opens a video fullscreen.
   //TODO: Fix method to work with videos array.
   public openFullscreen() {
-    if (this.vid.requestFullscreen) {
-      this.vid.requestFullscreen();
-    } else if (this.vid.webkitRequestFullscreen) {
-      this.vid.webkitRequestFullscreen();
-    } else if (this.vid.msRequestFullscreen) {
-      this.vid.msRequestFullscreen();
+    var video: any | HTMLVideoElement = document.getElementById('sign-video');
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
     }
   }
   
@@ -221,15 +177,18 @@ export class WordComponent implements OnInit {
     }
   }
 
-  setTurtle(){
-    var video: any | HTMLVideoElement = document.getElementById('sign-video');
-    video.playbackRate = 0.5;
-  }
 
   setRabbit(){
     var video: any | HTMLVideoElement = document.getElementById('sign-video');
     video.playbackRate = 1;
   }
+
+  setTurtle(){
+    var video: any | HTMLVideoElement = document.getElementById('sign-video');
+    video.playbackRate = 0.5;
+  }
+
+
 
   setFox(){
     var video: any | HTMLVideoElement = document.getElementById('sign-video');
