@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { WordSignService } from 'src/app/_services/word-sign.service';
 import { Word } from '../../_models/word';
 import { WordService } from '../../_services/word.service';
+import { ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-word',
@@ -26,6 +28,7 @@ export class WordComponent implements OnInit {
   //TODO: Get vidPosition from carousel
   public vidPosition: number = 0;
   vid: any; 
+  @ViewChild("icon") icon: any;
 
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
   public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication","Spiegazione", "Explicação"];
@@ -48,8 +51,8 @@ export class WordComponent implements OnInit {
     this.getIdTxt()
     this.getWord();
     this.createVideoURLs()
-    this.vid = document.getElementsByName("sign-video");
-
+    this.vid = document.getElementById('sign-video');
+  
     //TODO: Add a way to trigger the video loading after everything has been loaded.
     //TODO: Create event listener for videos or carousel to load only the video on focus on the carousel.
     //TODO: What if txt doesn't match current locale txt?
@@ -126,17 +129,18 @@ export class WordComponent implements OnInit {
   }
 
   //Gets all the wordSigns of a word and instanciates the array of video URLs globally.
-  //TODO: Create count versions route in API.
+  //TODO: Create count versions route in API. Fix SignLang in URL 
   private createVideoURLs(): void {
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + this.locale[1] + "/words/";
+    const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
         this.videos = new Array(response.length);
         for (let i = 0; i < response.length; i++) {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
         }
-        this.ready = true;    
+        this.ready = true;  
+        console.log(this.locale[1]);  
       }, 
       err => console.error(err));
   }
@@ -188,13 +192,13 @@ export class WordComponent implements OnInit {
 
   //Opens a video fullscreen.
   //TODO: Fix method to work with videos array.
-  public openFullscreen(vidPos: number) {
-    if (this.vid[vidPos].requestFullscreen) {
-      this.vid[vidPos].requestFullscreen();
-    } else if (this.vid[vidPos].webkitRequestFullscreen) {
-      this.vid[vidPos].webkitRequestFullscreen();
-    } else if (this.vid[vidPos].msRequestFullscreen) {
-      this.vid[vidPos].msRequestFullscreen();
+  public openFullscreen() {
+    if (this.vid.requestFullscreen) {
+      this.vid.requestFullscreen();
+    } else if (this.vid.webkitRequestFullscreen) {
+      this.vid.webkitRequestFullscreen();
+    } else if (this.vid.msRequestFullscreen) {
+      this.vid.msRequestFullscreen();
     }
   }
   
@@ -204,6 +208,41 @@ export class WordComponent implements OnInit {
   }
 
   get wordId() { return (this.word && this.word.wordID) ? this.word.wordID : null }
+
+  setPlay() {
+    var video: any | HTMLVideoElement = document.getElementById('sign-video');
+    video.playbackRate = 0.5;
+    if(video.paused) {
+      this.icon.nativeElement.className = "bi bi-pause-fill";
+      video.play();
+    } else {
+      this.icon.nativeElement.className = "bi bi-play-fill";
+      video.pause();
+    }
+  }
+
+  setTurtle(){
+    var video: any | HTMLVideoElement = document.getElementById('sign-video');
+    video.playbackRate = 0.5;
+  }
+
+  setRabbit(){
+    var video: any | HTMLVideoElement = document.getElementById('sign-video');
+    video.playbackRate = 1;
+  }
+
+  setFox(){
+    var video: any | HTMLVideoElement = document.getElementById('sign-video');
+    video.playbackRate = 1.5;
+  }
+
+
+  videoUrl(url : string, vidPos: number){
+    var video: any | HTMLVideoElement = document.getElementById('sign-video');
+    video.src = url;
+    //video.play();
+    console.log(url);
+  }
 
 }
 
