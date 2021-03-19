@@ -31,7 +31,7 @@
                         </video>
                         <ul class = "navigation"> 
                             <ng-container *ngFor = "let video of videos; let index = index">
-                                <button (click)="videoUrl(video,index)" type="button">Seña {{ index }}</button>
+                                <button (click)="videoUrl(video,index)" type="button">Seña {{ index + 1}}</button>
                             </ng-container>
                         </ul>
                     </div>
