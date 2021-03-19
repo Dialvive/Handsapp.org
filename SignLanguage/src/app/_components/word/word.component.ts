@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { WordSignService } from 'src/app/_services/word-sign.service';
 import { Word } from '../../_models/word';
 import { WordService } from '../../_services/word.service';
+import { ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-word',
@@ -25,7 +27,8 @@ export class WordComponent implements OnInit {
   public error: string = '';
   //TODO: Get vidPosition from carousel
   public vidPosition: number = 0;
-  vid: any; 
+  vid: any | HTMLVideoElement 
+  @ViewChild("icon") icon: any;
 
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
   public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication","Spiegazione", "Explicação"];
@@ -44,16 +47,25 @@ export class WordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getLocale()
-    this.getIdTxt()
+    this.getLocale();
+    this.getIdTxt();
     this.getWord();
-    this.createVideoURLs()
-    this.vid = document.getElementsByName("sign-video");
-
+    this.createVideoURLs();
+    //while(this.vid == null) {
+    
+    //}
+    //this.vid = document.getElementById("sign-video");
+    //this.setPlay()
+  
     //TODO: Add a way to trigger the video loading after everything has been loaded.
     //TODO: Create event listener for videos or carousel to load only the video on focus on the carousel.
     //TODO: What if txt doesn't match current locale txt?
   }
+
+  ngAfterViewInit(): void {
+    //this.vid = document.getElementById("sign-video");
+    //this.setPlay()
+  } 
 
   //Gets locale through params, or infers it using navigator or IP address.
   // TODO: infer sign language.
@@ -126,75 +138,32 @@ export class WordComponent implements OnInit {
   }
 
   //Gets all the wordSigns of a word and instanciates the array of video URLs globally.
-  //TODO: Create count versions route in API.
+  //TODO: Create count versions route in API. Fix SignLang in URL 
   private createVideoURLs(): void {
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + this.locale[1] + "/words/";
+    const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
         this.videos = new Array(response.length);
         for (let i = 0; i < response.length; i++) {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
         }
-        this.ready = true;    
+        this.ready = true;  
+        console.log(this.locale[1]);  
       }, 
       err => console.error(err));
   }
 
-  //Sets the playback speed of a video.
-  public setPlaybackSpeed(speed: number, vidPos: number){
-    switch (speed) {
-      case 0:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 0;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 0;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 0;
-        }
-        break;
-
-      case 0.5:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 0.5;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 0.5;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 0.5;
-        }
-        break;
-    
-      case 1.5:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 1.5;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 1.5;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 1.5;
-        }
-        break;
-
-      default:
-        if (this.vid[vidPos].playbackRate) {
-          this.vid[vidPos].playbackRate = 1;
-        } else if (this.vid[vidPos].webkitPlaybackRate) {
-          this.vid[vidPos].webkitPlaybackRate = 1;
-        } else if (this.vid[vidPos].msPlaybackRate) {
-          this.vid[vidPos].msPlaybackRate = 1;
-        }
-        break;
-    }
-  }
-
   //Opens a video fullscreen.
   //TODO: Fix method to work with videos array.
-  public openFullscreen(vidPos: number) {
-    if (this.vid[vidPos].requestFullscreen) {
-      this.vid[vidPos].requestFullscreen();
-    } else if (this.vid[vidPos].webkitRequestFullscreen) {
-      this.vid[vidPos].webkitRequestFullscreen();
-    } else if (this.vid[vidPos].msRequestFullscreen) {
-      this.vid[vidPos].msRequestFullscreen();
+  public openFullscreen() {
+    this.vid = document.getElementById('sign-video');
+    if (this.vid.requestFullscreen) {
+      this.vid.requestFullscreen();
+    } else if (this.vid.webkitRequestFullscreen) {
+      this.vid.webkitRequestFullscreen();
+    } else if (this.vid.msRequestFullscreen) {
+      this.vid.msRequestFullscreen();
     }
   }
   
@@ -204,6 +173,42 @@ export class WordComponent implements OnInit {
   }
 
   get wordId() { return (this.word && this.word.wordID) ? this.word.wordID : null }
+
+  setPlay() {
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 1;
+    if(this.vid.paused) {
+      this.icon.nativeElement.className = "bi bi-pause-fill";
+      this.vid.play();
+    } else {
+      this.icon.nativeElement.className = "bi bi-play-fill";
+      this.vid.pause();
+    }
+  }
+
+
+  setRabbit(){
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 1;
+  }
+
+  setTurtle(){
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 0.5;
+  }
+
+  setFox(){
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 1.5;
+  }
+
+
+  videoUrl(url : string, vidPos: number){
+    this.vid = document.getElementById('sign-video');
+    this.vid.src = url;
+    //video.play();
+    console.log(url);
+  }
 
 }
 

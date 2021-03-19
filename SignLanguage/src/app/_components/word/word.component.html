@@ -19,58 +19,45 @@
                 </div>
             </div>
 
-                <div id="video-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" >
-                    <ng-container *ngIf="videos.length > 1">
-                        <div class="carousel-indicators">
-                            <div *ngFor="let item of videos; index as i">
-                                <button type="button" data-bs-target="#video-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            </div>
-                        </div>
+            
 
-                    </ng-container>
-                    <div class="carousel-inner">
-                    
-                        <ng-container *ngFor="let item of videos; index as i" [attr.data-slide-to]="i">
-                            <div class="carousel-item" *ngFor="let video of videos; let index = index; let isFirst = first" [ngClass]="{active:isFirst}">
-                                <div class="d-flex justify-content-center video-container">
-                                    <video name="sign-video" autoplay loop muted>
-                                        <source type="video/mp4" src={{video}}>
-                                        <p>Error: Your browser doesn't support HTML5 video. 
-                                    </video>
-                                </div>
-                            </div>
-                        </ng-container>
+                <!-- Carousel 2 -->
 
+                <div class="d-flex justify-content-center video-container">
+                    <div class = "mycarousel">
+                        <video id="sign-video" autoplay loop muted>
+                            <source type="video/mp4" src={{videos[0]}}>
+                            <p>Error: Your browser doesn't support HTML5 video. 
+                        </video>
+                        <ul class = "navigation"> 
+                            <ng-container *ngIf = "videos.length > 1">
+                                <ng-container *ngFor = "let video of videos; let index = index">
+                                    <button (click)="videoUrl(video,index)" type="button">Seña {{ index + 1}}</button>
+                                </ng-container>
+                            </ng-container>
+                        </ul>
                     </div>
-                    <ng-container *ngIf="videos.length > 1">
-                        <button class="carousel-control-prev" type="button" data-bs-target="#video-carousel"  data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#video-carousel"  data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </ng-container>
                 </div>
-
-            <div class="video-controls d-flex justify-content-center align-items-center">
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0, 0)">
-                    <i class="video-bi bi bi-pause"></i>
-                </button>
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(0.5, 0)">
-                    <i class="video-bi bi bi-chevron-compact-right"></i>
-                </button>
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1, 0)">
-                    <i class="video-bi bi bi-chevron-right"></i>
-                </button>
-                <button type="button" class="btn video-btn" value="2" (click)="setPlaybackSpeed(1.5, 0)">
-                    <i class="video-bi bi bi-chevron-double-right"></i>
-                </button>
-                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen(0)">
-                    <i class="video-bi bi bi-arrows-fullscreen"></i>
-                </button>
-            </div>
+                
+                <!-- Carousel 2 -->
+                <div class="video-controls d-flex justify-content-center align-items-center">
+                   
+                    <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
+                        <i #icon class="bi bi-pause-fill"></i>
+                    </button>
+                     <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
+                        <i class="bi bi-chevron-compact-right"></i>
+                    </button>
+                    <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
+                        <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
+                    </button>
+                    <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
+                        <i class="bi bi-chevron-double-right"></i>
+                    </button>
+                    <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                        <i class="video-bi bi bi-arrows-fullscreen"></i>
+                    </button>
+                </div>
 
             <ng-container *ngIf="word.getDefinitions()[localeInt] !=''">
                 <div class="row">

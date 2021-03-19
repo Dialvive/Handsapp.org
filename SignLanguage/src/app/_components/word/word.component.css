@@ -1,0 +1,27 @@
+
+.navigation {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.navigation button {
+    list-style: none;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 3px 3px 0;
+    opacity: 0.7;
+}
+
+.navigation button:hover {
+    /*width: 120%;*/
+    opacity: 1;
+}
