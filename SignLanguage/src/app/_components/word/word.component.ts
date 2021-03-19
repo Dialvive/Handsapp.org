@@ -27,7 +27,7 @@ export class WordComponent implements OnInit {
   public error: string = '';
   //TODO: Get vidPosition from carousel
   public vidPosition: number = 0;
-  vid: any; 
+  vid: any | HTMLVideoElement 
   @ViewChild("icon") icon: any;
 
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
@@ -47,16 +47,25 @@ export class WordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getLocale()
-    this.getIdTxt()
+    this.getLocale();
+    this.getIdTxt();
     this.getWord();
-    this.createVideoURLs()
-    this.vid = document.getElementById('sign-video');
+    this.createVideoURLs();
+    //while(this.vid == null) {
+    
+    //}
+    //this.vid = document.getElementById("sign-video");
+    //this.setPlay()
   
     //TODO: Add a way to trigger the video loading after everything has been loaded.
     //TODO: Create event listener for videos or carousel to load only the video on focus on the carousel.
     //TODO: What if txt doesn't match current locale txt?
   }
+
+  ngAfterViewInit(): void {
+    //this.vid = document.getElementById("sign-video");
+    //this.setPlay()
+  } 
 
   //Gets locale through params, or infers it using navigator or IP address.
   // TODO: infer sign language.
@@ -148,13 +157,13 @@ export class WordComponent implements OnInit {
   //Opens a video fullscreen.
   //TODO: Fix method to work with videos array.
   public openFullscreen() {
-    var video: any | HTMLVideoElement = document.getElementById('sign-video');
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
+    this.vid = document.getElementById('sign-video');
+    if (this.vid.requestFullscreen) {
+      this.vid.requestFullscreen();
+    } else if (this.vid.webkitRequestFullscreen) {
+      this.vid.webkitRequestFullscreen();
+    } else if (this.vid.msRequestFullscreen) {
+      this.vid.msRequestFullscreen();
     }
   }
   
@@ -166,39 +175,37 @@ export class WordComponent implements OnInit {
   get wordId() { return (this.word && this.word.wordID) ? this.word.wordID : null }
 
   setPlay() {
-    var video: any | HTMLVideoElement = document.getElementById('sign-video');
-    video.playbackRate = 0.5;
-    if(video.paused) {
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 1;
+    if(this.vid.paused) {
       this.icon.nativeElement.className = "bi bi-pause-fill";
-      video.play();
+      this.vid.play();
     } else {
       this.icon.nativeElement.className = "bi bi-play-fill";
-      video.pause();
+      this.vid.pause();
     }
   }
 
 
   setRabbit(){
-    var video: any | HTMLVideoElement = document.getElementById('sign-video');
-    video.playbackRate = 1;
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 1;
   }
 
   setTurtle(){
-    var video: any | HTMLVideoElement = document.getElementById('sign-video');
-    video.playbackRate = 0.5;
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 0.5;
   }
 
-
-
   setFox(){
-    var video: any | HTMLVideoElement = document.getElementById('sign-video');
-    video.playbackRate = 1.5;
+    this.vid = document.getElementById('sign-video');
+    this.vid.playbackRate = 1.5;
   }
 
 
   videoUrl(url : string, vidPos: number){
-    var video: any | HTMLVideoElement = document.getElementById('sign-video');
-    video.src = url;
+    this.vid = document.getElementById('sign-video');
+    this.vid.src = url;
     //video.play();
     console.log(url);
   }

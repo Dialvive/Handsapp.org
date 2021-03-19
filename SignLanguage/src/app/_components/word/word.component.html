@@ -30,8 +30,10 @@
                             <p>Error: Your browser doesn't support HTML5 video. 
                         </video>
                         <ul class = "navigation"> 
-                            <ng-container *ngFor = "let video of videos; let index = index">
-                                <button (click)="videoUrl(video,index)" type="button">Seña {{ index + 1}}</button>
+                            <ng-container *ngIf = "videos.length > 1">
+                                <ng-container *ngFor = "let video of videos; let index = index">
+                                    <button (click)="videoUrl(video,index)" type="button">Seña {{ index + 1}}</button>
+                                </ng-container>
                             </ng-container>
                         </ul>
                     </div>
@@ -39,17 +41,18 @@
                 
                 <!-- Carousel 2 -->
                 <div class="video-controls d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
+                   
                     <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
                         <i #icon class="bi bi-pause-fill"></i>
                     </button>
-                    <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
+                     <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
                         <i class="bi bi-chevron-compact-right"></i>
                     </button>
+                    <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
+                        <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
+                    </button>
                     <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
-                        <i class="bi bi-chevron-right"></i>
+                        <i class="bi bi-chevron-double-right"></i>
                     </button>
                     <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
                         <i class="video-bi bi bi-arrows-fullscreen"></i>
