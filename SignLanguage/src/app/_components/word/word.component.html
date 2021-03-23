@@ -19,47 +19,60 @@
                 </div>
             </div>
 
-            
+            <!-- Carousel 2 -->
 
-                <!-- Carousel 2 -->
-
-                <div class="d-flex justify-content-center video-container">
-                    <div class = "mycarousel">
-                        <video id="sign-video" autoplay loop muted>
-                            <source type="video/mp4" src={{videos[0]}}>
-                            <p>Error: Your browser doesn't support HTML5 video. 
-                        </video>
-                        <ul class = "navigation"> 
-                            <ng-container *ngIf = "videos.length > 1">
+            <div class="d-flex justify-content-center video-container">
+                <div class = "mycarousel">
+                    <video id="sign-video" autoPlay loop muted>
+                        <source type="video/mp4" src={{videos[0]}}>
+                        <p>Error: Your browser doesn't support HTML5 video. 
+                    </video>
+                    <div class="control">
+                        <ng-container *ngIf = "videos.length > 1">
+                            <span class="arrow left">
+                                <i class="bi bi-chevron-compact-left" (click)="previousVideo()" type="button"></i>
+                            </span>
+                            <span class="arrow right">
+                                <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button" ></i>
+                            </span>
+                            
+                            <ul>
+                            
                                 <ng-container *ngFor = "let video of videos; let index = index">
-                                    <button (click)="videoUrl(video,index)" type="button">Seña {{ index + 1}}</button>
+                                    <div>
+                                        <li (click)="videoUrl(video,index)" type="button"></li>
+                                    </div>
                                 </ng-container>
-                            </ng-container>
-                        </ul>
+                            
+                            </ul>
+                        </ng-container>
                     </div>
                 </div>
-                
+            </div>
+               
                 <!-- Carousel 2 -->
-                <div class="video-controls d-flex justify-content-center align-items-center">
-                   
-                    <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
-                        <i #icon class="bi bi-pause-fill"></i>
-                    </button>
-                     <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
-                        <i class="bi bi-chevron-compact-right"></i>
-                    </button>
-                    <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
-                        <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
-                    </button>
-                    <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
-                        <i class="bi bi-chevron-double-right"></i>
-                    </button>
-                    <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
-                        <i class="video-bi bi bi-arrows-fullscreen"></i>
-                    </button>
-                </div>
+
+            <div class="video-controls d-flex justify-content-center align-items-center">
+
+                <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
+                    <i #icon class="bi bi-pause-fill"></i>
+                </button>
+                 <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
+                    <i class="bi bi-chevron-compact-right"></i>
+                </button>
+                <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
+                    <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
+                </button>
+                <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
+                    <i class="bi bi-chevron-double-right"></i>
+                </button>
+                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                    <i class="video-bi bi bi-arrows-fullscreen"></i>
+                </button>
+            </div>
 
             <ng-container *ngIf="word.getDefinitions()[this.appComponent.localeInt] !=''">
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
