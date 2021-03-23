@@ -5,87 +5,20 @@
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
         <h2 class="text-sm-center text-md-start">
-            Resultados de búsqueda
+            {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
         </h2>
 
-        <ol class="row grid-container">
-            <li class="grid-item">
-                <a class="results-link" href="">
-                    <div class="card results-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <div>Categoría</div>
-                            <div>País, Lengua de Señas</div>
+        <ol class="row grid-container" >
+                <li class="grid-item" *ngFor="let hit of result.hits">
+                    <a class="results-link" (click)="this.appComponent.navigateParams('word',this.appComponent.locale,hit.ID,hit.text_es)">
+                        <div class="card results-card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{hit.text_es}}</h5>
+                                <div>{{hit.word_category_ID}}</div>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </li>
-            <li class="grid-item">
-                <a class="results-link" href="">
-                    <div class="card results-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <div>Categoría</div>
-                            <div>País, Lengua de Señas</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="grid-item">
-                <a class="results-link" href="">
-                    <div class="card results-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <div>Categoría</div>
-                            <div>País, Lengua de Señas</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="grid-item">
-                <a class="results-link" href="">
-                    <div class="card results-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <div>Categoría</div>
-                            <div>País, Lengua de Señas</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="grid-item">
-                <a class="results-link" href="">
-                    <div class="card results-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <div>Categoría</div>
-                            <div>País, Lengua de Señas</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="grid-item">
-                <a class="results-link" href="">
-                    <div class="card results-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <div>Categoría</div>
-                            <div>País, Lengua de Señas</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="grid-item">
-                <a class="results-link" href="">
-                    <div class="card results-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <div>Categoría</div>
-                            <div>País, Lengua de Señas</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
+                    </a>
+                </li>
 
         </ol>
 
