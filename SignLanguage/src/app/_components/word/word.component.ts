@@ -26,10 +26,10 @@ export class WordComponent implements OnInit {
   public ready: boolean = false;
   public error: string = '';
   //TODO: Get vidPosition from carousel
-  public vidPosition: number = 0;
+  public vidIndex: number = 0;
   vid: any | HTMLVideoElement 
   @ViewChild("icon") icon: any;
-
+  
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
   public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication","Spiegazione", "Explicação"];
   public strDet: string[] = ["Einzelheiten", "Detalles", "Details", "Détails", "Dettagli", "Detalhes"];
@@ -176,7 +176,7 @@ export class WordComponent implements OnInit {
 
   setPlay() {
     this.vid = document.getElementById('sign-video');
-    this.vid.playbackRate = 1;
+    //this.vid.playbackRate = 1;
     if(this.vid.paused) {
       this.icon.nativeElement.className = "bi bi-pause-fill";
       this.vid.play();
@@ -189,25 +189,61 @@ export class WordComponent implements OnInit {
 
   setRabbit(){
     this.vid = document.getElementById('sign-video');
-    this.vid.playbackRate = 1;
+    if (this.vid.playbackRate) {
+      this.vid.playbackRate = 1;
+    } else if (this.vid.webkitPlaybackRate) {
+      this.vid.webkitPlaybackRate = 1;
+    } else if (this.vid.msPlaybackRate) {
+      this.vid.msPlaybackRate = 1;
+    }
   }
 
   setTurtle(){
     this.vid = document.getElementById('sign-video');
-    this.vid.playbackRate = 0.5;
+    if (this.vid.playbackRate) {
+      this.vid.playbackRate = 0.5;
+    } else if (this.vid.webkitPlaybackRate) {
+      this.vid.webkitPlaybackRate = 0.5;
+    } else if (this.vid.msPlaybackRate) {
+      this.vid.msPlaybackRate = 0.5;
+    }
   }
 
   setFox(){
     this.vid = document.getElementById('sign-video');
-    this.vid.playbackRate = 1.5;
+    if (this.vid.playbackRate) {
+      this.vid.playbackRate = 1.5;
+    } else if (this.vid.webkitPlaybackRate) {
+      this.vid.webkitPlaybackRate = 1.5;
+    } else if (this.vid.msPlaybackRate) {
+      this.vid.msPlaybackRate = 1.5;
+    }
   }
 
 
   videoUrl(url : string, vidPos: number){
     this.vid = document.getElementById('sign-video');
     this.vid.src = url;
+    this.vidIndex = vidPos;
     //video.play();
     console.log(url);
+  }
+
+  nextVideo(){
+    //console.log("video index = " + this.vidIndex + ", videos.length = " + this.videos.length);
+    if (this.vidIndex != this.videos.length-1) {
+      this.vid = document.getElementById('sign-video');
+      this.vid.src = this.videos[++this.vidIndex ];
+      console.log(this.vidIndex);
+    }
+  }
+
+  previousVideo(){
+    if (this.vidIndex != 0) {
+      this.vid = document.getElementById('sign-video');
+      this.vid.src = this.videos[--this.vidIndex ];
+      console.log(this.vidIndex);
+    }
   }
 
 }
