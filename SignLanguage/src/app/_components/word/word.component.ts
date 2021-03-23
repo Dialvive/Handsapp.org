@@ -1,13 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { WordSignService } from 'src/app/_services/word-sign.service';
 import { Word } from '../../_models/word';
 import { WordService } from '../../_services/word.service';
 import { ViewChild } from '@angular/core';
-
+import { AppComponent } from '../../app.component'
 
 @Component({
   selector: 'app-word',
@@ -24,8 +22,6 @@ export class WordComponent implements OnInit {
    
   public wordID: string | any;
   public wordTXT: string | any;
-  private locale: string[] | any; // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
-  public localeInt: number | any; // 0: de, 1: es, 2: en, 3: fr, 4: it, 5: pt
   public ready: boolean = false;
   public error: string = '';
   //TODO: Get vidPosition from carousel
@@ -45,15 +41,14 @@ export class WordComponent implements OnInit {
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private wordService: WordService,
     private wordSignService: WordSignService,
-    private http: HttpClient,
+    private route: ActivatedRoute,
+    public appComponent: AppComponent,
   ) { }
 
   ngOnInit(): void {
-    this.getLocale();
+    this.appComponent.getLocale();
     this.getIdTxt();
     this.getWord();
     this.createVideoURLs();
@@ -68,57 +63,6 @@ export class WordComponent implements OnInit {
     //TODO: What if txt doesn't match current locale txt?
   }
 
-  ngAfterViewInit(): void {
-    //this.vid = document.getElementById("sign-video");
-    //this.setPlay()
-  } 
-
-  //Gets locale through params, or infers it using navigator or IP address.
-  // TODO: infer sign language.
-  private getLocale(): void {
-    var country: string | any;
-    var loc = this.route.snapshot.queryParamMap.get('loc')
-    if (loc == null) {
-      if (navigator.language.includes('-')) { // navigator.language == 'es-MX'
-        var locale: string[] = navigator.language.split('-')
-        this.locale = [locale[0], '', locale[1]]
-      } else {
-        this.http.get("https://api.ipgeolocationapi.com/geolocate/").pipe(map((json: any): 
-        Object => {
-          return (json['alpha2'] as string)
-        })).subscribe(
-          response => {
-            country = response;
-          }, 
-          err => console.error(err));
-        this.locale = [navigator.language, '', country]
-      }
-    } else {
-      this.locale = loc.split('_')
-    }
-    this.localeInt = this.getLocaleInt(this.locale[0])
-  }
-
-  //Sets the LocaleInt globally depending on a given alpha2 country code.
-  public getLocaleInt(str: string): number {
-    switch (str) {
-      case 'de':
-        return 0;
-      case 'es':
-        return 1;
-      case 'en':
-        return 2;
-      case 'fr':
-        return 3;
-      case 'it':
-        return 4;
-      case 'pt':
-        return 5;
-      default:
-        return 2;
-    }
-  }
-
   //Gets the id and txt parameters from the URL and instanciates it globally.
   // I.E. route: https://handsapp.org/word?loc=es_LSM_MX&id=1&txt=Abeja
   //TODO: manage incorrect id's
@@ -127,9 +71,9 @@ export class WordComponent implements OnInit {
     this.wordID =  this.route.snapshot.queryParamMap.get('id');
 
     if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '' ) {
-      this.navigate("/404", this.locale, this.wordID, this.wordTXT);
+      this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT);
     } else if (this.wordTXT != null && this.wordID == null) {
-      this.navigate("/search", this.locale, this.wordID, this.wordTXT);
+      this.appComponent.navigateParams("/search", this.appComponent.locale, this.wordID, this.wordTXT);
     }
   }
 
@@ -139,8 +83,7 @@ export class WordComponent implements OnInit {
       response => {
         this.word = new Word(response);
       }, 
-      err => this.navigate("/404", this.locale, this.wordID, this.wordTXT));
-    
+      err => this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT));
   }
 
   //Gets all the wordSigns of a word and instanciates the array of video URLs globally.
@@ -158,7 +101,7 @@ export class WordComponent implements OnInit {
         }
         
         this.ready = true;  
-        console.log(this.locale[1]);  
+        console.log(this.appComponent.locale[1]);  
       }, 
       err => console.error(err));
   }
@@ -174,11 +117,6 @@ export class WordComponent implements OnInit {
     } else if (this.vid.msRequestFullscreen) {
       this.vid.msRequestFullscreen();
     }
-  }
-  
-  // navigate redirects faster through router with id & txt parameters.
-  public navigate(page: String, locP: string[], idP: String, txtP: String): void {
-    this.router.navigate([page], {queryParams: {loc: locP[0] + "_" + locP[1] + "_" + locP[2], id: idP, txt: txtP}});
   }
 
   get wordId() { return (this.word && this.word.wordID) ? this.word.wordID : null }

@@ -7,7 +7,7 @@
         <ng-container *ngIf="ready">
             <div class="d-flex justify-content-between align-items-start">
                 <h1>
-                    {{word.getText()[localeInt]}}
+                    {{word.getText()[this.appComponent.localeInt]}}
                 </h1>
                 <div class="d-flex align-items-start">
                     <button type="button" class="btn flag-btn" name="flag">
@@ -53,49 +53,48 @@
             </div>
                
                 <!-- Carousel 2 -->
-            
-            <div class="video-controls d-flex justify-content-center align-items-center">
-                
-                <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
-                    <i #icon class="bi bi-pause-fill"></i>
-                </button>
-                    <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
-                    <i class="bi bi-chevron-compact-right"></i>
-                </button>
-                <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
-                    <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
-                </button>
-                <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
-                    <i class="bi bi-chevron-double-right"></i>
-                </button>
-                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
-                    <i class="video-bi bi bi-arrows-fullscreen"></i>
-                </button>
-            </div>
-                  
-            <ng-container *ngIf="word.getDefinitions()[localeInt] !=''">
+                <div class="video-controls d-flex justify-content-center align-items-center">
+                   
+                    <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
+                        <i #icon class="bi bi-pause-fill"></i>
+                    </button>
+                     <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
+                        <i class="bi bi-chevron-compact-right"></i>
+                    </button>
+                    <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
+                        <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
+                    </button>
+                    <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
+                        <i class="bi bi-chevron-double-right"></i>
+                    </button>
+                    <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                        <i class="video-bi bi bi-arrows-fullscreen"></i>
+                    </button>
+                </div>
+
+            <ng-container *ngIf="word.getDefinitions()[this.appComponent.localeInt] !=''">
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
                             <div class="card-body">
                                 <h3>
-                                    {{strDef[localeInt]}}
+                                    {{strDef[this.appComponent.localeInt]}}
                                 </h3>
-                                <hr> {{word.getDefinitions()[localeInt]}}
+                                <hr> {{word.getDefinitions()[this.appComponent.localeInt]}}
                             </div>
                         </div>
                     </div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="word.getContext()[localeInt] != ''">
+            <ng-container *ngIf="word.getContext()[this.appComponent.localeInt] != ''">
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
                             <div class="card-body">
                                 <h3>
-                                    {{strExp[localeInt]}}
+                                    {{strExp[this.appComponent.localeInt]}}
                                 </h3>
-                                <hr> {{word.getContext()[localeInt]}}
+                                <hr> {{word.getContext()[this.appComponent.localeInt]}}
                             </div>
                         </div>
                     </div>
@@ -116,18 +115,18 @@
                     <div class="card word-card">
                         <div class="card-body">
                             <h3>
-                                {{strDet[localeInt]}}
+                                {{strDet[this.appComponent.localeInt]}}
                             </h3>
                             <hr>
                             <ul>
                                 <li class="ligrt">
-                                    {{strCat[localeInt]}}:
+                                    {{strCat[this.appComponent.localeInt]}}:
                                 </li>
                                 <li class="ligrt">
-                                    {{strLen[localeInt]}}:
+                                    {{strLen[this.appComponent.localeInt]}}:
                                 </li>
                                 <li class="ligrt">
-                                    {{strReg[localeInt]}}:
+                                    {{strReg[this.appComponent.localeInt]}}:
                                 </li>
                             </ul>
                         </div>
