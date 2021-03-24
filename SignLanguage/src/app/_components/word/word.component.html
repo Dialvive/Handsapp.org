@@ -35,15 +35,17 @@
                             <span class="arrow right">
                                 <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button" ></i>
                             </span>
-                            
                             <ul>
-                            
                                 <ng-container *ngFor = "let video of videos; let index = index">
                                     <div>
-                                        <li (click)="videoUrl(video,index)" type="button"></li>
+                                        <ng-container *ngIf = "index == vidIndex; else elseBlock">
+                                            <li class="selected" (click)="videoUrl(video,index)" type="button"></li>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <li (click)="videoUrl(video,index)" type="button"></li>
+                                        </ng-template>
                                     </div>
-                                </ng-container>
-                            
+                                </ng-container> 
                             </ul>
                         </ng-container>
                     </div>

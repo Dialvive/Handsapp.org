@@ -14,6 +14,9 @@ import { ViewChild } from '@angular/core';
   templateUrl: './word.component.html',
   styleUrls: ['./word.component.css']
 })
+
+
+
 export class WordComponent implements OnInit {
 
   public word: Observable<Word> | any;
@@ -29,7 +32,10 @@ export class WordComponent implements OnInit {
   public vidIndex: number = 0;
   vid: any | HTMLVideoElement 
   @ViewChild("icon") icon: any;
-  
+
+  // BOLITAS
+
+  //  
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
   public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication","Spiegazione", "Explicação"];
   public strDet: string[] = ["Einzelheiten", "Detalles", "Details", "Détails", "Dettagli", "Detalhes"];
@@ -145,9 +151,12 @@ export class WordComponent implements OnInit {
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
         this.videos = new Array(response.length);
+        
         for (let i = 0; i < response.length; i++) {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
+          
         }
+        
         this.ready = true;  
         console.log(this.locale[1]);  
       }, 
@@ -245,8 +254,9 @@ export class WordComponent implements OnInit {
       console.log(this.vidIndex);
     }
   }
-
+  
 }
+
 
 
 
