@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WordSearchResult } from 'src/app/_models/search';
 import { Word } from 'src/app/_models/word';
 import { WordCategory } from 'src/app/_models/wordCategory';
-import { SearchService } from 'src/app/_services/search.service';
-import { WordCategoryService } from 'src/app/_services/word-category.service';
+import { SearchService } from 'src/app/_services/search/search.service';
+import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
 import { AppComponent } from '../../app.component'
 
 @Component({

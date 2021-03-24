@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { WordSign } from '../_models/wordSign';
+import { WordSign } from '../../_models/wordSign';
 
 const URI: string = "https://api.handsapp.org/v1/word_signs/"
 

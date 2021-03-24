@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Search, WordSearchResult } from '../_models/search';
+import { Search, WordSearchResult } from '../../_models/search';
 
 const URI: string = "https://api.handsapp.org/v1/search/"
 

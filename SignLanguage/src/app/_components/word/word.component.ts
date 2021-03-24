@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { WordSignService } from 'src/app/_services/word-sign.service';
+import { WordSignService } from 'src/app/_services/word-sign/word-sign.service';
 import { Word } from '../../_models/word';
-import { WordService } from '../../_services/word.service';
+import { WordService } from '../../_services/word/word.service';
 import { ViewChild } from '@angular/core';
 import { AppComponent } from '../../app.component'
 
