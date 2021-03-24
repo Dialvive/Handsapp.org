@@ -35,15 +35,17 @@
                             <span class="arrow right">
                                 <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button" ></i>
                             </span>
-                            
                             <ul>
-                            
                                 <ng-container *ngFor = "let video of videos; let index = index">
                                     <div>
-                                        <li (click)="videoUrl(video,index)" type="button"></li>
+                                        <ng-container *ngIf = "index == vidIndex; else elseBlock">
+                                            <li class="selected" (click)="videoUrl(video,index)" type="button"></li>
+                                        </ng-container>
+                                        <ng-template #elseBlock>
+                                            <li (click)="videoUrl(video,index)" type="button"></li>
+                                        </ng-template>
                                     </div>
-                                </ng-container>
-                            
+                                </ng-container> 
                             </ul>
                         </ng-container>
                     </div>
@@ -51,28 +53,26 @@
             </div>
                
                 <!-- Carousel 2 -->
-
-            <div class="video-controls d-flex justify-content-center align-items-center">
-
-                <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
-                    <i #icon class="bi bi-pause-fill"></i>
-                </button>
-                 <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
-                    <i class="bi bi-chevron-compact-right"></i>
-                </button>
-                <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
-                    <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
-                </button>
-                <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
-                    <i class="bi bi-chevron-double-right"></i>
-                </button>
-                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
-                    <i class="video-bi bi bi-arrows-fullscreen"></i>
-                </button>
-            </div>
+                <div class="video-controls d-flex justify-content-center align-items-center">
+                   
+                    <button type="button" class="btn video-btn" (click) = "setPlay()" name="playpause">
+                        <i #icon class="bi bi-pause-fill"></i>
+                    </button>
+                     <button type="button" class="btn video-btn" (click) = "setTurtle()" name="turtle">
+                        <i class="bi bi-chevron-compact-right"></i>
+                    </button>
+                    <button type="button" class="btn video-btn" (click) = "setRabbit()" name="rabbit" value="2">
+                        <i class="bi bi-camera-reels"></i> <i class="bi bi-chevron-right"></i> 
+                    </button>
+                    <button type="button" class="btn video-btn"  (click) = "setFox()" name="fox" value="2">
+                        <i class="bi bi-chevron-double-right"></i>
+                    </button>
+                    <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                        <i class="video-bi bi bi-arrows-fullscreen"></i>
+                    </button>
+                </div>
 
             <ng-container *ngIf="word.getDefinitions()[this.appComponent.localeInt] !=''">
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
