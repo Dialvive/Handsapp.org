@@ -24,8 +24,9 @@ export class WordComponent implements OnInit {
   public wordTXT: string | any;
   public ready: boolean = false;
   public error: string = '';
-  //TODO: Get vidPosition from carousel
+
   public vidIndex: number = 0;
+
   vid: any | HTMLVideoElement 
   @ViewChild("icon") icon: any;
 
