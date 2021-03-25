@@ -170,3 +170,18 @@
 .control ul li.selected {
     background: white;
 }
+
+#rabbit {
+    display: flex;
+    padding: 5%;
+}
+
+#turtle {
+    display: flex;
+    padding: 5%;
+}
+
+#fox {
+    display: flex;
+    padding: 5%;
+}
