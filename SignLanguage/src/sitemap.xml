@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>http://lenguadeseñas.net/categorias</loc>
+        <loc>https://handsapp.org/</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/equipo</loc>
+        <loc>https://handsapp.org/search</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/frase</loc>
+        <loc>https://handsapp.org/word</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/frases</loc>
+        <loc>https://handsapp.org/words</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/herramientas</loc>
+        <loc>https://handsapp.org/phrase</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/index</loc>
+        <loc>https://handsapp.org/phrases</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/palabra</loc>
+        <loc>https://handsapp.org/about</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/palabras</loc>
+        <loc>https://handsapp.org/team</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/preview</loc>
+        <loc>https://handsapp.org/contact</loc>
     </url>
     <url>
-        <loc>http://lenguadeseñas.net/resultados.html</loc>
+        <loc>https://handsapp.org/products</loc>
+    </url>
+    <url>
+        <loc>https://handsapp.org/terms</loc>
+    </url>
+    <url>
+        <loc>https://handsapp.org/privacy</loc>
+    </url>
+    <url>
+        <loc>https://handsapp.org/account</loc>
     </url>
 </urlset>
