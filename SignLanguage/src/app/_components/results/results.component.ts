@@ -14,13 +14,12 @@ import { AppComponent } from '../../app.component'
 })
 export class ResultsComponent implements OnInit {
 
-  public strRes: string[] = ["Suchergebnisse", "Resultados de búsqueda", "Search results", "Résultats de recherche", "Risultati di ricerca", "Procurar Resultados"];
+  public strRes: string[] = ["suchergebnisse", "resultados de búsqueda", "search results", "résultats de recherche", "risultati di ricerca", "procurar resultados"];
 
   public txt: string | any;
-  public categories: string[][] | any;
+  public categories: string[] | any;
+  public definitions: string[] | any;
   public result: WordSearchResult | any;
-  public ready: boolean = false;
-  public error: string | any;
 
   constructor(    
     private route: ActivatedRoute,
@@ -49,9 +48,10 @@ export class ResultsComponent implements OnInit {
   //Gets a relevance ordered array of Words from the API and instanciates it globally.
   //TODO: get phrase results
   private getResults(): void {
-    this.searchService.searchWords(this.txt, 20).subscribe(
+    this.searchService.searchWords(this.txt, 50).subscribe(
       response => {
         this.result = new WordSearchResult(response);
+        this.extractDefinitions()
       }, 
       err => this.appComponent.navigateParams("/404", this.appComponent.locale, "", this.txt));
   }
@@ -60,11 +60,26 @@ export class ResultsComponent implements OnInit {
   private getWordCategories(): void {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
-        this.categories = new Array(response.length)
+        this.categories = new Array<String[]>(response.length)
         for (let i = 0; i < response.length; i++) {
-          this.categories[i] = response[i].getNames();
+          this.categories[i] = new WordCategory(response[i]).getNames();
         }
       }, 
       err => console.log(err));
+      console.log(this.categories)
+  }
+
+  private extractDefinitions(): void {
+    this.definitions = new Array<String[]>(this.result.hits.length);
+    for (let i = 0; i < this.result.hits.length; i++) {
+      this.definitions[i] = new Array<String>(
+        this.result.hits[i].definition_de, 
+        this.result.hits[i].definition_es,
+        this.result.hits[i].definition_en,
+        this.result.hits[i].definition_fr,
+        this.result.hits[i].definition_it,
+        this.result.hits[i].definition_pt
+      )
+    }
   }
 }
