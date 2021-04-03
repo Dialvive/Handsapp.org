@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { WordCategory } from '../../_models/wordCategory';
 
-const URI: string = "https://api.handsapp.org/v1/word_categories/"
+const URI: string = "https://api.handsapp.org/v1/word_categories"
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 {
-    "name": "Lengua De Se\u00f1as .net",
-    "short_name": "Lengua De Se\u00f1as .net",
+    "name": "HandsApp.org",
+    "short_name": "HandsApp",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,8 +13,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#692e8f",
-    "background_color": "#692e8f",
-    "start_url": "LenguaDeSe\u00f1as.net",
+    "theme_color": "#692E8F",
+    "background_color": "#EFEFEF",
+    "start_url": "HandsApp.org",
     "display": "standalone"
 }

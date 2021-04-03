@@ -1,5 +1,11 @@
 /* HEADER ######################################################## */
 
+.logo-HandsApp {
+    height: 70px;
+    margin: 0;
+    padding: 0;
+}
+
 .header-navbar {
     background-color: var(--primary);
     max-width: 100%;

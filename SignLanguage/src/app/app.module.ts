@@ -36,6 +36,10 @@ import { SuperUserHomeComponent } from './_components/super-user-home/super-user
 import { EditorHomeComponent } from './_components/editor-home/editor-home.component';
 import { AdvertisementsComponent } from './_components/advertisements/advertisements.component';
 import { WordsComponent } from './_components/words/words.component';
+import { AboutUsComponent } from './_components/about-us/about-us.component';
+import { ProductsComponent } from './_components/products/products.component';
+import { TermsComponent } from './_components/terms/terms.component';
+import { PrivacyComponent } from './_components/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { WordsComponent } from './_components/words/words.component';
     SuperUserHomeComponent,
     EditorHomeComponent,
     AdvertisementsComponent,
-    WordsComponent
+    WordsComponent,
+    AboutUsComponent,
+    ProductsComponent,
+    TermsComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

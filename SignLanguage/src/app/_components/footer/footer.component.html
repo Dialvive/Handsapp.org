@@ -1,30 +1,29 @@
 <footer class="container-fluid memphis-dark">
     <form action="">
         <div class="row">
-            <div class="col-md-2 col-xl-3"></div>
-            <div class="col-3 col-md-2 col-xl-2 footer-col">
-                <h3 class="">
-                    Idioma <i class="fa fa-language" aria-hidden="true"></i>
+            <div class="col-md-3 col-xl-3"></div>
+            <div class="col-4 col-md-2 col-xl-2 footer-col">
+                <h3 class="footer-header">
+                    Idioma
                 </h3>
-                <select class="form-select footer-select" aria-label="Idioma" disabled>
-                    <option value="1">Deutsch</option>
-                    <option value="2" selected>Español</option>
-                    <option value="3">English</option>
-                    <option value="4">Français</option>
-                    <option value="5">Italiano</option>
-                    <option value="6">Português</option>
-                  </select>
+                <select class="form-select footer-select text-center" aria-label="Idioma">
+                    <option value="0"> 🇩🇪 Deutsch </option>
+                    <option value="1" selected> 🇪🇸 Español </option>
+                    <option value="2"> 🇬🇧 English </option>
+                    <option value="3"> 🇫🇷 Français </option>
+                    <option value="4"> 🇮🇹 Italiano </option>
+                    <option value="5"> 🇵🇹 Português </option>
+                </select>
             </div>
-            <div class="col-6 col-md-6 col-xl-4 footer-col">
-                <h3 class="">
+            <div class="col-8 col-md-4 col-xl-4 footer-col">
+                <h3 class="footer-header">
                     Lengua de Señas
-                    <i class="fa fa-sign-language" aria-hidden="true"></i>
                 </h3>
-                <select class="form-select footer-select" aria-label="Lengua de Señas" disabled>
-                    <option value="1">Lengua de Señas Mexicana (LSM)</option>
-                  </select>
+                <select class="form-select footer-select text-center" aria-label="Lengua de Señas">
+                    <option value="1"> 🇲🇽 Lengua de Señas Mexicana (LSM) </option>
+                </select>
             </div>
-            <div class="col-md-2 col-xl-3"></div>
+            <div class="col-md-3 col-xl-3"></div>
         </div>
     </form>
     <div class="row">
@@ -35,15 +34,15 @@
                     Sobre nosotros
                 </h3>
             </div>
-            <ul class="grt">
+            <ul class="grt footer-ul">
                 <li>
-                    Misión
+                    <a class="footer-a" href="/about-us#mission">Misión</a>
                 </li>
                 <li>
-                    Equipo
+                    <a class="footer-a" href="/about-us#team">Equipo</a>
                 </li>
                 <li>
-                    Contáctanos
+                    <a class="footer-a" href="/about-us#contact">Contáctanos</a>
                 </li>
             </ul>
         </div>
@@ -53,12 +52,12 @@
                     Productos
                 </h3>
             </div>
-            <ul class="grt">
+            <ul class="grt footer-ul">
                 <li>
-                    Android
+                    <a class="footer-a" href="/products#android">Android</a>
                 </li>
                 <li>
-                    iOS
+                    <a class="footer-a" href="/products#iOS">iOS</a>
                 </li>
             </ul>
         </div>
@@ -68,18 +67,15 @@
                     Redes Sociales
                 </h3>
             </div>
-            <ul class="grt">
+            <ul class="grt footer-ul">
                 <li>
-                    Blog
+                    <a class="footer-a" href="https://www.facebook.com/HandsApp.org">Facebook</a>
                 </li>
                 <li>
-                    Facebook
+                    <a class="footer-a" href="https://twitter.com/HandsAppOrg">Twitter</a>
                 </li>
                 <li>
-                    Twitter
-                </li>
-                <li>
-                    Instagram
+                    <a class="footer-a" href="https://www.instagram.com/handsapp_org/">Instagram</a>
                 </li>
             </ul>
         </div>
@@ -89,12 +85,12 @@
                     Legales
                 </h3>
             </div>
-            <ul class="grt">
+            <ul class="grt footer-ul">
                 <li>
-                    Términos y Condiciones
+                    <a class="footer-a" (click)="this.appComponent.navigate('terms')">Términos y Condiciones</a>
                 </li>
                 <li>
-                    Privacidad
+                    <a class="footer-a" (click)="this.appComponent.navigate('privacy')">Privacidad</a>
                 </li>
             </ul>
         </div>
@@ -103,8 +99,13 @@
 
     <div class="row d-flex justify-content-evenly">
         <div class="col-12 d-flex justify-content-center align-content-center">
-            © Tecnologías Haikode 2021, todos los derechos reservados. &nbsp;
-            <a href="//www.dmca.com/Protection/Status.aspx?ID=0fdf44bc-e6c7-4432-a165-4183defe4411" title="DMCA.com Protection Status" class="dmca-badge"> <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=0fdf44bc-e6c7-4432-a165-4183defe4411" alt="DMCA.com Protection Status" /></a>
+            <p class="copyright">© Tecnologías Haikode 2021, todos los derechos reservados.</p>
+        </div>
+        <div class="col-12 d-flex justify-content-center align-content-center">
+            <a href="//www.dmca.com/Protection/Status.aspx?ID=0fdf44bc-e6c7-4432-a165-4183defe4411"
+                title="DMCA.com Protection Status" class="dmca-badge"> <img
+                    src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=0fdf44bc-e6c7-4432-a165-4183defe4411"
+                    alt="DMCA.com Protection Status" /></a>
             <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js">
             </script>
         </div>

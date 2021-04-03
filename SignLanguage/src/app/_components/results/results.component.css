@@ -1,10 +1,12 @@
 /* RESULTS ####################################################### */
 
 .results-card {
+    height: 142px;
     min-width: 250px;
     max-width: 100%;
     width: 100%;
     border-radius: 1rem;
+    overflow: hidden;
     text-decoration: none;
     -webkit-animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
     animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
@@ -31,4 +33,28 @@
     grid-auto-rows: minmax(100px, auto);
     padding-left: 0;
     padding-top: 2.618vh;
+}
+
+.category {
+    margin-top: 1.618%;
+    margin-bottom: 1.618%;
+    color: var(--accent);
+}
+
+.description-box {
+    height: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.read-more {
+    position: absolute; 
+    height: 48px;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    text-align: center; 
+    margin: 0; 
+    padding: 30px 0; 
+    background-image: linear-gradient(to bottom, transparent, #fff);
 }
