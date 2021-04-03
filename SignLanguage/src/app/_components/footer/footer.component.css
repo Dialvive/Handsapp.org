@@ -31,6 +31,11 @@ footer {
     padding-top: 32px;
     padding-bottom: 32px;
     text-shadow: 0 0 5px var(--carbon-dark);
+    -webkit-user-select: none; 
+    -moz-user-select: none;     
+    -ms-user-select: none;     
+    -o-user-select: none;
+    user-select: none;
 }
 
 .footer-col {
