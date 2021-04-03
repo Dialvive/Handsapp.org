@@ -37,12 +37,21 @@ footer {
     display: block;
     text-align: center;
     justify-content: center;
+    height: 100%;
 }
 
 .footer-header {
     margin-bottom: 0px;
+    user-select: none;
+}
+
+.footer-ul {
+    list-style: none;
+    user-select: none;
 }
 
 .footer-select {
-    margin-bottom: 16px;
+    margin-top: 16.18px;
+    margin-bottom: 46.18px;
+    height: 100%;
 }
