@@ -24,8 +24,10 @@
             <div oncontextmenu="return false" class="d-flex justify-content-center video-container" >
                 <div class = "mycarousel">
                     <video id="sign-video" loop  oncanplay="this.play()" onloadedmetadata="this.muted = true">
-                        <source   src={{videos[0]}}  type="video/mp4" >
-                        <p>Error: Your browser doesn't support HTML5 video. 
+                        <ng-container *ngIf = "videos[0] != null" >
+                            <source   src={{videos[0]}}  type="video/mp4" >
+                            <p>Error: Your browser doesn't support HTML5 video. 
+                        </ng-container>
                     </video > 
                     <div class="control" >
                         <ng-container *ngIf = "videos.length > 1">
