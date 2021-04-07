@@ -32,46 +32,46 @@
             <ul class="navbar-nav me-auto d-flex justify-content-around header-list">
                 <li class="nav-item">
                     <a class="nav-link" (click)="navigate('/words')">
-                        Palabras<i class="bi bi-chat-square-quote header-i"></i>
+                        {{strWord[this.appComponent.localeInt]}}<i class="bi bi-chat-square-quote header-i"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" (click)="navigate('/phrases')" tabindex="-1" aria-disabled="true">
-                        Frases<i class="bi bi-chat-square-text header-i"></i>
+                        {{strPhrase[this.appComponent.localeInt]}}<i class="bi bi-chat-square-text header-i"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" (click)="navigate('/tools')" tabindex="-1" aria-disabled="true">
-                        Herramientas<i class="bi bi-tools header-i"></i>
+                        {{strTool[this.appComponent.localeInt]}}<i class="bi bi-tools header-i"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" tabindex="-1" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cuenta<i class="bi bi-person-circle header-i"></i>
+                        {{strAccount[this.appComponent.localeInt]}}<i class="bi bi-person-circle header-i"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <form class="px-4 py-4 header-login">
                             <div class="mb-3">
-                                <label for="exampleDropdownFormEmail1" class="form-label">Correo Elecrónico</label>
-                                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="Proximamente" disabled>
+                                <label for="exampleDropdownFormEmail1" class="form-label">{{strEmail[this.appComponent.localeInt]}}</label>
+                                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder={{strComSoon[this.appComponent.localeInt]}} disabled>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleDropdownFormPassword1" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Proximamente" disabled>
+                                <label for="exampleDropdownFormPassword1" class="form-label">{{strPsw[this.appComponent.localeInt]}}</label>
+                                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder={{strComSoon[this.appComponent.localeInt]}} disabled>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="dropdownCheck" checked disabled>
                                     <label class="form-check-label" for="dropdownCheck">
-                                    Recuerda mis datos
+                                        {{strRemDat[this.appComponent.localeInt]}}
                                   </label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" disabled>Iniciar Sesión</button>
+                            <button type="submit" class="btn btn-primary" disabled>{{strLogIn[this.appComponent.localeInt]}}</button>
                         </form>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">¿Primera vez? Registrate</a>
-                        <a class="dropdown-item">Olvidé mi contraseña</a>
+                        <a class="dropdown-item">{{strFistTime[this.appComponent.localeInt]}}</a>
+                        <a class="dropdown-item">{{strForgotPsw[this.appComponent.localeInt]}}</a>
                     </div>
                 </li>
             </ul>
