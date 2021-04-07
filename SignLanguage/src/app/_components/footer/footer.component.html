@@ -4,23 +4,18 @@
             <div class="col-md-3 col-xl-3"></div>
             <div class="col-4 col-md-2 col-xl-2 footer-col">
                 <h3 class="footer-header">
-                    Idioma
+                    {{strIdi[this.appComponent.localeInt]}}
                 </h3>
-                <select class="form-select footer-select text-center" aria-label="Idioma">
-                    <option value="0"> 🇩🇪 Deutsch </option>
-                    <option value="1" selected> 🇪🇸 Español </option>
-                    <option value="2"> 🇬🇧 English </option>
-                    <option value="3"> 🇫🇷 Français </option>
-                    <option value="4"> 🇮🇹 Italiano </option>
-                    <option value="5"> 🇵🇹 Português </option>
+                <select name="spLangSelect" [(ngModel)]="this.spSelected" (ngModelChange)="updateSP($event)" class="form-select footer-select text-center" aria-label="Idioma">
+                    <option [value]="i" *ngFor="let item of this.spLanguages; let i = index">{{item}}</option>
                 </select>
             </div>
             <div class="col-8 col-md-4 col-xl-4 footer-col">
                 <h3 class="footer-header">
-                    Lengua de Señas
+                    {{strLen[this.appComponent.localeInt]}}
                 </h3>
-                <select class="form-select footer-select text-center" aria-label="Lengua de Señas">
-                    <option value="1"> 🇲🇽 Lengua de Señas Mexicana (LSM) </option>
+                <select disabled name="sgLangSelect" [(ngModel)]="this.sgSelected" (ngModelChange)="updateSG($event)" class="form-select footer-select text-center" aria-label="Lengua de Señas">
+                    <option [value]="i" *ngFor="let item of this.sgLanguages; let i = index">{{item}}</option>
                 </select>
             </div>
             <div class="col-md-3 col-xl-3"></div>
@@ -31,25 +26,25 @@
         <div class="col-12 col-md-3 col-xl-2 footer-col">
             <div>
                 <h3 class="footer-header">
-                    Sobre nosotros
+                    {{strSob[this.appComponent.localeInt]}}
                 </h3>
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" href="/about-us#mission">Misión</a>
+                    <a class="footer-a" href="/about-us#mission">{{strMis[this.appComponent.localeInt]}}</a>
                 </li>
                 <li>
-                    <a class="footer-a" href="/about-us#team">Equipo</a>
+                    <a class="footer-a" href="/about-us#team">{{strEqu[this.appComponent.localeInt]}}</a>
                 </li>
                 <li>
-                    <a class="footer-a" href="/about-us#contact">Contáctanos</a>
+                    <a class="footer-a" href="/about-us#contact">{{strCon[this.appComponent.localeInt]}}</a>
                 </li>
             </ul>
         </div>
         <div class="col-12 col-md-3 col-xl-2 footer-col">
             <div>
                 <h3 class="footer-header">
-                    Productos
+                    {{strPro[this.appComponent.localeInt]}}
                 </h3>
             </div>
             <ul class="grt footer-ul">
@@ -64,7 +59,7 @@
         <div class="col-12 col-md-3 col-xl-2 footer-col">
             <div>
                 <h3 class="footer-header">
-                    Redes Sociales
+                    {{strRed[this.appComponent.localeInt]}}
                 </h3>
             </div>
             <ul class="grt footer-ul">
@@ -82,15 +77,15 @@
         <div class="col-12 col-md-3 col-xl-2 footer-col">
             <div>
                 <h3 class="footer-header">
-                    Legales
+                    {{strLeg[this.appComponent.localeInt]}}
                 </h3>
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" (click)="this.appComponent.navigate('terms')">Términos y Condiciones</a>
+                    <a class="footer-a" (click)="this.appComponent.navigate('terms')">{{strTer[this.appComponent.localeInt]}}</a>
                 </li>
                 <li>
-                    <a class="footer-a" (click)="this.appComponent.navigate('privacy')">Privacidad</a>
+                    <a class="footer-a" (click)="this.appComponent.navigate('privacy')">{{strPri[this.appComponent.localeInt]}}</a>
                 </li>
             </ul>
         </div>
@@ -99,7 +94,7 @@
 
     <div class="row d-flex justify-content-evenly">
         <div class="col-12 d-flex justify-content-center align-content-center">
-            <p class="copyright">© Tecnologías Haikode 2021, todos los derechos reservados.</p>
+            <p class="copyright">© Tecnologías Haikode 2021, {{strCop[this.appComponent.localeInt]}}.</p>
         </div>
         <div class="col-12 d-flex justify-content-center align-content-center">
             <a href="//www.dmca.com/Protection/Status.aspx?ID=0fdf44bc-e6c7-4432-a165-4183defe4411"
