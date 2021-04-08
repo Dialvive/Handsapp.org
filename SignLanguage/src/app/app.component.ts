@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -11,37 +12,48 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppComponent {
   public locale: string[] | any; // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
   public localeInt: number | any; // 0: de, 1: es, 2: en, 3: fr, 4: it, 5: pt
+  public params: HttpParams = this.getParams();
+
 
   constructor(
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private Location:Location
     ) { }
 
   //Gets locale through params, or infers it using navigator or IP address.
   // TODO: infer sign language.
-  public getLocale(): void {
+  public async getLocale() {
     var country: string | any;
-    var loc = this.route.snapshot.queryParamMap.get('loc')
-    if (loc == null) {
-      if (navigator.language.includes('-')) { // navigator.language == 'es-MX'
+    var locStr: string | null = this.params.get("loc");
+    if (locStr == null || locStr == '' ) { // There's no loc in URL
+      console.log("Inferring Locale...");
+      if (navigator.language.includes('-')) { // navigator.language ~ 'es-MX'
         var locale: string[] = navigator.language.split('-')
         this.locale = [locale[0], '', locale[1]]
-      } else {
-        this.http.get("https://api.ipgeolocationapi.com/geolocate/").pipe(map((json: any): 
-        Object => {
-          return (json['alpha2'] as string)
-        })).subscribe(
-          response => {
-            country = response;
-          }, 
-          err => console.error(err));
-        this.locale = [navigator.language, '', country]
+      } else { // navigator.language ~ 'es'
+        country = await this.http.get("https://api.ipgeolocationapi.com/geolocate/")
+        .pipe(map((json: any): 
+          Object => {
+            return (json['alpha2'] as string)
+          })).toPromise();
+        this.locale = [navigator.language, '', country];
       }
-    } else {
-      this.locale = loc.split('_')
+    } else { // There's loc in URL
+      this.locale = locStr.split('_');
     }
-    this.localeInt = this.getLocaleInt(this.locale[0])
+    this.localeInt = this.getLocaleInt(this.locale[0]);
+    this.verifyLocale();
+    this.updateRoute();
+    console.log("getLocale():" + this.locale);
+  }
+
+  //getParams Gets the parameters from the current URL
+  public getParams(): HttpParams { 
+    var route = this.Location.path();
+    route = route.substring(route.indexOf('?')+1,route.length);
+    return new HttpParams({ fromString: route });
   }
 
   //Sets the LocaleInt globally depending on a given alpha2 country code.
@@ -60,7 +72,52 @@ export class AppComponent {
       case 'pt':
         return 5;
       default:
+        this.locale[0] = "en";
         return 2;
+    }
+  }
+
+  //verifyLocale() checks if the locale so far is within acceptable values, if not, assigns one
+  private verifyLocale(): void {
+    if (this.locale[0] != "de" &&
+        this.locale[0] != "es" &&
+        this.locale[0] != "en" &&
+        this.locale[0] != "fr" &&
+        this.locale[0] != "it" &&
+        this.locale[0] != "pt") {
+          this.locale[0] = "en"
+          this.localeInt = 2;
+    }
+    //TODO: assign sg programatically
+    if (this.locale[1] != "LSM") {
+      this.locale[1] = "LSM"
+    }
+  }
+
+  //updateRoute() updates the URL to explicitly tell the locale
+  private updateRoute(): void {
+    if (this.params.get("loc") != this.locale[0]+'_'+this.locale[1]+'_'+this.locale[2]) {
+      var routeStr: string = '?';
+      if (!this.params.has("loc")) { 
+        routeStr += "loc=" + this.locale[0]+'_'+this.locale[1]+'_'+this.locale[2];
+        if (this.params.keys().length > 1) routeStr += '&';
+        for (let i = 0; i < this.params.keys().length; i++) {
+          routeStr += this.params.keys()[i] + '=' + this.params.get(this.params.keys()[i]);
+          if (i+1 < this.params.keys().length) {
+            routeStr += '&';
+          }
+        }
+      } else {
+        routeStr += "loc=" + this.locale[0]+'_'+this.locale[1]+'_'+this.locale[2];
+        for (let i = 0; i < this.params.keys().length; i++) {
+          if (this.params.keys()[i] == "loc") continue;
+          routeStr += this.params.keys()[i] + '=' + this.params.get(this.params.keys()[i]);
+          if (i+1 < this.params.keys().length) {
+            routeStr += '&';
+          }
+        }
+      }
+      this.Location.replaceState(routeStr);
     }
   }
 

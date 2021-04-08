@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
-import { map, retryWhen } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { map, switchMap } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -25,71 +26,21 @@ export class FooterComponent implements OnInit {
 
   public spLanguages: string[] = [" 🇩🇪 Deutsch ", " 🇪🇸 Español ", " 🇬🇧 English ", " 🇫🇷 Français ", " 🇮🇹 Italiano ", " 🇵🇹 Português " ];
   public sgLanguages: string[] = [" 🇺🇳 International Sign Language (ISL) ", " 🇲🇽 Lengua de Señas Mexicana (LSM) "]
-  public spSelected: number | undefined; //TODO: Assign after getlocale()
-  public sgSelected: number | undefined; //TODO: Infer after getlocale()
+  public spSelected: number | undefined;
+  public sgSelected: number | undefined;
+  private loc: string[] = [];
 
   constructor(
     public appComponent: AppComponent,
-    private route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   async ngOnInit() {
-    this.appComponent.localeInt = 1; //TODO: SHould be asigned programatically
+    await this.appComponent.getLocale();
+    this.spSelected = this.appComponent.localeInt;
+    //TODO: Assign sg programatically
     this.sgSelected = 1;
-    await this.getLocale();
-  }
-
-  //Gets locale through params, or infers it using navigator or IP address.
-  // TODO: infer sign language.
-  public async getLocale() {
-    var country: string | any;
-    var loc: any;
-    await this.route.queryParams.subscribe(params => {
-      loc = params['loc'];
-      console.log(loc)
-    })
-    if (loc == null) {
-      console.log("NULL")
-      if (navigator.language.includes('-')) { // navigator.language == 'es-MX'
-        var locale: string[] = navigator.language.split('-')
-        this.appComponent.locale = [locale[0], '', locale[1]]
-      } else {
-        await this.http.get("https://api.ipgeolocationapi.com/geolocate/").pipe(map((json: any): 
-        Object => {
-          return (json['alpha2'] as string)
-        })).subscribe(
-          response => {
-            country = response;
-          }, 
-          err => console.error(err));
-        this.appComponent.locale = [navigator.language, '', country]
-      }
-    } else {
-      this.appComponent.locale = loc.split('_')
-    }
-    this.spSelected = this.getLocaleInt(this.appComponent.locale[0])
-  }
-
-  //Sets the LocaleInt globally depending on a given alpha2 country code.
-  private getLocaleInt(str: string): number {
-    switch (str) {
-      case 'de':
-        return 0;
-      case 'es':
-        return 1;
-      case 'en':
-        return 2;
-      case 'fr':
-        return 3;
-      case 'it':
-        return 4;
-      case 'pt':
-        return 5;
-      default:
-        return 2;
-    }
   }
 
   public updateSP(value: any): void {
