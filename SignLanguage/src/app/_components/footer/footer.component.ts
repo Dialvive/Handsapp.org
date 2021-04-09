@@ -45,6 +45,7 @@ export class FooterComponent implements OnInit {
 
   public updateSP(value: any): void {
     this.appComponent.localeInt = this.spSelected;
+    this.appComponent.updateLocaleInt(this.appComponent.localeInt);
   }
 
   public updateSG(value: any): void {
