@@ -13,8 +13,6 @@ import { AppComponent } from '../../app.component'
   styleUrls: ['./word.component.css']
 })
 
-
-
 export class WordComponent implements OnInit {
 
   public word: Observable<Word> | any;
@@ -30,9 +28,6 @@ export class WordComponent implements OnInit {
   vid: any | HTMLVideoElement 
   @ViewChild("icon") icon: any;
 
-  // BOLITAS
-
-  //  
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
   public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication","Spiegazione", "Explicação"];
   public strDet: string[] = ["Einzelheiten", "Detalles", "Details", "Détails", "Dettagli", "Detalhes"];
@@ -44,12 +39,11 @@ export class WordComponent implements OnInit {
   constructor(
     private wordService: WordService,
     private wordSignService: WordSignService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     public appComponent: AppComponent,
   ) { }
 
   ngOnInit(): void {
-    this.appComponent.getLocale();
     this.getIdTxt();
     this.getWord();
     this.createVideoURLs();
