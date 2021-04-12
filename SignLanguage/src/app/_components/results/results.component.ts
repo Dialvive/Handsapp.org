@@ -40,8 +40,10 @@ export class ResultsComponent implements OnInit {
   //TODO: manage incorrect id's
   private getTxt(): void {
     this.txt = this.route.snapshot.queryParamMap.get('txt');
+    //console.log("EL MONSTRUE: " + this.txt);
     if (this.txt == null || this.txt == '' ) {
-      this.appComponent.navigateParams("/", this.appComponent.locale, "", this.txt);
+     
+      //this.appComponent.navigateParams("/", this.appComponent.locale, "", this.txt);
     }
   }
 

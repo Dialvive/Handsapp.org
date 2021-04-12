@@ -77,33 +77,6 @@ export class AppComponent {
     }
   }
 
-  //Sets the LocaleInt globally depending on a given alpha2 country code.
-  private getLocaleStr(id: number): string {
-    switch (id) {
-      case 0:
-        console.log("switch: "+id);
-        return "de";
-      case 1:
-        console.log("switch: "+id);
-        return "es";
-      case 2:
-        console.log("switch: "+id);
-        return "en";
-      case 3:
-        console.log("switch: "+id);
-        return "fr";
-      case 4:
-        console.log("switch: "+id);
-        return "it";
-      case 5:
-        console.log("switch: "+id);
-        return "pt";
-      default:
-        console.log("switch: "+id);
-        return "en";
-    }
-  }
-
   //verifyLocale() checks if the locale so far is within acceptable values, if not, assigns one
   private verifyLocale(): void {
     if (this.locale[0] != "de" &&
@@ -151,9 +124,17 @@ export class AppComponent {
   //updateLocaleInt() updates LocaleInt value and the URL
   public updateLocaleInt(id: number): void { 
     this.localeInt = id;
-    this.locale = new Array(this.getLocaleStr(id), this.locale[1], this.locale[2]);
+    this.locale = new Array(new Array("de","es","en","fr","it","pt")[id], this.locale[1], this.locale[2]);
     console.log(this.locale[0])
-    this.updateRoute();
+    var routeStr = "loc=" + this.locale[0]+'_'+this.locale[1]+'_'+this.locale[2];
+    for (let i = 0; i < this.params.keys().length; i++) {
+      if (this.params.keys()[i] == "loc") continue;
+      routeStr += this.params.keys()[i] + '=' + this.params.get(this.params.keys()[i]);
+      if (i+1 < this.params.keys().length) {
+        routeStr += '&';
+      }
+    }
+    this.Location.replaceState(routeStr);
   }
 
   // navigate redirects faster through router

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
-import { map, switchMap } from 'rxjs/operators';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -31,9 +29,7 @@ export class FooterComponent implements OnInit {
   private loc: string[] = [];
 
   constructor(
-    public appComponent: AppComponent,
-    private router: Router,
-    private http: HttpClient,
+    public appComponent: AppComponent
   ) { }
 
   async ngOnInit() {
