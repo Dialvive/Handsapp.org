@@ -1,9 +1,195 @@
+<div class="div-featured-image"></div>
+
 <div class="row">
-    <div class="col-md-2 col-xl-3"></div>
+    <div class="col-1 col-xl-2"></div>
 
-    <div class="col-12 col-md-10 col-xl-6 first-column">
+    <div class="col-10 col-xl-8 first-column">
+        <ng-container *ngIf="this.appComponent.localeInt == 1;else english">
+            <div class="row row-cols-2">
+                <div class="col-12 col-xl-6">
+                    <h1 class="h1grt">Acerca de Nosotros</h1>
+                    <p class="grt nice-p">
+                        HandsApp nació en 2020 cuando un estudiante tomaba clases de Lengua de Señas por videollamada, al 
+                        platicar con su amigo, se propusieron crear juntos el ambiente aprendizaje de Lengua de Señas más 
+                        completo e inclusivo en el mundo.
+                    </p>
+                    <h1 class="h1grt">Nuestro Manifiesto</h1>
+                    <p class="grt nice-p">
+                        Toda persona tiene derecho a poseer lenguas: naturales o artificiales; de señas, escritas u orales;
+                        que faciliten su acceso a la misma información, servicios, productos, conocimientos, y oportunidades
+                        tenidas en general por la sociedad en la que vive.
+                        <br><br>
+                        El entendimiento y reconocimiento entre personas sordas y oyentes es un derecho humano.
+                        <br>
+                        Todas las familias con integrantes sordos o difíciles de oír deben saber comunicarse en lengua de señas.
+                        <br>
+                        Todos los lugares públicos deben poder atender a personas sordas o difíciles
+                        de oír al igual que a cualquier persona oyente. 
+                        <br><br>
+                        Aprender lengua de señas debe ser más fácil que aprender el idioma materno.
+                        <br>
+                        Todas las personas oyentes deben tener al menos un nivel de conocimiento básico en lengua de señas.
+                        <br>
 
+                        
+                    </p>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <h1 class="h1grt">Nuestra Misión</h1>
+                    <ul class="grt nice-p">
+                        <li class="li-grt">
+                            Ser el ecosistema tecnológico más incluyente y completo, tomando las necesidades de las personas sordas y difíciles
+                            de oír como nuestra prioridad.
+                        </li>
+                        <li class="li-grt">
+                            Hacer nuestro contenido fácilmente disponible a los que más lo necesitan.
+                        </li>
+                        <li class="li-grt">
+                            Crear herramientas que hagan una diferencia real en la vida de las personas sordas y difíciles de oír.
+                        </li>
+                        <li class="li-grt">
+                            Empoderar a nuestros usuarios para poder comunicarse con todas las personas sordas, difíciles de oír, y oyentes.
+                        </li>
+                        <li class="li-grt">
+                            Ofrecer una multitud de idiomas y lenguas de señas en nuestras plataformas.
+                        </li>
+                        <li class="li-grt">
+                            Ser líderes en el proceso de inclusión de las personas sordas y difíciles de oír en el mundo.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <h1 class="h1grt">Equipo</h1>
+    
+            <div class="d-flex justify-content-evenly row row-cols-3">
+                <div class="team col-sm-6 col-md-6">
+                    <img class="team-img" src="https://news.airbnb.com/wp-content/uploads/sites/4/2016/10/140602_AirBnb_Brian_3837_SquareCrop.jpg?fit=950%2C950" alt="140602_AirBnb_Brian_3837_SquareCrop">
+                    <h2 class="team-name">
+                        Diego Villalpando
+                    </h2>
+                    <h3 class="team-title">
+                        Co-fundador y CEO
+                    </h3>
+                    <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-globe"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-github"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="team col-sm-6 col-md-6">
+                    <img class="team-img" src="https://news.airbnb.com/wp-content/uploads/sites/4/2016/10/140602_AirBnb_Brian_3837_SquareCrop.jpg?fit=950%2C950" alt="140602_AirBnb_Brian_3837_SquareCrop">
+                    <h2 class="team-name">
+                        Marco Blancas
+                    </h2>
+                    <h3 class="team-title">
+                        Co-fundador y COO
+                    </h3>
+                    <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-globe"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-github"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <h1 class="h1grt">Contáctanos</h1>
+            <p class="nice-p">
+                ¿Problemas, errores, sugerencias, más información, o quieres decir hola? 
+                <br><br>
+                Síguenos y contáctanos en nuestras redes sociales, o ponte en contacto con nosotros en 
+                <a href="mailto:hola@handsapp.org">hola@handsapp.org</a>.
+            </p>
+        </ng-container>
     </div>
 
-    <div class="col-md-2 col-xl-3"></div>
+    <div class="col-1 col-xl-2"></div>
 </div>
+
+<ng-template #english>
+    <div class="row row-cols-2">
+        <div class="col-12 col-xl-6">
+            <h1 class="h1grt">About Us</h1>
+            <p class="grt nice-p">
+                HandsApp was born in 2020, when two students were learning Sign Language through video call,
+                they committed to create the most inclusive and complete Sign Language learning environment
+                in the world.
+            </p>
+            <h1 class="h1grt">Our Manifiesto</h1>
+            <p class="grt nice-p">
+                Creemos que todas las familias deben saber lengua de señas si tienen un integrante sordo o
+                difícil de oír. Todos los lugares públicos deben poder atender a personas sordas o difíciles
+                de oír.
+                <br><br>
+                Creando un ambiente educativo e incluyente disponible para todas las personas y comercios con internet,
+                comenzamos a hacer el aprendizaje de lengua de señas algo universalmente disponible. El internet nos
+                permite llegar a todo el mundo.
+            </p>
+        </div>
+        <div class="col-12 col-xl-6">
+            <h1 class="h1grt">Our Mission</h1>
+            <ul class="grt nice-p">
+                <li class="li-grt">
+                    Ser el ecosistema tecnológico más incluyente y completo, tomando las necesidades de las personas sordas y difíciles
+                    de oír como nuestra prioridad.
+                </li>
+                <li class="li-grt">
+                    Hacer nuestro contenido fácilmente disponible a los que más lo necesitan.
+                </li>
+                <li class="li-grt">
+                    Crear herramientas que hagan una diferencia real en la vida de las personas sordas y difíciles de oír.
+                </li>
+                <li class="li-grt">
+                    Empoderar a nuestros usuarios para poder comunicarse con todas las personas sordas, difíciles de oír, y oyentes.
+                </li>
+                <li class="li-grt">
+                    Ofrecer una multitud de idiomas y lenguas de señas en nuestras plataformas.
+                </li>
+                <li class="li-grt">
+                    Ser líderes en el proceso de inclusión de las personas sordas y difíciles de oir en el mundo.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h1 class="h1grt">Team</h1>
+
+    <div class="d-flex justify-content-evenly row row-cols-3">
+        <div class="team col-sm-6 col-md-6">
+            <img class="team-img" src="https://news.airbnb.com/wp-content/uploads/sites/4/2016/10/140602_AirBnb_Brian_3837_SquareCrop.jpg?fit=950%2C950" alt="140602_AirBnb_Brian_3837_SquareCrop">
+            <h2 class="team-name">
+                Diego Villalpando
+            </h2>
+            <h3 class="team-title">
+                Co-fundador y CEO
+            </h3>
+            <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-globe"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-github"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-linkedin"></i></a></li>
+            </ul>
+        </div>
+        <div class="team col-sm-6 col-md-6">
+            <img class="team-img" src="https://news.airbnb.com/wp-content/uploads/sites/4/2016/10/140602_AirBnb_Brian_3837_SquareCrop.jpg?fit=950%2C950" alt="140602_AirBnb_Brian_3837_SquareCrop">
+            <h2 class="team-name">
+                Marco Blancas
+            </h2>
+            <h3 class="team-title">
+                Co-fundador y COO
+            </h3>
+            <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-globe"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-github"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-linkedin"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <h1 class="h1grt">Contact Us</h1>
+    <p class="nice-p">
+        ¿Problemas, errores, sugerencias, más información, o quieres decir hola? 
+        <br><br>
+        Síguenos y contáctanos en nuestras redes sociales, o ponte en contacto con nosotros en 
+        <a href="mailto:hola@handsapp.org">hola@handsapp.org</a>.
+    </p>
+  </ng-template>
