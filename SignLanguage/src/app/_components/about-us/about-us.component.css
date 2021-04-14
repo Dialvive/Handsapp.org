@@ -71,18 +71,17 @@
 .social-link {
     width: 30px;
     height: 30px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--cream-dark);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
+    color: var(--carbon);
     border-radius: 50%;
     transition: all 0.3s;
     font-size: 0.9rem;
 }
 
 .social-link:hover, .social-link:focus {
-    background: #ddd;
+    background: var(--cream-dark);
     text-decoration: none;
-    color: #555;
 }
