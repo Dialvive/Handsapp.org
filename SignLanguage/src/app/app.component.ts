@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class AppComponent {
   public locale: string[] | any; // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
   public localeInt: number | any; // 0: de, 1: es, 2: en, 3: fr, 4: it, 5: pt
+  public page: string = this.Location.path().substring(0,this.Location.path().indexOf('?'))
   public params: HttpParams = this.getParams();
 
 
@@ -117,7 +118,7 @@ export class AppComponent {
           }
         }
       }
-      this.Location.replaceState(routeStr);
+      this.Location.replaceState(this.page + routeStr);
     }
   }
 
@@ -134,12 +135,12 @@ export class AppComponent {
         routeStr += '&';
       }
     }
-    this.Location.replaceState(routeStr);
+    this.Location.replaceState(this.page + routeStr);
   }
 
   // navigate redirects faster through router
   public navigate(page: String): void {
-    this.router.navigate([page]);
+    this.router.navigate([page], {queryParams: {loc: this.locale[0] + "_" + this.locale[1] + "_" + this.locale[2]}});
   }
 
   // navigate redirects faster through router with id & txt parameters.
