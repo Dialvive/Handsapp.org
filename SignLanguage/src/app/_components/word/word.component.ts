@@ -6,6 +6,8 @@ import { Word } from '../../_models/word';
 import { WordService } from '../../_services/word/word.service';
 import { ViewChild } from '@angular/core';
 import { AppComponent } from '../../app.component'
+import { WordCategory } from 'src/app/_models/wordCategory';
+import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
 
 @Component({
   selector: 'app-word',
@@ -22,7 +24,7 @@ export class WordComponent implements OnInit {
   public wordTXT: string | any;
   public ready: boolean = false;
   public error: string = '';
-
+  public categories: WordCategory[] | any;
   public vidIndex: number = 0;
 
   vid: any | HTMLVideoElement 
@@ -35,18 +37,22 @@ export class WordComponent implements OnInit {
   public strCat: string[] = ["Kategorie", "Categoría", "Category", "Catégorie", "Categoria", "Categoria"];
   public strLen: string[] = ["Zeichensprache", "Lengua de señas", "Sign Language", "Langage des signes", "Linguaggio dei segni", "Linguagem de sinais"];
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
+  public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible" ,"Translation not available","Traduction non disponible","Traduzione non disponibile","Tradução não disponível"]
+
 
   constructor(
     private wordService: WordService,
     private wordSignService: WordSignService,
     public route: ActivatedRoute,
     public appComponent: AppComponent,
+    public wordCategoryService : WordCategoryService,
   ) { }
 
   ngOnInit(): void {
     this.getIdTxt();
     this.getWord();
     this.createVideoURLs();
+    this.getWordCategories();
     //while(this.vid == null) {
     
     //}
@@ -99,6 +105,29 @@ export class WordComponent implements OnInit {
         console.log(this.appComponent.locale[1]);  
       }, 
       err => console.error(err));
+  }
+
+  //Gets every word category and instanciates them globally in a 2 dimensional array
+  private getWordCategories(): void {
+    this.wordCategoryService.getWordCategories().subscribe(
+      response => {
+        this.categories = response;
+      }, 
+      err => console.log(err));
+      console.log(this.categories)
+  }
+
+  public findCategoryByID(lang:number) : string{
+    var id = this.word.word_category_ID;
+    var catAux : WordCategory = this.categories.find((i : WordCategory) => i.ID == id); 
+    console.log(catAux);
+    var aux = this.getCategoryByIdiom(catAux,lang);
+    return aux;
+  }
+
+  public getCategoryByIdiom(cat:WordCategory, id:number) {
+    var auxCat = new WordCategory(cat);
+    return auxCat.getNameByIdiom(id);
   }
 
   //Opens a video fullscreen.
