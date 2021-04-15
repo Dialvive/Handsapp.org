@@ -20,9 +20,15 @@
                         </h2>
                         <div [attr.id]="'collapseOne' + i" class="accordion-collapse collapse"  data-bs-parent="'words' + i">
                             <div class="accordion-body">
-                                <ol class="list-group list-group-flush">
-                                    <li (click)="navigateIdTxt('/word','','')" class="list-group-item list-group-item-action">
-                                        <h4>A link item</h4>
+                                <ol class="row grid-container" >
+                                    <li class="grid-item" *ngFor="let hit of hits; let i=index">
+                                        <a class="results-link">
+                                            <div class="card results-card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Palabra</h5>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </li>
                                 </ol>
                             </div>

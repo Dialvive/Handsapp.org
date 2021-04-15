@@ -15,7 +15,7 @@ export class WordsComponent implements OnInit {
   public titleStr: string[] = ["Thematischer Wortindex","Índice temático de palabras", "Thematic index of words", "Index thématique des mots", "Indice tematico delle parole", "Índice temático de palavras"  ];
   public strCat: WordCategory[] | any;
   public categories: string[] | any;
-
+  public hits : string[] = ["","","","","","","","","","","","","","",""];
   constructor(private router: Router,
     private wordService: WordService,
     public appComponent: AppComponent,
