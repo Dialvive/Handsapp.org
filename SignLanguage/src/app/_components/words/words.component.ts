@@ -17,6 +17,7 @@ export class WordsComponent implements OnInit {
   public hits : string[] | any ;
   public words: Word[] | any;
   public name :string | any;
+  public ready = false;
   
   constructor(private router: Router,
     private wordService: WordService,
@@ -27,6 +28,7 @@ export class WordsComponent implements OnInit {
     this.appComponent.getLocale();
     this.getWordCategories();
     this.getWords();
+    this.ready = true;
   }
 
   // navigate redirects faster through router
@@ -44,7 +46,6 @@ export class WordsComponent implements OnInit {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
         this.categories = response;
-        this.sortCategories();
         //this.fillCategories()
       }, 
       err => this.appComponent.navigate("/404"));
@@ -63,18 +64,79 @@ export class WordsComponent implements OnInit {
   }
 
   //Sort strCat categories by name_es 
-  private sortCategories(){
-    this.categories.sort(function(a:any, b:any){
-      if(a.name_es < b.name_es) { return -1; }
-      if(a.name_es > b.name_es) { return 1; }
-      return 0;
-    })
+  public sortCategories(lang : any){
+    var langAux : number = parseInt(lang);
+    
+    switch(langAux) {
+      case 0:{
+        this.categories.sort(function(a:any, b:any){
+          if(a.name_de < b.name_de) { return -1; }
+          if(a.name_de > b.name_de) { return 1; }
+          return 0;
+        })
+        
+        break;
+      }
+      case 1:{    
+        this.categories.sort(function(a:any, b:any){
+          if(a.name_es < b.name_es) { return -1; }
+          if(a.name_es > b.name_es) { return 1; }
+          return 0;
+        })
+        
+        break;
+      }
+      case 2:{
+        this.categories.sort(function(a:any, b:any){
+          if(a.name_en < b.name_en) { return -1; }
+          if(a.name_en > b.name_en) { return 1; }
+          return 0;
+        })
+       
+        break;
+      }
+      case 3:{
+        this.categories.sort(function(a:any, b:any){
+          if(a.name_fr < b.name_fr) { return -1; }
+          if(a.name_fr > b.name_fr) { return 1; }
+          return 0;
+        })
+        
+        break;
+      }
+      case 4:{
+        this.categories.sort(function(a:any, b:any){
+          if(a.name_it < b.name_it) { return -1; }
+          if(a.name_it > b.name_it) { return 1; }
+          return 0;
+        })   
+       
+        break;
+      }
+      case 5:{
+        this.categories.sort(function(a:any, b:any){
+          if(a.name_pt < b.name_pt) { return -1; }
+          if(a.name_pt > b.name_pt) { return 1; }
+          
+          return 0;
+        }) 
+        break; 
+      }
+      default: {
+        this.categories.sort(function(a:any, b:any){
+          if(a.name_en < b.name_en) { return -1; }
+          if(a.name_en > b.name_en) { return 1; }
+          
+          return 0;
+        })
+      }
+  }
+    
   }
 
   public getCategoryByIdiom(cat:WordCategory, id:number) {
     var auxCat = new WordCategory(cat);
     return auxCat.getNameByIdiom(id);
-    
   }
   public getWordByIdiom(word : Word, id:number){
     var auxWord = new Word(word);
