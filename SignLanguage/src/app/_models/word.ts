@@ -1,6 +1,7 @@
 
 // Word represents a word object
 export class Word {
+    
     ID: number;
     word_category_ID: number;
     text_de: string;
@@ -121,4 +122,32 @@ export class Word {
             }
         }
     }
+    
+    getDefByIdiom(lang: any) {
+        var langAux : number = parseInt(lang);
+        switch(langAux) {
+            case 0:{
+                return this.definition_de;
+            }
+            case 1:{    
+                return this.definition_es;
+            }
+            case 2:{
+                return this.definition_en;
+            }
+            case 3:{
+                return this.definition_fr;
+            }
+            case 4:{
+                return this.definition_it;    
+            }
+            case 5:{
+                return this.definition_pt;   
+            }
+            default: {
+                return this.definition_de;
+            }
+        }
+      }
+    
 }
