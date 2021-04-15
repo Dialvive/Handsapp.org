@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { Word } from 'src/app/_models/word';
 import { WordCategory } from 'src/app/_models/wordCategory';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
 import { WordService } from 'src/app/_services/word/word.service';
-import { CategoriesComponent } from '../categories/categories.component';
 
 @Component({
   selector: 'app-words',
@@ -13,9 +13,11 @@ import { CategoriesComponent } from '../categories/categories.component';
 })
 export class WordsComponent implements OnInit {
   public titleStr: string[] = ["Thematischer Wortindex","Índice temático de palabras", "Thematic index of words", "Index thématique des mots", "Indice tematico delle parole", "Índice temático de palavras"  ];
-  public strCat: WordCategory[] | any;
-  public categories: string[] | any;
-  public hits : string[] = ["","","","","","","","","","","","","","",""];
+  public categories: WordCategory[] | any;
+  public hits : string[] | any ;
+  public words: Word[] | any;
+  public name :string | any;
+  
   constructor(private router: Router,
     private wordService: WordService,
     public appComponent: AppComponent,
@@ -24,6 +26,7 @@ export class WordsComponent implements OnInit {
   ngOnInit(): void {
     this.appComponent.getLocale();
     this.getWordCategories();
+    this.getWords();
   }
 
   // navigate redirects faster through router
@@ -40,28 +43,53 @@ export class WordsComponent implements OnInit {
   private getWordCategories(): void {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
-        this.strCat = response;
+        this.categories = response;
         this.sortCategories();
-        this.fillCategories()
+        //this.fillCategories()
+      }, 
+      err => this.appComponent.navigate("/404"));
+  }
+
+  //Gets all categories from the API and instanciates it globally.
+  private getWords(): void {
+    this.wordService.getWords().subscribe(
+      response => {
+        this.words = response;
+        var lastID = this.categories.length;
+        this.hits = new Array(lastID) ;
+        this.sortByCategory();
       }, 
       err => this.appComponent.navigate("/404"));
   }
 
   //Sort strCat categories by name_es 
   private sortCategories(){
-    this.strCat.sort(function(a:any, b:any){
+    this.categories.sort(function(a:any, b:any){
       if(a.name_es < b.name_es) { return -1; }
       if(a.name_es > b.name_es) { return 1; }
       return 0;
     })
   }
 
-  //Create a second array of all languages of the categories
-  private fillCategories(){
-    this.categories = new Array<String[]>(this.strCat.length)
-    for (let i = 0; i < this.strCat.length; i++) {
-      this.categories[i] = new WordCategory(this.strCat[i]).getNames();
+  public getCategoryByIdiom(cat:WordCategory, id:number) {
+    var auxCat = new WordCategory(cat);
+    return auxCat.getNameByIdiom(id);
+    
+  }
+  public getWordByIdiom(word : Word, id:number){
+    var auxWord = new Word(word);
+    return auxWord.getTextByIdiom(id);
+  }
+
+  public sortByCategory(){
+    for(var i = 0; i < this.hits.length-1 ; i++) {
+      this.hits.splice(this.categories[i].ID, 1, this.getWordsByCategory(this.categories[i].ID) );
     }
+  }
+
+  public getWordsByCategory(cat : number) : Word[] {
+    var arr = this.words.filter((i : Word) => i.word_category_ID == cat);
+    return arr;
   }
 
 }

@@ -12,24 +12,30 @@
                 <div class="accordion" id="'words' + i">
                     <div class="accordion-item">
                         <h2 class="accordion-header" >
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false" [attr.aria-controls] ="'collapseOne' + i">
+                            <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false" [attr.aria-controls] ="'collapseOne' + i">
                                 <h3>
-                                    {{ cat[this.appComponent.localeInt] }}
+                                    {{ getCategoryByIdiom(cat,this.appComponent.localeInt) }}
+                                    
                                 </h3>
                             </button>
                         </h2>
                         <div [attr.id]="'collapseOne' + i" class="accordion-collapse collapse"  data-bs-parent="'words' + i">
                             <div class="accordion-body">
                                 <ol class="row grid-container" >
-                                    <li class="grid-item" *ngFor="let hit of hits; let i=index">
-                                        <a class="results-link">
-                                            <div class="card results-card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Palabra</h5>
+                                    <ng-container *ngIf = "this.hits[cat.ID].length != 0 ; else elseBlock" >
+                                        <li class="grid-item" *ngFor="let hit of hits[cat.ID]; ">
+                                            <a class="results-link" (click)="this.appComponent.navigateParams('word',this.appComponent.locale,hit.ID,getWordByIdiom(hit,this.appComponent.localeInt))">
+                                                <div class="card results-card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">{{ getWordByIdiom(hit,this.appComponent.localeInt) }}</h5>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
+                                    </ng-container>
+                                    <ng-template #elseBlock>
+                                        <h5>¡Próximamente!</h5>
+                                    </ng-template>
                                 </ol>
                             </div>
                         </div>

@@ -23,9 +23,7 @@ export class Word {
     definition_pt: string;
     modified: string;
 
-    constructor(
-        word: Word
-    ) {
+    constructor(word: Word) {
         this.ID = word.ID;
         this.word_category_ID = word.word_category_ID;
         this.text_de = word.text_de;
@@ -97,4 +95,30 @@ export class Word {
         return this.modified
     }
 
+    public getTextByIdiom(lang: any) : string{
+        var langAux : number = parseInt(lang);
+        switch(langAux) {
+            case 0:{
+                return this.text_de;
+            }
+            case 1:{    
+                return this.text_es;
+            }
+            case 2:{
+                return this.text_en;
+            }
+            case 3:{
+                return this.text_fr;
+            }
+            case 4:{
+                return this.text_it;    
+            }
+            case 5:{
+                return this.text_pt;   
+            }
+            default: {
+                return this.text_de;
+            }
+        }
+    }
 }
