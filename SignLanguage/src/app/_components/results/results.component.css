@@ -45,7 +45,11 @@
     height: 48px;
     position: relative;
     overflow: hidden;
+    /*
+    text-overflow: ellipsis;
+    white-space: nowrap;*/
 }
+
 
 .read-more {
     position: absolute; 
