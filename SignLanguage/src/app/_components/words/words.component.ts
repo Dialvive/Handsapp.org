@@ -13,6 +13,7 @@ import { WordService } from 'src/app/_services/word/word.service';
 })
 export class WordsComponent implements OnInit {
   public titleStr: string[] = ["Thematischer Wortindex","Índice temático de palabras", "Thematic index of words", "Index thématique des mots", "Indice tematico delle parole", "Índice temático de palavras"  ];
+  public prox: string[] = ["Kommt bald!","¡Próximamente!","Coming soon!","Bientôt disponible!","Prossimamente!","Em breve!"]
   public categories: WordCategory[] | any;
   public hits : string[] | any ;
   public words: Word[] | any;

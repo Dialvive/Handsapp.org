@@ -12,11 +12,16 @@
                     <div class="accordion" id="'words' + i">
                         <div class="accordion-item">
                             <h2 class="accordion-header" >
-                                <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false" [attr.aria-controls] ="'collapseOne' + i">
-                                    <h3>
-                                        {{ getCategoryByIdiom(cat,this.appComponent.localeInt) }}
-                                    </h3>
-                                </button>
+                                <ng-container *ngIf = "this.hits[cat.ID].length != 0 ; else elseBlock2" >
+                                    <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false" [attr.aria-controls] ="'collapseOne' + i">
+                                        <h3>{{ getCategoryByIdiom(cat,this.appComponent.localeInt) }} </h3>
+                                    </button>
+                                </ng-container>
+                                <ng-template #elseBlock2>
+                                    <button  class="accordion-button collapsed" >
+                                        <h3>{{ getCategoryByIdiom(cat,this.appComponent.localeInt) }}: &nbsp; </h3> <h5>{{prox[this.appComponent.localeInt]}}</h5>
+                                    </button>
+                                </ng-template>
                             </h2>
                             <div [attr.id]="'collapseOne' + i" class="accordion-collapse collapse"  data-bs-parent="'words' + i">
                                 <div class="accordion-body">

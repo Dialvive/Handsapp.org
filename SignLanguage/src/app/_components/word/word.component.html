@@ -74,7 +74,7 @@
                     </button>
                 </div>
 
-            <ng-container *ngIf="word.getDefinitions()[this.appComponent.localeInt] !=''; else elseblock2">
+            <ng-container *ngIf="(word.getDefinitions()[this.appComponent.localeInt] !='.' && word.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </ng-template>
-            <ng-container *ngIf="word.getContext()[this.appComponent.localeInt] != ''">
+            <ng-container *ngIf="word.getContext()[this.appComponent.localeInt] != '.' && word.getContext()[this.appComponent.localeInt] != ''">
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
