@@ -61,6 +61,12 @@
     line-height: 27px;
 }
 
+.nice-p {
+    font-size: 20px;
+    line-height: 1.618;
+    color: var(--carbon-dark);
+}
+
 h1 {
     font-family: var(--font-family-sans-serif) !important;
     font-size: 42px;

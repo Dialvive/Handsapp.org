@@ -14,12 +14,6 @@
     -ms-user-select: none;
 }
 
-.nice-p {
-    font-size: 20px;
-    line-height: 1.618;
-    color: var(--carbon-dark);
-}
-
 .li-grt {
     margin-bottom: 32px;
 }

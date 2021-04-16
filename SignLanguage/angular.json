@@ -43,7 +43,12 @@
                             "src/assets/img/mstile-310x150.png",
                             "src/assets/img/mstile-310x310.png",
                             "src/assets/img/loader.gif",
-                            "src/assets/img/static.gif"
+                            "src/assets/img/static.gif",
+                            "src/assets/img/hatdog.png",
+                            "src/assets/img/curiousdog.png",
+                            "src/assets/img/lawyer.png",
+                            "src/assets/img/privacydog.png",
+                            "src/assets/img/404.png"
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",

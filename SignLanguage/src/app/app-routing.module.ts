@@ -10,6 +10,7 @@ import { TermsComponent } from './_components/terms/terms.component';
 import { PrivacyComponent } from './_components/privacy/privacy.component'
 import { ProximamenteComponent } from './_components/proximamente/proximamente.component';
 import { DonationsComponent } from './_components/donations/donations.component';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'coming-soon', component: ProximamenteComponent},
   { path: 'donors', component: DonationsComponent},
   { path: 'privacy', component: PrivacyComponent},
+  { path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
