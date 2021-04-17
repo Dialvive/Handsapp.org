@@ -31,6 +31,7 @@
 .store {
     max-width: 242px !important;
     height: auto;
+    cursor:not-allowed;
 }
 
 
