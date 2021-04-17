@@ -75,10 +75,10 @@ h1 {
 }
 
 .title {
-    font-family: var(--font-family-display) !important;
-    font-size: 42px;
-    line-height: 10px;
-    margin-bottom: 6px;
+    font-family: var(--font-family-sans-serif) !important;
+    font-size: 1.618;
+    line-height: 1.618;
+    margin-bottom: 1.618;
 }
 
 h2 {

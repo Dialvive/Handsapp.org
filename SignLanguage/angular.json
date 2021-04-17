@@ -48,7 +48,18 @@
                             "src/assets/img/curiousdog.png",
                             "src/assets/img/lawyer.png",
                             "src/assets/img/privacydog.png",
-                            "src/assets/img/404.png"
+                            "src/assets/img/appstore_de.png",
+                            "src/assets/img/appstore_es.png",
+                            "src/assets/img/appstore_en.png",
+                            "src/assets/img/appstore_fr.png",
+                            "src/assets/img/appstore_it.png",
+                            "src/assets/img/appstore_pt.png",
+                            "src/assets/img/googleplay_de.png",
+                            "src/assets/img/googleplay_es.png",
+                            "src/assets/img/googleplay_en.png",
+                            "src/assets/img/googleplay_fr.png",
+                            "src/assets/img/googleplay_it.png",
+                            "src/assets/img/googleplay_pt.png"
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
