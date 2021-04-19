@@ -31,7 +31,7 @@
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" href="/about-us#mission">{{strMis[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" (click)="this.appComponent.navigate('about-us')">{{strMis[this.appComponent.localeInt]}}</a>
                 </li>
                 <li>
                     <a class="footer-a" href="/about-us#team">{{strEqu[this.appComponent.localeInt]}}</a>
@@ -71,6 +71,9 @@
                 </li>
                 <li>
                     <a class="footer-a" href="https://www.instagram.com/handsapp_org/">Instagram</a>
+                </li>
+                <li>
+                    <a class="footer-a" href="http://eepurl.com/hv8fkf">E-Mail</a>
                 </li>
             </ul>
         </div>

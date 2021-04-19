@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-not-found',
+  templateUrl: './not-found.component.html',
+  styleUrls: ['./not-found.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class NotFoundComponent implements OnInit {
 
   constructor(
     public appComponent: AppComponent,

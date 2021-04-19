@@ -41,6 +41,9 @@ import { AboutUsComponent } from './_components/about-us/about-us.component';
 import { ProductsComponent } from './_components/products/products.component';
 import { TermsComponent } from './_components/terms/terms.component';
 import { PrivacyComponent } from './_components/privacy/privacy.component';
+import { ProximamenteComponent } from './_components/proximamente/proximamente.component';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
+import { DonationsComponent } from './_components/donations/donations.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,10 @@ import { PrivacyComponent } from './_components/privacy/privacy.component';
     AboutUsComponent,
     ProductsComponent,
     TermsComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    ProximamenteComponent,
+    NotFoundComponent,
+    DonationsComponent
   ],
   imports: [
     BrowserModule,

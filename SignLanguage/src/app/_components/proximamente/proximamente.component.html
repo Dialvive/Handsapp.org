@@ -1,0 +1,41 @@
+<div class="progress">
+    <div class="progress-bar stripes" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div class="row">
+    <div class="col-1 col-xl-2"></div>
+
+    <div class="col-10 col-xl-8 first-column">
+        <div class="row row-cols-1 justify-content-center">
+            <div class="col-12 text-center" oncontextmenu="return false">
+                <img class="col dog" src="/assets/img/hatdog.png" alt="">
+            </div>
+            <div class="col-12">
+                <h1 class="text-center title m-4 p-4">
+                    {{strPro[this.appComponent.localeInt]}}
+                </h1>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <p class="grt nice-p text-center">
+                    {{["Viele Abenteuer erwarten uns, wir arbeiten hart daran, Ihnen die besten Inhalte und die besten Tools zu bieten.",
+                       "Nos esperan muchas aventuras, estamos trabajando mucho para traerte el mejor contenido y las mejores herramientas.",
+                       "Many adventures await us, we are working hard to bring you the best content and the best tools.",
+                       "De nombreuses aventures nous attendent, nous travaillons dur pour vous apporter le meilleur contenu et les meilleurs outils.",
+                       "Molte avventure ci aspettano, stiamo lavorando duramente per offrirti i migliori contenuti e gli strumenti migliori.",
+                       "Muitas aventuras nos aguardam, estamos trabalhando muito para trazer a você o melhor conteúdo e as melhores ferramentas."
+                    ][this.appComponent.localeInt]}}
+                </p>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <a class="btn btn-primary" href="http://eepurl.com/hv8fkf" role="button">
+                    {{strSus[this.appComponent.localeInt]}}
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-1 col-xl-2"></div>
+</div>
+
+

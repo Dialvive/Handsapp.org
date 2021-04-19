@@ -1,7 +1,7 @@
 /* HEADER ######################################################## */
 
 .logo-HandsApp {
-    height: 70px;
+    height: 60px;
     margin: 0;
     padding: 0;
 }
@@ -12,6 +12,7 @@
     top: 0px;
     left: 0px;
     right: 0px;
+    border-bottom: 2px solid var(--carbon);
 }
 
 .nav-link {
