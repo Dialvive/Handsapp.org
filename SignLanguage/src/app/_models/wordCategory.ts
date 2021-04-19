@@ -33,4 +33,31 @@ export class WordCategory {
             this.name_pt
         )
     }
+
+    public getNameByIdiom(lang: any) : string{
+        var langAux : number = parseInt(lang);
+        switch(langAux) {
+            case 0:{
+                return this.name_de;
+            }
+            case 1:{    
+                return this.name_es;
+            }
+            case 2:{
+                return this.name_en;
+            }
+            case 3:{
+                return this.name_fr;
+            }
+            case 4:{
+                return this.name_it;    
+            }
+            case 5:{
+                return this.name_pt;   
+            }
+            default: {
+                return this.name_de;
+            }
+        }
+    }
 }

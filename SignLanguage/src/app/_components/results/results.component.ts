@@ -15,7 +15,8 @@ import { AppComponent } from '../../app.component'
 export class ResultsComponent implements OnInit {
 
   public strRes: string[] = ["suchergebnisse", "resultados de búsqueda", "search results", "résultats de recherche", "risultati di ricerca", "procurar resultados"];
-
+  public oneRes: string[] = ["Ein Suchergebnis", "Un resultado de búsqueda", "A search result", "Un résultat de recherche", "Un risultato di ricerca", "Um resultado de pesquisa"];
+  public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible" ,"Translation not available","Traduction non disponible","Traduzione non disponibile","Tradução não disponível"]
   public txt: string | any;
   public categories: string[] | any;
   public definitions: string[] | any;
@@ -53,7 +54,6 @@ export class ResultsComponent implements OnInit {
     this.searchService.searchWords(this.txt, 50).subscribe(
       response => {
         this.result = new WordSearchResult(response);
-        this.extractDefinitions()
       }, 
       err => this.appComponent.navigateParams("/404", this.appComponent.locale, "", this.txt));
   }
@@ -71,17 +71,13 @@ export class ResultsComponent implements OnInit {
       console.log(this.categories)
   }
 
-  private extractDefinitions(): void {
-    this.definitions = new Array<String[]>(this.result.hits.length);
-    for (let i = 0; i < this.result.hits.length; i++) {
-      this.definitions[i] = new Array<String>(
-        this.result.hits[i].definition_de, 
-        this.result.hits[i].definition_es,
-        this.result.hits[i].definition_en,
-        this.result.hits[i].definition_fr,
-        this.result.hits[i].definition_it,
-        this.result.hits[i].definition_pt
-      )
-    }
+  public getWordByIdiom(word : Word, id:number){
+    var auxWord = new Word(word);
+    return auxWord.getTextByIdiom(id);
+  }
+
+  public getDefinitionByIdiom(word : Word, id:number) {
+    var auxWord = new Word(word);
+    return auxWord.getDefByIdiom(id);
   }
 }

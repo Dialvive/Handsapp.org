@@ -1,0 +1,33 @@
+/* RESULTS ####################################################### */
+
+.results-card {
+    height: 50px;
+    min-width: 20px;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    text-decoration: none;
+    -webkit-animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
+    animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
+}
+
+.results-card:hover {
+    -webkit-animation: shadow-drop-2-bottom 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-bottom 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.grid-container {
+    display: grid !important;
+    column-gap: minmax(5px, 1.618vh);
+    row-gap: 1.618vh;
+    list-style: none;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 2fr));
+    grid-auto-rows: minmax(50px, auto);
+    padding-left: 0;
+    padding-top: 2.618vh;
+}
+
+
+
+

@@ -33,7 +33,8 @@
     margin-left: 10px;
     margin-right: 10px;
     height: 36px;
-    width: 180px;
+    /*width: fit-content;*/
+    min-width: 250 ;
     background-color: #fff;
     border-radius: 2rem;
     font-size: 16px;
@@ -85,4 +86,9 @@
     text-align: center;
     border-width: 0px;
     color: var(--carbon-dark);
+}
+
+.btn-container {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr ;
 }

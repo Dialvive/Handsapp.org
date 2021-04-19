@@ -4,19 +4,26 @@
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
+        <ng-container *ngIf = "this.result.hits.length > 1; else elseBlock">
         <h2 class="text-sm-center text-md-start">
             &nbsp; {{this.result.hits.length >= 50 ? "+50" : this.result.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
         </h2>
+        </ng-container>
+        <ng-template #elseBlock>
+            <h2 class="text-sm-center text-md-start">
+                &nbsp;  {{oneRes[this.appComponent.localeInt]}}: {{this.txt}}
+            </h2>
+        </ng-template>
 
         <ol class="row grid-container" >
                 <li class="grid-item" *ngFor="let hit of result.hits; let i=index">
                     <a class="results-link" (click)="this.appComponent.navigateParams('word',this.appComponent.locale,hit.ID,hit.text_es)">
                         <div class="card results-card">
                             <div class="card-body">
-                                <h5 class="card-title">{{hit.text_es}}</h5>
-                                <div class="category">{{this.categories[hit.word_category_ID - 1][this.appComponent.localeInt]}}</div>
+                                <h5 class="card-title">{{ getWordByIdiom(hit,this.appComponent.localeInt) }}</h5>
+                                <div class="category">{{ this.categories[hit.word_category_ID - 1][this.appComponent.localeInt] }}</div>
                                 <div class="description-box">
-                                        {{this.definitions[i][1].length > 59 ? this.definitions[i][1].substring(0, 59)+" ..." : this.definitions[i][1]}} 
+                                        {{ getDefinitionByIdiom(hit,this.appComponent.localeInt).length > 1? getDefinitionByIdiom(hit,this.appComponent.localeInt).substring(0, 59)+" ..." : nfRes[this.appComponent.localeInt]}} 
                                         <p class="read-more"></p>
                                 </div>
                             </div>

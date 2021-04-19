@@ -74,7 +74,7 @@
                     </button>
                 </div>
 
-            <ng-container *ngIf="word.getDefinitions()[this.appComponent.localeInt] !=''">
+            <ng-container *ngIf="(word.getDefinitions()[this.appComponent.localeInt] !='.' && word.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
@@ -88,7 +88,21 @@
                     </div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="word.getContext()[this.appComponent.localeInt] != ''">
+            <ng-template #elseblock2>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card word-card">
+                            <div class="card-body">
+                                <h3>
+                                    {{strDef[this.appComponent.localeInt]}}
+                                </h3>
+                                <hr> {{nfRes[this.appComponent.localeInt]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-container *ngIf="word.getContext()[this.appComponent.localeInt] != '.' && word.getContext()[this.appComponent.localeInt] != ''">
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
@@ -97,16 +111,6 @@
                                     {{strExp[this.appComponent.localeInt]}}
                                 </h3>
                                 <hr> {{word.getContext()[this.appComponent.localeInt]}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </ng-container>
-            <ng-container *ngIf="word">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card word-card">
-                            <div class="card-body">
                             </div>
                         </div>
                     </div>
@@ -122,10 +126,10 @@
                             <hr>
                             <ul>
                                 <li class="ligrt">
-                                    {{strCat[this.appComponent.localeInt]}}:
+                                    {{strCat[this.appComponent.localeInt]}}: {{ findCategoryByID(this.appComponent.localeInt) }}
                                 </li>
                                 <li class="ligrt">
-                                    {{strLen[this.appComponent.localeInt]}}:
+                                    {{strLen[this.appComponent.localeInt]}}: Lengua de Señas Mexicana (LSM)
                                 </li>
                                 <li class="ligrt">
                                     {{strReg[this.appComponent.localeInt]}}:

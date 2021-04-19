@@ -27,13 +27,12 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <button type="submit" class="" name="typ" value="0" hidden>Buscar 2</button>
-                        <button (onclick) = "submit(1)" type="submit" class="btn search-btn" name="typ" value="1">{{strWord[this.appComponent.localeInt]}}</button>
-                        <button (onclick) = "submit(2)"type="submit" class="btn search-btn" name="typ" value="2">{{strPhrase[this.appComponent.localeInt]}}</button>
-                    </div>
-                </div>
+                <div class=btn-container>        
+                    <button (onclick) = "submit(1)" type="submit" class="btn search-btn" name="typ" value="1">{{strWord[this.appComponent.localeInt]}}</button>
+                    <button (onclick) = "submit(2)"type="submit" class="btn search-btn" name="typ" value="2">{{strPhrase[this.appComponent.localeInt]}}</button>
+                </div>     
+                
+                
 
             </form>
         </div>
