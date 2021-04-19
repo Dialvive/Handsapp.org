@@ -67,14 +67,18 @@
     display: flex;
     margin-top: 0;
     margin-left: 19px;
-    margin-right: 15px;
-    margin-bottom: 2px;
+    margin-right: 16.5px;
+    margin-bottom: 1.5px;
     text-align: center;
     width: 33px;
     height: 33px;
     background-color: var(--cream-dark) !important;
     border-radius: 2rem;
     outline: var(--cream);
+    /* justify-items: center; */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
 }
 
 .search-reset-i {
@@ -86,6 +90,7 @@
     text-align: center;
     border-width: 0px;
     color: var(--carbon-dark);
+    justify-content: center;
 }
 
 .btn-container {
