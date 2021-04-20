@@ -60,7 +60,8 @@
                             "src/assets/img/googleplay_fr.png",
                             "src/assets/img/googleplay_it.png",
                             "src/assets/img/googleplay_pt.png",
-                            "src/assets/img/Diego.jpg"
+                            "src/assets/img/Diego.jpg",
+                            "src/assets/img/terceros/manosqueescuchan.png"
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
