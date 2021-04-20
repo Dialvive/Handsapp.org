@@ -95,6 +95,7 @@
     background-color: var(--primary) !important;
     color: #fff !important;
     border-radius: 2rem;
+    justify-content: center;
 }
 
 .header-search-btn:hover {
@@ -122,6 +123,7 @@
     background-color: var(--cream-dark) !important;
     border-radius: 2rem;
     outline: var(--cream);
+    justify-content: center;
 }
 
 .header-reset-i {
