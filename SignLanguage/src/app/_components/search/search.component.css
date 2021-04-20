@@ -40,6 +40,17 @@
     box-shadow: 0 0 14px var(--cream-dark);
 }
 
+.search-icon {
+    display: inline-block;
+    align-self: center;
+    justify-self: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    padding: auto;
+    height: 30px;
+}
+
 .search-btn {    
     display: inline-block;
     align-self: center;
@@ -49,7 +60,6 @@
     margin: auto;
     padding: auto;
     height: 36px;
-    min-width: 250 ;
     background-color: #fff;
     border: 2px solid var(--cream-dark);
     border-radius: 2rem;
