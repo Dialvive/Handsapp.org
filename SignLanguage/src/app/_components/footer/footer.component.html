@@ -31,13 +31,13 @@
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" (click)="this.appComponent.navigate('about-us')">{{strMis[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" href="/about-us?loc={{this.appComponent.localeTxt}}">{{strMis[this.appComponent.localeInt]}}</a>
                 </li>
                 <li>
-                    <a class="footer-a" href="/about-us#team">{{strEqu[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" href="/about-us?loc={{this.appComponent.localeTxt}}">{{strEqu[this.appComponent.localeInt]}}</a>
                 </li>
                 <li>
-                    <a class="footer-a" href="/about-us#contact">{{strCon[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" href="/about-us?loc={{this.appComponent.localeTxt}}">{{strCon[this.appComponent.localeInt]}}</a>
                 </li>
             </ul>
         </div>
@@ -49,10 +49,10 @@
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" href="/products#android">Android</a>
+                    <a class="footer-a" href="/products?loc={{this.appComponent.localeTxt}}">Android</a>
                 </li>
                 <li>
-                    <a class="footer-a" href="/products#iOS">iOS</a>
+                    <a class="footer-a" href="/products?loc={{this.appComponent.localeTxt}}">iOS</a>
                 </li>
             </ul>
         </div>
@@ -85,10 +85,10 @@
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" (click)="this.appComponent.navigate('terms')">{{strTer[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" href="terms?loc={{this.appComponent.localeTxt}}">{{strTer[this.appComponent.localeInt]}}</a>
                 </li>
                 <li>
-                    <a class="footer-a" (click)="this.appComponent.navigate('privacy')">{{strPri[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" href="privacy?loc={{this.appComponent.localeTxt}}">{{strPri[this.appComponent.localeInt]}}</a>
                 </li>
             </ul>
         </div>

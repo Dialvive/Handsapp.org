@@ -10,6 +10,6 @@ export class AboutUsComponent implements OnInit {
 
   constructor(public appComponent: AppComponent) { }
 
-  ngOnInit(): void { }
+  async ngOnInit() { }
 
 }

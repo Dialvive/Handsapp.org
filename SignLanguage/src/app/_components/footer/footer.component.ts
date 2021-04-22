@@ -33,7 +33,7 @@ export class FooterComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    await this.appComponent.getLocale();
+    this.appComponent.getLocale();
     this.spSelected = this.appComponent.localeInt;
     //TODO: Assign sg programatically
     this.sgSelected = 1;

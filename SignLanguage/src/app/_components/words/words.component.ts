@@ -32,16 +32,6 @@ export class WordsComponent implements OnInit {
     this.ready = true;
   }
 
-  // navigate redirects faster through router
-  public navigate(page: String): void {
-    this.router.navigate([page]);
-  }
-
-  // navigate redirects faster through router with id & txt parameters
-  public navigateIdTxt(page: String, idP: String, txtP: String): void {
-    this.router.navigate([page], {queryParams: {id: idP, txt: txtP}});
-  }
-  
   //Gets all categories from the API and instanciates it globally.
   private getWordCategories(): void {
     this.wordCategoryService.getWordCategories().subscribe(
@@ -49,7 +39,7 @@ export class WordsComponent implements OnInit {
         this.categories = response;
         //this.fillCategories()
       }, 
-      err => this.appComponent.navigate("/404"));
+      err => this.appComponent.navigateParams("/404", this.appComponent.locale, '', ''));
   }
 
   //Gets all categories from the API and instanciates it globally.
@@ -61,7 +51,7 @@ export class WordsComponent implements OnInit {
         this.hits = new Array(lastID) ;
         this.sortByCategory();
       }, 
-      err => this.appComponent.navigate("/404"));
+      err => this.appComponent.navigateParams("/404", this.appComponent.locale, '', ''));
   }
 
   //Sort strCat categories by name_es 
