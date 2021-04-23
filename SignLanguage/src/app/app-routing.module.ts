@@ -11,6 +11,8 @@ import { PrivacyComponent } from './_components/privacy/privacy.component'
 import { ProximamenteComponent } from './_components/proximamente/proximamente.component';
 import { DonationsComponent } from './_components/donations/donations.component';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
+import { ThirdPartiesComponent } from './_components/third-parties/third-parties.component';
+import { BugSubmitComponent } from './_components/bug-submit/bug-submit.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'coming-soon', component: ProximamenteComponent},
   { path: 'donors', component: DonationsComponent},
   { path: 'privacy', component: PrivacyComponent},
+  { path: '3rdpartylicences', component: ThirdPartiesComponent},
+  { path: 'bug', component: BugSubmitComponent},
   { path: '**', component: NotFoundComponent},
 ];
 

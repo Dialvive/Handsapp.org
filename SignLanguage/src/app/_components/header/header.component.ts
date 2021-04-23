@@ -28,14 +28,8 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
-  // navigate redirects faster through router
-  public navigate(page: String): void {
-    this.router.navigate([page]);
-  }
   
   public submit(type : number) {
-    
     if (this.input.trim() != "" && this.input != null){
       //this.params.append('txt', this.input);
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>(

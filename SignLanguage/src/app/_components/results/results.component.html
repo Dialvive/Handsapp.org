@@ -4,34 +4,15 @@
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
-        <ng-container *ngIf = "this.result.hits.length > 1; else elseBlock">
-        <h2 class="text-sm-center text-md-start">
-            &nbsp; {{this.result.hits.length >= 50 ? "+50" : this.result.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
-        </h2>
+        <ng-container
+            *ngIf = "this.result.hits.length < 1; then noBlock">
         </ng-container>
-        <ng-template #elseBlock>
-            <h2 class="text-sm-center text-md-start">
-                &nbsp;  {{oneRes[this.appComponent.localeInt]}}: {{this.txt}}
-            </h2>
-        </ng-template>
-
-        <ol class="row grid-container" >
-                <li class="grid-item" *ngFor="let hit of result.hits; let i=index">
-                    <a class="results-link" (click)="this.appComponent.navigateParams('word',this.appComponent.locale,hit.ID,hit.text_es)">
-                        <div class="card results-card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ getWordByIdiom(hit,this.appComponent.localeInt) }}</h5>
-                                <div class="category">{{ this.categories[hit.word_category_ID - 1][this.appComponent.localeInt] }}</div>
-                                <div class="description-box">
-                                        {{ getDefinitionByIdiom(hit,this.appComponent.localeInt).length > 1? getDefinitionByIdiom(hit,this.appComponent.localeInt).substring(0, 59)+" ..." : nfRes[this.appComponent.localeInt]}} 
-                                        <p class="read-more"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-        </ol>
+        <ng-container
+            *ngIf = "this.result.hits.length == 1; then oneBlock;">
+        </ng-container>
+        <ng-container
+        *ngIf = "this.result.hits.length > 1; then moreBlock;">
+    </ng-container>
 
     </div>
 
@@ -42,3 +23,61 @@
     <div class="col-md-2 col-xl-2"></div>
 </div>
 <app-ad-banner></app-ad-banner>
+
+<ng-template #noBlock>
+    <h2 class="text-sm-center text-md-start">
+        &nbsp;  {{noRes[this.appComponent.localeInt]}}: {{this.txt}}
+    </h2>
+    <p class="grt nice-p">
+        {{["Überprüfen Sie Ihre Rechtschreibung oder verwenden Sie allgemeinere Begriffe.",
+           "Revisa tu ortografía, o usa términos más generales.",
+           "Check your spelling or use more general terms.",
+           "Vérifiez votre orthographe ou utilisez des termes plus généraux.",
+           "Controlla l'ortografia o utilizza termini più generali.",
+           "Verifique a ortografia ou use termos mais gerais."
+        ][this.appComponent.localeInt]}}
+    </p>
+    <div class="row row-cols-1 justify-content-center">
+            <div class="col-12 text-center" oncontextmenu="return false">
+                <img class="col dog" src="/assets/img/curiousbeagle.png">
+            </div>
+        </div>
+</ng-template>
+
+<ng-template #oneBlock>
+    <h2 class="text-sm-center text-md-start">
+        &nbsp;  {{oneRes[this.appComponent.localeInt]}}: {{this.txt}}
+    </h2>
+    <ng-container 
+        *ngTemplateOutlet="results">
+    </ng-container>
+</ng-template>
+
+<ng-template #moreBlock>
+    <h2 class="text-sm-center text-md-start">
+        &nbsp; {{this.result.hits.length >= 50 ? "+50" : this.result.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
+    </h2>
+    <ng-container 
+        *ngTemplateOutlet="results">
+    </ng-container>
+</ng-template>
+
+<ng-template #results>
+    <ol class="row grid-container" >
+        <li class="grid-item" *ngFor="let hit of result.hits; let i=index">
+            <a class="results-link" href="word?{{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + hit.text_es}}">
+                <div class="card results-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ getWordByIdiom(hit,this.appComponent.localeInt) }}</h5>
+                        <div class="category">{{ this.categories[hit.word_category_ID - 1][this.appComponent.localeInt] }}</div>
+                        <div class="description-box">
+                                {{ getDefinitionByIdiom(hit,this.appComponent.localeInt).length > 1? getDefinitionByIdiom(hit,this.appComponent.localeInt).substring(0, 59)+" ..." : nfRes[this.appComponent.localeInt]}} 
+                                <p class="read-more"></p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ol>
+</ng-template>
+

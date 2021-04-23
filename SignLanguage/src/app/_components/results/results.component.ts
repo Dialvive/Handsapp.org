@@ -16,6 +16,7 @@ export class ResultsComponent implements OnInit {
 
   public strRes: string[] = ["suchergebnisse", "resultados de búsqueda", "search results", "résultats de recherche", "risultati di ricerca", "procurar resultados"];
   public oneRes: string[] = ["Ein Suchergebnis", "Un resultado de búsqueda", "A search result", "Un résultat de recherche", "Un risultato di ricerca", "Um resultado de pesquisa"];
+  public noRes: string[] = ["Keine Ergebnisse für", "Sin resultados para", "No results for", "Aucun résultat pour", "Nessun risultato per", "Sem resultados para "];
   public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible" ,"Translation not available","Traduction non disponible","Traduzione non disponibile","Tradução não disponível"]
   public txt: string | any;
   public categories: string[] | any;

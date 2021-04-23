@@ -17,9 +17,7 @@ export class SearchComponent implements OnInit {
 
   constructor(public appComponent: AppComponent, private router : Router) { }
 
-  ngOnInit(): void {
-     
-  }
+  ngOnInit(): void {}
 
   public submit(type : number) {
     if (this.input.trim() != "" && this.input != null){
@@ -27,5 +25,4 @@ export class SearchComponent implements OnInit {
       this.router.navigate(["search"], {queryParams: {loc: this.appComponent.locale[0] + "_" + this.appComponent.locale[1] + "_" + this.appComponent.locale[2], typ: type , txt: this.input.trim()}});
     }
   }
-
 }

@@ -30,11 +30,12 @@
     width: 100%;
     height:auto;
     margin-bottom: 12px;
-    border-radius: 2rem;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    border: 2px solid var(--cream-dark);
+    border-radius: 2rem;
 }
 
 .team-name {
@@ -63,12 +64,15 @@
 }
 
 .social-link {
+    display: inline-block;
+    align-self: center;
+    justify-self: center;
+    align-content: center;
+    justify-content: center;
     width: 30px;
     height: 30px;
-    border: 1px solid var(--cream-dark);
+    border: 2px solid var(--cream-dark);
     display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--carbon);
     border-radius: 50%;
     transition: all 0.3s;

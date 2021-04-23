@@ -62,3 +62,9 @@
     padding: 30px 0; 
     background-image: linear-gradient(to bottom, transparent, #fff);
 }
+
+.dog {
+    image-rendering: optimizeQuality;
+    max-width: 60%;
+    user-select: none;
+}

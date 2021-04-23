@@ -1,0 +1,60 @@
+.donor-card {
+    display: block;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+    min-height: 1fr;
+    max-height: 2fr;
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.card-body {
+    margin: auto;
+    display: block;
+    height: 100%;
+    width: 100%;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.card-title {
+    margin: auto;
+    display: block;
+    height: 100%;
+    width: 100%;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.donor-gold {
+    border-color: var(--tangerine);
+}
+
+.donor-silver {
+    border-color: var(--azure);
+}
+
+.donor-bronze {
+    border-color: var(--rose);
+}
+
+.donate-btn {
+    padding-bottom: 30px;
+}
+
+
+.grid-container {
+    display: grid !important;
+    column-gap: 1.618;
+    row-gap: 10px;
+    list-style: none;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(50px, auto);
+    padding-left: 0;
+    padding-top: 1.618vh;
+}
