@@ -39,6 +39,14 @@
                 <li>
                     <a class="footer-a" href="/about-us?loc={{this.appComponent.localeTxt}}">{{strCon[this.appComponent.localeInt]}}</a>
                 </li>
+                <a class="footer-a" href="/donors?loc={{this.appComponent.localeTxt}}">
+                    {{["Spenden",
+                    "Donaciones",
+                    "Donations",
+                    "Des dons",
+                    "Donazioni",
+                    "Doações"][this.appComponent.localeInt]}}
+                </a>
             </ul>
         </div>
         <div class="col-12 col-md-3 col-xl-2 footer-col">
@@ -48,11 +56,44 @@
                 </h3>
             </div>
             <ul class="grt footer-ul">
+
                 <li>
-                    <a class="footer-a" href="/products?loc={{this.appComponent.localeTxt}}">Android</a>
+                    <a class="footer-a" href="/products?loc={{this.appComponent.localeTxt}}">HandsApp.org</a>
                 </li>
                 <li>
-                    <a class="footer-a" href="/products?loc={{this.appComponent.localeTxt}}">iOS</a>
+                    <a class="footer-a" href="/products?loc={{this.appComponent.localeTxt}}">
+                        {{["Mobile Apps",
+                        "Aplicaciones móviles",
+                        "Mobile apps",
+                        "Application mobile",
+                        "App mobili",
+                        "Aplicativos móveis"][this.appComponent.localeInt]}}
+                    </a>
+                </li>
+                <li>
+                    <a class="footer-a" href="/products?loc={{this.appComponent.localeTxt}}">
+                        {{["Einen Fehler melden",
+                        "Reportar un error",
+                        "Report a bug",
+                        "Signaler un bug",
+                        "Segnalare un bug",
+                        "Reportar um erro"][this.appComponent.localeInt]}}
+                    </a>
+                </li>
+                <li>
+                    <ng-container *ngIf="this.appComponent.localeInt == 1">
+                        <a class="footer-a" href="https://us1.list-manage.com/survey?u=483460576d7f7125b7a5f59b8&id=8dafc35921&attribution=false">Encuesta de satisfacción</a>
+                    </ng-container>
+                    <ng-container *ngIf="this.appComponent.localeInt != 1">
+                        <a class="footer-a" href="https://us1.list-manage.com/survey?u=483460576d7f7125b7a5f59b8&id=4b235f583f&attribution=false">
+                            {{["Zufriedenheitsumfrage",
+                            "Encuesta de satisfacción",
+                            "Satisfaction survey",
+                            "Enquête de satisfaction",
+                            "Indagine di soddisfazione",
+                            "Pesquisa de satisfação"][this.appComponent.localeInt]}}
+                        </a>
+                    </ng-container>
                 </li>
             </ul>
         </div>
@@ -73,7 +114,14 @@
                     <a class="footer-a" href="https://www.instagram.com/handsapp_org/">Instagram</a>
                 </li>
                 <li>
-                    <a class="footer-a" href="http://eepurl.com/hv8fkf">E-Mail</a>
+                    <a class="footer-a" href="http://eepurl.com/hv8fkf">
+                    {{["Mailingliste",
+                    "Lista de correo",
+                    "Mailing List",
+                    "Liste de diffusion",
+                    "Mailing list",
+                    "Mailing list"][this.appComponent.localeInt]}}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -90,6 +138,16 @@
                 <li>
                     <a class="footer-a" href="privacy?loc={{this.appComponent.localeTxt}}">{{strPri[this.appComponent.localeInt]}}</a>
                 </li>
+                <li>
+                    <a class="footer-a" href="3rdpartylicences?loc={{this.appComponent.localeTxt}}">
+                    {{["Lizenzen von Drittanbietern",
+                    "Licencias de terceros",
+                    "Third Party Licenses",
+                    "Licences tierces",
+                    "Licenze di terze parti",
+                    "Licenças de terceiros"][this.appComponent.localeInt]}}
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="col-xl-2"></div>
@@ -97,7 +155,7 @@
 
     <div class="row d-flex justify-content-evenly">
         <div class="col-12 d-flex justify-content-center align-content-center">
-            <p class="copyright">© Tecnologías Haikode 2021, {{strCop[this.appComponent.localeInt]}}.</p>
+            <p class="text-center text-muted">© Tecnologías Haikode 2021, {{strCop[this.appComponent.localeInt]}}.</p>
         </div>
         <div class="col-12 d-flex justify-content-center align-content-center">
             <a href="//www.dmca.com/Protection/Status.aspx?ID=0fdf44bc-e6c7-4432-a165-4183defe4411"

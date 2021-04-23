@@ -71,7 +71,7 @@ footer {
     color: var(--cream)
 }
 
-.copyright {
-    color: var(--cream-dark);
+.text-muted {
+    color: var(--cream-dark) !important;
     font-weight: 400;
 }
