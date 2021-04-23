@@ -44,6 +44,8 @@ import { PrivacyComponent } from './_components/privacy/privacy.component';
 import { ProximamenteComponent } from './_components/proximamente/proximamente.component';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { DonationsComponent } from './_components/donations/donations.component';
+import { ThirdPartiesComponent } from './_components/third-parties/third-parties.component';
+import { BugSubmitComponent } from './_components/bug-submit/bug-submit.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { DonationsComponent } from './_components/donations/donations.component'
     PrivacyComponent,
     ProximamenteComponent,
     NotFoundComponent,
-    DonationsComponent
+    DonationsComponent,
+    ThirdPartiesComponent,
+    BugSubmitComponent
   ],
   imports: [
     BrowserModule,
