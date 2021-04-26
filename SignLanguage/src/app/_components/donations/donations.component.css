@@ -3,13 +3,42 @@
     justify-items: center;
     align-content: center;
     text-align: center;
-    min-height: 1fr;
-    max-height: 2fr;
+    height: 100%;
+    
+    
+    border-radius: 0.5rem;
+    
+    
+
+   
+    min-width: 200px;
+    max-width: 100%;
     width: 100%;
-    border-radius: 1rem;
+   
     overflow: hidden;
     text-decoration: none;
+    -webkit-animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
+    animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
 }
+
+/* .donor-gold:before {
+    content: '';
+    position: fixed;
+    bottom: 0; left: 0;
+    border-top: 5vw solid rgba(255,255,255,.5);
+    border-left: 4rem solid goldenrod;
+    width: 0;
+}
+ */
+/* .donor-gold:before {
+    content: '';
+    position: fixed;
+    bottom: 0; left: 0;
+    border-right: 10px solid goldenrod;
+    border-bottom: 400px solid goldenrod;
+    width: 0;
+} */
+
 
 .card-body {
     margin: auto;
@@ -24,11 +53,12 @@
 .card-title {
     margin: auto;
     display: block;
-    height: 100%;
-    width: 100%;
     justify-items: center;
     align-content: center;
     text-align: center;
+    margin: 0;
+    
+
 }
 
 .donor-gold {
@@ -58,3 +88,17 @@
     padding-left: 0;
     padding-top: 1.618vh;
 }
+
+.date-box {
+    overflow: hidden;
+    color: grey;
+    
+}
+
+img {
+    width: 150px;
+}
+
+
+
+
