@@ -234,18 +234,6 @@
                     </div>
                 </fieldset>
 
-            <fieldset>
-                <ngx-recaptcha2 
-                    [(ngModel)]="this.captchaSuccess"
-                    #captcha="ngModel"
-                    [siteKey]="siteKey"
-                    (resolved)="resolved($event)"
-                    [useGlobalDomain]="true"
-                    [hl]="captchaLang"
-                    required>
-                </ngx-recaptcha2>
-            </fieldset>
-
                 <button class="btn btn-secondary"
                         type="submit"
                         value="Submit"
