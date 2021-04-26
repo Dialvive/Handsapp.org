@@ -15,21 +15,11 @@ export class BugSubmitComponent implements OnInit {
   public inputAgree: boolean = false;
   public inputResponse: boolean = false;
   public inputMail: string = '';
-  siteKey: string;
-  captchaLang: string;
-  captchaTheme: string;
-  captchaType: string;
-  captchaSuccess: boolean;
+
 
   constructor(
     public appComponent: AppComponent
-    ) { 
-      this.siteKey = "6Lciz7kaAAAAAHrBK9p-aBB2bYGY1ddwMj8hBPpF";
-      this.captchaLang = ["de","es","en","fr","it","pt"][this.appComponent.localeInt]
-      this.captchaTheme = "light"
-      this.captchaType = "image"
-      this.captchaSuccess = false;
-    }
+    ) { }
 
   ngOnInit(): void {
   this.getURL();
@@ -62,10 +52,6 @@ export class BugSubmitComponent implements OnInit {
     + "doc charset: " + document.characterSet + "\n"
     + "doc compatMode: " + document.compatMode + "\n"
     + "doc referrer: " + document.referrer + "\n";
-  }
-
-  public handleSuccess(event: string): void {
-    this.captchaSuccess = true;
   }
 
   public register(): void { 

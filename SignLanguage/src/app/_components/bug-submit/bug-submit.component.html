@@ -239,7 +239,7 @@
                     [(ngModel)]="this.captchaSuccess"
                     #captcha="ngModel"
                     [siteKey]="siteKey"
-                    (success)="handleSuccess($event)"
+                    (resolved)="resolved($event)"
                     [useGlobalDomain]="true"
                     [hl]="captchaLang"
                     required>
