@@ -120,7 +120,6 @@ export class WordComponent implements OnInit {
   public findCategoryByID(lang:number) : string{
     var id = this.word.word_category_ID;
     var catAux : WordCategory = this.categories.find((i : WordCategory) => i.ID == id); 
-    console.log(catAux);
     var aux = this.getCategoryByIdiom(catAux,lang);
     return aux;
   }
