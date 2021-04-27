@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
+import { Mail } from 'src/app/_models/mail';
+import { MailService } from 'src/app/_services/mail/mail.service';
 
 @Component({
   selector: 'app-bug-submit',
@@ -15,10 +17,12 @@ export class BugSubmitComponent implements OnInit {
   public inputAgree: boolean = false;
   public inputResponse: boolean = false;
   public inputMail: string = '';
+  private mail: Mail | null = null;
 
 
   constructor(
-    public appComponent: AppComponent
+    public appComponent: AppComponent,
+    private mailService: MailService
     ) { }
 
   ngOnInit(): void {
@@ -55,8 +59,45 @@ export class BugSubmitComponent implements OnInit {
   }
 
   public register(): void { 
-    
+    console.log(this.sendMail(
+      new Mail(
+        'HANDSAPP.ORG REPORT: ' + this.inputType, 
+        this.htmlifyString(this.arrangeMailTxt()))));
   }
+
+  private arrangeMailTxt(): string {
+    const divider = "<br>------------------------------------------------<br>"
+    return divider
+      + 'RELATED URL: ' + '<a href="' + this.inputURL + '">' + this.inputURL + '</a>' + divider
+      + 'DESCRIPTION: ' + this.inputDescription + divider
+      + (this.inputType == "Error" ?
+        'NAVDATA: ' + this.inputNavData :
+        '')
+      + 'PLEASE REPLY?: ' + 
+        (this.inputResponse ? 
+          'YES' + divider + 'MAIL: ' + this.inputMail : 
+          'NO') + divider
+      + 'ACCEPTED PRIVACY POLICY: ' + (this.inputAgree? 'YES' : 'NO') + divider;
+  }
+
+  private htmlifyString(text: string): string { 
+    const tokens = text.split('\n');
+    var htmledTxt = '';
+    for (var i = 0; i < tokens.length; i++) {
+      htmledTxt += tokens[i] + ' <br> '
+    }
+    return htmledTxt;
+  }
+
+  private sendMail(mail: Mail): void {
+    this.mailService.sendMail(mail).subscribe(
+      response => {
+        return Boolean(response);
+      }, 
+      err => this.appComponent.navigateParams("/502", this.appComponent.locale, "", ""));
+  }
+
+
 
 
 
