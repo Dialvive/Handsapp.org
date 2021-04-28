@@ -60,7 +60,7 @@ export class WordsComponent implements OnInit {
     
     switch(langAux) {
       case 0:{
-        this.categories.sort(function(a:any, b:any){
+        this.categories?.sort(function(a:any, b:any){
           if(a.name_de < b.name_de) { return -1; }
           if(a.name_de > b.name_de) { return 1; }
           return 0;
@@ -69,7 +69,7 @@ export class WordsComponent implements OnInit {
         break;
       }
       case 1:{    
-        this.categories.sort(function(a:any, b:any){
+        this.categories?.sort(function(a:any, b:any){
           if(a.name_es < b.name_es) { return -1; }
           if(a.name_es > b.name_es) { return 1; }
           return 0;
@@ -78,7 +78,7 @@ export class WordsComponent implements OnInit {
         break;
       }
       case 2:{
-        this.categories.sort(function(a:any, b:any){
+        this.categories?.sort(function(a:any, b:any){
           if(a.name_en < b.name_en) { return -1; }
           if(a.name_en > b.name_en) { return 1; }
           return 0;
@@ -87,7 +87,7 @@ export class WordsComponent implements OnInit {
         break;
       }
       case 3:{
-        this.categories.sort(function(a:any, b:any){
+        this.categories?.sort(function(a:any, b:any){
           if(a.name_fr < b.name_fr) { return -1; }
           if(a.name_fr > b.name_fr) { return 1; }
           return 0;
@@ -96,7 +96,7 @@ export class WordsComponent implements OnInit {
         break;
       }
       case 4:{
-        this.categories.sort(function(a:any, b:any){
+        this.categories?.sort(function(a:any, b:any){
           if(a.name_it < b.name_it) { return -1; }
           if(a.name_it > b.name_it) { return 1; }
           return 0;
@@ -105,7 +105,7 @@ export class WordsComponent implements OnInit {
         break;
       }
       case 5:{
-        this.categories.sort(function(a:any, b:any){
+        this.categories?.sort(function(a:any, b:any){
           if(a.name_pt < b.name_pt) { return -1; }
           if(a.name_pt > b.name_pt) { return 1; }
           
@@ -114,7 +114,7 @@ export class WordsComponent implements OnInit {
         break; 
       }
       default: {
-        this.categories.sort(function(a:any, b:any){
+        this.categories?.sort(function(a:any, b:any){
           if(a.name_en < b.name_en) { return -1; }
           if(a.name_en > b.name_en) { return 1; }
           
@@ -135,9 +135,13 @@ export class WordsComponent implements OnInit {
   }
 
   public sortByCategory(){
-    for(var i = 0; i < this.hits.length-1 ; i++) {
-      this.hits.splice(this.categories[i].ID, 1, this.getWordsByCategory(this.categories[i].ID) );
-    }
+    try{
+      for(var i = 0; i < this.hits?.length-1 ; i++) {
+        this.hits?.splice(this.categories[i]?.ID, 1, this.getWordsByCategory(this.categories[i]?.ID) );
+      }
+    }catch(e){
+      console.log(e)
+  }
   }
 
   public getWordsByCategory(cat : number) : Word[] {
