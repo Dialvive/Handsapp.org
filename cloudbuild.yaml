@@ -3,12 +3,12 @@ steps:
   # Install node packages
   - name: 'gcr.io/cloud-builders/npm'
     args: [ 'install' ]
-    dir: '/SignLanguage'
+    dir: '/SignLanguage-Website/SignLanguage'
 
   # Build productive files
   - name: 'gcr.io/cloud-builders/npm'
     args: [ 'run', 'build', '--prod' ]
-    dir: '/SignLanguage'
+    dir: '/SignLanguage-Website/SignLanguage'
 
   # Deploy to google cloud app egnine
   - name: 'gcr.io/cloud-builders/gcloud'
