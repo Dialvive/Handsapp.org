@@ -1,0 +1,38 @@
+
+.product {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.product-img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height:auto;
+    margin-top: -12px;
+    margin-bottom: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    max-width: 150px;
+    justify-self: center;
+
+}
+
+.text-muted {
+    font-size: 12px;
+    margin-top: 16px;
+    bottom: 0;
+}
+
+.store {
+    max-width: 242px !important;
+    height: auto;
+    cursor:not-allowed;
+}
+
+
+

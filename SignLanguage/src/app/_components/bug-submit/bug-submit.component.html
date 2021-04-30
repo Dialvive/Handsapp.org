@@ -1,0 +1,254 @@
+<div class="progress">
+    <div    class="progress-bar stripes" 
+            role="progressbar" 
+            style="width: 100%" 
+            aria-valuenow="100" 
+            aria-valuemin="0" 
+            aria-valuemax="100">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-1 col-lg-2 col-xl-3"></div>
+
+    <div class="col-10 col-lg-8 col-xl-6 first-column">
+
+            <h1 class="text-center title m-4 p-4">
+                {{[ "Melden Sie einen Fehler, einen Vorschlag oder einen unangemessenen Inhalt",
+                    "Reportar error, sugerencia, o contenido inapropiado",
+                    "Report a bug, suggestion, or inappropriate content",
+                    "Signaler un bug, une suggestion ou un contenu inapproprié",
+                    "Segnala un bug, un suggerimento o un contenuto inappropriato",
+                    "Denunciar um bug, sugestão ou conteúdo impróprio"
+                ][this.appComponent.localeInt]}}
+            </h1>
+            <form #registerForm="ngForm">
+                <fieldset>
+                    <legend>
+                        {{[ "Art des Berichts",
+                        "Tipo de informe",
+                        "Type of report",
+                        "Type de rapport",
+                        "Tipo di rapporto",
+                        "Tipo de relatório"
+                    ][this.appComponent.localeInt]}}
+                    </legend>
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+                                <input  [(ngModel)]="this.inputType"
+                                        #suggestion="ngModel"
+                                        type="radio" 
+                                        name="Suggestion" 
+                                        value="Suggestion"/>
+                                    {{[ "Vorschlag",
+                                    "Sugerencia",
+                                    "Suggestion",
+                                    "Suggestion",
+                                    "Suggerimento",
+                                    "Sugestão"
+                                ][this.appComponent.localeInt]}}
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input  [(ngModel)]="this.inputType"
+                                        #error="ngModel"
+                                        type="radio" 
+                                        name="Error" 
+                                        value="Error"/>
+                                    {{[ "Error",
+                                    "Error",
+                                    "Error",
+                                    "Erreur",
+                                    "Errore",
+                                    "Erro"
+                                ][this.appComponent.localeInt]}}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend for="url">
+                        {{[ "Zugehörige URL",
+                        "URL relacionada",
+                        "Related URL",
+                        "URL connexes",
+                        "URL relativo",
+                        "URL relacionado"
+                    ][this.appComponent.localeInt]}}
+                    </legend>
+                    <div class="form-group">
+                        <input  [(ngModel)]="this.inputURL"
+                                #url="ngModel"
+                                id="url"
+                                type="text" 
+                                name="url" 
+                                class="form-control" 
+                                [attr.disabled]=
+                                    "this.hasParamUrl ?
+                                    '' : null"
+                                required/>
+                    </div>
+                    <div    *ngIf="url.invalid && (url.dirty || url.touched)"
+                            class="alert alert-danger">
+                            {{[ "Bitte geben Sie die URL zu melden",
+                            "Por favor, escriba la dirección URL a reportar",
+                            "Please type the URL to be reported",
+                            "S'il vous plaît taper l'URL à signaler",
+                            "Si prega di digitare l'URL da segnalare",
+                            "Por favor escreva o URL para ser relatado"
+                        ][this.appComponent.localeInt]}}
+                    </div>
+                </fieldset>
+
+
+                <fieldset>
+                    <legend for="descripcion">                            
+                        {{[ "Beschreibung",
+                        "Descripción",
+                        "Description",
+                        "Description",
+                        "Descrizione",
+                        "Descrição"
+                    ][this.appComponent.localeInt]}}</legend>
+                    <div class="form-group">
+                        <textarea   [(ngModel)]="this.inputDescription"
+                                    #description="ngModel"
+                                    id="descripcion" 
+                                    name="descripcion" 
+                                    class="form-control" 
+                                    oninput=
+                                        "this.style.height = '';
+                                        this.style.height = this.scrollHeight + 'px'"
+                                    required>
+                        </textarea>
+                    </div>
+                    <div    *ngIf="description.invalid && (description.dirty || description.touched)"
+                            class="alert alert-danger">
+                            {{[ "Bitte beschreiben Sie den Vorschlag oder Fehler",
+                            "Por favor describa la sugerencia o error",
+                            "Please describe the suggestion or error",
+                            "S'il vous plaît décrire la suggestion ou une erreur",
+                            "Descrivi il suggerimento o l'errore",
+                            "Por favor, descreva a sugestão ou erro"
+                        ][this.appComponent.localeInt]}}
+                    </div>
+                </fieldset>
+
+                <fieldset *ngIf="this.inputType == 'Error'">
+                    <legend for="navData">
+                        {{[ "Technische Details (Automatische Erfassung)",
+                        "Detalles técnicos (recopilación automática)",
+                        "Technical details (Automatic gathering)",
+                        "Détails techniques (Collecte automatique)",
+                        "Dettagli tecnici (raccolta automatica)",
+                        "As características técnicas (reunião automática)"
+                    ][this.appComponent.localeInt]}}
+                    </legend>
+                    <div class="form-group">
+                        <textarea   [(ngModel)]="this.inputNavData"
+                                    #navData="ngModel"
+                                    id="navData" 
+                                    name="navData" 
+                                    class="form-control" 
+                                    disabled>
+                        </textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input [(ngModel)]="this.inputResponse"
+                                        #response="ngModel"
+                                        type="checkbox"
+                                        name="product"
+                                        value="agree"/>
+                                {{[ "Ich möchte eine E-Mail-Update empfangen",
+                                "Quiero recibir una alerta por correo electrónico",
+                                "I want to recieve an email update",
+                                "Je veux recevoir une mise à jour e-mail",
+                                "Voglio ricevere via email",
+                                "Quero receber uma atualização de e-mail"
+                            ][this.appComponent.localeInt]}}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset *ngIf="this.inputResponse">
+                    <legend for="url">E-mail</legend>
+                    <div class="form-group">
+                        <input  [(ngModel)]="this.inputMail"
+                                #mail="ngModel"
+                                id="url"
+                                type="email"
+                                name="url"
+                                class="form-control"
+                                required/>
+                    </div>
+                    <div    *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+                            class="alert alert-danger">
+                            {{[ "Bitte geben Sie Ihre E-Mail",
+                            "Por favor, introduzca su dirección de e-mail",
+                            "Please type your e-mail",
+                            "S'il vous plaît saisir votre e-mail",
+                            "Si prega di inserire la tua e-mail",
+                            "Por favor, digite seu e-mail"
+                        ][this.appComponent.localeInt]}}
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input  [(ngModel)]="this.inputAgree"
+                                        #agree="ngModel"
+                                        type="checkbox"
+                                        name="agree"
+                                        value="agree"
+                                        required/>
+                                        {{[ "Ich habe die Datenschutzerklärung gelesen und stimme den vorherigen Daten senden",
+                                        "He leído la política de privacidad, y estoy de acuerdo en enviar los datos anteriores",
+                                        "I have read the privacy policy, and I agree to send the previous data",
+                                        "J'ai lu la politique de confidentialité, et je suis d'accord pour envoyer les données précédentes",
+                                        "Ho letto l'informativa sulla privacy, e sono d'accordo per inviare i dati precedenti",
+                                        "Tenho ler a política de privacidade, e eu concordo para enviar os dados anteriores"
+                                    ][this.appComponent.localeInt]}}
+                            </label>
+                        </div>
+                    </div>
+                    <div    *ngIf="agree.invalid && (agree.dirty || agree.touched)"
+                            class="alert alert-danger">
+                            {{[ "Wir sind nicht die Informationen ohne Ihre Genehmigung zur Verarbeitung gehen, lesen Sie bitte die Datenschutzerklärung und das Kontrollkästchen markieren, wenn Sie mit den Daten stimmen wir sammeln und wie wir es tun.",
+                            "No vamos a procesar la información sin su autorización, por favor lea la política de privacidad y marque la casilla de verificación si está de acuerdo con los datos que recopilamos y cómo lo hacemos.",
+                            "We are not going to process the information without your authorization, please read the privacy policy and mark the checkbox if you agree with the data we collect and how we do it.",
+                            "Nous n'allons traiter l'information sans votre autorisation, s'il vous plaît lire la politique de confidentialité et cochez la case si vous êtes d'accord avec les données que nous recueillons et comment nous le faisons.",
+                            "Non abbiamo intenzione di elaborare le informazioni senza la vostra autorizzazione, si prega di leggere l'informativa sulla privacy e contrassegnare la casella se siete d'accordo con i dati che raccogliamo e come lo facciamo.",
+                            "Nós não estamos indo para processar a informação sem a sua autorização, por favor leia a política de privacidade e marque a caixa de seleção se você concorda com os dados que coletamos e como o fazemos."
+                        ][this.appComponent.localeInt]}}
+                    </div>
+                </fieldset>
+
+                <button class="btn btn-secondary"
+                        type="submit"
+                        value="Submit"
+                        [disabled] = "!registerForm.form.valid"
+                        (click)="register()">
+                    {{[ "Bericht senden",
+                    "Enviar reporte",
+                    "Send report",
+                    "Envoyer un rapport",
+                    "Spedisci il rapporto",
+                    "Enviar relatório"
+                    ][this.appComponent.localeInt]}}
+                </button>
+            </form>
+        </div>
+
+    <div class="col-1 col-lg-2 col-xl-3"></div>
+</div>

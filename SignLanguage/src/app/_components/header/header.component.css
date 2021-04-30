@@ -1,11 +1,18 @@
 /* HEADER ######################################################## */
 
+.logo-HandsApp {
+    height: 60px;
+    margin: 0;
+    padding: 0;
+}
+
 .header-navbar {
     background-color: var(--primary);
     max-width: 100%;
     top: 0px;
     left: 0px;
     right: 0px;
+    border-bottom: 2px solid var(--carbon);
 }
 
 .nav-link {
@@ -15,6 +22,11 @@
     margin-bottom: 7px;
     font-size: 21px;
     font-family: var(--font-family-sans-serif);
+    -webkit-user-select: none; 
+    -moz-user-select: none;     
+    -ms-user-select: none;     
+    -o-user-select: none;
+    user-select: none;
 }
 
 .header-list {
@@ -43,6 +55,7 @@
 }
 
 .mini-searchbar {
+    transition: 0.25s;
     margin-top: 7px;
     margin-bottom: 7px;
     margin-left: 0%;
@@ -59,6 +72,21 @@
     border-radius: 2rem;
     border-width: 2px !important;
     border-color: var(--cream-dark) !important;
+    box-shadow: 0 0 0 var(--cream);
+}
+
+.sbwconstraint {
+    max-width: 325px;
+}
+
+.mini-searchbar:hover {
+    transition: 0.25s;
+    box-shadow: 0 0 12px var(--cream);
+}
+
+.mini-searchbar:focus-within {
+    transition: 0.25s;
+    box-shadow: 0 0 12px var(--cream);
 }
 
 .header-search-i {
@@ -83,6 +111,7 @@
     background-color: var(--primary) !important;
     color: #fff !important;
     border-radius: 2rem;
+    justify-content: center;
 }
 
 .header-search-btn:hover {
@@ -96,6 +125,8 @@
     outline-width: 0px;
     width: 120%;
     background-color: transparent;
+    outline: none;
+
 }
 
 .header-reset-btn {
@@ -107,9 +138,17 @@
     text-align: center;
     width: 30px;
     height: 30px;
-    background-color: var(--cream-dark) !important;
+    transition: 0.25s;
+    background-color: var(--cream);
+    border: 2px solid var(--cream);
     border-radius: 2rem;
     outline: var(--cream);
+    justify-content: center;
+}
+
+.header-reset-btn:hover {
+    transition: 0.25s;
+    background-color: var(--cream-dark)
 }
 
 .header-reset-i {

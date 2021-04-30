@@ -31,18 +31,47 @@ footer {
     padding-top: 32px;
     padding-bottom: 32px;
     text-shadow: 0 0 5px var(--carbon-dark);
+    -webkit-user-select: none; 
+    -moz-user-select: none;     
+    -ms-user-select: none;     
+    -o-user-select: none;
+    user-select: none;
 }
 
 .footer-col {
     display: block;
     text-align: center;
     justify-content: center;
+    height: 100%;
 }
 
 .footer-header {
     margin-bottom: 0px;
+    user-select: none;
+}
+
+.footer-ul {
+    list-style: none;
+    user-select: none;
+    text-align: center;
+    max-width: 100% !important;
 }
 
 .footer-select {
-    margin-bottom: 16px;
+    margin-top: 16.18px;
+    margin-bottom: 46.18px;
+    height: 100%;
+}
+
+.footer-a {
+    color: var(--cream-dark)
+}
+
+.footer-a:hover {
+    color: var(--cream)
+}
+
+.text-muted {
+    color: var(--cream-dark) !important;
+    font-weight: 400;
 }

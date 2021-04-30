@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +38,15 @@ import { SuperUserHomeComponent } from './_components/super-user-home/super-user
 import { EditorHomeComponent } from './_components/editor-home/editor-home.component';
 import { AdvertisementsComponent } from './_components/advertisements/advertisements.component';
 import { WordsComponent } from './_components/words/words.component';
+import { AboutUsComponent } from './_components/about-us/about-us.component';
+import { ProductsComponent } from './_components/products/products.component';
+import { TermsComponent } from './_components/terms/terms.component';
+import { PrivacyComponent } from './_components/privacy/privacy.component';
+import { ProximamenteComponent } from './_components/proximamente/proximamente.component';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
+import { DonationsComponent } from './_components/donations/donations.component';
+import { ThirdPartiesComponent } from './_components/third-parties/third-parties.component';
+import { BugSubmitComponent } from './_components/bug-submit/bug-submit.component';
 
 @NgModule({
   declarations: [
@@ -69,11 +81,24 @@ import { WordsComponent } from './_components/words/words.component';
     SuperUserHomeComponent,
     EditorHomeComponent,
     AdvertisementsComponent,
-    WordsComponent
+    WordsComponent,
+    AboutUsComponent,
+    ProductsComponent,
+    TermsComponent,
+    PrivacyComponent,
+    ProximamenteComponent,
+    NotFoundComponent,
+    DonationsComponent,
+    ThirdPartiesComponent,
+    BugSubmitComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

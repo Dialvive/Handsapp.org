@@ -24,10 +24,12 @@
                             "src/robots.txt",
                             "src/sitemap.xml",
                             "src/site.webmanifest",
+                            "src/assets/svg/HandsApp.svg",
                             "src/assets/svg/memphis_dark.svg",
                             "src/assets/svg/logo.svg",
                             "src/assets/svg/safari-pinned-tab.svg",
-                            "src/assets/img/memphis_dark.png",
+                            "src/assets/img/HandsApp.png",
+                            "src/assets/img/love-hands.jpg",
                             "src/assets/img/logo.png",
                             "src/assets/img/300x600.png",
                             "src/assets/img/320x100.png",
@@ -41,31 +43,53 @@
                             "src/assets/img/mstile-310x150.png",
                             "src/assets/img/mstile-310x310.png",
                             "src/assets/img/loader.gif",
-                            "src/assets/img/static.gif"
+                            "src/assets/img/static.gif",
+                            "src/assets/img/hatdog.png",
+                            "src/assets/img/curiousdog.png",
+                            "src/assets/img/lawyer.png",
+                            "src/assets/img/privacydog.png",
+                            "src/assets/img/curiousbeagle.png",
+                            "src/assets/img/appstore_de.png",
+                            "src/assets/img/appstore_es.png",
+                            "src/assets/img/appstore_en.png",
+                            "src/assets/img/appstore_fr.png",
+                            "src/assets/img/appstore_it.png",
+                            "src/assets/img/appstore_pt.png",
+                            "src/assets/img/googleplay_de.png",
+                            "src/assets/img/googleplay_es.png",
+                            "src/assets/img/googleplay_en.png",
+                            "src/assets/img/googleplay_fr.png",
+                            "src/assets/img/googleplay_it.png",
+                            "src/assets/img/googleplay_pt.png",
+                            "src/assets/img/Diego.jpg",
+                            "src/assets/img/Marco.jpg",
+                            "src/assets/img/terceros/manosqueescuchan.png"
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.css"
                         ],
                         "scripts": [
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js"
+                            "node_modules/bootstrap/dist/js/bootstrap.js"
                         ]
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.prod.ts"
-                            }],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "budgets": [{
+                            "budgets": [
+                                {
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
