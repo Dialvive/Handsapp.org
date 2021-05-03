@@ -7,7 +7,7 @@ steps:
 
   # Build productive files
   - name: 'gcr.io/cloud-builders/npm'
-    args: [ 'run', 'build', '--prod' ]
+    args: ['build', '--prod' ]
     dir: 'SignLanguage'
 
   # Deploy to google cloud app egnine
