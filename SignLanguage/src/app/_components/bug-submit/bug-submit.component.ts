@@ -22,6 +22,7 @@ export class BugSubmitComponent implements OnInit {
   public inputAgree: boolean = false;
   public inputResponse: boolean = false;
   public inputMail: string = '';
+  private mail: Mail | null = null;
 
 
   constructor(
@@ -86,9 +87,18 @@ export class BugSubmitComponent implements OnInit {
       this.inputMail
     var subject = this.inputType + " " + strDate;
     mail = new Mail(subject, this.inputMail, body);
-    this.mailService.sendMail(mail);
-
+    this.sendMail(mail);
   }
+
+  private sendMail(mail: Mail): void {
+    this.mailService.sendMail(mail).subscribe(
+      response => {
+        return Boolean(response);
+      }, 
+      err => this.appComponent.navigateParams("/502", this.appComponent.locale, "", ""));
+  }
+
+
 
 
 
