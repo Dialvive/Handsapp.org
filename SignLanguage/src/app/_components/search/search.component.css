@@ -52,22 +52,21 @@
 }
 
 .search-btn {    
-    display: inline-block;
-    align-self: center;
-    justify-self: center;
-    align-content: center;
-    justify-content: center;
-    margin: auto;
-    padding: auto;
+    margin-top: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
     height: 36px;
+    /*width: fit-content;*/
+    min-width: 250 ;
     background-color: #fff;
-    border: 2px solid var(--cream-dark);
     border-radius: 2rem;
     font-size: 16px;
     font-weight: 600;
-    color: var(--carbon);
-    transition: 0.25s;
-    box-shadow: 0 0 0 var(--cream-dark);
+    color: var(--carbon-dark);
+    border-width: 2px !important;
+    border-color: var(--cream-dark) !important;
+    -webkit-animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .search-btn:hover {
