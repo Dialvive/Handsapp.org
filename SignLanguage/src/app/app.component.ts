@@ -21,7 +21,7 @@ export class AppComponent {
     public route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private Location:Location
+    public Location:Location
     ) { }
 
   //Gets locale through params, or infers it using navigator or IP address.

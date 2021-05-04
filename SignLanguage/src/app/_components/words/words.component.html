@@ -23,7 +23,7 @@
                                     </button>
                                 </ng-template>
                             </h2>
-                            <div [attr.id]="'collapseOne' + i" class="accordion-collapse collapse"  data-bs-parent="'words' + i">
+                            <div [attr.id]="'collapseOne' + i" class="accordion-collapse collapse" >
                                 <div class="accordion-body">
                                     <ol class="row grid-container" >
                                         <ng-container *ngIf = "this.hits[cat.ID].length != 0 ; else elseBlock" >

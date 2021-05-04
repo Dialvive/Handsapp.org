@@ -39,7 +39,6 @@ export class WordComponent implements OnInit {
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
   public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible" ,"Translation not available","Traduction non disponible","Traduzione non disponibile","Tradução não disponível"]
 
-
   constructor(
     private wordService: WordService,
     private wordSignService: WordSignService,
@@ -70,7 +69,6 @@ export class WordComponent implements OnInit {
   private getIdTxt(): void {
     this.wordTXT = this.route.snapshot.queryParamMap.get('txt');
     this.wordID =  this.route.snapshot.queryParamMap.get('id');
-
     if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '' ) {
       this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT);
     } else if (this.wordTXT != null && this.wordID == null) {

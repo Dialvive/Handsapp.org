@@ -165,7 +165,7 @@
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input [(ngModel)]="this.inputResponse"
+                                <input id = "inputResponse" [(ngModel)]="this.inputResponse"
                                         #response="ngModel"
                                         type="checkbox"
                                         name="product"
@@ -189,8 +189,9 @@
                                 #mail="ngModel"
                                 id="url"
                                 type="email"
-                                name="url"
-                                class="form-control"/>
+                                name="mail"
+                                class="form-control"
+                                required/>
                     </div>
                     <div    *ngIf="mail.invalid && (mail.dirty || mail.touched)"
                             class="alert alert-danger">
