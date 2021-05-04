@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Mail } from 'src/app/_models/mail.module';
+import { Mail } from 'src/app/_models/mail';
 import { Observable } from 'rxjs';
 
 const URI: string = "https://mailthis.to/haikode";

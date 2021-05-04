@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
-import { Mail } from 'src/app/_models/mail.module';
+import { Mail } from 'src/app/_models/mail';
 import { MailService } from 'src/app/_services/mail/mail.service';
 
 @Component({
