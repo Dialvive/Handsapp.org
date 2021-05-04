@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright Tecnologías Haikode S.A.S. de C.V., all rights reserved. -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="250mm"
+   height="70mm"
+   viewBox="0 0 250 70"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="HandsApp.svg">
+  <defs
+     id="defs2">
+    <rect
+       x="279.55999"
+       y="-16.966757"
+       width="19.060298"
+       height="20.165574"
+       id="rect862" />
+    <rect
+       x="18.948317"
+       y="10.579435"
+       width="241.58165"
+       height="69.823327"
+       id="rect835" />
+    <rect
+       x="18.948317"
+       y="10.579435"
+       width="241.58165"
+       height="69.823327"
+       id="rect842" />
+    <rect
+       x="18.948317"
+       y="10.579435"
+       width="241.58165"
+       height="69.823327"
+       id="rect850" />
+    <rect
+       x="18.948317"
+       y="10.579435"
+       width="241.58165"
+       height="69.823327"
+       id="rect858" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="241.67119"
+     inkscape:cy="352.80385"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="mm"
+     inkscape:snap-text-baseline="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1024"
+     inkscape:window-x="0"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       id="text856"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect858);fill:#ffffff;fill-opacity:1;stroke:none;"
+       transform="matrix(1.0642515,0,0,1.0642515,-13.620649,-11.671768)"><tspan
+         x="18.949219"
+         y="57.570077"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50.8px;font-family:CantoraOne;-inkscape-font-specification:'CantoraOne, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1">HandsApp</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text860"
+       style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:10.58333333px;white-space:pre;shape-inside:url(#rect862);" />
+  </g>
+</svg>
