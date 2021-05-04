@@ -85,7 +85,8 @@
                                 id="url"
                                 type="text" 
                                 name="url" 
-                                class="form-control" 
+                                class="form-control"
+                                maxlength="255"
                                 [attr.disabled]=
                                     "this.hasParamUrl ?
                                     '' : null"
@@ -119,6 +120,7 @@
                                     id="descripcion" 
                                     name="descripcion" 
                                     class="form-control" 
+                                    maxlength="1024"
                                     oninput=
                                         "this.style.height = '';
                                         this.style.height = this.scrollHeight + 'px'"
@@ -153,6 +155,7 @@
                                     id="navData" 
                                     name="navData" 
                                     class="form-control" 
+                                    maxlength="255"
                                     disabled>
                         </textarea>
                     </div>
@@ -162,7 +165,7 @@
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input [(ngModel)]="this.inputResponse"
+                                <input id = "inputResponse" [(ngModel)]="this.inputResponse"
                                         #response="ngModel"
                                         type="checkbox"
                                         name="product"
@@ -179,14 +182,14 @@
                     </div>
                 </fieldset>
 
-                <fieldset *ngIf="this.inputResponse">
+                <fieldset [attr.hidden]="!this.inputResponse ? '' : null">
                     <legend for="url">E-mail</legend>
                     <div class="form-group">
                         <input  [(ngModel)]="this.inputMail"
                                 #mail="ngModel"
                                 id="url"
                                 type="email"
-                                name="url"
+                                name="mail"
                                 class="form-control"
                                 required/>
                     </div>
