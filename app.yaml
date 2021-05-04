@@ -1,0 +1,57 @@
+runtime: nodejs10
+
+env_variables:
+  environment: "--prod"
+
+handlers:
+
+- url: /
+  secure: always
+  static_files: SignLanguage/dist/SignLanguage/index.html
+  upload: SignLanguage/dist/SignLanguage/dist/.*
+
+- url: /(.*\.js)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: SignLanguage/dist/SignLanguage/\1
+  upload: SignLanguage/dist/SignLanguage/.*\.js
+
+- url: /(.*\.css)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: SignLanguage/dist/SignLanguage/\1
+  mime_type: text/css
+  upload: SignLanguage/dist/SignLanguage/.*\.css
+
+- url: /(.*\.png)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: SignLanguage/dist/SignLanguage/\1
+  mime_type: image/png
+  upload: SignLanguage/dist/SignLanguage/.*\.png
+
+- url: /(.*\.jpg)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: SignLanguage/dist/SignLanguage/\1
+  mime_type: image/jpeg
+  upload: SignLanguage/dist/SignLanguage/.*\.jpg
+
+- url: /(.*\.gif)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: SignLanguage/dist/SignLanguage/\1
+  mime_type: image/gif
+  upload: SignLanguage/dist/SignLanguage/.*\.gif
+
+- url: /(.*\.svg)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: SignLanguage/dist/SignLanguage/\1
+  mime_type: image/svg+xml
+  upload: SignLanguage/dist/SignLanguage/.*\.svg
+
+- url: /.*
+  secure: always
+  static_files: SignLanguage/dist/SignLanguage/index.html
+  upload: SignLanguage/dist/SignLanguage/.*
