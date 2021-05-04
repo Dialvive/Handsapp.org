@@ -1,16 +1,11 @@
-//Search represents a search
 export class Mail {
-    heading:    string;
-    content:    string;
+  _subject: string | undefined;
+  _replyto: string | undefined;
+  body: string | undefined;
 
-    constructor (heading: string, content: string) {
-        this.heading = heading;
-        this.content = content;
-    }
-
-    public setHeading (heading: string):void { this.heading = heading; }
-    public setContent (content: string ) { this.content = content; }
-    public getHeading (): string { return this.heading; }
-    public getContent (): string { return this.content; }
-
+  constructor(_subject: string, _replyto: string, body: string) {
+    this._subject = _subject;
+    this._replyto = _replyto;
+    this.body = body;
+  }
 }
