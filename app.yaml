@@ -55,3 +55,4 @@ handlers:
   secure: always
   static_files: SignLanguage/dist/SignLanguage/index.html
   upload: SignLanguage/dist/SignLanguage/.*
+  
