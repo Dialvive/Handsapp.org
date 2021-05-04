@@ -146,10 +146,10 @@ export class WordComponent implements OnInit {
     this.vid = document.getElementById('sign-video');
     //this.vid.playbackRate = 1;
     if(this.vid.paused) {
-      this.icon.nativeElement.className = "bi bi-pause-fill";
+      this.icon.nativeElement.className = "video-bi bi bi-pause-fill";
       this.vid.play();
     } else {
-      this.icon.nativeElement.className = "bi bi-play-fill";
+      this.icon.nativeElement.className = "video-bi bi bi-play-fill";
       this.vid.pause();
     }
   }
