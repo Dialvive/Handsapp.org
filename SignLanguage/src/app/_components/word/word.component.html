@@ -4,7 +4,7 @@
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
-        <ng-container *ngIf="ready">
+        
             <div class="d-flex justify-content-between align-items-start">
                 <h1>
                     {{word.getText()[this.appComponent.localeInt]}}
@@ -24,10 +24,9 @@
             <div oncontextmenu="return false" class="d-flex justify-content-center video-container" >
                 <div class = "mycarousel">
                     <video id="sign-video" loop  oncanplay="this.play()" onloadedmetadata="this.muted = true">
-                        <ng-container *ngIf = "videos[0] != null" >
-                            <source   src={{videos[0]}}  type="video/mp4" >
-                            <p>Error: Your browser doesn't support HTML5 video. 
-                        </ng-container>
+                        
+                            
+                            
                     </video > 
                     <div class="control" >
                         <ng-container *ngIf = "videos.length > 1">
@@ -140,7 +139,7 @@
                 </div>
 
             </div>
-        </ng-container>
+        
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">

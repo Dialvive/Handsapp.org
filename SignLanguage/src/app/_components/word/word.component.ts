@@ -12,14 +12,14 @@ import { WordCategoryService } from 'src/app/_services/word-category/word-catego
 @Component({
   selector: 'app-word',
   templateUrl: './word.component.html',
-  styleUrls: ['./word.component.css']
+  styleUrls: ['./word.component.css'],
 })
 
 export class WordComponent implements OnInit {
 
   public word: Observable<Word> | any;
   public videos: String[] | any;
-   
+
   public wordID: string | any;
   public wordTXT: string | any;
   public ready: boolean = false;
@@ -27,37 +27,43 @@ export class WordComponent implements OnInit {
   public categories: WordCategory[] | any;
   public vidIndex: number = 0;
 
-  vid: any | HTMLVideoElement 
+  vid: any | HTMLVideoElement
   @ViewChild("icon") icon: any;
 
   public strDef: string[] = ["Definition", "Definición", "Definition", "Définition", "Definizione", "Definição"];
-  public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication","Spiegazione", "Explicação"];
+  public strExp: string[] = ["Erläuterung", "Explicación", "Explanation", "Explication", "Spiegazione", "Explicação"];
   public strDet: string[] = ["Einzelheiten", "Detalles", "Details", "Détails", "Dettagli", "Detalhes"];
   public strFot: string[] = ["Ähnliche fotos", "Fotografías relacionadas", "Related photos", "Photos connexes", "Foto correlate", "Fotos relacionadas"];
   public strCat: string[] = ["Kategorie", "Categoría", "Category", "Catégorie", "Categoria", "Categoria"];
   public strLen: string[] = ["Zeichensprache", "Lengua de señas", "Sign Language", "Langage des signes", "Linguaggio dei segni", "Linguagem de sinais"];
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
-  public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible" ,"Translation not available","Traduction non disponible","Traduzione non disponibile","Tradução não disponível"]
+  public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible", "Translation not available", "Traduction non disponible", "Traduzione non disponibile", "Tradução não disponível"]
 
   constructor(
     private wordService: WordService,
     private wordSignService: WordSignService,
     public route: ActivatedRoute,
     public appComponent: AppComponent,
-    public wordCategoryService : WordCategoryService,
-  ) { }
+    public wordCategoryService: WordCategoryService,
+    private router: Router,
+  ) {
 
-  ngOnInit(): void {
-    this.getIdTxt();
-    this.getWord();
+    //const nav = this.router.getCurrentNavigation();
+    //this.videos = nav?.extras?.state?.value;
+    //console.log("VIDEOS[0] = " + this.videos[0])
     this.createVideoURLs();
-    this.getWordCategories();
-    //while(this.vid == null) {
+  }
+
+  ngOnInit() {
     
+    this.getWordCategories();
+
+    //while(this.vid == null) {
+
     //}
     //this.vid = document.getElementById("sign-video");
     //this.setPlay()
-  
+
     //TODO: Add a way to trigger the video loading after everything has been loaded.
     //TODO: Create event listener for videos or carousel to load only the video on focus on the carousel.
     //TODO: What if txt doesn't match current locale txt?
@@ -68,8 +74,8 @@ export class WordComponent implements OnInit {
   //TODO: manage incorrect id's
   private getIdTxt(): void {
     this.wordTXT = this.route.snapshot.queryParamMap.get('txt');
-    this.wordID =  this.route.snapshot.queryParamMap.get('id');
-    if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '' ) {
+    this.wordID = this.route.snapshot.queryParamMap.get('id');
+    if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '') {
       this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT);
     } else if (this.wordTXT != null && this.wordID == null) {
       this.appComponent.navigateParams("/search", this.appComponent.locale, this.wordID, this.wordTXT);
@@ -81,27 +87,30 @@ export class WordComponent implements OnInit {
     this.wordService.getWord(+this.wordID).subscribe(
       response => {
         this.word = new Word(response);
-      }, 
+      },
       err => this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT));
   }
 
   //Gets all the wordSigns of a word and instanciates the array of video URLs globally.
   //TODO: Create count versions route in API. Fix SignLang in URL 
   private createVideoURLs(): void {
+    this.getIdTxt();
+    this.getWord();
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
         this.videos = new Array(response.length);
-        
+
         for (let i = 0; i < response.length; i++) {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
-          
+
         }
-        
-        this.ready = true;  
-        console.log(this.appComponent.locale[1]);  
-      }, 
+
+        this.ready = true;
+        const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
+        vidSrc.src = this.videos[0];
+      },
       err => console.error(err));
   }
 
@@ -110,19 +119,18 @@ export class WordComponent implements OnInit {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
         this.categories = response;
-      }, 
+      },
       err => console.log(err));
-      console.log(this.categories)
   }
 
-  public findCategoryByID(lang:number) : string{
+  public findCategoryByID(lang: number): string {
     var id = this.word.word_category_ID;
-    var catAux : WordCategory = this.categories.find((i : WordCategory) => i.ID == id); 
-    var aux = this.getCategoryByIdiom(catAux,lang);
+    var catAux: WordCategory = this.categories.find((wc: WordCategory) => wc.ID == id);
+    var aux = this.getCategoryByIdiom(catAux, lang);
     return aux;
   }
 
-  public getCategoryByIdiom(cat:WordCategory, id:number) {
+  public getCategoryByIdiom(cat: WordCategory, id: number) {
     var auxCat = new WordCategory(cat);
     return auxCat.getNameByIdiom(id);
   }
@@ -145,7 +153,7 @@ export class WordComponent implements OnInit {
   setPlay() {
     this.vid = document.getElementById('sign-video');
     //this.vid.playbackRate = 1;
-    if(this.vid.paused) {
+    if (this.vid.paused) {
       this.icon.nativeElement.className = "video-bi bi bi-pause-fill";
       this.vid.play();
     } else {
@@ -155,7 +163,7 @@ export class WordComponent implements OnInit {
   }
 
 
-  setRabbit(){
+  setRabbit() {
     this.vid = document.getElementById('sign-video');
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 1;
@@ -166,7 +174,7 @@ export class WordComponent implements OnInit {
     }
   }
 
-  setTurtle(){
+  setTurtle() {
     this.vid = document.getElementById('sign-video');
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 0.5;
@@ -177,7 +185,7 @@ export class WordComponent implements OnInit {
     }
   }
 
-  setFox(){
+  setFox() {
     this.vid = document.getElementById('sign-video');
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 1.5;
@@ -189,7 +197,7 @@ export class WordComponent implements OnInit {
   }
 
 
-  videoUrl(url : string, vidPos: number){
+  videoUrl(url: string, vidPos: number) {
     this.vid = document.getElementById('sign-video');
     this.vid.src = url;
     this.vidIndex = vidPos;
@@ -197,23 +205,22 @@ export class WordComponent implements OnInit {
     console.log(url);
   }
 
-  nextVideo(){
+  nextVideo() {
     //console.log("video index = " + this.vidIndex + ", videos.length = " + this.videos.length);
-    if (this.vidIndex != this.videos.length-1) {
+    if (this.vidIndex != this.videos.length - 1) {
       this.vid = document.getElementById('sign-video');
-      this.vid.src = this.videos[++this.vidIndex ];
+      this.vid.src = this.videos[++this.vidIndex];
       console.log(this.vidIndex);
     }
   }
 
-  previousVideo(){
+  previousVideo() {
     if (this.vidIndex != 0) {
       this.vid = document.getElementById('sign-video');
-      this.vid.src = this.videos[--this.vidIndex ];
+      this.vid.src = this.videos[--this.vidIndex];
       console.log(this.vidIndex);
     }
   }
-  
 }
 
 
