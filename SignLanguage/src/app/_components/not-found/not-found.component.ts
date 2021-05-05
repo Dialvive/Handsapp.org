@@ -8,6 +8,8 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class NotFoundComponent implements OnInit {
 
+  public strTitle: string[] = [ "Fehler 404", "Error 404", "Error 404", "Erreur 404", "Errore 404", "Erro 404"];
+
   constructor(
     public appComponent: AppComponent,
   ) { }

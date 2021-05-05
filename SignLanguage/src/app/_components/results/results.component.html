@@ -1,27 +1,35 @@
-<app-ad-banner></app-ad-banner>
-<div class="row">
+<head>
+    <ng-container *ngIf = "this.txt">
+        <title>{{this.txt}}</title>
+    </ng-container>
+</head>
 
-    <div class="col-md-2 col-xl-2"></div>
+<body>
+    <app-ad-banner></app-ad-banner>
+    <div class="row">
 
-    <div class="col-12 col-md-8 col-xl-6 first-column">
-        <ng-container *ngIf = "this.ready && this.result">
+        <div class="col-md-2 col-xl-2"></div>
 
-            <div *ngIf = "this.result!.hits.length < 1; then noBlock"></div>
-            <div *ngIf = "this.result!.hits.length == 1; then oneBlock;"></div>
-            <div *ngIf = "this.result!.hits.length > 1; then moreBlock;"></div>
+        <div class="col-12 col-md-8 col-xl-6 first-column">
+            <ng-container *ngIf = "this.ready && this.result">
 
-        </ng-container>
+                <div *ngIf = "this.result!.hits.length < 1; then noBlock"></div>
+                <div *ngIf = "this.result!.hits.length == 1; then oneBlock;"></div>
+                <div *ngIf = "this.result!.hits.length > 1; then moreBlock;"></div>
+
+            </ng-container>
 
 
+        </div>
+
+        <div class="d-none d-xl-block col-xl-2 second-column">
+            <img class="ad-column" src="/assets/img/300x600.png" alt="">
+        </div>
+
+        <div class="col-md-2 col-xl-2"></div>
     </div>
-
-    <div class="d-none d-xl-block col-xl-2 second-column">
-        <img class="ad-column" src="/assets/img/300x600.png" alt="">
-    </div>
-
-    <div class="col-md-2 col-xl-2"></div>
-</div>
-<app-ad-banner></app-ad-banner>
+    <app-ad-banner></app-ad-banner>
+</body>
 
 <ng-template #noBlock>
     <h2 class="text-sm-center text-md-start">
@@ -79,4 +87,3 @@
         </li>
     </ol>
 </ng-template>
-
