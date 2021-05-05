@@ -4,15 +4,14 @@
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
-        <ng-container
-            *ngIf = "this.result.hits.length < 1; then noBlock">
+        <ng-container *ngIf = "this.ready && this.result">
+
+            <div *ngIf = "this.result!.hits.length < 1; then noBlock"></div>
+            <div *ngIf = "this.result!.hits.length == 1; then oneBlock;"></div>
+            <div *ngIf = "this.result!.hits.length > 1; then moreBlock;"></div>
+
         </ng-container>
-        <ng-container
-            *ngIf = "this.result.hits.length == 1; then oneBlock;">
-        </ng-container>
-        <ng-container
-        *ngIf = "this.result.hits.length > 1; then moreBlock;">
-    </ng-container>
+
 
     </div>
 
@@ -49,22 +48,22 @@
         &nbsp;  {{oneRes[this.appComponent.localeInt]}}: {{this.txt}}
     </h2>
     <ng-container 
-        *ngTemplateOutlet="results">
+        *ngTemplateOutlet="resultsT">
     </ng-container>
 </ng-template>
 
 <ng-template #moreBlock>
     <h2 class="text-sm-center text-md-start">
-        &nbsp; {{this.result.hits.length >= 50 ? "+50" : this.result.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
+        &nbsp; {{this.result!.hits.length >= 50 ? "+50" : this.result!.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
     </h2>
     <ng-container 
-        *ngTemplateOutlet="results">
+        *ngTemplateOutlet="resultsT">
     </ng-container>
 </ng-template>
 
-<ng-template #results>
+<ng-template #resultsT>
     <ol class="row grid-container" >
-        <li class="grid-item" *ngFor="let hit of result.hits; let i=index">
+        <li class="grid-item" *ngFor="let hit of this.result!.hits; let i=index">
             <a class="results-link" href="word?{{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + hit.text_es}}">
                 <div class="card results-card">
                     <div class="card-body">
