@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
   public strRemDat : string[] = ["Erinnere dich an meine Daten", "Recuerda mis datos", "Remember my data", "Souviens-toi de mes données", "Ricorda i miei dati", "Lembre-se de meus dados "];
   public strFistTime : string[] = ["Erstes Mal? Anmelden", "¿Primera vez? Registrate", "First time?", "Première fois?  S'inscrire", "Primera volta? Iscriviti", "Primeira vez? Catasto-se "];
   public strForgotPsw : string[] = ["Ich habe mein Passwort vergessen", "Olvidé mi contraseña", "I forgot my password", "J'ai oublié mon mot de passe", "Ho dimenticato la mia password", "Esqueci minha senha" ];
+  public strAria : string[] = ["Suche in ", "Buscar en ", "Search in ", "Rechercher dans ", "Cercare nelle ", "Pesquisar nas "]
+  public strAriaBtn : string[] = ["Suche", "Buscar", "Search", "Rechercher", "Cercare", "Pesquisar"]
   public input : string = "";
   txt: String;
 

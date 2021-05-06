@@ -1,97 +1,97 @@
-<div class="row">
-    <div class="col-1 col-md-2 col-xl-3"></div>
+<head>
+    <title>{{this.strTitle[this.appComponent.localeInt]}}</title>
+</head>
 
-    <div class="col-10 col-md-8 col-xl-6 first-column">
-        <div class="row row-cols-1">
-            <div class="col-12">
-                <h1 class="title">
-                    {{[ "Produkte",
-                        "Productos",
-                        "Products",
-                        "Produits",
-                        "Prodotti",
-                        "Produtos"
+<body>
+    <div class="row">
+        <div class="col-1 col-md-2 col-xl-3"></div>
+    
+        <div class="col-10 col-md-8 col-xl-6 first-column">
+            <div class="row row-cols-1">
+                <div class="col-12">
+                    <h1 class="title">
+                        {{this.strTitle[this.appComponent.localeInt]}}
+                    </h1>
+                    <p class="grt nice-p">
+                        {{[ "Arbeiten Sie in HandsApp daran, Produkte zu entwickeln, die die Kommunikation für Gehörlose ermöglichen, erleichtern und universell gestalten, indem Sie entweder Gebärdensprache unterrichten oder direkt kommunizieren.",
+                            "En HandsApp trabajamos para crear productos que permitan proveer, facilitar, y universalizar la comunicación para las personas sordas, ya sea mediante la enseñanza de Lengua de Señas, o asistiendo en la comunicación directamente.",
+                            "At HandsApp, we work to create products that will provide, facilitate and universalize communication for Deaf people, either by teaching sign language, or assisting in communicating directly.",
+                            "Chez HandsApp, nous travaillons pour créer des produits qui nous permettent de fournir, faciliter et universaliser la communication pour les personnes sourdes, soit par l'enseignement de la langue des signes, soit en aidant directement à la communication.",
+                            "In HandsApp lavoriamo per creare prodotti che ci permettano di fornire, facilitare e universalizzare la comunicazione per le persone sorde, sia attraverso l'insegnamento del linguaggio dei segni, sia assistendo direttamente nella comunicazione.",
+                            "Na HandsApp trabalhamos para criar produtos que nos permitam oferecer, facilitar e universalizar a comunicação para pessoas surdas, seja através do ensino da Língua de Sinais, seja auxiliando diretamente na comunicação."
                     ][this.appComponent.localeInt]}}
-                </h1>
-                <p class="grt nice-p">
-                    {{[ "Arbeiten Sie in HandsApp daran, Produkte zu entwickeln, die die Kommunikation für Gehörlose ermöglichen, erleichtern und universell gestalten, indem Sie entweder Gebärdensprache unterrichten oder direkt kommunizieren.",
-                        "En HandsApp trabajamos para crear productos que permitan proveer, facilitar, y universalizar la comunicación para las personas sordas, ya sea mediante la enseñanza de Lengua de Señas, o asistiendo en la comunicación directamente.",
-                        "At HandsApp, we work to create products that will provide, facilitate and universalize communication for Deaf people, either by teaching sign language, or assisting in communicating directly.",
-                        "Chez HandsApp, nous travaillons pour créer des produits qui nous permettent de fournir, faciliter et universaliser la communication pour les personnes sourdes, soit par l'enseignement de la langue des signes, soit en aidant directement à la communication.",
-                        "In HandsApp lavoriamo per creare prodotti che ci permettano di fornire, facilitare e universalizzare la comunicazione per le persone sorde, sia attraverso l'insegnamento del linguaggio dei segni, sia assistendo direttamente nella comunicazione.",
-                        "Na HandsApp trabalhamos para criar produtos que nos permitam oferecer, facilitar e universalizar a comunicação para pessoas surdas, seja através do ensino da Língua de Sinais, seja auxiliando diretamente na comunicação."
+                    </p>
+                </div>
+            </div>
+            <h1 class="h1grt">
+                {{[ "HandsApp Wörterbuch ",
+                    "Diccionario HandsApp",
+                    "HandsApp Dictionary",
+                    "Dictionnaire HandsApp",
+                    "Dizionario HandsApp",
+                    "Dicionário HandsApp"
                 ][this.appComponent.localeInt]}}
-                </p>
+            </h1>
+            <div class="d-flex row row-cols-2">
+                <div class="product col-sm-4 col-md-4">
+                    <a href="https://handsapp.org/">
+                        <img class="product-img" src="/assets/img/logo.png" alt="HandsApp.org">
+                    </a>
+                </div>
+                <div class="col-sm-8 col-md-8">
+                    <p class="grt nice-p">
+                        {{[ "Suchen Sie nach Wörtern und Phrasen in mehreren verschiedenen Gebärden- und Schriftsprachen. Überprüfen Sie ihre Definitionen, ihr Zeichen, verwandte Bilder und vieles mehr, die in Kürze verfügbar sein werden.",
+                        "Busca palabras y frases en múltiples lenguas de señas e idiomas diferentes. Consulta sus definiciones, su seña, imágenes relacionadas, y próximamente mucho más.",
+                        "Search for words and phrases in multiple different sign languages and written languages. Check their definitions, their sign, related images, and much more coming soon.",
+                        "Recherchez des mots et des phrases dans plusieurs langues des signes et langues écrites différentes. Vérifiez leurs définitions, leur signe, les images associées et bien plus encore à venir.",
+                        "Cerca parole e frasi in più lingue dei segni e lingue scritte. Controlla le loro definizioni, il loro segno, le immagini correlate e molto altro in arrivo.",
+                        "Pesquise palavras e frases em várias línguas de sinais e línguas escritas diferentes. Verifique suas definições, seus sinais, imagens relacionadas e muito mais em breve."
+                        ][this.appComponent.localeInt]}}
+                    </p>
+                </div>
             </div>
+            <h1 class="h1grt">
+                {{[ "Mobile Apps",
+                    "Aplicaciones Móviles",
+                    "Mobile Apps",
+                    "Application Mobile",
+                    "App Mobili",
+                    "Aplicativos Móveis"
+                ][this.appComponent.localeInt]}}
+            </h1>
+            <div class="d-flex row row-cols-2">
+                <div class="product col-sm-4 col-md-4">
+                    <a disabled>
+                        <img class="store product-img" src="/assets/img/googleplay_{{['de','es','en','fr','it','pt'][this.appComponent.localeInt]}}.png" alt="Google Play Store">
+                    </a>
+                    <a disabled>
+                        <img class="store product-img" src="/assets/img/appstore_{{['de','es','en','fr','it','pt'][this.appComponent.localeInt]}}.png" alt="Apple App Store">
+                    </a>
+                </div>
+    
+                <div class="team col-sm-8 col-md-8">
+                    <p class="grt nice-p">
+                        {{[ "Kommt bald. Verwenden Sie das volle Potenzial des HandsApp Wörterbuch auf Ihrem Handy oder Tablet, genießen Sie ein Format für den Alltag konzipiert, einzigartige Werkzeuge und vieles mehr.",
+                        "Próximamente. Usa todo el potencial del Diccionario HandsApp en tu celular o tablet, disfruta de un formato pensado para la vida diaria, herramientas únicas, y más.",
+                        "Coming soon. Use the full potential of the HandsApp Dictionary on your cell phone or tablet, enjoy a format designed for daily life, unique tools, and more.",
+                        "Bientôt disponible. Utilisez tout le potentiel du dictionnaire HandsApp sur votre téléphone portable ou votre tablette, profitez d'un format conçu pour la vie quotidienne, d'outils uniques et plus encore.",
+                        "Prossimamente. Utilizzare il pieno potenziale del Dizionario HandsApp sul tuo telefono cellulare o tablet, godere di un formato progettato per la vita quotidiana, strumenti unici, e altro ancora.",
+                        "Em breve. Use todo o potencial do Dicionário HandsApp em seu telefone celular ou tablet, desfrute de um formato projetado para a vida diária, ferramentas exclusivas e muito mais."
+                        ][this.appComponent.localeInt]}}
+                    </p>
+                </div>
+            </div>
+            <p class="text-center text-muted">
+                {{[ "Google Play und das Google Play-Logo sind Marken von Google LLC. App Store und das App Store-Logo sind Marken von Apple Inc.",
+                "Google Play y el logotipo de Google Play son marcas comerciales de Google LLC. App Store y el logotipo de App Store son marcas comerciales de Apple Inc.",
+                "Google Play and the Google Play logo are trademarks of Google LLC. App Store and the App Store logo are trademarks of Apple Inc.",
+                "Google Play et le logo Google Play sont des marques commerciales de Google LLC. L'App Store et le logo App Store sont des marques d'Apple Inc.",
+                "Google Play e il logo Google Play sono marchi di Google LLC. App Store e il logo App Store sono marchi di Apple Inc.",
+                "Google Play e o logotipo do Google Play são marcas registradas da Google LLC. App Store e o logotipo da App Store são marcas comerciais da Apple Inc."
+                ][this.appComponent.localeInt]}}
+            </p>
         </div>
-        <h1 class="h1grt">
-            {{[ "HandsApp Wörterbuch ",
-                "Diccionario HandsApp",
-                "HandsApp Dictionary",
-                "Dictionnaire HandsApp",
-                "Dizionario HandsApp",
-                "Dicionário HandsApp"
-            ][this.appComponent.localeInt]}}
-        </h1>
-        <div class="d-flex row row-cols-2">
-            <div class="product col-sm-4 col-md-4">
-                <a href="https://handsapp.org/">
-                    <img class="product-img" src="/assets/img/logo.png" alt="HandsApp.org">
-                </a>
-            </div>
-            <div class="col-sm-8 col-md-8">
-                <p class="grt nice-p">
-                    {{[ "Suchen Sie nach Wörtern und Phrasen in mehreren verschiedenen Gebärden- und Schriftsprachen. Überprüfen Sie ihre Definitionen, ihr Zeichen, verwandte Bilder und vieles mehr, die in Kürze verfügbar sein werden.",
-                    "Busca palabras y frases en múltiples lenguas de señas e idiomas diferentes. Consulta sus definiciones, su seña, imágenes relacionadas, y próximamente mucho más.",
-                    "Search for words and phrases in multiple different sign languages and written languages. Check their definitions, their sign, related images, and much more coming soon.",
-                    "Recherchez des mots et des phrases dans plusieurs langues des signes et langues écrites différentes. Vérifiez leurs définitions, leur signe, les images associées et bien plus encore à venir.",
-                    "Cerca parole e frasi in più lingue dei segni e lingue scritte. Controlla le loro definizioni, il loro segno, le immagini correlate e molto altro in arrivo.",
-                    "Pesquise palavras e frases em várias línguas de sinais e línguas escritas diferentes. Verifique suas definições, seus sinais, imagens relacionadas e muito mais em breve."
-                    ][this.appComponent.localeInt]}}
-                </p>
-            </div>
-        </div>
-        <h1 class="h1grt">
-            {{[ "Mobile Apps",
-                "Aplicaciones Móviles",
-                "Mobile Apps",
-                "Application Mobile",
-                "App Mobili",
-                "Aplicativos Móveis"
-            ][this.appComponent.localeInt]}}
-        </h1>
-        <div class="d-flex row row-cols-2">
-            <div class="product col-sm-4 col-md-4">
-                <a disabled>
-                    <img class="store product-img" src="/assets/img/googleplay_{{['de','es','en','fr','it','pt'][this.appComponent.localeInt]}}.png" alt="Google Play Store">
-                </a>
-                <a disabled>
-                    <img class="store product-img" src="/assets/img/appstore_{{['de','es','en','fr','it','pt'][this.appComponent.localeInt]}}.png" alt="Apple App Store">
-                </a>
-            </div>
-
-            <div class="team col-sm-8 col-md-8">
-                <p class="grt nice-p">
-                    {{[ "Kommt bald. Verwenden Sie das volle Potenzial des HandsApp Wörterbuch auf Ihrem Handy oder Tablet, genießen Sie ein Format für den Alltag konzipiert, einzigartige Werkzeuge und vieles mehr.",
-                    "Próximamente. Usa todo el potencial del Diccionario HandsApp en tu celular o tablet, disfruta de un formato pensado para la vida diaria, herramientas únicas, y más.",
-                    "Coming soon. Use the full potential of the HandsApp Dictionary on your cell phone or tablet, enjoy a format designed for daily life, unique tools, and more.",
-                    "Bientôt disponible. Utilisez tout le potentiel du dictionnaire HandsApp sur votre téléphone portable ou votre tablette, profitez d'un format conçu pour la vie quotidienne, d'outils uniques et plus encore.",
-                    "Prossimamente. Utilizzare il pieno potenziale del Dizionario HandsApp sul tuo telefono cellulare o tablet, godere di un formato progettato per la vita quotidiana, strumenti unici, e altro ancora.",
-                    "Em breve. Use todo o potencial do Dicionário HandsApp em seu telefone celular ou tablet, desfrute de um formato projetado para a vida diária, ferramentas exclusivas e muito mais."
-                    ][this.appComponent.localeInt]}}
-                </p>
-            </div>
-        </div>
-        <p class="text-center text-muted">
-            {{[ "Google Play und das Google Play-Logo sind Marken von Google LLC. App Store und das App Store-Logo sind Marken von Apple Inc.",
-            "Google Play y el logotipo de Google Play son marcas comerciales de Google LLC. App Store y el logotipo de App Store son marcas comerciales de Apple Inc.",
-            "Google Play and the Google Play logo are trademarks of Google LLC. App Store and the App Store logo are trademarks of Apple Inc.",
-            "Google Play et le logo Google Play sont des marques commerciales de Google LLC. L'App Store et le logo App Store sont des marques d'Apple Inc.",
-            "Google Play e il logo Google Play sono marchi di Google LLC. App Store e il logo App Store sono marchi di Apple Inc.",
-            "Google Play e o logotipo do Google Play são marcas registradas da Google LLC. App Store e o logotipo da App Store são marcas comerciais da Apple Inc."
-            ][this.appComponent.localeInt]}}
-        </p>
+    
+        <div class="col-1 col-md-2 col-xl-3"></div>
     </div>
-
-    <div class="col-1 col-md-2 col-xl-3"></div>
-</div>
+</body>

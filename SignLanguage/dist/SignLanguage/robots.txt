@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Dissallow: /account/
+Sitemap: http://handsapp.org/sitemap.xml

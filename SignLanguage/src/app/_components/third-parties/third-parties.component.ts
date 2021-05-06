@@ -8,7 +8,11 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class ThirdPartiesComponent implements OnInit {
 
-  constructor(public appComponent: AppComponent) { }
+  public strTitle: string[] = ["Lizenzen von Drittanbietern", "Licencias de terceros", "Third Party Licenses", "Licences tierces", "Licenze di terze parti", "Licenças de terceiros"];
+
+  constructor(
+    public appComponent: AppComponent,
+   ) { }
 
   ngOnInit(): void {
   }
