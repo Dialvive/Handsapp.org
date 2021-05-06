@@ -7,6 +7,8 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  
+  public strTitle: string[] = [ "Produkte", "Productos", "Products", "Produits", "Prodotti", "Produtos"];
 
   constructor(
     public appComponent: AppComponent,

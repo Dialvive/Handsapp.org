@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { WordSearchResult } from 'src/app/_models/search';
 import { Word } from 'src/app/_models/word';
 import { WordCategory } from 'src/app/_models/wordCategory';
@@ -21,7 +22,8 @@ export class ResultsComponent implements OnInit {
   public txt: string | any;
   public categories: string[] | any;
   public definitions: string[] | any;
-  public result: WordSearchResult | any;
+  public result: WordSearchResult | null = null;
+  public ready: boolean = false;
 
   constructor(    
     private route: ActivatedRoute,
@@ -30,47 +32,52 @@ export class ResultsComponent implements OnInit {
     private wordCategoryService: WordCategoryService,
   ) { }
 
-  ngOnInit(): void {
-    this.appComponent.getLocale();
-    this.getTxt();
-    this.getResults();
-    this.getWordCategories();
+  async ngOnInit() {
+    await this.appComponent.getLocale();
+    await this.getTxt();
+    await this.getResult();
+    await this.getWordCategories();
   }
 
     //Gets the id and txt parameters from the URL and instanciates it globally.
   // I.E. route: https://handsapp.org/word?loc=es_LSM_MX&id=1&txt=Abeja
   //TODO: manage incorrect id's
-  private getTxt(): void {
-    this.txt = this.route.snapshot.queryParamMap.get('txt');
-    //console.log("EL MONSTRUE: " + this.txt);
-    if (this.txt == null || this.txt == '' ) {
-     
-      //this.appComponent.navigateParams("/", this.appComponent.locale, "", this.txt);
+  private async getTxt(): Promise<boolean> {
+    var txt: string | null = this.route.snapshot.queryParamMap.get('txt');
+    if (txt == null || txt == '' ) {
+      //TODO: handle error
+      this.txt = "Error";
+      return false
     }
-  }
-
-  //Gets a relevance ordered array of Words from the API and instanciates it globally.
-  //TODO: get phrase results
-  private getResults(): void {
-    this.searchService.searchWords(this.txt, 50).subscribe(
-      response => {
-        this.result = new WordSearchResult(response);
-      }, 
-      err => this.appComponent.navigateParams("/404", this.appComponent.locale, "", this.txt));
+    this.txt = txt;
+    return true;
   }
 
   //Gets every word category and instanciates them globally in a 2 dimensional array
-  private getWordCategories(): void {
-    this.wordCategoryService.getWordCategories().subscribe(
+  private async getResult(): Promise<boolean> {
+    this.searchService.searchWords(this.txt, 50).subscribe(
       response => {
-        this.categories = new Array<String[]>(response.length)
-        for (let i = 0; i < response.length; i++) {
-          this.categories[i] = new WordCategory(response[i]).getNames();
-        }
+        this.result = response;
+        return true;
       }, 
       err => console.log(err));
-      console.log(this.categories)
+      return false;
   }
+
+    //Gets every word category and instanciates them globally in a 2 dimensional array
+    private async getWordCategories(): Promise<boolean> {
+      this.wordCategoryService.getWordCategories().subscribe(
+        response => {
+          this.categories = new Array<String[]>(response.length)
+          for (let i = 0; i < response.length; i++) {
+            this.categories[i] = new WordCategory(response[i]).getNames();
+          }
+          this.ready = true;
+          return true;
+        }, 
+        err => console.log(err));
+        return false;
+    }
 
   public getWordByIdiom(word : Word, id:number){
     var auxWord = new Word(word);

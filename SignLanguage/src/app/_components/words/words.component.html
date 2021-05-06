@@ -1,3 +1,9 @@
+<head>
+    <title>
+        {{this.strTitle[this.appComponent.localeInt]}}
+    </title>
+</head>
+
 <app-ad-banner></app-ad-banner>
 <div class="row">
     <div class="col-md-2 col-xl-2"></div>
@@ -5,7 +11,7 @@
         <ng-container *ngIf="ready">
             <div>{{ sortCategories(this.appComponent.localeInt) }} </div>
             <h2 class="mb-5">
-                {{titleStr[this.appComponent.localeInt] }} 
+                {{strTitle[this.appComponent.localeInt]}} 
             </h2>
             <ng-container *ngFor = "let cat of categories; let i = index">
                 <div>
