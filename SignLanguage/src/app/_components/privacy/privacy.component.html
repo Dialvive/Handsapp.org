@@ -8,6 +8,9 @@
 
         <div class="col-10 col-lg-6 first-column">
             <div class="row row-cols-1">
+                <div class="alert alert-warning" role="alert" *ngIf="this.appComponent.localeInt != 1">
+                    <i class="bi bi-exclamation-circle"></i> &nbsp; {{this.strAlert[this.appComponent.localeInt]}}
+                </div>
                 <h1 class="text-center title m-4 p-4">
                     {{this.strTitle[this.appComponent.localeInt]}}
                 </h1>
