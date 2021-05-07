@@ -72,7 +72,7 @@
 <ng-template #resultsT>
     <ol class="row grid-container" >
         <li class="grid-item" *ngFor="let hit of this.result!.hits; let i=index">
-            <a class="results-link" href="word?{{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + hit.text_es}}">
+            <a class="results-link" href="/word?loc={{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + getWordByIdiom(hit,this.appComponent.localeInt)}}">
                 <div class="card results-card">
                     <div class="card-body">
                         <h5 class="card-title">{{ getWordByIdiom(hit,this.appComponent.localeInt) }}</h5>
