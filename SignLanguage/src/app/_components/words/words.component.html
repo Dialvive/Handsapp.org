@@ -5,62 +5,70 @@
 </head>
 
 <app-ad-banner></app-ad-banner>
-<div class="row">
-    <div class="col-md-2 col-xl-2"></div>
-    <div class="col-12 col-md-8 col-xl-6 first-column">
-        <ng-container *ngIf="ready">
-            <div>{{ sortCategories(this.appComponent.localeInt) }} </div>
-            <h2 class="mb-5">
-                {{strTitle[this.appComponent.localeInt]}} 
-            </h2>
-            <ng-container *ngFor = "let cat of categories; let i = index">
-                <div>
-                    <div class="accordion" id="'words' + i">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" >
-                                <ng-container *ngIf = "this.hits[cat.ID].length != 0 ; else elseBlock2" >
-                                    <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne' + i" aria-expanded="false" [attr.aria-controls] ="'collapseOne' + i">
-                                        <h3>{{ getCategoryByIdiom(cat,this.appComponent.localeInt) }} </h3>
-                                    </button>
-                                </ng-container>
-                                <ng-template #elseBlock2>
-                                    <button  class="accordion-button collapsed" >
-                                        <h3>{{ getCategoryByIdiom(cat,this.appComponent.localeInt) }}: &nbsp; </h3> <h5>{{prox[this.appComponent.localeInt]}}</h5>
-                                    </button>
-                                </ng-template>
-                            </h2>
-                            <div [attr.id]="'collapseOne' + i" class="accordion-collapse collapse" >
-                                <div class="accordion-body">
-                                    <ol class="row grid-container" >
-                                        <ng-container *ngIf = "this.hits[cat.ID].length != 0 ; else elseBlock" >
-                                            <li class="grid-item" *ngFor="let hit of hits[cat.ID]; ">
-                                                <a class="results-link" href="/word?loc={{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + getWordByIdiom(hit,this.appComponent.localeInt)}}">
-                                                    <div class="card results-card">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">{{ getWordByIdiom(hit,this.appComponent.localeInt)}}</h5>
-                                                            
+<ng-container *ngIf = "ready">
+    <div class="row">
+        <div class="col-md-2 col-xl-2"></div>
+        <div class="col-12 col-md-8 col-xl-6 first-column">
+            <ng-container *ngIf="ready">
+                <div>{{ sortCategories(this.appComponent.localeInt) }} </div>
+                <h2 class="mb-5">
+                    {{strTitle[this.appComponent.localeInt]}}
+                </h2>
+                <ng-container *ngFor="let cat of categories; let i = index">
+                    <div>
+                        <div class="accordion" id="'words' + i">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <ng-container *ngIf="this.hits[cat.ID].length != 0 ; else elseBlock2">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne' + i"
+                                            aria-expanded="false" [attr.aria-controls]="'collapseOne' + i">
+                                            <h3>{{ getCategoryByIdiom(cat,this.appComponent.localeInt) }} </h3>
+                                        </button>
+                                    </ng-container>
+                                    <ng-template #elseBlock2>
+                                        <button class="accordion-button collapsed">
+                                            <h3>{{ getCategoryByIdiom(cat,this.appComponent.localeInt) }}: &nbsp; </h3>
+                                            <h5>{{prox[this.appComponent.localeInt]}}</h5>
+                                        </button>
+                                    </ng-template>
+                                </h2>
+                                <div [attr.id]="'collapseOne' + i" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <ol class="row grid-container">
+                                            <ng-container *ngIf="this.hits[cat.ID].length != 0 ; else elseBlock">
+                                                <li class="grid-item" *ngFor="let hit of hits[cat.ID]; ">
+                                                    <a class="results-link"
+                                                        href="/word?loc={{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + getWordByIdiom(hit,this.appComponent.localeInt)}}">
+                                                        <div class="card results-card">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">{{
+                                                                    getWordByIdiom(hit,this.appComponent.localeInt)}}
+                                                                </h5>
+
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ng-container>
-                                        <ng-template #elseBlock>
-                                            <h5>¡Próximamente!</h5>
-                                        </ng-template>
-                                    </ol>
+                                                    </a>
+                                                </li>
+                                            </ng-container>
+                                            <ng-template #elseBlock>
+                                                <h5>¡Próximamente!</h5>
+                                            </ng-template>
+                                        </ol>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ng-container>
             </ng-container>
-        </ng-container>
-    </div>
+        </div>
 
-    <div class="d-none d-xl-block col-xl-2 second-column">
-        <img class="mt-5 ad-column" src="/assets/img/300x600.png" alt="">
-    </div>
+        <div class="d-none d-xl-block col-xl-2 second-column">
+            <img class="mt-5 ad-column" src="/assets/img/300x600.png" alt="">
+        </div>
 
-    <div class="col-md-2 col-xl-2"></div>
-</div>
+        <div class="col-md-2 col-xl-2"></div>
+    </div>
+</ng-container>
 <app-ad-banner></app-ad-banner>
