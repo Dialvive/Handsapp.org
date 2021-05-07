@@ -12,7 +12,7 @@ import { WordService } from 'src/app/_services/word/word.service';
   styleUrls: ['./words.component.css']
 })
 export class WordsComponent implements OnInit {
-  public titleStr: string[] = ["Thematischer Wortindex", "Índice temático de palabras", "Thematic index of words", "Index thématique des mots", "Indice tematico delle parole", "Índice temático de palavras"];
+  public strTitle: string[] = ["Thematischer Wortindex", "Índice temático de palabras", "Thematic index of words", "Index thématique des mots", "Indice tematico delle parole", "Índice temático de palavras"];
   public prox: string[] = ["Kommt bald!", "¡Próximamente!", "Coming soon!", "Bientôt disponible!", "Prossimamente!", "Em breve!"]
   public categories: WordCategory[] | any;
   public hits: string[] | any;
@@ -26,13 +26,12 @@ export class WordsComponent implements OnInit {
     public wordCategoryService: WordCategoryService) { }
 
   ngOnInit(): void {
-    //this.appComponent.getLocale();
-    //this.getWordCategories();
     this.getWords();
-    this.ready = true;
   }
 
-  //Gets all categories from the API and instanciates it globally.
+  /**
+   * Gets all categories from the API and instanciates it globally.
+   */
   private getWordCategories(): void {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
@@ -42,7 +41,9 @@ export class WordsComponent implements OnInit {
       err => this.appComponent.navigateParams("/404", this.appComponent.locale, '', ''));
   }
 
-  //Gets all categories from the API and instanciates it globally.
+  /**
+   * Gets all categories from the API and instanciates it globally.
+  */ 
   private getWords(): void {
     this.appComponent.getLocale();
     this.getWordCategories();
@@ -52,11 +53,15 @@ export class WordsComponent implements OnInit {
         var lastID = this.categories.length;
         this.hits = new Array(lastID);
         this.sortByCategory();
+        this.ready = true;
       },
       err => this.appComponent.navigateParams("/404", this.appComponent.locale, '', ''));
   }
 
-  //Sort strCat categories by name_es 
+  /**
+   * Sort strCat categories by name_es 
+   * @param lang 
+   */
   public sortCategories(lang: any) {
     var langAux: number = parseInt(lang);
 
@@ -127,15 +132,30 @@ export class WordsComponent implements OnInit {
 
   }
 
+  /**
+   * 
+   * @param cat 
+   * @param id 
+   * @returns 
+   */
   public getCategoryByIdiom(cat: WordCategory, id: number) {
     var auxCat = new WordCategory(cat);
     return auxCat.getNameByIdiom(id);
   }
+  /**
+   * 
+   * @param word 
+   * @param id 
+   * @returns 
+   */
   public getWordByIdiom(word: Word, id: number) {
     var auxWord = new Word(word);
     return auxWord.getTextByIdiom(id);
   }
-
+  
+  /**
+   * 
+   */
   public sortByCategory() {
     try {
       for (var i = 0; i < this.hits?.length - 1; i++) {
@@ -146,6 +166,11 @@ export class WordsComponent implements OnInit {
     }
   }
 
+  /**
+   * 
+   * @param cat 
+   * @returns 
+   */
   public getWordsByCategory(cat: number): Word[] {
     var arr = this.words.filter((i: Word) => i.word_category_ID == cat);
     return arr;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { WordSearchResult } from 'src/app/_models/search';
@@ -47,10 +47,6 @@ export class ResultsComponent implements OnInit {
     await this.getTxt();
     await this.getResult();
     await this.getWordCategories();
-  }
-  // navigate redirects faster through router
-  async navigateItem(page: string, item: any) {
-    await this.createVideoURLs(item, page);
   }
 
   //Gets the id and txt parameters from the URL and instanciates it globally.
@@ -103,24 +99,5 @@ export class ResultsComponent implements OnInit {
   public getDefinitionByIdiom(word: Word, id: number) {
     var auxWord = new Word(word);
     return auxWord.getDefByIdiom(id);
-  }
-
-  async createVideoURLs(id : any, page : string) {
-    console.log("ENTRA CREATE VIDEOS URL")
-    const pid = parseInt(id)
-    const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
-    this.wordSignService.getWordSigns(pid).subscribe(
-      response => {
-        this.videos = new Array(response.length);
-        for (let i = 0; i < response.length; i++) {
-          this.videos[i] = URL + pid + '-' + version[i] + '.mp4';
-          console.log("ITERACION = " + i );
-        }
-        console.log(this.videos);
-      this.navigationExtras.state.value = this.videos;
-      this.router.navigateByUrl(decodeURI(page), this.navigationExtras);
-      },
-      err => console.error(err));
   }
 }
