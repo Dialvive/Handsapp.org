@@ -350,6 +350,7 @@ video {
     border-width: 1px;
     border-color: var(--cream-dark);
     border-radius: 1rem;
+
 }
 
 .video-container {
@@ -359,7 +360,7 @@ video {
     border: solid;
     border-width: 1px;
     border-color: var(--cream-dark);
-    background-image: url(/assets/img/static.gif);
+    width: 100%;
     border-radius: 1rem;
 }
 

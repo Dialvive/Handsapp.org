@@ -37,8 +37,10 @@ export class WordComponent implements OnInit {
   public strCat: string[] = ["Kategorie", "Categoría", "Category", "Catégorie", "Categoria", "Categoria"];
   public strLen: string[] = ["Zeichensprache", "Lengua de señas", "Sign Language", "Langage des signes", "Linguaggio dei segni", "Linguagem de sinais"];
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
-  public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible", "Translation not available", "Traduction non disponible", "Traduzione non disponibile", "Tradução não disponível"]
-
+  public nfRes: String[] = ["Definition nicht verfügbar", "Definición no disponible", "Definition not available", "Définition non disponible", "Definizione non disponibile", "Definição não disponível"]
+  public strRep: String[] = [];
+  public strComSoon : string[] = ["kommt bald","Próximamente", "Coming soon", "Bientôt disponible", "Prossimamente", "Em breve"];
+  
   constructor(
     private wordService: WordService,
     private wordSignService: WordSignService,
