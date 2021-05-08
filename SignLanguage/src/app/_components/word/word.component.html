@@ -16,24 +16,19 @@
                 {{word.getText()[this.appComponent.localeInt]}}
             </h1>
             <div class="d-flex align-items-start">
+
                 <a type="button" class="btn flag-btn" title = "Reportar" name="flag" href="bug?url=word">
                     <i class="bi bi-flag-fill"></i>
                 </a>
-                <button type="button" class="btn heart-btn" title = "Proximamente" titname="heart block" unable>
+                <button type="button" class="btn heart-btn" title = {{strComSoon[this.appComponent.localeInt]}} titname="heart block" unable>
                     <i class="bi bi-heart-fill"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Carousel 2 -->
-
         <div oncontextmenu="return false" class="d-flex justify-content-center video-container">
             <div class="mycarousel">
-                <video id="sign-video" autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true">
-
-
-
-                </video>
+                <video  preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true"></video>
                 <div class="control">
                     <ng-container *ngIf="videos.length > 1">
                         <span class="arrow left">
