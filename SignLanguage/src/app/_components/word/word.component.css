@@ -77,21 +77,6 @@
     background: white;
 }
 
-#rabbit {
-    display: flex;
-    padding: 5%;
-}
-
-#turtle {
-    display: flex;
-    padding: 5%;
-}
-
-#fox {
-    display: flex;
-    padding: 5%;
-}
-
 video[poster] {
     height: 100%;
     width: 100%;

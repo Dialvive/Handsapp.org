@@ -1,8 +1,8 @@
 <footer class="container-fluid memphis-dark">
     <form action="">
-        <div class="row">
-            <div class="col-md-3 col-xl-3"></div>
-            <div class="col-4 col-md-2 col-xl-2 footer-col">
+        <div class="row justify-content-center">
+            <div class="col-md-1 col-xl-3"></div>
+            <div class="col-8 col-md-4 col-xl-2 footer-col">
                 <h3 class="footer-header">
                     {{strIdi[this.appComponent.localeInt]}}
                 </h3>
@@ -10,7 +10,7 @@
                     <option [value]="i" *ngFor="let item of this.spLanguages; let i = index">{{item}}</option>
                 </select>
             </div>
-            <div class="col-8 col-md-4 col-xl-4 footer-col">
+            <div class="col-12 col-md-6 col-xl-4 footer-col">
                 <h3 class="footer-header">
                     {{strLen[this.appComponent.localeInt]}}
                 </h3>
@@ -18,7 +18,7 @@
                     <option [value]="i" *ngFor="let item of this.sgLanguages; let i = index">{{item}}</option>
                 </select>
             </div>
-            <div class="col-md-3 col-xl-3"></div>
+            <div class="col-md-1 col-xl-3"></div>
         </div>
     </form>
     <div class="row">
