@@ -1,7 +1,8 @@
 .container {
     width: 80%;
-    margin:20px auto;
-  }
+    margin: 20px auto;
+}
+
 .slider {
     display: flex;
     height: 100%;
@@ -14,6 +15,7 @@
     transform: translateY(-50%);
     cursor: pointer;
 }
+
 .arrow i {
     position: flex;
     font-size: 60px;
@@ -23,6 +25,7 @@
     animation: carousel-arrow-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
     transition: 0.25s;
 }
+
 .arrow i:hover {
     position: flex;
     font-size: 65px;
@@ -32,12 +35,15 @@
     animation: carousel-arrow 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     transition: 0.25s;
 }
+
 .left {
     left: 10px;
 }
+
 .right {
     right: 10px;
 }
+
 .control ul {
     list-style: none;
     display: flex;
@@ -48,6 +54,7 @@
     padding: 0;
     transform: translate(-50%);
 }
+
 .control ul li {
     width: 10px;
     height: 10px;
@@ -58,15 +65,19 @@
     cursor: pointer;
     transition: .5s;
     /*opacity: .7;*/
-    
 }
+
 .control ul li:hover {
     background: white;
     transition: .5s;
     opacity: 1;
-} 
+}
 
 .control ul li.selected {
     background: white;
-    
+}
+
+video[poster] {
+    height: 100%;
+    width: 100%;
 }
