@@ -1,28 +1,35 @@
-<app-ad-banner></app-ad-banner>
-<div class="row">
-
-    <div class="col-md-2 col-xl-2"></div>
-
-    <div class="col-12 col-md-8 col-xl-6 first-column">
-        <ng-container
-            *ngIf = "this.result.hits.length < 1; then noBlock">
-        </ng-container>
-        <ng-container
-            *ngIf = "this.result.hits.length == 1; then oneBlock;">
-        </ng-container>
-        <ng-container
-        *ngIf = "this.result.hits.length > 1; then moreBlock;">
+<head>
+    <ng-container *ngIf = "this.txt">
+        <title>{{this.txt}} - {{strSearch[this.appComponent.localeInt]}}</title>
     </ng-container>
+</head>
 
+<body>
+    <app-ad-banner></app-ad-banner>
+    <div class="row">
+
+        <div class="col-md-2 col-xl-2"></div>
+
+        <div class="col-12 col-md-8 col-xl-6 first-column">
+            <ng-container *ngIf = "this.ready && this.result">
+
+                <div *ngIf = "this.result!.hits.length < 1; then noBlock"></div>
+                <div *ngIf = "this.result!.hits.length == 1; then oneBlock;"></div>
+                <div *ngIf = "this.result!.hits.length > 1; then moreBlock;"></div>
+
+            </ng-container>
+
+
+        </div>
+
+        <div class="d-none d-xl-block col-xl-2 second-column">
+            <img class="ad-column" src="/assets/img/300x600.png" alt="">
+        </div>
+
+        <div class="col-md-2 col-xl-2"></div>
     </div>
-
-    <div class="d-none d-xl-block col-xl-2 second-column">
-        <img class="ad-column" src="/assets/img/300x600.png" alt="">
-    </div>
-
-    <div class="col-md-2 col-xl-2"></div>
-</div>
-<app-ad-banner></app-ad-banner>
+    <app-ad-banner></app-ad-banner>
+</body>
 
 <ng-template #noBlock>
     <h2 class="text-sm-center text-md-start">
@@ -49,23 +56,23 @@
         &nbsp;  {{oneRes[this.appComponent.localeInt]}}: {{this.txt}}
     </h2>
     <ng-container 
-        *ngTemplateOutlet="results">
+        *ngTemplateOutlet="resultsT">
     </ng-container>
 </ng-template>
 
 <ng-template #moreBlock>
     <h2 class="text-sm-center text-md-start">
-        &nbsp; {{this.result.hits.length >= 50 ? "+50" : this.result.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
+        &nbsp; {{this.result!.hits.length >= 50 ? "+50" : this.result!.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
     </h2>
     <ng-container 
-        *ngTemplateOutlet="results">
+        *ngTemplateOutlet="resultsT">
     </ng-container>
 </ng-template>
 
-<ng-template #results>
+<ng-template #resultsT>
     <ol class="row grid-container" >
-        <li class="grid-item" *ngFor="let hit of result.hits; let i=index">
-            <a class="results-link" href="word?{{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + hit.text_es}}">
+        <li class="grid-item" *ngFor="let hit of this.result!.hits; let i=index">
+            <a class="results-link" href="/word?loc={{this.appComponent.localeTxt + '&id=' + hit.ID + '&txt=' + getWordByIdiom(hit,this.appComponent.localeInt)}}">
                 <div class="card results-card">
                     <div class="card-body">
                         <h5 class="card-title">{{ getWordByIdiom(hit,this.appComponent.localeInt) }}</h5>
@@ -80,4 +87,3 @@
         </li>
     </ol>
 </ng-template>
-

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
 import { WordSearchResult } from 'src/app/_models/search';
 import { Word } from 'src/app/_models/word';
 import { WordCategory } from 'src/app/_models/wordCategory';
 import { SearchService } from 'src/app/_services/search/search.service';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
+import { WordSignService } from 'src/app/_services/word-sign/word-sign.service';
 import { AppComponent } from '../../app.component'
 
 @Component({
@@ -14,70 +17,87 @@ import { AppComponent } from '../../app.component'
 })
 export class ResultsComponent implements OnInit {
 
+  navigationExtras: any | NavigationExtras = {
+    state: {
+      value: null
+    }
+  };
   public strRes: string[] = ["suchergebnisse", "resultados de búsqueda", "search results", "résultats de recherche", "risultati di ricerca", "procurar resultados"];
   public oneRes: string[] = ["Ein Suchergebnis", "Un resultado de búsqueda", "A search result", "Un résultat de recherche", "Un risultato di ricerca", "Um resultado de pesquisa"];
   public noRes: string[] = ["Keine Ergebnisse für", "Sin resultados para", "No results for", "Aucun résultat pour", "Nessun risultato per", "Sem resultados para "];
-  public nfRes: String[] = ["Übersetzung nicht verfügbar", "Traducción no disponible" ,"Translation not available","Traduction non disponible","Traduzione non disponibile","Tradução não disponível"]
+  public nfRes: string[] = ["Definition nicht verfügbar", "Definición no disponible", "Definition not available", "Définition non disponible", "Definizione non disponibile", "Definição não disponível"]
+  public strSearch: string[] = ["Suche in HandsApp","Buscar en HandsApp", "Search in HandsApp", "Rechercher dans HandsApp","Cerca in HandsApp", "Pesquisa no HandsApp" ];
   public txt: string | any;
   public categories: string[] | any;
   public definitions: string[] | any;
-  public result: WordSearchResult | any;
+  public result: WordSearchResult | null = null;
+  public ready: boolean = false;
 
-  constructor(    
+
+  constructor(
     private route: ActivatedRoute,
     public appComponent: AppComponent,
     private searchService: SearchService,
     private wordCategoryService: WordCategoryService,
+    private wordSignService: WordSignService,
+    private router: Router,
   ) { }
 
-  ngOnInit(): void {
-    this.appComponent.getLocale();
-    this.getTxt();
-    this.getResults();
-    this.getWordCategories();
+  async ngOnInit() {
+    await this.appComponent.getLocale();
+    await this.getTxt();
+    await this.getResult();
+    await this.getWordCategories();
   }
 
-    //Gets the id and txt parameters from the URL and instanciates it globally.
+  //Gets the id and txt parameters from the URL and instanciates it globally.
   // I.E. route: https://handsapp.org/word?loc=es_LSM_MX&id=1&txt=Abeja
   //TODO: manage incorrect id's
-  private getTxt(): void {
-    this.txt = this.route.snapshot.queryParamMap.get('txt');
-    //console.log("EL MONSTRUE: " + this.txt);
-    if (this.txt == null || this.txt == '' ) {
-     
-      //this.appComponent.navigateParams("/", this.appComponent.locale, "", this.txt);
-    }
-  }
 
-  //Gets a relevance ordered array of Words from the API and instanciates it globally.
-  //TODO: get phrase results
-  private getResults(): void {
-    this.searchService.searchWords(this.txt, 50).subscribe(
-      response => {
-        this.result = new WordSearchResult(response);
-      }, 
-      err => this.appComponent.navigateParams("/404", this.appComponent.locale, "", this.txt));
+  private async getTxt(): Promise<boolean> {
+    var txt: string | null = this.route.snapshot.queryParamMap.get('txt');
+    if (txt == null || txt == '' ) {
+      //TODO: handle error
+      this.txt = "Error";
+      return false
+    }
+    this.txt = txt;
+    return true;
   }
 
   //Gets every word category and instanciates them globally in a 2 dimensional array
-  private getWordCategories(): void {
-    this.wordCategoryService.getWordCategories().subscribe(
+  private async getResult(): Promise<boolean> {
+    this.searchService.searchWords(this.txt, 50).subscribe(
       response => {
-        this.categories = new Array<String[]>(response.length)
-        for (let i = 0; i < response.length; i++) {
-          this.categories[i] = new WordCategory(response[i]).getNames();
-        }
+
+        this.result = response;
+        return true;
       }, 
       err => console.log(err));
-      console.log(this.categories)
+      return false;
   }
+
+    //Gets every word category and instanciates them globally in a 2 dimensional array
+    private async getWordCategories(): Promise<boolean> {
+      this.wordCategoryService.getWordCategories().subscribe(
+        response => {
+          this.categories = new Array<String[]>(response.length)
+          for (let i = 0; i < response.length; i++) {
+            this.categories[i] = new WordCategory(response[i]).getNames();
+          }
+          this.ready = true;
+          return true;
+        }, 
+        err => console.log(err));
+        return false;
+    }
 
   public getWordByIdiom(word : Word, id:number){
     var auxWord = new Word(word);
     return auxWord.getTextByIdiom(id);
   }
 
-  public getDefinitionByIdiom(word : Word, id:number) {
+  public getDefinitionByIdiom(word: Word, id: number) {
     var auxWord = new Word(word);
     return auxWord.getDefByIdiom(id);
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-privacy',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyComponent implements OnInit {
 
-  constructor() { }
+  public strTitle: string[] = ["Datenschutzbestimmungen", "Política de privacidad", "Privacy policy", "Politique de confidentialité ", "Politica sulla piservatezza ", "Política de privacidade"];
+  public strAlert: string[] =
+  ["Im Moment haben wir dieses Dokument nur auf Spanisch.",
+  "",
+  "At the moment, we only have this document in Spanish.",
+  "Pour le moment, nous n'avons que ce document en espagnol.",
+  "Al momento, abbiamo solo questo documento in spagnolo.",
+  "No momento, temos este documento apenas em espanhol."];
+  
+  constructor(
+    public appComponent: AppComponent,
+  ) { }
 
   ngOnInit(): void {
   }

@@ -8,6 +8,8 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class DonationsComponent implements OnInit {
 
+  public strTitle: string[] = [ "Spenden", "Donaciones", "Donations", "Des Dons", "Donazioni ", "Doações"];
+
   constructor(
     public appComponent: AppComponent,
   ) { }

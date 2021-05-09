@@ -23,7 +23,13 @@ export class BugSubmitComponent implements OnInit {
   public inputResponse: boolean = false;
   public inputMail: string = '';
   private mail: Mail | null = null;
-
+  public strTitle: string[] = 
+    [ "Melden Sie einen Fehler, einen Vorschlag oder einen unangemessenen Inhalt",
+    "Reportar error, sugerencia, o contenido inapropiado",
+    "Report a bug, suggestion, or inappropriate content",
+    "Signaler un bug, une suggestion ou un contenu inapproprié",
+    "Segnala un bug, un suggerimento o un contenuto inappropriato",
+    "Denunciar um bug, sugestão ou conteúdo impróprio"];
 
   constructor(
     public appComponent: AppComponent,

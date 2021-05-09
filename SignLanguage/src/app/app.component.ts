@@ -26,7 +26,7 @@ export class AppComponent {
 
   //Gets locale through params, or infers it using navigator or IP address.
   // TODO: infer sign language.
-  public async getLocale() {
+  public async getLocale(): Promise<boolean> {
     var country: string | any;
     var locStr: string | null = this.params.get("loc");
     if (locStr == null || locStr == '' ) { // There's no loc in URL
@@ -50,6 +50,8 @@ export class AppComponent {
     this.localeTxt = this.locale[0] + "_" + this.locale[1] + "_" + this.locale[2];
     this.verifyLocale();
     this.updateRoute();
+    document.documentElement.lang = this.locale[0];
+    return true
   }
 
   //getParams Gets the parameters from the current URL
