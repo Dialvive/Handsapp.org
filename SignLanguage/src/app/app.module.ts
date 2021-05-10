@@ -47,6 +47,7 @@ import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { DonationsComponent } from './_components/donations/donations.component';
 import { ThirdPartiesComponent } from './_components/third-parties/third-parties.component';
 import { BugSubmitComponent } from './_components/bug-submit/bug-submit.component';
+import { InternalErrorComponent } from './_components/internal-error/internal-error.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { BugSubmitComponent } from './_components/bug-submit/bug-submit.componen
     NotFoundComponent,
     DonationsComponent,
     ThirdPartiesComponent,
-    BugSubmitComponent
+    BugSubmitComponent,
+    InternalErrorComponent
   ],
   imports: [
     BrowserModule,

@@ -182,15 +182,15 @@
                     </fieldset>
     
                     <fieldset [attr.hidden]="!this.inputResponse ? '' : null">
-                        <legend for="url">E-mail</legend>
+                        <legend for="email">E-mail</legend>
                         <div class="form-group">
                             <input  [(ngModel)]="this.inputMail"
                                     #mail="ngModel"
-                                    id="url"
+                                    id="email"
                                     type="email"
                                     name="mail"
                                     class="form-control"
-                                    required/>
+                                    />
                         </div>
                         <div    *ngIf="mail.invalid && (mail.dirty || mail.touched)"
                                 class="alert alert-danger">
@@ -227,7 +227,7 @@
                         <div    *ngIf="agree.invalid && (agree.dirty || agree.touched)"
                                 class="alert alert-danger">
                                 {{[ "Wir sind nicht die Informationen ohne Ihre Genehmigung zur Verarbeitung gehen, lesen Sie bitte die Datenschutzerklärung und das Kontrollkästchen markieren, wenn Sie mit den Daten stimmen wir sammeln und wie wir es tun.",
-                                "No vamos a procesar la información sin su autorización, por favor lea la política de privacidad y marque la casilla de verificación si está de acuerdo con los datos que recopilamos y cómo lo hacemos.",
+                                "No vamos a procesar la información sin su autorización, por favor lea la política de privacidad y marque la casilla de verificación si está de acuerdo con los datos que recopilamos y como lo hacemos.",
                                 "We are not going to process the information without your authorization, please read the privacy policy and mark the checkbox if you agree with the data we collect and how we do it.",
                                 "Nous n'allons traiter l'information sans votre autorisation, s'il vous plaît lire la politique de confidentialité et cochez la case si vous êtes d'accord avec les données que nous recueillons et comment nous le faisons.",
                                 "Non abbiamo intenzione di elaborare le informazioni senza la vostra autorizzazione, si prega di leggere l'informativa sulla privacy e contrassegnare la casella se siete d'accordo con i dati che raccogliamo e come lo facciamo.",
