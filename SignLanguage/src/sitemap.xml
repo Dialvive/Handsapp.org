@@ -13,19 +13,10 @@
         <loc>https://handsapp.org/words</loc>
     </url>
     <url>
-        <loc>https://handsapp.org/phrase</loc>
+        <loc>https://handsapp.org/about-us</loc>
     </url>
     <url>
-        <loc>https://handsapp.org/phrases</loc>
-    </url>
-    <url>
-        <loc>https://handsapp.org/about</loc>
-    </url>
-    <url>
-        <loc>https://handsapp.org/team</loc>
-    </url>
-    <url>
-        <loc>https://handsapp.org/contact</loc>
+        <loc>https://handsapp.org/donors</loc>
     </url>
     <url>
         <loc>https://handsapp.org/products</loc>
@@ -37,6 +28,6 @@
         <loc>https://handsapp.org/privacy</loc>
     </url>
     <url>
-        <loc>https://handsapp.org/account</loc>
+        <loc>https://handsapp.org/3rdpartylicences</loc>
     </url>
 </urlset>

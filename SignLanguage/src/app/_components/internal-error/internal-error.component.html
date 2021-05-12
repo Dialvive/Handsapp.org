@@ -1,0 +1,42 @@
+<head>
+    <title>{{this.strTitle[this.appComponent.localeInt]}}</title>
+</head>
+
+<body>
+    <div class="progress">
+        <div class="progress-bar stripes" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-1 col-xl-2"></div>
+
+        <div class="col-10 col-xl-8 first-column">
+            <div class="row row-cols-1 justify-content-center">
+                <div class="col-12 text-center" oncontextmenu="return false">
+                    <img class="col dog" src="/assets/img/construction.png" alt="Error 404">
+                </div>
+                    <h1 class="text-center title m-4 p-4">
+                        {{this.strTitle[this.appComponent.localeInt]}}
+                </h1>
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="col-12 d-flex justify-content-center">
+                        <p class="grt nice-p text-center">
+                            {{["Hoppla! Es gab einen Fehler, wenn das Problem weiterhin besteht, kontaktieren Sie uns unter: ",
+                            "¡Ups! Hubo un error, si el problema persiste, ponte en contacto con nosotros en: ",
+                            "Whoops! There was an error, if the problem persists, contact us at: ",
+                            "Oups! Il y a eu une erreur, si le problème persiste, contactez-nous à: ",
+                            "Ops! Si è verificato un errore, se il problema persiste, contattaci a: ",
+                            "Opa! Ocorreu um erro, se o problema persistir, contacte-nos em: "
+                            ][this.appComponent.localeInt]}} hola@handsapp.org
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-1 col-xl-2"></div>
+    </div>
+</body>
+

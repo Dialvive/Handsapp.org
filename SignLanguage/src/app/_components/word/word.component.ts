@@ -39,6 +39,7 @@ export class WordComponent implements OnInit {
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
   public nfRes: String[] = ["Definition nicht verfügbar", "Definición no disponible", "Definition not available", "Définition non disponible", "Definizione non disponibile", "Definição não disponível"]
   public strRep: String[] = [];
+  public strTit : string[] = ["Wort in ","Palabra en ", "Word in ", "Mot en ", "Parola in ", "Palavra em "];
   public strComSoon : string[] = ["kommt bald","Próximamente", "Coming soon", "Bientôt disponible", "Prossimamente", "Em breve"];
   
   constructor(

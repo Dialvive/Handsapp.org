@@ -1,0 +1,9 @@
+.stripes {
+    background-image: linear-gradient(45deg, var(--carbon-dark) 25%, var(--red) 25%, var(--red) 50%, var(--carbon-dark) 50%, var(--carbon-dark) 75%, var(--red) 75%, var(--red) 100%);
+    background-size: 56.57px 56.57px;
+  }
+  .dog {
+    image-rendering: optimizeQuality;
+    max-width: 30%;
+    user-select: none;
+}

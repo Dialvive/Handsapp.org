@@ -13,6 +13,7 @@ import { DonationsComponent } from './_components/donations/donations.component'
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { ThirdPartiesComponent } from './_components/third-parties/third-parties.component';
 import { BugSubmitComponent } from './_components/bug-submit/bug-submit.component';
+import { InternalErrorComponent } from './_components/internal-error/internal-error.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent},
   { path: '3rdpartylicences', component: ThirdPartiesComponent},
   { path: 'bug', component: BugSubmitComponent},
+  { path: '404', component: NotFoundComponent},
+  { path: '502', component: InternalErrorComponent},
   { path: '**', component: NotFoundComponent},
 ];
 

@@ -1,6 +1,8 @@
 <head>
     <ng-container *ngIf="this.wordTXT">
-        <title>{{this.wordTXT}}</title>
+        <title>
+            {{word.getText()[this.appComponent.localeInt]}} - {{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}
+        </title>
     </ng-container>
 </head>
 
