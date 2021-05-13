@@ -64,6 +64,33 @@
     -moz-user-select: none;
 }
 
+.accordion-body {
+    padding-top: 1.618vh;
+    padding-bottom: 1.618vh;
+}
 
+.accordion-button {
+    transition: 0.25s !important;
+}
 
+.accordion-button:focus {
+    background-color: #fff;
+    box-shadow: 0 0 0px var(--accent) !important;
+    color: var(--accent);
+    border-color: var(--cream);
+}
 
+.accordion-button:hover {
+    background-color: var(--cream);
+}
+
+.accordion-button:active{
+    background-color: #fff;
+    box-shadow: 0 0 12px var(--accent) !important;
+}
+
+.accordion-button:not(.collapsed){
+    background-color: #fff;
+    box-shadow: 0 0 0px var(--accent) !important;
+    color: var(--accent);
+}

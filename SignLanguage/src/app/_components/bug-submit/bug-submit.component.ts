@@ -12,7 +12,6 @@ import { MailService } from 'src/app/_services/mail/mail.service';
   providers: [DatePipe],
 })
 
-
 export class BugSubmitComponent implements OnInit {
   public inputType: string = "Suggestion";
   public hasParamUrl: boolean = false;
@@ -23,6 +22,7 @@ export class BugSubmitComponent implements OnInit {
   public inputResponse: boolean = false;
   public inputMail: string = '';
   private mail: Mail | null = null;
+  public sent: string = '';
   public strTitle: string[] = 
     [ "Melden Sie einen Fehler, einen Vorschlag oder einen unangemessenen Inhalt",
     "Reportar error, sugerencia, o contenido inapropiado",
@@ -96,12 +96,17 @@ export class BugSubmitComponent implements OnInit {
     this.sendMail(mail);
   }
 
-  private sendMail(mail: Mail): void {
+  private async sendMail(mail: Mail) {
+    this.sent = "WAIT";
     this.mailService.sendMail(mail).subscribe(
       response => {
-        return Boolean(response);
+        this.sent = "TRUE";
+        console.log(response);
       }, 
-      err => this.appComponent.navigateParams("/502", this.appComponent.locale, "", ""));
+      err => {
+        this.sent = "FALSE";
+        console.log(err);
+      });
   }
 
 

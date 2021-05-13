@@ -8,7 +8,7 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class ProductsComponent implements OnInit {
   
-  public strTitle: string[] = [ "Produkte", "Productos", "Products", "Produits", "Prodotti", "Produtos"];
+  public strTitle: string[] = [ "Produkte von HandsApp", "Productos de HandsApp", "HandsApp Products", "Produits de HandsApp", "Prodotti di HandsApp", "Produtos de HandsApp"];
 
   constructor(
     public appComponent: AppComponent,

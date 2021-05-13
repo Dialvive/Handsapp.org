@@ -45,7 +45,7 @@
                             "src/assets/img/static.gif",
                             "src/assets/img/hatdog.png",
                             "src/assets/img/curiousdog.png",
-                            "src/assets/img/lawyer.png",
+                            "src/assets/img/construction.png",
                             "src/assets/img/privacydog.png",
                             "src/assets/img/curiousbeagle.png",
                             "src/assets/img/appstore_de.png",
@@ -69,7 +69,7 @@
                             "src/styles.css"
                         ],
                         "scripts": [
-                            "node_modules/bootstrap/dist/js/bootstrap.js"
+                            "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
                         ]
                     },
                     "configurations": {
