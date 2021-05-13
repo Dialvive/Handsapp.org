@@ -15,6 +15,6 @@ export class MailService {
     ) { }
 
   public sendMail(mail: Mail): Observable<string> {
-    return this.http.post<string>(URI+"words", mail)
+    return this.http.post<string>(URI, mail)
   }
 }
