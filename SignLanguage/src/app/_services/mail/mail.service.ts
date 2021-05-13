@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Mail } from 'src/app/_models/mail';
 import { Observable } from 'rxjs';
 
-const URI: string = "https://mailthis.to/haikode";
+const URI: string = "https://api.handsapp.org/v1/email/"
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,9 @@ export class MailService {
 
   constructor(
     private http: HttpClient
-  ) { }
+    ) { }
 
-  public sendMail(mail: Mail): Observable<boolean> {
-    console.log("SendMail open: " + mail._replyto);
-    return this.http.post<boolean>(URI, mail)
+  public sendMail(mail: Mail): Observable<string> {
+    return this.http.post<string>(URI+"words", mail)
   }
 }
