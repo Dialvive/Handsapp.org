@@ -26,3 +26,11 @@ button {
     padding:10px;
     font-size: 14px;
 }
+
+.modal-img {
+    display: block;
+    width: 180px;
+    height: 180px;
+    margin: 3em auto 2em;
+    text-align: center;
+}

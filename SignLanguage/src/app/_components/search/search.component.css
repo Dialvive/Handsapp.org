@@ -120,3 +120,14 @@
     font-size: large;
     text-align: center;
 }
+
+.alert{
+    margin-top: 50px;
+}
+
+.prox{
+    max-width: 625px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}

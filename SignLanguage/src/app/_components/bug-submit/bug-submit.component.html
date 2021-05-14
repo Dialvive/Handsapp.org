@@ -89,7 +89,7 @@
                                     [attr.disabled]=
                                         "this.hasParamUrl ?
                                         '' : null"
-                                    required/>
+                                    />
                         </div>
                         <div    *ngIf="url.invalid && (url.dirty || url.touched)"
                                 class="alert alert-danger">
@@ -239,6 +239,8 @@
                     <button class="btn btn-secondary"
                             type="submit"
                             value="Submit"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#sendingModal"
                             [disabled] = "!registerForm.form.valid"
                             (click)="register()">
                         {{[ "Bericht senden",
@@ -250,6 +252,67 @@
                         ][this.appComponent.localeInt]}}
                     </button>
                 </form>
+
+                <!-- Modal -->
+                <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="sendingModal" tabindex="-1" aria-labelledby="sendingModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <ng-container *ngIf="this.sent == 'WAIT'">
+                            <div class="modal-body">
+                                <img class="modal-img" src="/assets/img/loader.gif" alt="Loading">
+                                <h4 class="text-center m-4">
+                                    {{["Bericht wird gesendet...", 
+                                    "Enviando reporte...", 
+                                    "Sending report...", 
+                                    "Envoi du rapport...", 
+                                    "Invio rapporto...", 
+                                    "Enviando relatório..." ][this.appComponent.localeInt]}}
+                                </h4>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="this.sent == 'TRUE'">
+                            <div class="modal-body">
+                                <img class="modal-img" src="/assets/img/logo.png" alt="Ok">
+                                <h4 class="text-center m-4">
+                                    {{["Bericht gesendet. Vielen Dank!", 
+                                    "Reporte enviado. ¡Muchas gracias!", 
+                                    "Report sent. Thank you!", 
+                                    "Rapport envoyé. Merci beaucoup!", 
+                                    "Rapporto inviato. Grazie!", 
+                                    "Relatório enviado. Obrigada!" ][this.appComponent.localeInt]}}
+                                </h4>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="this.sent == 'FALSE'">
+                            <div class="modal-body">
+                                <img class="modal-img" src="/assets/img/construction.png" alt="Error 502">
+                                <h4 class="text-center m-4">
+                                    {{["Fehler, den Bericht zu senden, senden Sie bitte Ihre Kommentare zu hola@handsapp.org", 
+                                    "Error al enviar el reporte, por favor, envíe sus comentarios a hola@handsapp.org", 
+                                    "Error sending the report, please send your comments to hola@handsapp.org", 
+                                    "Erreur d'envoi du rapport, s'il vous plaît envoyer vos commentaires à hola@handsapp.org", 
+                                    "Errore durante l'invio della relazione, si prega di inviare i vostri commenti a hola@handsapp.org",
+                                    "Erro ao enviar o relatório, envie seus comentários para hola@handsapp.org"][this.appComponent.localeInt]}}
+                                </h4>
+                            </div>
+                        </ng-container>
+                        
+                        <ng-container *ngIf="this.sent == 'FALSE' || this.sent == 'TRUE'">
+                            <div class="modal-footer">
+                                <a href="https://handsapp.org" type="button" class="btn btn-secondary">
+                                    {{["Zurück zu HandsApp", 
+                                    "Regresar a HandsApp", 
+                                    "Back to HandsApp", 
+                                    "Retour à HandsApp", 
+                                    "Torna HandsApp",
+                                    "Voltar para HandsApp"][this.appComponent.localeInt]}}
+                                </a>
+                            </div>
+                        </ng-container>
+                    </div>
+                    </div>
+                </div>
+  
             </div>
     
         <div class="col-1 col-lg-2 col-xl-3"></div>

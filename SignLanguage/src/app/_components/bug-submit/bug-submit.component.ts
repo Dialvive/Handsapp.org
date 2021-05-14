@@ -12,7 +12,6 @@ import { MailService } from 'src/app/_services/mail/mail.service';
   providers: [DatePipe],
 })
 
-
 export class BugSubmitComponent implements OnInit {
   public inputType: string = "Suggestion";
   public hasParamUrl: boolean = false;
@@ -23,6 +22,7 @@ export class BugSubmitComponent implements OnInit {
   public inputResponse: boolean = false;
   public inputMail: string = '';
   private mail: Mail | null = null;
+  public sent: string = '';
   public strTitle: string[] = 
     [ "Melden Sie einen Fehler, einen Vorschlag oder einen unangemessenen Inhalt",
     "Reportar error, sugerencia, o contenido inapropiado",
@@ -83,25 +83,29 @@ export class BugSubmitComponent implements OnInit {
     var myDate = new Date();
     var strDate = this.datePipe.transform(myDate, 'dd-MM-yyyy');
 
-    var body = this.inputType + divider +
-      this.hasParamUrl + divider +
-      this.inputURL + divider +
-      this.inputDescription + divider +
-      this.inputNavData + divider +
-      this.inputAgree + divider +
-      this.inputResponse + divider +
-      this.inputMail
+    var body = "-Report Type: \n" + this.inputType + divider +
+      "-HasParamURL? \n" + this.hasParamUrl + divider +
+      "-Input URL: \n" + this.inputURL + divider +
+      "-Input Description: \n" + this.inputDescription + divider +
+      "-Input NavData: \n" + this.inputNavData + divider +
+      "-AgreedPrivacy? \n" + this.inputAgree + divider +
+      "-Reply? \n" + this.inputResponse + divider
     var subject = this.inputType + " " + strDate;
     mail = new Mail(subject, this.inputMail, body);
     this.sendMail(mail);
   }
 
-  private sendMail(mail: Mail): void {
+  private async sendMail(mail: Mail) {
+    this.sent = "WAIT";
     this.mailService.sendMail(mail).subscribe(
       response => {
-        return Boolean(response);
+        this.sent = "TRUE";
+        console.log(response);
       }, 
-      err => this.appComponent.navigateParams("/502", this.appComponent.locale, "", ""));
+      err => {
+        this.sent = "FALSE";
+        console.log(err);
+      });
   }
 
 
