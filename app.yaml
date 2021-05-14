@@ -51,6 +51,13 @@ handlers:
   mime_type: image/svg+xml
   upload: SignLanguage/dist/SignLanguage/.*\.svg
 
+- url: /(.*\.ico)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: SignLanguage/dist/SignLanguage/\1
+  mime_type: image/x-icon
+  upload: SignLanguage/dist/SignLanguage/.*\.ico
+
 - url: /(.*\.txt)
   secure: always
   redirect_http_response_code: 301
