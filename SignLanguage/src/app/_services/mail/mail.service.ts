@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Mail } from 'src/app/_models/mail';
 import { Observable } from 'rxjs';
 
-const URI: string = "https://api.handsapp.org/v1/email/"
+const URI: string = "https://api.handsapp.org/v1/email"
 
 @Injectable({
   providedIn: 'root'
