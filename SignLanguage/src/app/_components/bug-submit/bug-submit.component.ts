@@ -83,14 +83,13 @@ export class BugSubmitComponent implements OnInit {
     var myDate = new Date();
     var strDate = this.datePipe.transform(myDate, 'dd-MM-yyyy');
 
-    var body = this.inputType + divider +
-      this.hasParamUrl + divider +
-      this.inputURL + divider +
-      this.inputDescription + divider +
-      this.inputNavData + divider +
-      this.inputAgree + divider +
-      this.inputResponse + divider +
-      this.inputMail
+    var body = "-Report Type: \n" + this.inputType + divider +
+      "-HasParamURL? \n" + this.hasParamUrl + divider +
+      "-Input URL: \n" + this.inputURL + divider +
+      "-Input Description: \n" + this.inputDescription + divider +
+      "-Input NavData: \n" + this.inputNavData + divider +
+      "-AgreedPrivacy? \n" + this.inputAgree + divider +
+      "-Reply? \n" + this.inputResponse + divider
     var subject = this.inputType + " " + strDate;
     mail = new Mail(subject, this.inputMail, body);
     this.sendMail(mail);
