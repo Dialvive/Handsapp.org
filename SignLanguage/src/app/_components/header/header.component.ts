@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
+import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,10 @@ export class HeaderComponent implements OnInit {
   public input : string = "";
   txt: String;
 
-  constructor(private router: Router, public appComponent: AppComponent) {
+  constructor(
+    private router: Router,
+    public appComponent: AppComponent,
+    public googleAnalyticsService: GoogleAnalyticsService) {
     this.txt = "";
   }
   
@@ -33,6 +37,12 @@ export class HeaderComponent implements OnInit {
   
   public submit(type : number) {
     if (this.input.trim() != "" && this.input != null){
+      this.googleAnalyticsService.eventEmitter(
+        "search",
+        "engagement",
+        type == 0 ? "Search All" : type == 1 ? "Search Words" : "Search Phrases",
+        this.input,
+        this.appComponent.localeInt);
       //this.params.append('txt', this.input);
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>(
       this.router.navigate(["search"], {queryParams: {loc: this.appComponent.locale[0] + "_" + this.appComponent.locale[1] + "_" + this.appComponent.locale[2], typ: type , txt: this.input.trim()}})));

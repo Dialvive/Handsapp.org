@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
+import { GoogleAnalyticsService } from './_services/GoogleAnalytics/google-analytics.service'
+
+import { AppComponent } from './app.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { HeaderComponent } from './_components/header/header.component';
 import { AdBannerComponent } from './_components/ad-banner/ad-banner.component';
@@ -102,7 +103,7 @@ import { InternalErrorComponent } from './_components/internal-error/internal-er
     ReactiveFormsModule,
     NgxCaptchaModule
   ],
-  providers: [],
+  providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

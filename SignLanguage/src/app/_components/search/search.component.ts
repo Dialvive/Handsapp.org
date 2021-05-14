@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { HttpParams, HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
+import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
 
 @Component({
   selector: 'app-search',
@@ -22,14 +23,24 @@ export class SearchComponent implements OnInit {
   public input : string = "";
   public params : HttpParams = this.appComponent.getParams();
 
-  constructor(public appComponent: AppComponent, private router : Router) { }
+  constructor(
+    public appComponent: AppComponent, 
+    private router : Router,
+    public googleAnalyticsService: GoogleAnalyticsService) { }
 
   ngOnInit(): void {}
 
   public submit(type : number) {
     if (this.input.trim() != "" && this.input != null){
+      this.input = this.input.trim();
+      this.googleAnalyticsService.eventEmitter(
+        "search",
+        "engagement",
+        type == 0 ? "Search All" : type == 1 ? "Search Words" : "Search Phrases",
+        this.input,
+        this.appComponent.localeInt);
       //this.params.append('txt', this.input);
-      this.router.navigate(["search"], {queryParams: {loc: this.appComponent.locale[0] + "_" + this.appComponent.locale[1] + "_" + this.appComponent.locale[2], typ: type , txt: this.input.trim()}});
+      this.router.navigate(["search"], {queryParams: {loc: this.appComponent.locale[0] + "_" + this.appComponent.locale[1] + "_" + this.appComponent.locale[2], typ: type , txt: this.input}});
     }
   }
 }

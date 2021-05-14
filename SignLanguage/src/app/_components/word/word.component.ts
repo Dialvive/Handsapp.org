@@ -8,6 +8,7 @@ import { ViewChild } from '@angular/core';
 import { AppComponent } from '../../app.component'
 import { WordCategory } from 'src/app/_models/wordCategory';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
+import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
 
 @Component({
   selector: 'app-word',
@@ -49,6 +50,7 @@ export class WordComponent implements OnInit {
     public appComponent: AppComponent,
     public wordCategoryService: WordCategoryService,
     private router: Router,
+    public googleAnalyticsService: GoogleAnalyticsService
   ) {
 
     //const nav = this.router.getCurrentNavigation();
@@ -141,6 +143,12 @@ export class WordComponent implements OnInit {
   //Opens a video fullscreen.
   //TODO: Fix method to work with videos array.
   public openFullscreen() {
+    this.googleAnalyticsService.eventEmitter(
+      "fullscreen",
+      "video",
+      "Fullscreen",
+      window.innerWidth + "x" + window.innerHeight,
+      window.innerWidth * window.innerHeight);
     this.vid = document.getElementById('sign-video');
     if (this.vid.requestFullscreen) {
       this.vid.requestFullscreen();
@@ -157,9 +165,21 @@ export class WordComponent implements OnInit {
     this.vid = document.getElementById('sign-video');
     //this.vid.playbackRate = 1;
     if (this.vid.paused) {
+      this.googleAnalyticsService.eventEmitter(
+        "play",
+        "video",
+        "Play",
+        "WordID:"+this.word.wordID, 
+        this.vid.currentTime);
       this.icon.nativeElement.className = "video-bi bi bi-pause-fill";
       this.vid.play();
     } else {
+      this.googleAnalyticsService.eventEmitter(
+        "pause",
+        "video",
+        "Pause",
+        "WordID:"+this.word.wordID, 
+        this.vid.currentTime);
       this.icon.nativeElement.className = "video-bi bi bi-play-fill";
       this.vid.pause();
     }
@@ -168,6 +188,12 @@ export class WordComponent implements OnInit {
 
   setRabbit() {
     this.vid = document.getElementById('sign-video');
+    this.googleAnalyticsService.eventEmitter(
+      "normalSpeed",
+      "video",
+      "Normal Speed",
+      "WordID:"+this.word.wordID, 
+      this.vid.currentTime);
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 1;
     } else if (this.vid.webkitPlaybackRate) {
@@ -179,6 +205,12 @@ export class WordComponent implements OnInit {
 
   setTurtle() {
     this.vid = document.getElementById('sign-video');
+    this.googleAnalyticsService.eventEmitter(
+      "slowerSpeed",
+      "video",
+      "Slower Speed",
+      "WordID:"+this.word.wordID, 
+      this.vid.currentTime);
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 0.5;
     } else if (this.vid.webkitPlaybackRate) {
@@ -189,6 +221,12 @@ export class WordComponent implements OnInit {
   }
 
   setFox() {
+    this.googleAnalyticsService.eventEmitter(
+      "fasterSpeed",
+      "video",
+      "Faster Speed",
+      "WordID:"+this.word.wordID, 
+      this.vid.currentTime);
     this.vid = document.getElementById('sign-video');
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 1.5;
@@ -211,6 +249,12 @@ export class WordComponent implements OnInit {
   nextVideo() {
     //console.log("video index = " + this.vidIndex + ", videos.length = " + this.videos.length);
     if (this.vidIndex != this.videos.length - 1) {
+      this.googleAnalyticsService.eventEmitter(
+        "nextVideo",
+        "video",
+        "Next Video",
+        "WordID:"+this.word.wordID, 
+        this.vid.currentTime);
       this.vid = document.getElementById('sign-video');
       this.vid.src = this.videos[++this.vidIndex];
       console.log(this.vidIndex);
@@ -219,6 +263,12 @@ export class WordComponent implements OnInit {
 
   previousVideo() {
     if (this.vidIndex != 0) {
+      this.googleAnalyticsService.eventEmitter(
+        "previousVideo",
+        "video",
+        "Previous Video",
+        "WordID:"+this.word.wordID, 
+        this.vid.currentTime);
       this.vid = document.getElementById('sign-video');
       this.vid.src = this.videos[--this.vidIndex];
       console.log(this.vidIndex);

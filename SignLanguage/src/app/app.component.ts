@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
+
+declare let gtag: (property: string, value: any, configs: any) => {};
 
 @Component({
   selector: 'app-root',
@@ -22,7 +24,15 @@ export class AppComponent {
     private router: Router,
     private http: HttpClient,
     public Location:Location
-    ) { }
+    ) {
+      this.router.events.subscribe(
+        event => {
+          if(event instanceof NavigationEnd){
+            gtag('config', 'G-DMRJ6K1JHB', { 'page_path': event.urlAfterRedirects });
+          }
+        });
+      }
+    
 
   //Gets locale through params, or infers it using navigator or IP address.
   // TODO: infer sign language.
