@@ -50,6 +50,7 @@ import { DonationsComponent } from './_components/donations/donations.component'
 import { ThirdPartiesComponent } from './_components/third-parties/third-parties.component';
 import { BugSubmitComponent } from './_components/bug-submit/bug-submit.component';
 import { InternalErrorComponent } from './_components/internal-error/internal-error.component';
+import { AdColumnComponent } from './_components/ad-column/ad-column.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { InternalErrorComponent } from './_components/internal-error/internal-er
     DonationsComponent,
     ThirdPartiesComponent,
     BugSubmitComponent,
-    InternalErrorComponent
+    InternalErrorComponent,
+    AdColumnComponent
   ],
   imports: [
     AdsenseModule.forRoot({
