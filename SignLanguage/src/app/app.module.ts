@@ -1,3 +1,4 @@
+import { AdsenseModule } from 'ng2-adsense';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -96,12 +97,16 @@ import { InternalErrorComponent } from './_components/internal-error/internal-er
     InternalErrorComponent
   ],
   imports: [
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-7365943596040772'
+    }),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule
+
   ],
   providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent]
