@@ -7,15 +7,21 @@
     background-image: url("/assets/img/love-hands.jpg");
     background-size:cover;
     background-attachment: fixed;
+    background-position: center;
     display: block;
     user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none;     
+    -ms-user-select: none;     
+    -o-user-select: none;
 }
 
 .li-grt {
     margin-bottom: 32px;
+}
+
+ul {
+    list-style: none;
 }
 
 .team {
@@ -31,11 +37,12 @@
     height:auto;
     margin-bottom: 12px;
     user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none;     
+    -ms-user-select: none;     
+    -o-user-select: none;
     border: 2px solid var(--cream-dark);
-    border-radius: 2rem;
+    border-radius: 1rem;
 }
 
 .team-name {
