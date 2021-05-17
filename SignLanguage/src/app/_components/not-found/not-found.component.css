@@ -6,4 +6,8 @@
     image-rendering: optimizeQuality;
     max-width: 30%;
     user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none;     
+    -ms-user-select: none;     
+    -o-user-select: none;
 }
