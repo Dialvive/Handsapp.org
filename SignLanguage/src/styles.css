@@ -26,6 +26,12 @@
     --aquamarine: #43D8B3;
     --lake: #61E294;
     /* BREAKPOINTS ############################################### */
+    --space1: 8px;
+    --space2: 12.944px;
+    --space3: 20.943px;
+    --space4: 33.885px;
+    --space5: 54.825px;
+    --space6: 143.526px;
     --breakpoint-xs: 0px;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
@@ -230,6 +236,10 @@ h5 {
     margin-bottom: 0;
 }
 
+hr {
+    margin: var(--space2) var(--space3);
+}
+
 
 /* GENERAL ####################################################### */
 
@@ -261,7 +271,7 @@ ul ol li {
 }
 
 
-/* BUTTON COLORS OVERRIDE ######################################## */
+/* BUTTON OVERRIDE ######################################## */
 
 .btn-primary {
     background-color: var(--primary) !important;
@@ -303,6 +313,21 @@ ul ol li {
     color: var(--cream) !important;
 }
 
+.btn-close {
+    height: var(--space1);
+    width: var(--space1);
+    padding: var(--space3) !important;
+}
+
+.btn-close:focus {
+    box-shadow: none !important;
+}
+
+/* ALERT OVERRIDE #################################################*/
+
+.alert {
+    border-radius: 1rem;
+}
 
 /* AD COLUMN ##################################################### */
 
@@ -370,7 +395,7 @@ video {
     display: flex;
     color: var(--carbon);
     background-color: #fff;
-    border-radius: 2rem;
+    border-radius: 1rem;
     border-color: var(--cream-dark);
     border-width: 3px;
     margin: auto;

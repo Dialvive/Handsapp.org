@@ -14,14 +14,14 @@
 .search-searchbar {
     margin-top: 16px;
     margin-bottom: 16px;
+    margin-left: 0;
+    margin-right: 0;
     height: 42px !important;
-    min-width: 325px;
     width: 100%;
     max-width: 625px;
     padding-top: 2px;
     padding-bottom: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    overflow: hidden;
     background-color: #fff;
     border-radius: 2rem;
     border-width: 2px !important;
@@ -40,6 +40,12 @@
     box-shadow: 0 0 14px var(--cream-dark);
 }
 
+.searchbar-i {
+    margin: 0;
+    padding: 0;
+    width: 10px !important;
+}
+
 .search-icon {
     display: inline-block;
     align-self: center;
@@ -49,15 +55,20 @@
     margin: auto;
     padding: auto;
     height: 30px;
+    width: 30px;
+}
+
+.btn-container {
+    min-height: 36px;
+    height:fit-content;
+    max-height: 72px;
 }
 
 .search-btn {
     margin-top: 8px;
     margin-left: 10px;
     margin-right: 10px;
-    height: 36px;
-    /*width: fit-content;*/
-    min-width: 250;
+    height: 100%;
     background-color: #fff;
     border-radius: 2rem;
     font-size: 16px;
@@ -72,29 +83,23 @@
     box-shadow: none;
     height: 35px;
     outline-width: 0;
-    width: 120%;
+    padding: 0;;
+    width: 100%;
     background-color: transparent;
     outline: none;
 }
 
 .search-reset-btn {
     transition: 0.25s;
-    display: block;
-    align-self: center;
-    justify-self: center;
-    align-content: center;
-    justify-content: center;
-    margin-top: 0;
-    margin-left: 19px;
-    margin-right: 17px;
+    right: 0;
     margin-bottom: 1.5px;
+    margin-right: 4px;
     width: 33px;
     height: 33px;
     background-color: var(--cream);
     border: 2px solid var(--cream);
     border-radius: 2rem;
     outline: var(--cream);
-    align-items: center;
 }
 
 .search-reset-i {
@@ -112,22 +117,6 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.preliminar {
-    background-color: lightgrey;
-    border: 15px var(--carbon-dark) .50;
-    padding: 25px;
-    margin-top: 43px;
-    font-size: large;
-    text-align: center;
-}
-
 .alert{
-    margin-top: 50px;
-}
-
-.prox{
-    max-width: 625px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
+    margin-top: var(--space4);
 }
