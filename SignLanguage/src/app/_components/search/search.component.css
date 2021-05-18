@@ -14,8 +14,8 @@
 .search-searchbar {
     margin-top: 16px;
     margin-bottom: 16px;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
     height: 42px !important;
     width: 100%;
     max-width: 625px;
