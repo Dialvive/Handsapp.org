@@ -18,7 +18,7 @@ export class WordsComponent implements OnInit {
   public hits: string[] | any;
   public words: Word[] | any;
   public name: string | any;
-  public ready = false;
+  public progress: number = 0;
 
   constructor(private router: Router,
     private wordService: WordService,
@@ -27,30 +27,36 @@ export class WordsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWords();
-    this.ready = true;
   }
 
   //Gets all categories from the API and instanciates it globally.
-  private getWordCategories(): void {
+  private async getWordCategories(): Promise<boolean> {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
         this.categories = response;
         //this.fillCategories()
+        this.progress += 25;
+        return true;
       },
-      err => this.appComponent.navigateParams("/404", this.appComponent.locale, '', ''));
+      err => {
+        this.appComponent.navigateParams("/404", this.appComponent.locale, '', '');
+        return false;
+      });
+      return false;
   }
 
   //Gets all categories from the API and instanciates it globally.
-  private getWords(): void {
+  private async getWords() {
     this.appComponent.getLocale();
-    this.getWordCategories();
+    await this.getWordCategories();
     this.wordService.getWords().subscribe(
       response => {
         this.words = response;
+        this.progress += 50;
         var lastID = this.categories.length;
-        this.hits = new Array(lastID) ;
+        this.hits = new Array(lastID);
         this.sortByCategory();
-        
+        this.progress += 25;
       }, 
       err => this.appComponent.navigateParams("/404", this.appComponent.locale, '', ''));
   }
@@ -123,7 +129,6 @@ export class WordsComponent implements OnInit {
         })
       }
     }
-
   }
 
   public getCategoryByIdiom(cat: WordCategory, id: number) {

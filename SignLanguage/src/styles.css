@@ -323,11 +323,13 @@ ul ol li {
     box-shadow: none !important;
 }
 
+
 /* ALERT OVERRIDE #################################################*/
 
 .alert {
     border-radius: 1rem;
 }
+
 
 /* AD COLUMN ##################################################### */
 
@@ -493,6 +495,14 @@ video {
     cursor: pointer;
 }
 
+/* LOADING ####################################################### */
+
+.loading-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
 /* ANIMATIONS #################################################### */
 

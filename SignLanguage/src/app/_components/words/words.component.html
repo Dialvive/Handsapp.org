@@ -8,11 +8,11 @@
 <div class="row">
     <div class="col-md-2 col-xl-2"></div>
     <div class="col-12 col-md-8 col-xl-6 first-column">
-        <ng-container *ngIf="ready">
-            <div>{{ sortCategories(this.appComponent.localeInt) }} </div>
-            <h2 class="mb-5">
-                {{strTitle[this.appComponent.localeInt] }} 
-            </h2>
+        <h2 class="mb-5">
+            {{strTitle[this.appComponent.localeInt] }} 
+        </h2>
+        {{ sortCategories(this.appComponent.localeInt) }}
+        <ng-container *ngIf="progress >= 100; else loading">
             <ng-container *ngFor = "let cat of categories; let i = index">
                 <div>
                     <div class="accordion" id="'words' + i">
@@ -58,9 +58,13 @@
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <ng-adsense [width]="300" [height]="600" [pageLevelAds]="true"></ng-adsense>
+        <ng-adsense [width]="300" [height]="600" [pageLevelAds]="false"></ng-adsense>
     </div>
 
     <div class="col-md-2 col-xl-2"></div>
 </div>
 <app-ad-banner></app-ad-banner>
+
+<ng-template #loading>
+    <img class="loading-img" src="/assets/img/loader.gif" alt="Loading">
+</ng-template>
