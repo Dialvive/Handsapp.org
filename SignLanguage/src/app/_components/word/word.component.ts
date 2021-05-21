@@ -40,9 +40,9 @@ export class WordComponent implements OnInit {
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
   public nfRes: String[] = ["Definition nicht verfügbar", "Definición no disponible", "Definition not available", "Définition non disponible", "Definizione non disponibile", "Definição não disponível"]
   public strRep: String[] = [];
-  public strTit : string[] = ["Wort in ","Palabra en ", "Word in ", "Mot en ", "Parola in ", "Palavra em "];
-  public strComSoon : string[] = ["kommt bald","Próximamente", "Coming soon", "Bientôt disponible", "Prossimamente", "Em breve"];
-  
+  public strTit: string[] = ["Wort in ", "Palabra en ", "Word in ", "Mot en ", "Parola in ", "Palavra em "];
+  public strComSoon: string[] = ["kommt bald", "Próximamente", "Coming soon", "Bientôt disponible", "Prossimamente", "Em breve"];
+
   constructor(
     private wordService: WordService,
     private wordSignService: WordSignService,
@@ -60,7 +60,7 @@ export class WordComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.getWordCategories();
 
     //while(this.vid == null) {
@@ -169,7 +169,7 @@ export class WordComponent implements OnInit {
         "play",
         "video",
         "Play",
-        "WordID:"+this.word.wordID, 
+        "WordID:" + this.word.wordID,
         this.vid.currentTime);
       this.icon.nativeElement.className = "video-bi bi bi-pause-fill";
       this.vid.play();
@@ -178,7 +178,7 @@ export class WordComponent implements OnInit {
         "pause",
         "video",
         "Pause",
-        "WordID:"+this.word.wordID, 
+        "WordID:" + this.word.wordID,
         this.vid.currentTime);
       this.icon.nativeElement.className = "video-bi bi bi-play-fill";
       this.vid.pause();
@@ -192,7 +192,7 @@ export class WordComponent implements OnInit {
       "normalSpeed",
       "video",
       "Normal Speed",
-      "WordID:"+this.word.wordID, 
+      "WordID:" + this.word.wordID,
       this.vid.currentTime);
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 1;
@@ -209,7 +209,7 @@ export class WordComponent implements OnInit {
       "slowerSpeed",
       "video",
       "Slower Speed",
-      "WordID:"+this.word.wordID, 
+      "WordID:" + this.word.wordID,
       this.vid.currentTime);
     if (this.vid.playbackRate) {
       this.vid.playbackRate = 0.5;
@@ -225,7 +225,7 @@ export class WordComponent implements OnInit {
       "fasterSpeed",
       "video",
       "Faster Speed",
-      "WordID:"+this.word.wordID, 
+      "WordID:" + this.word.wordID,
       this.vid.currentTime);
     this.vid = document.getElementById('sign-video');
     if (this.vid.playbackRate) {
@@ -247,31 +247,18 @@ export class WordComponent implements OnInit {
   }
 
   nextVideo() {
-    //console.log("video index = " + this.vidIndex + ", videos.length = " + this.videos.length);
     if (this.vidIndex != this.videos.length - 1) {
-      this.googleAnalyticsService.eventEmitter(
-        "nextVideo",
-        "video",
-        "Next Video",
-        "WordID:"+this.word.wordID, 
-        this.vid.currentTime);
       this.vid = document.getElementById('sign-video');
       this.vid.src = this.videos[++this.vidIndex];
-      console.log(this.vidIndex);
+      this.googleAnalyticsService.eventEmitter("nextVideo", "video", "Next Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
   }
 
   previousVideo() {
     if (this.vidIndex != 0) {
-      this.googleAnalyticsService.eventEmitter(
-        "previousVideo",
-        "video",
-        "Previous Video",
-        "WordID:"+this.word.wordID, 
-        this.vid.currentTime);
       this.vid = document.getElementById('sign-video');
       this.vid.src = this.videos[--this.vidIndex];
-      console.log(this.vidIndex);
+      this.googleAnalyticsService.eventEmitter("previousVideo", "video", "Previous Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
   }
 }
