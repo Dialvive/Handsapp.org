@@ -7,7 +7,8 @@
         "Il mondo a portata di mano",
         "O mundo em suas mãos."][this.appComponent.localeInt]}}
     </title>
-    <meta name="description" content="{{
+    <meta name="description"
+        content="{{
         ['Lerne mit Zeichen zu kommunizieren! Sucht nach Wörtern und Phrasen in mehreren Gebärdensprachen. Verfügbar in Deutsch, Spanisch, Englisch, Französisch, Italienisch und Portugiesisch.',
         '¡Aprende a comunicarte con señas! Busca palabras y frases múltiples lenguas de señas. Disponible en alemán, español, inglés, francés, italiano y portugués.',
         'Learn to communicate with sign language! Searches for words and phrases in multiple sign languages. Available in German, Spanish, English, French, Italian and Portuguese.',
@@ -17,7 +18,9 @@
 </head>
 
 <body>
+
     <div class="row">
+
         <div class="col-md-2 col-xl-3"></div>
 
         <div class="col-12 col-md-8 col-xl-6 first-column d-block justify-content-center text-center">
@@ -37,10 +40,11 @@
 
                         <div class="col-10 flex-fill">
                             <label hidden for="sb1">Barra de búsqueda</label>
-                            <input #txtinput [(ngModel)]="this.input" id="bg-search" type="text" class="search-input" name="txt"
-                                maxlength="512" aria-autocomplete="both" aria-haspopup="false" autocapitalize="off"
-                                autocomplete="off" autocorrect="off" autofocus="true" role="combobox" spellcheck="false"
-                                title={{strSearch[this.appComponent.localeInt]}} value="" aria-label="Search">
+                            <input #txtinput [(ngModel)]="this.input" id="bg-search" type="text" class="search-input"
+                                name="txt" maxlength="512" aria-autocomplete="both" aria-haspopup="false"
+                                autocapitalize="off" autocomplete="off" autocorrect="off" autofocus="true"
+                                role="combobox" spellcheck="false" title={{strSearch[this.appComponent.localeInt]}}
+                                value="" aria-label="Search">
                         </div>
 
                         <div class="col-1 searchbar-i" (click)="txtinput.focus()">
@@ -56,30 +60,55 @@
                         <button (onclick)="submit(2)" type="submit" class="btn search-btn" name="typ"
                             value="2">{{strPhrase[this.appComponent.localeInt]}}</button>
                     </div>
+
                     <div class="row justify-content-center">
-                        <div class="alert alert-primary alert-dismissible fade show d-flex align-items-center" role="alert">
+                        <div class="alert alert-primary alert-dismissible fade show d-flex align-items-center"
+                            role="alert">
                             <div class="row">
-                                <div class="col-12">
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                                <div class="col-12">
+
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+
+                                <div class="col-sm col-12">
+                                    <div class="mt-2 mb-2">
                                     {{this.strVersion[this.appComponent.localeInt]}}
-                                    <a class="footer-a" style="text-decoration: underline; color: #055160; " href="/bug?loc={{this.appComponent.localeTxt}}">
+                                    <a class="footer-a" style="text-decoration: underline; color: #055160; "
+                                        href="/bug?loc={{this.appComponent.localeTxt}}">
                                         {{strComments[this.appComponent.localeInt]+'.'}}
                                     </a>
                                     <hr>
                                     {{this.strFrst[this.appComponent.localeInt]}}
-                                    <a class="footer-a" style="text-decoration: underline; color: #055160; " href="/words?loc={{this.appComponent.localeTxt}}">
+                                    <a class="footer-a" style="text-decoration: underline; color: #055160; "
+                                        href="/words?loc={{this.appComponent.localeTxt}}">
                                         {{strIndex[this.appComponent.localeInt]+'.'}}
                                     </a>
                                 </div>
                             </div>
+                            <div class="col-sm col-12">
+                                <div class="mt-2 mb-2">
+                                    <div class="video-container">
+                                        <video
+                                            src="https://storage.googleapis.com/video.handsapp.org/welcome.mp4"
+                                            id="sign-video" autoplay muted loop oncanplay="this.play()"
+                                            onloadedmetadata="this.muted = true">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </div>
 
-        <div class="col-md-2 col-xl-3"></div>
+
+
+                    </div>
+            </div>
+            </form>
+        </div>
     </div>
+
+    <div class="col-md-2 col-xl-3">
+
+    </div>
+
+    </div>
+
 </body>

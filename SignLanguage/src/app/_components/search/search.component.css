@@ -60,7 +60,7 @@
 
 .btn-container {
     min-height: 36px;
-    height:fit-content;
+    height: fit-content;
     max-height: 72px;
 }
 
@@ -83,7 +83,8 @@
     box-shadow: none;
     height: 35px;
     outline-width: 0;
-    padding: 0;;
+    padding: 0;
+    ;
     width: 100%;
     background-color: transparent;
     outline: none;
@@ -117,6 +118,19 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.alert{
+.alert {
     margin-top: var(--space4);
+}
+
+.video-container {
+    display: block;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+video {
+    background-image: none !important;
 }
