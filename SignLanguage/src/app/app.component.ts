@@ -12,6 +12,7 @@ declare let gtag: (property: string, value: any, configs: any) => {};
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   public locale: string[] | any; // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
   public localeInt: number | any; // 0: de, 1: es, 2: en, 3: fr, 4: it, 5: pt
   public localeTxt: string | any;

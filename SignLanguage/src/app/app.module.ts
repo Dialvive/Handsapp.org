@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 import { GoogleAnalyticsService } from './_services/GoogleAnalytics/google-analytics.service'
 
@@ -106,6 +107,7 @@ import { InternalErrorComponent } from './_components/internal-error/internal-er
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxJsonLdModule,
     NgxCaptchaModule
 
   ],

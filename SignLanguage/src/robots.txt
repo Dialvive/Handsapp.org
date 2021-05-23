@@ -1,10 +1,9 @@
 User-agent: *
 Crawl-delay: 1000
 Allow: /*
-Dissallow: /account/
+Disallow: /account/
 Disallow: /404
 Disallow: /502
 Disallow: /coming-soon
-Disallow: /assets/*
 
-Sitemap: http://handsapp.org/sitemap.xml
+Sitemap: https://handsapp.org/sitemap.xml

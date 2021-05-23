@@ -10,6 +10,50 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
+  public topSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': 'HandsApp',
+    'foundingDate': '2020-11-01',
+    'url': 'https://handsapp.org',
+    'isAccessibleForFree': true,
+    'isFamilyFriendly': true,
+    'teaches': ['Zeichensprache', 'Lengua de señas', 'SignLanguage', 'Langage des signes', 'Linguaggio dei segni', 'Linguagem de sinais'],
+    'learningResourceType': 'videos',
+    'accessMode': 'visual',
+    'inLanguage': ['de', 'es', 'en', 'fr', 'it', 'pt'],
+    'image': 'https://handsapp.org/assets/img/logo.png',
+    'sameAs': [
+      'https://www.facebook.com/HandsApp.org',
+      'https://twitter.com/HandsAppOrg',
+      'https://www.instagram.com/handsapp_org/'
+      ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.handsapp.org/search?txt={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+    'copyrightHolder': {
+      '@type': 'Organization',
+      'name': 'Tecnologías Haikode S.A.S. de C.V.'
+    },
+    'copyrightNotice': 'All rights reserved.',
+    'copyrightYear': '2021',
+    'creator': [{
+      '@type': 'Person',
+      'name': 'Diego A Villalpando Velazquez',
+      'sameAs': ['https://www.linkedin.com/in/diegovillalpando/', 'https://github.com/Dialvive/']
+      },
+      {
+        '@type': 'Person',
+        'name': 'Marco A Blancas Tokunaga',
+        'sameAs': ['https://www.linkedin.com/in/marco-tokunaga/', 'https://github.com/tokumago/']
+      }],
+    'keywords': ['zeichensprache', 'lengua de señas', 'Sign Language', 'langage des signes', 'linguaggio dei segni', 'linguagem de sinais',
+                'LSM', 'learn', 'aprender', 'imparare', 'lernen', 'apprendre'],
+  }
+
   public strWord: string[] = ["Suche nach Wörtern", "Buscar palabras", "Search words", "Rechercher des mots", "Cerca le Parole", "Procure palavras"];
   public strPhrase: string[] = ["Suchphrasen", "Buscar frases", "Search phrases", "Rechercher des phrases", "Frasi di ricerca", "Pesquisar frases"];
   public strSearch: string[] = ["Suche", "Buscar", "Search", "Chercher", "Ricerca", "Procurar"];
