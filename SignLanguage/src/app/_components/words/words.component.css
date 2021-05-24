@@ -7,14 +7,10 @@
     height: 100%;
     min-height: fit-content;
     max-height: 2fr;
-
     width: 1fr;
-    
     padding: auto;
     margin: auto;
-    
     text-align: center;
-
     border-radius: 1rem;
     overflow: hidden;
     text-decoration: none;
@@ -27,7 +23,7 @@
     animation: shadow-drop-2-bottom 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-.grid-container { 
+.grid-container {
     display: grid !important;
     column-gap: minmax(5px, 1.618vw);
     row-gap: 2.618vh;
@@ -38,13 +34,13 @@
     padding-top: 2.618vh;
 }
 
-.card-body{
+.card-body {
     height: 100%;
     margin: auto;
     padding: auto;
 }
 
-.card-title{
+.card-title {
     height: 100%;
     margin: auto;
     padding: auto;
@@ -52,17 +48,17 @@
     justify-content: center;
     align-items: center;
     user-select: none;
-    -webkit-user-select: none; 
-    -moz-user-select: none;     
-    -ms-user-select: none;     
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     -o-user-select: none;
 }
 
-.accordion-header{
+.accordion-header {
     user-select: none;
-    -webkit-user-select: none; 
-    -moz-user-select: none;     
-    -ms-user-select: none;     
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     -o-user-select: none;
 }
 
@@ -86,13 +82,18 @@
     background-color: var(--cream);
 }
 
-.accordion-button:active{
+.accordion-button:active {
     background-color: #fff;
     box-shadow: 0 0 12px var(--accent) !important;
 }
 
-.accordion-button:not(.collapsed){
+.accordion-button:not(.collapsed) {
     background-color: #fff;
     box-shadow: 0 0 0px var(--accent) !important;
     color: var(--accent);
+}
+
+.prox {
+    text-align: right;
+    width: 100%;
 }
