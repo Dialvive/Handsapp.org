@@ -64,50 +64,51 @@
                     <div class="row justify-content-center">
                         <div class="alert alert-primary alert-dismissible fade show d-flex align-items-center"
                             role="alert">
-                            <div class="row">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <div class="row d-flex align-items-stretch justify-content-around w-100">
 
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
+                                <div class="col-lg-6 col-12">
 
-                                <div class="col-sm col-12">
-                                    <div class="mt-2 mb-2">
-                                    {{this.strVersion[this.appComponent.localeInt]}}
-                                    <a class="footer-a" style="text-decoration: underline; color: #055160; "
-                                        href="/bug?loc={{this.appComponent.localeTxt}}">
-                                        {{strComments[this.appComponent.localeInt]+'.'}}
-                                    </a>
+                                    <div class="alert-txt row">
+                                        {{this.strVersion[this.appComponent.localeInt]}}
+                                        <a class="footer-a" style="text-decoration: underline; color: #055160; "
+                                            href="/bug?loc={{this.appComponent.localeTxt}}">
+                                            {{strComments[this.appComponent.localeInt]+'.'}}
+                                        </a>
+                                    </div>
                                     <hr>
-                                    {{this.strFrst[this.appComponent.localeInt]}}
-                                    <a class="footer-a" style="text-decoration: underline; color: #055160; "
-                                        href="/words?loc={{this.appComponent.localeTxt}}">
-                                        {{strIndex[this.appComponent.localeInt]+'.'}}
-                                    </a>
+                                    <div class="alert-txt row">
+                                        {{this.strFrst[this.appComponent.localeInt]}}
+                                        <a class="footer-a" style="text-decoration: underline; color: #055160; "
+                                            href="/words?loc={{this.appComponent.localeTxt}}">
+                                            {{strIndex[this.appComponent.localeInt]+'.'}}
+                                        </a>
+                                    </div>
+
                                 </div>
-                            </div>
-                            <div class="col-sm col-12">
-                                <div class="mt-2 mb-2">
-                                    <div class="video-container">
-                                        <video
-                                            src="https://storage.googleapis.com/video.handsapp.org/welcome.mp4"
-                                            id="sign-video" autoplay muted loop oncanplay="this.play()"
-                                            onloadedmetadata="this.muted = true">
-                                        </video>
+                                <div class="col-lg-6 col-12">
+                                    <div class="h-100">
+                                        <div class="video-container">
+                                            <video src="https://storage.googleapis.com/video.handsapp.org/welcome.mp4"
+                                                id="sign-video" autoplay muted loop oncanplay="this.play()"
+                                                onloadedmetadata="this.muted = true">
+                                            </video>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
-
-
-
                     </div>
+                </form>
             </div>
-            </form>
         </div>
-    </div>
 
-    <div class="col-md-2 col-xl-3">
+        <div class="col-md-2 col-xl-3">
 
-    </div>
+        </div>
 
     </div>
 

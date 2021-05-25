@@ -27,6 +27,9 @@ export class WordComponent implements OnInit {
   public error: string = '';
   public categories: WordCategory[] | any;
   public vidIndex: number = 0;
+  public videoReady: boolean = false;
+  public catReady: boolean = false;
+  public txtReady: boolean = false;
 
   vid: any | HTMLVideoElement
   @ViewChild("icon") icon: any;
@@ -101,6 +104,7 @@ export class WordComponent implements OnInit {
   private createVideoURLs(): void {
     this.getIdTxt();
     this.getWord();
+    //this.getWordCategories();
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
@@ -111,7 +115,6 @@ export class WordComponent implements OnInit {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
 
         }
-
         this.ready = true;
         const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
         vidSrc.src = this.videos[0];
@@ -124,6 +127,7 @@ export class WordComponent implements OnInit {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
         this.categories = response;
+        this.catReady = true;
       },
       err => console.log(err));
   }
