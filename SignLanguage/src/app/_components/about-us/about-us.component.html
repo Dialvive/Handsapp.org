@@ -1,9 +1,9 @@
 <head>
     <title>{{this.strTitle[this.appComponent.localeInt]}}</title>
+    <app-json-ld [json]="this.schema"></app-json-ld>
 </head>
 
 <body>
-    <ngx-json-ld [json]="this.schema"></ngx-json-ld>
     <div class="div-featured-image"></div>
 
 <div class="row">

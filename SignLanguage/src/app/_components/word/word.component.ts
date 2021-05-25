@@ -19,8 +19,7 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
 export class WordComponent implements OnInit {
 
   public word: Observable<Word> | any;
-  public videos: String[] | any;
-
+  public videoURLs: String[] | any;
   public wordID: string | any;
   public wordTXT: string | any;
   public ready: boolean = false;
@@ -50,28 +49,48 @@ export class WordComponent implements OnInit {
     public appComponent: AppComponent,
     public wordCategoryService: WordCategoryService,
     private router: Router,
-    public googleAnalyticsService: GoogleAnalyticsService
+    public googleAnalyticsService: GoogleAnalyticsService,
   ) {
-
-    //const nav = this.router.getCurrentNavigation();
-    //this.videos = nav?.extras?.state?.value;
-    //console.log("VIDEOS[0] = " + this.videos[0])
     this.createVideoURLs();
+    this.getWordCategories();
   }
 
   ngOnInit() {
-
-    this.getWordCategories();
-
-    //while(this.vid == null) {
-
-    //}
-    //this.vid = document.getElementById("sign-video");
-    //this.setPlay()
-
     //TODO: Add a way to trigger the video loading after everything has been loaded.
-    //TODO: Create event listener for videos or carousel to load only the video on focus on the carousel.
-    //TODO: What if txt doesn't match current locale txt?
+    //TODO: What if txt doesn't match current locale txt.
+  }
+
+  public setSchema(): Object { 
+    var categories = this.categories.find((wc: WordCategory) => wc.ID == this.word.word_category_ID);
+    return {
+      '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        'name': this.word.getText()[this.appComponent.localeInt] + ' - ' +
+         this.strTit[this.appComponent.localeInt] + this.appComponent.locale[1],
+        'description': this.word.getText()[this.appComponent.localeInt] + ': ' + this.word.getDefinitions()[this.appComponent.localeInt],
+        'thumbnailUrl': 'https://handsapp.org/assets/img/logo.png',
+        'uploadDate': this.word.modified,
+        'contentUrl': this.videoURLs[0],
+        'encodingFormat': 'video/mp4',
+        'copyrightHolder': 'Tecnologías Haikode S.A.S. de C.V.',
+        'copyrightNotice': 'All rights reserved.',
+        'copyrightYear': 2021,
+        'keywords': [
+          this.word.text_de, this.word.text_es,
+          this.word.text_en, this.word.text_fr,
+          this.word.text_it,this.word.text_pt,
+          categories.name_de, categories.name_es,
+          categories.name_en, categories.name_fr,
+          categories.name_it, categories.name_pt,
+          'HandsApp', 'Hands App',
+          this.strLen[0], this.strLen[1],
+          this.strLen[2], this.strLen[3],
+          this.strLen[4], this.strLen[5]],
+        'isFamilyFriendly': true, //TODO: CHANCGE IF EXPLICIT CONTENT
+        'learningResourceType': 'video',
+        'identifier': this.wordID,
+        'url': 'https://handsapp.org' + this.appComponent.Location.path()
+      }
   }
 
   //Gets the id and txt parameters from the URL and instanciates it globally.
@@ -105,16 +124,16 @@ export class WordComponent implements OnInit {
     const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
-        this.videos = new Array(response.length);
+        this.videoURLs = new Array(response.length);
 
         for (let i = 0; i < response.length; i++) {
-          this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
+          this.videoURLs[i] = URL + this.wordID + '-' + version[i] + '.mp4';
 
         }
 
         this.ready = true;
         const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
-        vidSrc.src = this.videos[0];
+        vidSrc.src = this.videoURLs[0];
       },
       err => console.error(err));
   }
@@ -247,9 +266,9 @@ export class WordComponent implements OnInit {
   }
 
   nextVideo() {
-    if (this.vidIndex != this.videos.length - 1) {
+    if (this.vidIndex != this.videoURLs.length - 1) {
       this.vid = document.getElementById('sign-video');
-      this.vid.src = this.videos[++this.vidIndex];
+      this.vid.src = this.videoURLs[++this.vidIndex];
       this.googleAnalyticsService.eventEmitter("nextVideo", "video", "Next Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
   }
@@ -257,7 +276,7 @@ export class WordComponent implements OnInit {
   previousVideo() {
     if (this.vidIndex != 0) {
       this.vid = document.getElementById('sign-video');
-      this.vid.src = this.videos[--this.vidIndex];
+      this.vid.src = this.videoURLs[--this.vidIndex];
       this.googleAnalyticsService.eventEmitter("previousVideo", "video", "Previous Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
   }

@@ -11,7 +11,7 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
 })
 export class SearchComponent implements OnInit {
 
-  public topSchema = {
+  public schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     'name': 'HandsApp',
