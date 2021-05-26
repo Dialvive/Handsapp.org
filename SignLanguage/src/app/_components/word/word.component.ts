@@ -78,22 +78,6 @@ export class WordComponent implements OnInit {
     //TODO: What if txt doesn't match current locale txt?
   }
 
-  /* ngAfterContentChecked() {
-    console.log("ngAferContentChecked")
-  }
-
-  ngAfterViewInit() {
-    console.log("ngAferViewInit")
-  }
-  */
-  ngAfterViewChecked() {
-    console.log(this.progress)
-  }
-
-  ngOnDestroy() {
-    console.log("Destroy")
-  } 
-
   //Gets the id and txt parameters from the URL and instanciates it globally.
   // I.E. route: https://handsapp.org/word?loc=es_LSM_MX&id=1&txt=Abeja
   //TODO: manage incorrect id's

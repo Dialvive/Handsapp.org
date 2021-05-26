@@ -2,7 +2,7 @@
     <ng-container *ngIf="progress >= 100">
         <title>
 
-            {{word.getText()[this.appComponent.localeInt]}} -
+            {{word?.getText()[this.appComponent.localeInt]}} -
             {{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}
 
         </title>
@@ -18,7 +18,7 @@
         
          <!-- WORD TITLE -->
 
-        <ng-container *ngIf="progress >= 100">
+        <ng-container *ngIf="progress >= 125">
             <div class="d-flex justify-content-between align-items-start">
 
                 <h1>
@@ -92,7 +92,7 @@
         </div>
 
         <!-- WORD DEFINITIONS -->
-        <ng-container *ngIf="progress >= 100">
+        <ng-container *ngIf="progress >= 125">
 
             <ng-container
                 *ngIf="(word.getDefinitions()[this.appComponent.localeInt] !='.' && word.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
