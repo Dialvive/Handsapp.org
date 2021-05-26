@@ -19,7 +19,7 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
 export class WordComponent implements OnInit {
 
   public word: Observable<Word> | any;
-  public videos: String[] | any;
+  public videos: string[] = [""];
 
   public wordID: string | any;
   public wordTXT: string | any;
@@ -30,6 +30,7 @@ export class WordComponent implements OnInit {
   public videoReady: boolean = false;
   public catReady: boolean = false;
   public txtReady: boolean = false;
+  public progress: number = 0;
 
   vid: any | HTMLVideoElement
   @ViewChild("icon") icon: any;
@@ -55,16 +56,16 @@ export class WordComponent implements OnInit {
     private router: Router,
     public googleAnalyticsService: GoogleAnalyticsService
   ) {
-
+   
     //const nav = this.router.getCurrentNavigation();
     //this.videos = nav?.extras?.state?.value;
     //console.log("VIDEOS[0] = " + this.videos[0])
-    this.createVideoURLs();
+    
   }
 
   ngOnInit() {
-
-    this.getWordCategories();
+    
+    this.createVideoURLs();
 
     //while(this.vid == null) {
 
@@ -77,12 +78,29 @@ export class WordComponent implements OnInit {
     //TODO: What if txt doesn't match current locale txt?
   }
 
+  /* ngAfterContentChecked() {
+    console.log("ngAferContentChecked")
+  }
+
+  ngAfterViewInit() {
+    console.log("ngAferViewInit")
+  }
+  */
+  ngAfterViewChecked() {
+    console.log(this.progress)
+  }
+
+  ngOnDestroy() {
+    console.log("Destroy")
+  } 
+
   //Gets the id and txt parameters from the URL and instanciates it globally.
   // I.E. route: https://handsapp.org/word?loc=es_LSM_MX&id=1&txt=Abeja
   //TODO: manage incorrect id's
   private getIdTxt(): void {
     this.wordTXT = this.route.snapshot.queryParamMap.get('txt');
     this.wordID = this.route.snapshot.queryParamMap.get('id');
+    this.progress += 25;
     if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '') {
       this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT);
     } else if (this.wordTXT != null && this.wordID == null) {
@@ -91,45 +109,57 @@ export class WordComponent implements OnInit {
   }
 
   //Gets a word from the API and instanciates it globally.
-  private getWord(): void {
+  private async getWord(): Promise<boolean> {
     this.wordService.getWord(+this.wordID).subscribe(
       response => {
         this.word = new Word(response);
+        this.progress += 25;
+        return true;
       },
-      err => this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT));
+      err => {
+        this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT)
+        return false;
+      });
+    return false;
   }
 
   //Gets all the wordSigns of a word and instanciates the array of video URLs globally.
   //TODO: Create count versions route in API. Fix SignLang in URL 
-  private createVideoURLs(): void {
+  private async createVideoURLs() {
     this.getIdTxt();
-    this.getWord();
+    await this.getWord();
+    await this.getWordCategories();
     //this.getWordCategories();
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
         this.videos = new Array(response.length);
-
         for (let i = 0; i < response.length; i++) {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
-
         }
-        this.ready = true;
-        const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
-        vidSrc.src = this.videos[0];
+        this.progress += 50;
+        this.setVideoSrc();
       },
       err => console.error(err));
   }
 
+  private setVideoSrc(){
+    const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
+    vidSrc.src = this.videos[0];
+    this.progress += 25;
+  }
+
   //Gets every word category and instanciates them globally in a 2 dimensional array
-  private getWordCategories(): void {
+  private async getWordCategories() {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
         this.categories = response;
-        this.catReady = true;
       },
-      err => console.log(err));
+      err => {
+        console.log(err)
+      });
+
   }
 
   public findCategoryByID(lang: number): string {

@@ -1,8 +1,10 @@
 <head>
-    <ng-container *ngIf="this.txtReady">
+    <ng-container *ngIf="progress >= 100">
         <title>
+
             {{word.getText()[this.appComponent.localeInt]}} -
             {{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}
+
         </title>
     </ng-container>
 </head>
@@ -13,57 +15,63 @@
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
+        
+         <!-- WORD TITLE -->
 
-        <div class="d-flex justify-content-between align-items-start">
-            <ng-container *ngIf="this.ready">
+        <ng-container *ngIf="progress >= 100">
+            <div class="d-flex justify-content-between align-items-start">
+
                 <h1>
                     {{word.getText()[this.appComponent.localeInt]}}
                 </h1>
-            </ng-container>
-            <div class="d-flex align-items-start">
 
-                <a type="button" class="btn flag-btn" title="Reportar" name="flag" href="bug?url=word">
-                    <i class="bi bi-flag-fill"></i>
-                </a>
-                <button type="button" class="btn heart-btn" title={{strComSoon[this.appComponent.localeInt]}}
-                    titname="heart block" unable>
-                    <i class="bi bi-heart-fill"></i>
-                </button>
+                <div class="d-flex align-items-start">
+
+                    <a type="button" class="btn flag-btn" title="Reportar" name="flag" href="bug?url=word">
+                        <i class="bi bi-flag-fill"></i>
+                    </a>
+                    <button type="button" class="btn heart-btn" title={{strComSoon[this.appComponent.localeInt]}}
+                        titname="heart block" unable>
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                </div>
             </div>
-        </div>
+        </ng-container>
 
+        <!-- VIDEO CONTAINER -->
+        
         <div oncontextmenu="return false" class="d-flex justify-content-center video-container">
             <div class="mycarousel">
                 <video preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
                     onloadedmetadata="this.muted = true"></video>
                 <div class="control">
-                    <ng-container *ngIf="this.videoReady">
-                        <ng-container *ngIf="videos.length > 1">
-                            <span class="arrow left">
-                                <i class="bi bi-chevron-compact-left" (click)="previousVideo()" type="button"></i>
-                            </span>
-                            <span class="arrow right">
-                                <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button"></i>
-                            </span>
-                            <ul>
-                                <ng-container *ngFor="let video of videos; let index = index">
-                                    <div>
-                                        <ng-container *ngIf="index == vidIndex; else elseBlock">
-                                            <li class="selected" (click)="videoUrl(video,index)" type="button"></li>
-                                        </ng-container>
-                                        <ng-template #elseBlock>
-                                            <li (click)="videoUrl(video,index)" type="button"></li>
-                                        </ng-template>
-                                    </div>
-                                </ng-container>
-                            </ul>
-                        </ng-container>
+
+                    <ng-container *ngIf="videos.length > 1">
+                        <span class="arrow left">
+                            <i class="bi bi-chevron-compact-left" (click)="previousVideo()" type="button"></i>
+                        </span>
+                        <span class="arrow right">
+                            <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button"></i>
+                        </span>
+                        <ul>
+                            <ng-container *ngFor="let video of videos; let index = index">
+                                <div>
+                                    <ng-container *ngIf="index == vidIndex; else elseBlock">
+                                        <li class="selected" (click)="videoUrl(video,index)" type="button"></li>
+                                    </ng-container>
+                                    <ng-template #elseBlock>
+                                        <li (click)="videoUrl(video,index)" type="button"></li>
+                                    </ng-template>
+                                </div>
+                            </ng-container>
+                        </ul>
                     </ng-container>
+
                 </div>
             </div>
         </div>
 
-        <!-- Carousel 2 -->
+        <!-- VIDEO CONTROLS -->
         <div class="video-controls d-flex justify-content-center align-items-center">
 
             <button type="button" class="btn video-btn" (click)="setPlay()" name="playpause">
@@ -82,8 +90,12 @@
                 <i class="video-bi bi bi-arrows-fullscreen"></i>
             </button>
         </div>
-        <ng-container *ngIf="this.ready">
-            <ng-container *ngIf="(word.getDefinitions()[this.appComponent.localeInt] !='.' && word.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
+
+        <!-- WORD DEFINITIONS -->
+        <ng-container *ngIf="progress >= 100">
+
+            <ng-container
+                *ngIf="(word.getDefinitions()[this.appComponent.localeInt] !='.' && word.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
@@ -111,7 +123,9 @@
                     </div>
                 </div>
             </ng-template>
-            
+
+            <!-- WORD CONTEXT -->
+        
             <ng-container
                 *ngIf="word.getContext()[this.appComponent.localeInt] != '.' && word.getContext()[this.appComponent.localeInt] != ''">
                 <div class="row">
@@ -126,8 +140,9 @@
                         </div>
                     </div>
                 </div>
-            </ng-container>
-            <ng-container *ngIf="this.catReady">
+
+                <!-- WORD INFO -->
+                
                 <div class="row">
                     <div class="col-12">
                         <div class="card word-card">
@@ -154,6 +169,7 @@
                 </div>
             </ng-container>
         </ng-container>
+
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
