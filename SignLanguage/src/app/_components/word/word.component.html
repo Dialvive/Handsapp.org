@@ -142,32 +142,32 @@
             </div>
         </ng-container>
         <!-- WORD INFO -->
-        <ng-container *ngIf="this.progress >= 100">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card word-card">
-                        <div class="card-body">
-                            <h3>
-                                {{strDet[this.appComponent.localeInt]}}
-                            </h3>
-                            <hr>
-                            <ul>
-                                <li class="ligrt">
-                                    {{strCat[this.appComponent.localeInt]}}: {{
-                                    findCategoryByID(this.appComponent.localeInt) }}
-                                </li>
-                                <li class="ligrt">
-                                    {{strLen[this.appComponent.localeInt]}}: Lengua de Señas Mexicana (LSM)
-                                </li>
-                                <li class="ligrt">
-                                    {{strReg[this.appComponent.localeInt]}}: México
-                                </li>
-                            </ul>
-                        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card word-card">
+                    <div class="card-body">
+                        <h3>
+                            {{strDet[this.appComponent.localeInt]}}
+                        </h3>
+                        <hr>
+                        <ul>
+                            <li class="ligrt">
+                                {{strCat[this.appComponent.localeInt]}}: {{
+                                this.category?.getNameByIdiom(this.appComponent.localeInt) }}
+                            </li>
+                            <li class="ligrt">
+                                {{strLen[this.appComponent.localeInt]}}: Lengua de Señas Mexicana (LSM)
+                            </li>
+                            <li class="ligrt">
+                                {{strReg[this.appComponent.localeInt]}}: México
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </ng-container>
+        </div>
+
 
 
 
