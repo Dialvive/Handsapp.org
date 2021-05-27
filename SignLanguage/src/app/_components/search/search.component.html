@@ -62,13 +62,12 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <div class="alert alert-primary alert-dismissible fade show d-flex align-items-center"
-                            role="alert">
+                        <div class="alert alert-primary alert-dismissible fade show d-flex align-items-center" role="alert">
+                            
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            
                             <div class="row d-flex align-items-stretch justify-content-around w-100">
-
                                 <div class="col-lg-6 col-12">
-
                                     <div class="alert-txt row">
                                         {{this.strVersion[this.appComponent.localeInt]}}
                                         <a class="footer-a" style="text-decoration: underline; color: #055160; "
@@ -84,12 +83,12 @@
                                             {{strIndex[this.appComponent.localeInt]+'.'}}
                                         </a>
                                     </div>
-
                                 </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="h-100">
+                                <div class="col-sm col-12 align-self-center">
+                                    <div class=" mt-2 mb-2">
                                         <div class="video-container">
-                                            <video src="https://storage.googleapis.com/video.handsapp.org/welcome.mp4"
+                                            <video
+                                                src="https://storage.googleapis.com/video.handsapp.org/welcome.mp4"
                                                 id="sign-video" autoplay muted loop oncanplay="this.play()"
                                                 onloadedmetadata="this.muted = true">
                                             </video>

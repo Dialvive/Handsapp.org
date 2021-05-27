@@ -138,6 +138,6 @@ video {
 }
 
 .alert-txt {
-    margin: 7.5% 0% 7.5% 7.5% ;
-    font-size: minmax(16.18px,60%);
+    margin: 6% 0% 6% 6%;
+    justify-content: center;
 }
