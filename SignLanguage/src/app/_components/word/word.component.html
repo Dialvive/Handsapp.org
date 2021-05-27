@@ -54,7 +54,7 @@
                             <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button"></i>
                         </span>
                         <ul>
-                            <ng-container *ngFor="let video of videos; let index = index">
+                            <ng-container *ngFor="let video of videoURLs; let index = index">
                                 <div>
                                     <ng-container *ngIf="index == vidIndex; else elseBlock">
                                         <li class="selected" (click)="videoUrl(video,index)" type="button"></li>

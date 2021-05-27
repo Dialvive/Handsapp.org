@@ -5,8 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppRoutingModule } from './app-routing.module';
+import { JsonLdModule } from './_modules/json-ld/json-ld.module';
 
-import { GoogleAnalyticsService } from './_services/GoogleAnalytics/google-analytics.service'
+import { GoogleAnalyticsService } from './_services/GoogleAnalytics/google-analytics.service';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './_components/footer/footer.component';
@@ -106,8 +107,8 @@ import { InternalErrorComponent } from './_components/internal-error/internal-er
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxCaptchaModule
-
+    NgxCaptchaModule,
+    JsonLdModule
   ],
   providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent]
