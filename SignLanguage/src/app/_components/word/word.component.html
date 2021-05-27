@@ -1,12 +1,12 @@
 <head>
-    <ng-container *ngIf="progress >= 100">
-        <title>
 
-            {{word?.getText()[this.appComponent.localeInt]}} -
-            {{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}
+    <title>
 
-        </title>
-    </ng-container>
+        {{word?.getText()[this.appComponent.localeInt]}} -
+        {{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}
+
+    </title>
+
 </head>
 
 <app-ad-banner></app-ad-banner>
@@ -15,31 +15,31 @@
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
-        
-         <!-- WORD TITLE -->
 
-        <ng-container *ngIf="progress >= 125">
-            <div class="d-flex justify-content-between align-items-start">
+        <!-- word? TITLE -->
 
-                <h1>
-                    {{word.getText()[this.appComponent.localeInt]}}
-                </h1>
 
-                <div class="d-flex align-items-start">
+        <div class="d-flex justify-content-between align-items-start">
 
-                    <a type="button" class="btn flag-btn" title="Reportar" name="flag" href="bug?url=word">
-                        <i class="bi bi-flag-fill"></i>
-                    </a>
-                    <button type="button" class="btn heart-btn" title={{strComSoon[this.appComponent.localeInt]}}
-                        titname="heart block" unable>
-                        <i class="bi bi-heart-fill"></i>
-                    </button>
-                </div>
+            <h1>
+                {{word?.getText()[this.appComponent.localeInt]}}
+            </h1>
+
+            <div class="d-flex align-items-start">
+
+                <a type="button" class="btn flag-btn" title="Reportar" name="flag" href="bug?url=word">
+                    <i class="bi bi-flag-fill"></i>
+                </a>
+                <button type="button" class="btn heart-btn" title={{strComSoon[this.appComponent.localeInt]}}
+                    titname="heart block" unable>
+                    <i class="bi bi-heart-fill"></i>
+                </button>
             </div>
-        </ng-container>
+        </div>
+
 
         <!-- VIDEO CONTAINER -->
-        
+
         <div oncontextmenu="return false" class="d-flex justify-content-center video-container">
             <div class="mycarousel">
                 <video preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
@@ -92,60 +92,60 @@
         </div>
 
         <!-- WORD DEFINITIONS -->
-        <ng-container *ngIf="progress >= 125">
 
-            <ng-container
-                *ngIf="(word.getDefinitions()[this.appComponent.localeInt] !='.' && word.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card word-card">
-                            <div class="card-body">
-                                <h3>
-                                    {{strDef[this.appComponent.localeInt]}}
-                                </h3>
-                                <hr> {{word.getDefinitions()[this.appComponent.localeInt]}}
-                            </div>
+
+        <ng-container
+            *ngIf="(word?.getDefinitions()[this.appComponent.localeInt] !='.' && word?.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card word?-card">
+                        <div class="card-body">
+                            <h3>
+                                {{strDef[this.appComponent.localeInt]}}
+                            </h3>
+                            <hr> {{word?.getDefinitions()[this.appComponent.localeInt]}}
                         </div>
                     </div>
                 </div>
-            </ng-container>
-            <ng-template #elseblock2>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card word-card">
-                            <div class="card-body">
-                                <h3>
-                                    {{strDef[this.appComponent.localeInt]}}
-                                </h3>
-                                <hr> {{nfRes[this.appComponent.localeInt]}}
-                            </div>
+            </div>
+        </ng-container>
+        <ng-template #elseblock2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card word-card">
+                        <div class="card-body">
+                            <h3>
+                                {{strDef[this.appComponent.localeInt]}}
+                            </h3>
+                            <hr> {{nfRes[this.appComponent.localeInt]}}
                         </div>
                     </div>
                 </div>
-            </ng-template>
+            </div>
+        </ng-template>
 
-            <!-- WORD CONTEXT -->
-        
-            <ng-container
-                *ngIf="word.getContext()[this.appComponent.localeInt] != '.' && word.getContext()[this.appComponent.localeInt] != ''">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card word-card">
-                            <div class="card-body">
-                                <h3>
-                                    {{strExp[this.appComponent.localeInt]}}
-                                </h3>
-                                <hr> {{word.getContext()[this.appComponent.localeInt]}}
-                            </div>
+        <!-- word? CONTEXT -->
+
+        <ng-container
+            *ngIf="word?.getContext()[this.appComponent.localeInt] != '.' && word?.getContext()[this.appComponent.localeInt] != ''">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card word-card">
+                        <div class="card-body">
+                            <h3>
+                                {{strExp[this.appComponent.localeInt]}}
+                            </h3>
+                            <hr> {{word?.getContext()[this.appComponent.localeInt]}}
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- WORD INFO -->
-                
+            <!-- WORD INFO -->
+            <ng-container *ngIf="this.ready">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card word-card">
+                        <div class="card word?-card">
                             <div class="card-body">
                                 <h3>
                                     {{strDet[this.appComponent.localeInt]}}
@@ -169,6 +169,7 @@
                 </div>
             </ng-container>
         </ng-container>
+
 
     </div>
 

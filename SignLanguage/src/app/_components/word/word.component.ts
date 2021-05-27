@@ -20,17 +20,12 @@ export class WordComponent implements OnInit {
 
   public word: Observable<Word> | any;
   public videos: string[] = [""];
-
   public wordID: string | any;
   public wordTXT: string | any;
   public ready: boolean = false;
   public error: string = '';
   public categories: WordCategory[] | any;
   public vidIndex: number = 0;
-  public videoReady: boolean = false;
-  public catReady: boolean = false;
-  public txtReady: boolean = false;
-  public progress: number = 0;
 
   vid: any | HTMLVideoElement
   @ViewChild("icon") icon: any;
@@ -56,15 +51,15 @@ export class WordComponent implements OnInit {
     private router: Router,
     public googleAnalyticsService: GoogleAnalyticsService
   ) {
-   
+
     //const nav = this.router.getCurrentNavigation();
     //this.videos = nav?.extras?.state?.value;
     //console.log("VIDEOS[0] = " + this.videos[0])
-    
+
   }
 
   ngOnInit() {
-    
+
     this.createVideoURLs();
 
     //while(this.vid == null) {
@@ -84,7 +79,6 @@ export class WordComponent implements OnInit {
   private getIdTxt(): void {
     this.wordTXT = this.route.snapshot.queryParamMap.get('txt');
     this.wordID = this.route.snapshot.queryParamMap.get('id');
-    this.progress += 25;
     if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '') {
       this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT);
     } else if (this.wordTXT != null && this.wordID == null) {
@@ -97,7 +91,7 @@ export class WordComponent implements OnInit {
     this.wordService.getWord(+this.wordID).subscribe(
       response => {
         this.word = new Word(response);
-        this.progress += 25;
+        this.ready = true;
         return true;
       },
       err => {
@@ -122,16 +116,15 @@ export class WordComponent implements OnInit {
         for (let i = 0; i < response.length; i++) {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
         }
-        this.progress += 50;
+        
         this.setVideoSrc();
       },
       err => console.error(err));
   }
 
-  private setVideoSrc(){
+  private setVideoSrc() {
     const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
     vidSrc.src = this.videos[0];
-    this.progress += 25;
   }
 
   //Gets every word category and instanciates them globally in a 2 dimensional array
@@ -147,8 +140,8 @@ export class WordComponent implements OnInit {
   }
 
   public findCategoryByID(lang: number): string {
-    var id = this.word.word_category_ID;
-    var catAux: WordCategory = this.categories.find((wc: WordCategory) => wc.ID == id);
+    var id = this.word?.word_category_ID;
+    var catAux: WordCategory = this.categories?.find((wc: WordCategory) => wc?.ID == id);
     var aux = this.getCategoryByIdiom(catAux, lang);
     return aux;
   }
