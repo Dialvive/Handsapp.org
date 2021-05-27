@@ -68,6 +68,7 @@ export class WordComponent implements OnInit {
   public error: string = '';
   public categories: WordCategory[] | any;
   public vidIndex: number = 0;
+  public progress: number = 0;
 
   vid: any | HTMLVideoElement
   @ViewChild("icon") icon: any;
@@ -83,7 +84,7 @@ export class WordComponent implements OnInit {
   public strRep: String[] = [];
   public strTit: string[] = ["Wort in ", "Palabra en ", "Word in ", "Mot en ", "Parola in ", "Palavra em "];
   public strComSoon: string[] = ["kommt bald", "Próximamente", "Coming soon", "Bientôt disponible", "Prossimamente", "Em breve"];
-
+  
   constructor(
     private wordService: WordService,
     private wordSignService: WordSignService,
@@ -165,7 +166,6 @@ export class WordComponent implements OnInit {
     this.wordService.getWord(+this.wordID).subscribe(
       response => {
         this.word = new Word(response);
-        this.ready = true;
         return true;
       },
       err => {
@@ -190,7 +190,7 @@ export class WordComponent implements OnInit {
         for (let i = 0; i < response.length; i++) {
           this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
         }
-
+        this.progress += 50;
         this.setVideoSrc();
       },
       err => console.error(err));
@@ -206,6 +206,7 @@ export class WordComponent implements OnInit {
     this.wordCategoryService.getWordCategories().subscribe(
       response => {
         this.categories = response;
+        this.progress += 50;
       },
       err => {
         console.log(err)
@@ -214,15 +215,12 @@ export class WordComponent implements OnInit {
   }
 
   public findCategoryByID(lang: number): string {
-    var id = this.word?.word_category_ID;
-    var catAux: WordCategory = this.categories?.find((wc: WordCategory) => wc?.ID == id);
-    var aux = this.getCategoryByIdiom(catAux, lang);
+    var wordAux = this.word;
+    var id = wordAux?.word_category_ID;
+    var catAux: WordCategory = this.categories.find((wc : WordCategory) => wc.ID == id);
+    var aux = new WordCategory(catAux).getNameByIdiom(lang);
+    //this.progress += 25;
     return aux;
-  }
-
-  public getCategoryByIdiom(cat: WordCategory, id: number) {
-    var auxCat = new WordCategory(cat);
-    return auxCat.getNameByIdiom(id);
   }
 
   //Opens a video fullscreen.
