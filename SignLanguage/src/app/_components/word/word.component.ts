@@ -18,14 +18,58 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
 
 export class WordComponent implements OnInit {
 
+  public topSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': 'HandsApp',
+    'foundingDate': '2020-11-01',
+    'url': 'https://handsapp.org',
+    'isAccessibleForFree': true,
+    'isFamilyFriendly': true,
+    'teaches': ['Zeichensprache', 'Lengua de señas', 'SignLanguage', 'Langage des signes', 'Linguaggio dei segni', 'Linguagem de sinais'],
+    'learningResourceType': 'videos',
+    'accessMode': 'visual',
+    'inLanguage': ['de', 'es', 'en', 'fr', 'it', 'pt'],
+    'image': 'https://handsapp.org/assets/img/logo.png',
+    'sameAs': [
+      'https://www.facebook.com/HandsApp.org',
+      'https://twitter.com/HandsAppOrg',
+      'https://www.instagram.com/handsapp_org/'
+    ],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.handsapp.org/search?txt={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    'copyrightHolder': {
+      '@type': 'Organization',
+      'name': 'Tecnologías Haikode S.A.S. de C.V.'
+    },
+    'copyrightNotice': 'All rights reserved.',
+    'copyrightYear': '2021',
+    'creator': [{
+      '@type': 'Person',
+      'name': 'Diego A Villalpando Velazquez',
+      'sameAs': ['https://www.linkedin.com/in/diegovillalpando/', 'https://github.com/Dialvive/']
+    },
+    {
+      '@type': 'Person',
+      'name': 'Marco A Blancas Tokunaga',
+      'sameAs': ['https://www.linkedin.com/in/marco-tokunaga/', 'https://github.com/tokumago/']
+    }],
+    'keywords': ['zeichensprache', 'lengua de señas', 'Sign Language', 'langage des signes', 'linguaggio dei segni', 'linguagem de sinais',
+      'LSM', 'learn', 'aprender', 'imparare', 'lernen', 'apprendre'],
+  }
   public word: Observable<Word> | any;
-  public videoURLs: String[] | any;
+  public videos: string[] = [""];
   public wordID: string | any;
   public wordTXT: string | any;
   public ready: boolean = false;
   public error: string = '';
   public categories: WordCategory[] | any;
   public vidIndex: number = 0;
+  public progress: number = 0;
+  public category: WordCategory | any;
 
   vid: any | HTMLVideoElement
   @ViewChild("icon") icon: any;
@@ -51,46 +95,58 @@ export class WordComponent implements OnInit {
     private router: Router,
     public googleAnalyticsService: GoogleAnalyticsService,
   ) {
-    this.createVideoURLs();
-    this.getWordCategories();
+
+    //const nav = this.router.getCurrentNavigation();
+    //this.videos = nav?.extras?.state?.value;
+    //console.log("VIDEOS[0] = " + this.videos[0])
+
   }
 
   ngOnInit() {
+
+    this.createVideoURLs();
+   
+    //while(this.vid == null) {
+
+    //}
+    //this.vid = document.getElementById("sign-video");
+    //this.setPlay()
+
     //TODO: Add a way to trigger the video loading after everything has been loaded.
     //TODO: What if txt doesn't match current locale txt.
   }
 
-  public setSchema(): Object { 
+  public setSchema(): Object {
     var categories = this.categories.find((wc: WordCategory) => wc.ID == this.word.word_category_ID);
     return {
       '@context': 'https://schema.org',
-        '@type': 'VideoObject',
-        'name': this.word.getText()[this.appComponent.localeInt] + ' - ' +
-         this.strTit[this.appComponent.localeInt] + this.appComponent.locale[1],
-        'description': this.word.getText()[this.appComponent.localeInt] + ': ' + this.word.getDefinitions()[this.appComponent.localeInt],
-        'thumbnailUrl': 'https://handsapp.org/assets/img/logo.png',
-        'uploadDate': this.word.modified,
-        'contentUrl': this.videoURLs[0],
-        'encodingFormat': 'video/mp4',
-        'copyrightHolder': 'Tecnologías Haikode S.A.S. de C.V.',
-        'copyrightNotice': 'All rights reserved.',
-        'copyrightYear': 2021,
-        'keywords': [
-          this.word.text_de, this.word.text_es,
-          this.word.text_en, this.word.text_fr,
-          this.word.text_it,this.word.text_pt,
-          categories.name_de, categories.name_es,
-          categories.name_en, categories.name_fr,
-          categories.name_it, categories.name_pt,
-          'HandsApp', 'Hands App',
-          this.strLen[0], this.strLen[1],
-          this.strLen[2], this.strLen[3],
-          this.strLen[4], this.strLen[5]],
-        'isFamilyFriendly': true, //TODO: CHANCGE IF EXPLICIT CONTENT
-        'learningResourceType': 'video',
-        'identifier': this.wordID,
-        'url': 'https://handsapp.org' + this.appComponent.Location.path()
-      }
+      '@type': 'VideoObject',
+      'name': this.word.getText()[this.appComponent.localeInt] + ' - ' +
+        this.strTit[this.appComponent.localeInt] + this.appComponent.locale[1],
+      'description': this.word.getText()[this.appComponent.localeInt] + ': ' + this.word.getDefinitions()[this.appComponent.localeInt],
+      'thumbnailUrl': 'https://handsapp.org/assets/img/logo.png',
+      'uploadDate': this.word.modified,
+      'contentUrl': this.videos[0],
+      'encodingFormat': 'video/mp4',
+      'copyrightHolder': 'Tecnologías Haikode S.A.S. de C.V.',
+      'copyrightNotice': 'All rights reserved.',
+      'copyrightYear': 2021,
+      'keywords': [
+        this.word.text_de, this.word.text_es,
+        this.word.text_en, this.word.text_fr,
+        this.word.text_it, this.word.text_pt,
+        categories.name_de, categories.name_es,
+        categories.name_en, categories.name_fr,
+        categories.name_it, categories.name_pt,
+        'HandsApp', 'Hands App',
+        this.strLen[0], this.strLen[1],
+        this.strLen[2], this.strLen[3],
+        this.strLen[4], this.strLen[5]],
+      'isFamilyFriendly': true, //TODO: CHANCGE IF EXPLICIT CONTENT
+      'learningResourceType': 'video',
+      'identifier': this.wordID,
+      'url': 'https://handsapp.org' + this.appComponent.Location.path()
+    }
   }
 
   //Gets the id and txt parameters from the URL and instanciates it globally.
@@ -107,56 +163,61 @@ export class WordComponent implements OnInit {
   }
 
   //Gets a word from the API and instanciates it globally.
-  private getWord(): void {
+  private async getWord(): Promise<boolean> {
     this.wordService.getWord(+this.wordID).subscribe(
       response => {
         this.word = new Word(response);
+        this.getWordCategory();
+        return true;
       },
-      err => this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT));
+      err => {
+        this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT)
+        return false;
+      });
+    return false;
+  }
+
+  //Gets word category and instanciates them globally.
+  private async getWordCategory() {
+    this.wordCategoryService.getWordCategory(+this.word.word_category_ID).subscribe(
+      response => {
+        this.category = new WordCategory(response);
+        return true;
+      },
+      err => {
+        this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT)
+        return false;
+      });
   }
 
   //Gets all the wordSigns of a word and instanciates the array of video URLs globally.
   //TODO: Create count versions route in API. Fix SignLang in URL 
-  private createVideoURLs(): void {
+  private async createVideoURLs() {
     this.getIdTxt();
-    this.getWord();
+    await this.getWord()
+    
+    
+    
+    
+    //await this.getWordCategories();
+    //this.getWordCategories();
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const URL: string = "https://storage.googleapis.com/video.handsapp.org/" + "LSM" + "/words/";
     this.wordSignService.getWordSigns(+this.wordID).subscribe(
       response => {
-        this.videoURLs = new Array(response.length);
-
+        this.videos = new Array(response.length);
         for (let i = 0; i < response.length; i++) {
-          this.videoURLs[i] = URL + this.wordID + '-' + version[i] + '.mp4';
-
+          this.videos[i] = URL + this.wordID + '-' + version[i] + '.mp4';
         }
-
-        this.ready = true;
-        const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
-        vidSrc.src = this.videoURLs[0];
+        this.progress += 50;
+        this.setVideoSrc();
       },
       err => console.error(err));
   }
 
-  //Gets every word category and instanciates them globally in a 2 dimensional array
-  private getWordCategories(): void {
-    this.wordCategoryService.getWordCategories().subscribe(
-      response => {
-        this.categories = response;
-      },
-      err => console.log(err));
-  }
-
-  public findCategoryByID(lang: number): string {
-    var id = this.word.word_category_ID;
-    var catAux: WordCategory = this.categories.find((wc: WordCategory) => wc.ID == id);
-    var aux = this.getCategoryByIdiom(catAux, lang);
-    return aux;
-  }
-
-  public getCategoryByIdiom(cat: WordCategory, id: number) {
-    var auxCat = new WordCategory(cat);
-    return auxCat.getNameByIdiom(id);
+  private setVideoSrc() {
+    const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
+    vidSrc.src = this.videos[0];
   }
 
   //Opens a video fullscreen.
@@ -179,7 +240,7 @@ export class WordComponent implements OnInit {
   }
 
   get wordId() { return (this.word && this.word.wordID) ? this.word.wordID : null }
-
+  
   setPlay() {
     this.vid = document.getElementById('sign-video');
     //this.vid.playbackRate = 1;
@@ -203,7 +264,6 @@ export class WordComponent implements OnInit {
       this.vid.pause();
     }
   }
-
 
   setRabbit() {
     this.vid = document.getElementById('sign-video');
@@ -256,7 +316,6 @@ export class WordComponent implements OnInit {
     }
   }
 
-
   videoUrl(url: string, vidPos: number) {
     this.vid = document.getElementById('sign-video');
     this.vid.src = url;
@@ -266,9 +325,9 @@ export class WordComponent implements OnInit {
   }
 
   nextVideo() {
-    if (this.vidIndex != this.videoURLs.length - 1) {
+    if (this.vidIndex != this.videos.length - 1) {
       this.vid = document.getElementById('sign-video');
-      this.vid.src = this.videoURLs[++this.vidIndex];
+      this.vid.src = this.videos[++this.vidIndex];
       this.googleAnalyticsService.eventEmitter("nextVideo", "video", "Next Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
   }
@@ -276,7 +335,7 @@ export class WordComponent implements OnInit {
   previousVideo() {
     if (this.vidIndex != 0) {
       this.vid = document.getElementById('sign-video');
-      this.vid.src = this.videoURLs[--this.vidIndex];
+      this.vid.src = this.videos[--this.vidIndex];
       this.googleAnalyticsService.eventEmitter("previousVideo", "video", "Previous Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
   }

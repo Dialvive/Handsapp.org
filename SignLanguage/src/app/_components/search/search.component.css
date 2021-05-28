@@ -129,8 +129,15 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    border: none!important;
 }
 
 video {
     background-image: none !important;
+    border: none!important
+}
+
+.alert-txt {
+    margin: 6% 0% 6% 6%;
+    justify-content: center;
 }
