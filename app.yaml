@@ -9,12 +9,16 @@ handlers:
   secure: always
   static_files: SignLanguage/dist/SignLanguage/index.html
   upload: SignLanguage/dist/SignLanguage/dist/.*
+  http_headers:
+    vary: Accept-Encoding
 
 - url: /(.*\.js)
   secure: always
   redirect_http_response_code: 301
   static_files: SignLanguage/dist/SignLanguage/\1
   upload: SignLanguage/dist/SignLanguage/.*\.js
+  http_headers:
+    vary: Accept-Encoding
 
 - url: /(.*\.css)
   secure: always
@@ -22,6 +26,8 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: text/css
   upload: SignLanguage/dist/SignLanguage/.*\.css
+  http_headers:
+    vary: Accept-Encoding
 
 - url: /(.*\.png)
   secure: always
@@ -29,6 +35,9 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: image/png
   upload: SignLanguage/dist/SignLanguage/.*\.png
+  http_headers:
+    vary: Accept-Encoding
+  expiration: 1d
 
 - url: /(.*\.jpg)
   secure: always
@@ -36,6 +45,9 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: image/jpeg
   upload: SignLanguage/dist/SignLanguage/.*\.jpg
+  http_headers:
+    vary: Accept-Encoding
+  expiration: 1d
 
 - url: /(.*\.gif)
   secure: always
@@ -43,6 +55,9 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: image/gif
   upload: SignLanguage/dist/SignLanguage/.*\.gif
+  http_headers:
+    vary: Accept-Encoding
+  expiration: 1d
 
 - url: /(.*\.svg)
   secure: always
@@ -50,6 +65,9 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: image/svg+xml
   upload: SignLanguage/dist/SignLanguage/.*\.svg
+  http_headers:
+    vary: Accept-Encoding
+  expiration: 1d
 
 - url: /(.*\.ico)
   secure: always
@@ -57,6 +75,9 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: image/x-icon
   upload: SignLanguage/dist/SignLanguage/.*\.ico
+  http_headers:
+    vary: Accept-Encoding
+  expiration: 1d
 
 - url: /(.*\.txt)
   secure: always
@@ -64,6 +85,8 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: text/plain
   upload: SignLanguage/dist/SignLanguage/.*\.txt
+  http_headers:
+    vary: Accept-Encoding
 
 - url: /(.*\.xml)
   secure: always
@@ -71,9 +94,13 @@ handlers:
   static_files: SignLanguage/dist/SignLanguage/\1
   mime_type: application/xml
   upload: SignLanguage/dist/SignLanguage/.*\.xml
+  http_headers:
+    vary: Accept-Encoding
 
 - url: /.*
   secure: always
   static_files: SignLanguage/dist/SignLanguage/index.html
   upload: SignLanguage/dist/SignLanguage/.*
+  http_headers:
+    vary: Accept-Encoding
   
