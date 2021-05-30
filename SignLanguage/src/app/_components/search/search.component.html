@@ -70,19 +70,23 @@
                             <div class="row d-flex align-items-stretch justify-content-around w-100">
                                 <div class="col-lg-6 col-12">
                                     <div class="alert-txt row">
-                                        {{this.strVersion[this.appComponent.localeInt]}}
-                                        <a class="footer-a" style="text-decoration: underline; color: #055160; "
-                                            href="/bug?loc={{this.appComponent.localeTxt}}">
-                                            {{strComments[this.appComponent.localeInt]+'.'}}
-                                        </a>
+                                        <div>
+                                            {{this.strVersion[this.appComponent.localeInt]}}
+                                            <a class="footer-a" style="text-decoration: underline; color: #055160; "
+                                                href="/bug?loc={{this.appComponent.localeTxt}}">
+                                                {{strComments[this.appComponent.localeInt]+'.'}}
+                                            </a>
+                                        </div>
                                     </div>
                                     <hr>
                                     <div class="alert-txt row">
-                                        {{this.strFrst[this.appComponent.localeInt]}}
-                                        <a class="footer-a" style="text-decoration: underline; color: #055160; "
-                                            href="/words?loc={{this.appComponent.localeTxt}}">
-                                            {{strIndex[this.appComponent.localeInt]+'.'}}
-                                        </a>
+                                        <div>
+                                            {{this.strFrst[this.appComponent.localeInt]}}
+                                            <a class="footer-a" style="text-decoration: underline; color: #055160; "
+                                                href="/words?loc={{this.appComponent.localeTxt}}">
+                                                {{strIndex[this.appComponent.localeInt]+'.'}}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm col-12 align-self-center">
