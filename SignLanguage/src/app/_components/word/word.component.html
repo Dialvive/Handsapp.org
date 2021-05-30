@@ -1,12 +1,8 @@
 <head>
-
     <title>
-
         {{word?.getText()[this.appComponent.localeInt]}} -
         {{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}
-
     </title>
-
 </head>
 
 <app-ad-banner></app-ad-banner>
@@ -43,7 +39,11 @@
         <div oncontextmenu="return false" class="d-flex justify-content-center video-container">
             <div class="mycarousel">
                 <video preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
-                    onloadedmetadata="this.muted = true"></video>
+                    onloadedmetadata="this.muted = true">
+                    <ng-container *ngIf="this.category && this.word">
+                        <app-json-ld [json]="this.setSchema()"></app-json-ld>
+                    </ng-container>
+                </video>
                 <div class="control">
 
                     <ng-container *ngIf="videos.length > 1">
@@ -174,7 +174,7 @@
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <ng-adsense [width]="300" [height]="600" [pageLevelAds]="true"></ng-adsense>
+        <ng-adsense [width]="300" [height]="600"></ng-adsense>
     </div>
 
     <div class="col-md-2 col-xl-2"></div>

@@ -18,48 +18,6 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
 
 export class WordComponent implements OnInit {
 
-  public topSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    'name': 'HandsApp',
-    'foundingDate': '2020-11-01',
-    'url': 'https://handsapp.org',
-    'isAccessibleForFree': true,
-    'isFamilyFriendly': true,
-    'teaches': ['Zeichensprache', 'Lengua de señas', 'SignLanguage', 'Langage des signes', 'Linguaggio dei segni', 'Linguagem de sinais'],
-    'learningResourceType': 'videos',
-    'accessMode': 'visual',
-    'inLanguage': ['de', 'es', 'en', 'fr', 'it', 'pt'],
-    'image': 'https://handsapp.org/assets/img/logo.png',
-    'sameAs': [
-      'https://www.facebook.com/HandsApp.org',
-      'https://twitter.com/HandsAppOrg',
-      'https://www.instagram.com/handsapp_org/'
-    ],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.handsapp.org/search?txt={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
-    'copyrightHolder': {
-      '@type': 'Organization',
-      'name': 'Tecnologías Haikode S.A.S. de C.V.'
-    },
-    'copyrightNotice': 'All rights reserved.',
-    'copyrightYear': '2021',
-    'creator': [{
-      '@type': 'Person',
-      'name': 'Diego A Villalpando Velazquez',
-      'sameAs': ['https://www.linkedin.com/in/diegovillalpando/', 'https://github.com/Dialvive/']
-    },
-    {
-      '@type': 'Person',
-      'name': 'Marco A Blancas Tokunaga',
-      'sameAs': ['https://www.linkedin.com/in/marco-tokunaga/', 'https://github.com/tokumago/']
-    }],
-    'keywords': ['zeichensprache', 'lengua de señas', 'Sign Language', 'langage des signes', 'linguaggio dei segni', 'linguagem de sinais',
-      'LSM', 'learn', 'aprender', 'imparare', 'lernen', 'apprendre'],
-  }
   public word: Observable<Word> | any;
   public videos: string[] = [""];
   public wordID: string | any;
@@ -117,7 +75,6 @@ export class WordComponent implements OnInit {
   }
 
   public setSchema(): Object {
-    var categories = this.categories.find((wc: WordCategory) => wc.ID == this.word.word_category_ID);
     return {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
@@ -135,14 +92,14 @@ export class WordComponent implements OnInit {
         this.word.text_de, this.word.text_es,
         this.word.text_en, this.word.text_fr,
         this.word.text_it, this.word.text_pt,
-        categories.name_de, categories.name_es,
-        categories.name_en, categories.name_fr,
-        categories.name_it, categories.name_pt,
+        this.category[0], this.category[1],
+        this.category[2], this.category[3],
+        this.category[4], this.category[5],
         'HandsApp', 'Hands App',
         this.strLen[0], this.strLen[1],
         this.strLen[2], this.strLen[3],
         this.strLen[4], this.strLen[5]],
-      'isFamilyFriendly': true, //TODO: CHANCGE IF EXPLICIT CONTENT
+      'isFamilyFriendly': true, //TODO: CHANGE IF EXPLICIT CONTENT
       'learningResourceType': 'video',
       'identifier': this.wordID,
       'url': 'https://handsapp.org' + this.appComponent.Location.path()
