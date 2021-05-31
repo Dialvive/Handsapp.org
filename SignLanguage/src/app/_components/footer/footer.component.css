@@ -83,6 +83,11 @@ footer {
     color: var(--cream)
 }
 
+.bi-footer {
+    margin-bottom: -6.5px !important;
+    margin-top: 0 !important;
+}
+
 .text-muted {
     color: var(--cream-dark) !important;
     font-weight: 400;

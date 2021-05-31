@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/Nunito-SemiBold.woff2') format('woff2'),
+        url('../fnt/Nunito-SemiBold.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/NunitoHeavy-Regular.woff2') format('woff2'),
+        url('../fnt/NunitoHeavy-Regular.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/Nunito-ExtraBold.woff2') format('woff2'),
+        url('../fnt/Nunito-ExtraBold.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/Nunito-Light.woff2') format('woff2'),
+        url('../fnt/Nunito-Light.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/Nunito-ExtraLight.woff2') format('woff2'),
+        url('../fnt/Nunito-ExtraLight.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/Nunito-Regular.woff2') format('woff2'),
+        url('../fnt/Nunito-Regular.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/Nunito-Bold.woff2') format('woff2'),
+        url('../fnt/Nunito-Bold.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fnt/Nunito-Black.woff2') format('woff2'),
+        url('../fnt/Nunito-Black.woff') format('woff'),
+        local('Helvetica'), 
+    	local('Arial');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
