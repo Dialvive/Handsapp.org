@@ -20,7 +20,7 @@ export class FooterComponent implements OnInit {
   public strCon: string[] = ["Kontakt", "Contáctanos", "Contact", "Contacter", "Contatto", "Contato"];
   public strTer: string[] = ["Geschäftsbedingungen", "Términos y condiciones", "Terms and conditions", "Termes et conditions", "Termini e condizioni", "Termos e condições"];
   public strPri: string[] = ["Datenschutzbestimmungen", "Política de privacidad", "Privacy policy", "Politique de confidentialité ", "Politica sulla piservatezza ", "Política de privacidade"];
-  public strCop: string[] = ["Alle rechte vorbehalten", "Todos los derechos reservados", "All rights reserved", "Tous droits réservés ", "Tutti i diritti riservati", "Todos os direitos reservados"];
+  public strCop: string[] = ["Alle Rechte vorbehalten, sofern nicht anders angegeben ", "Todos los derechos reservados, excepto donde se indique lo contrario", "All rights reserved, except where otherwise noted", "Tous droits réservés, sauf indication contraire  ", "Tutti i diritti riservati, salvo dove diversamente indicato ", "Todos os direitos reservados, salvo indicação em contrário"];
 
   public spLanguages: string[] = [" 🇩🇪 Deutsch ", " 🇪🇸 Español ", " 🇬🇧 English ", " 🇫🇷 Français ", " 🇮🇹 Italiano ", " 🇵🇹 Português " ];
   public sgLanguages: string[] = [" 🇺🇳 International Sign Language (ISL) ", " 🇲🇽 Lengua de Señas Mexicana (LSM) "]

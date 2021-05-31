@@ -66,7 +66,9 @@
                 </li>
                 <li>
                     <ng-container *ngIf="this.appComponent.localeInt == 1">
-                        <a class="footer-a" href="https://us1.list-manage.com/survey?u=483460576d7f7125b7a5f59b8&id=8dafc35921&attribution=false">Encuesta de satisfacción <i class ="bi bi-arrow-up-right-square"></i></a>
+                        <a class="footer-a" href="https://us1.list-manage.com/survey?u=483460576d7f7125b7a5f59b8&id=8dafc35921&attribution=false">
+                            Encuesta de satisfacción <i class ="bi bi-arrow-up-right-square bi-footer"></i>
+                        </a>
                     </ng-container>
                     <ng-container *ngIf="this.appComponent.localeInt != 1">
                         <a class="footer-a" href="https://us1.list-manage.com/survey?u=483460576d7f7125b7a5f59b8&id=4b235f583f&attribution=false">
@@ -76,7 +78,7 @@
                             "Enquête de satisfaction",
                             "Indagine di soddisfazione",
                             "Pesquisa de satisfação"][this.appComponent.localeInt]}} 
-                            <i class ="bi bi-arrow-up-right-square"></i>
+                            <i class ="bi bi-arrow-up-right-square bi-footer"></i>
                         </a>
                     </ng-container>
                 </li>
@@ -90,13 +92,19 @@
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" href="https://www.facebook.com/HandsApp.org" target="_blank">Facebook <i class ="bi bi-arrow-up-right-square"></i></a> 
+                    <a class="footer-a" href="https://www.facebook.com/HandsApp.org" target="_blank">
+                        Facebook <i class ="bi bi-arrow-up-right-square bi-footer"></i>
+                    </a> 
                 </li>
                 <li>
-                    <a class="footer-a" href="https://twitter.com/HandsAppOrg" target="_blank">Twitter <i class ="bi bi-arrow-up-right-square"></i></a>
+                    <a class="footer-a" href="https://twitter.com/HandsAppOrg" target="_blank">
+                        Twitter <i class ="bi bi-arrow-up-right-square bi-footer"></i>
+                    </a>
                 </li>
                 <li>
-                    <a class="footer-a" href="https://www.instagram.com/handsapp_org/ " target="_blank">Instagram <i class ="bi bi-arrow-up-right-square"></i></a>
+                    <a class="footer-a" href="https://www.instagram.com/handsapp_org/ " target="_blank">
+                        Instagram <i class ="bi bi-arrow-up-right-square bi-footer"></i>
+                    </a>
                 </li>
                 <li>
                     <a class="footer-a" href="http://eepurl.com/hv8fkf" target="_blank">
@@ -106,7 +114,7 @@
                     "Liste de diffusion",
                     "Mailing list",
                     "Mailing list"][this.appComponent.localeInt]}} 
-                    <i class ="bi bi-arrow-up-right-square"></i>
+                    <i class ="bi bi-arrow-up-right-square bi-footer"></i>
                     </a>
                 </li>
             </ul>
@@ -119,10 +127,14 @@
             </div>
             <ul class="grt footer-ul">
                 <li>
-                    <a class="footer-a" href="terms?loc={{this.appComponent.localeTxt}}">{{strTer[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" href="terms?loc={{this.appComponent.localeTxt}}">
+                        {{strTer[this.appComponent.localeInt]}}
+                    </a>
                 </li>
                 <li>
-                    <a class="footer-a" href="privacy?loc={{this.appComponent.localeTxt}}">{{strPri[this.appComponent.localeInt]}}</a>
+                    <a class="footer-a" href="privacy?loc={{this.appComponent.localeTxt}}">
+                        {{strPri[this.appComponent.localeInt]}}
+                    </a>
                 </li>
                 <li>
                     <a class="footer-a" href="3rdpartylicences?loc={{this.appComponent.localeTxt}}">
@@ -141,7 +153,9 @@
 
     <div class="row d-flex justify-content-evenly">
         <div class="col-12 d-flex justify-content-center align-content-center">
-            <p class="text-center text-muted">© Tecnologías Haikode 2021, {{strCop[this.appComponent.localeInt]}}.</p>
+            <p class="text-center text-muted">
+                © Tecnologías Haikode 2021, {{strCop[this.appComponent.localeInt]}}.
+            </p>
         </div>
         <div class="col-12 d-flex justify-content-center align-content-center">
             <a href="//www.dmca.com/Protection/Status.aspx?ID=0fdf44bc-e6c7-4432-a165-4183defe4411"
