@@ -39,9 +39,7 @@
     --breakpoint-xl: 1200px;
     --breakpoint-xxl: 1400px;
     /* FONTS ##################################################### */
-    --font-family-display: "Cantora One", sans-serif;
     --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-monospace: "Fira Code", monospace;
 }
 
 *,
@@ -240,6 +238,16 @@ hr {
     margin: var(--space2) var(--space3);
 }
 
+.bi {
+    display: inline-block !important;
+    vertical-align: text-bottom !important;
+    line-height: inherit !important;
+    height: 100%;
+    margin-top: 2.5px;
+    margin-bottom: -2.5px;
+}
+
+
 
 /* GENERAL ####################################################### */
 
@@ -395,6 +403,10 @@ video {
 
 .video-btn {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    height: 40px;
     color: var(--carbon);
     background-color: #fff;
     border-radius: 1rem;
@@ -410,11 +422,6 @@ video {
     padding: auto;
     box-shadow: 0 0 0 var(--cream-dark);
     outline: none;
-}
-
-.video-bi {
-    position: relative;
-    transform: translate(3%, -3%);
 }
 
 .btn{
