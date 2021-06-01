@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WordSignService } from 'src/app/_services/word-sign/word-sign.service';
@@ -16,7 +16,7 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
   styleUrls: ['./word.component.css'],
 })
 
-export class WordComponent implements OnInit {
+export class WordComponent implements OnInit, AfterViewInit {
 
   public word: Observable<Word> | any;
   public videos: string[] = [""];
@@ -61,18 +61,16 @@ export class WordComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.createVideoURLs();
-   
-    //while(this.vid == null) {
-
-    //}
-    //this.vid = document.getElementById("sign-video");
-    //this.setPlay()
-
-    //TODO: Add a way to trigger the video loading after everything has been loaded.
     //TODO: What if txt doesn't match current locale txt.
   }
+
+  //A lifecycle hook that is called after Angular has fully initialized a component's view.
+  ngAfterViewInit() {
+    this.createVideoURLs();
+    this.ready = true;
+  }
+
+
 
   public setSchema(): Object {
     return {
