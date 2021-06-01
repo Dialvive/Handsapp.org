@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WordSignService } from 'src/app/_services/word-sign/word-sign.service';
@@ -59,7 +59,7 @@ export class WordComponent implements AfterViewInit {
     //console.log("VIDEOS[0] = " + this.videos[0])
 
   }
-  
+
     //TODO: What if txt doesn't match current locale txt.
 
   //A lifecycle hook that is called after Angular has fully initialized a component's view.
