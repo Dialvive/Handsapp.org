@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -15,7 +15,7 @@ import { AppComponent } from '../../app.component'
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css']
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements AfterViewInit {
 
   navigationExtras: any | NavigationExtras = {
     state: {
@@ -43,7 +43,8 @@ export class ResultsComponent implements OnInit {
     private router: Router,
   ) { }
 
-  async ngOnInit() {
+  //A lifecycle hook that is called after Angular has fully initialized a component's view.
+  async ngAfterViewInit() {
     await this.appComponent.getLocale();
     await this.getTxt();
     await this.getResult();
