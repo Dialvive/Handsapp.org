@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent},
   { path: 'coming-soon', component: ProximamenteComponent},
   { path: 'donors', component: DonationsComponent},
-  { path: 'privacy', component: PrivacyComponent},
   { path: '3rdpartylicences', component: ThirdPartiesComponent},
   { path: 'bug', component: BugSubmitComponent},
   { path: '404', component: NotFoundComponent},
