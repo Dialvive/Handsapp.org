@@ -16,7 +16,7 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
   styleUrls: ['./word.component.css'],
 })
 
-export class WordComponent implements OnInit, AfterViewInit {
+export class WordComponent implements AfterViewInit {
 
   public word: Observable<Word> | any;
   public videos: string[] = [""];
@@ -59,10 +59,8 @@ export class WordComponent implements OnInit, AfterViewInit {
     //console.log("VIDEOS[0] = " + this.videos[0])
 
   }
-
-  ngOnInit() {
+  
     //TODO: What if txt doesn't match current locale txt.
-  }
 
   //A lifecycle hook that is called after Angular has fully initialized a component's view.
   ngAfterViewInit() {
