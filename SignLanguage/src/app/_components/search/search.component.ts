@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { HttpParams, HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
@@ -9,7 +9,7 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements AfterViewInit {
 
   public schema = {
     '@context': 'https://schema.org',
@@ -80,7 +80,7 @@ export class SearchComponent implements OnInit {
     private router : Router,
     public googleAnalyticsService: GoogleAnalyticsService) { }
 
-  ngOnInit(): void {
+    ngAfterViewInit(): void {
     var searchbox: any = document.getElementById("bg-search");
     searchbox.focus();
   }

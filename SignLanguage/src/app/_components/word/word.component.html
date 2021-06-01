@@ -47,7 +47,7 @@
                 </video>
                 <div class="control">
 
-                    <ng-container *ngIf="videos.length > 1">
+                    <ng-container *ngIf="videos.length > 1 && ready">
                         <span class="arrow left">
                             <i class="bi bi-chevron-compact-left" (click)="previousVideo()" type="button"></i>
                         </span>
@@ -175,7 +175,7 @@
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <ng-adsense [width]="300" [height]="600"></ng-adsense>
+        <!--<ng-adsense [width]="300" [height]="600"></ng-adsense>-->
     </div>
 
     <div class="col-md-2 col-xl-2"></div>

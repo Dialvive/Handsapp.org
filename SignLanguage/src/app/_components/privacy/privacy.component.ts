@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { AppComponent } from 'src/app/app.component';
   templateUrl: './privacy.component.html',
   styleUrls: ['./privacy.component.css']
 })
-export class PrivacyComponent implements OnInit {
+export class PrivacyComponent {
 
   public strTitle: string[] = ["Datenschutzbestimmungen", "Política de privacidad", "Privacy policy", "Politique de confidentialité ", "Politica sulla piservatezza ", "Política de privacidade"];
   public strAlert: string[] =
@@ -20,8 +20,5 @@ export class PrivacyComponent implements OnInit {
   constructor(
     public appComponent: AppComponent,
   ) { }
-
-  ngOnInit(): void {
-  }
 
 }
