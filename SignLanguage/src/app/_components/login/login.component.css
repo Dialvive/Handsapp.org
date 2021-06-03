@@ -52,3 +52,8 @@ svg {
 .card {
     box-shadow: 0 6px 24px var(--cream-dark) !important;
 }
+
+.alert-danger {
+    background-color: transparent !important;
+    color: var(--red);
+}
