@@ -79,12 +79,12 @@
                             required [email]="true" autocomplete="username"/>
                         <div *ngIf="mail.invalid && mail.dirty" class="d-flex justify-content-between alert-danger mb-2 w-100">
                             <div>
-                                {{[ "Ungültige E-Mail",
-                                "Correo electrónico inválido",
-                                "Invalid E-mail",
-                                "Courrier électronique invalide",
-                                "E-mail non valido",
-                                "E-mail inválido"
+                                {{[ "Ungültige E-Mail.",
+                                "Correo electrónico inválido.",
+                                "Invalid E-mail.",
+                                "Courrier électronique invalide.",
+                                "E-mail non valido.",
+                                "E-mail inválido."
                                 ][this.appComponent.localeInt]}}
                             </div>
                             <svg aria-hidden="true" class="bi svg-icon iconAlertCircle" width="18" height="18" viewBox="0 0 18 18">
@@ -110,12 +110,12 @@
                 </div>
                 <div class="col-12 d-flex justify-content-center">
                     <a class="mb-1" href="/register?loc={{this.appComponent.localeTxt}}">
-                        {{["Hast du eine Rechnung? Anmeldung",
-                        "Ya tienes una cuenta? Inicia sesión",
-                        "Already have an account? register",
-                        "Vous avez une facture? register",
-                        "Hai una fattura? Accedere",
-                        "Você já tem uma conta? Conecte-se"][this.appComponent.localeInt]}}
+                        {{["Hast du eine Rechnung? Anmeldung.",
+                        "¿Ya tienes una cuenta? Inicia sesión.",
+                        "Already have an account? Register.",
+                        "Vous avez une facture? Register.",
+                        "Hai una fattura? Accedere.",
+                        "Você já tem uma conta? Conecte-se."][this.appComponent.localeInt]}}
                     </a>
                 </div>
             </div>
