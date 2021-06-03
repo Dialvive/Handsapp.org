@@ -12,6 +12,8 @@
     margin: auto;
     text-align: center;
     border-radius: 1rem;
+    border-width: 2px;
+    border-color: var(--cream-dark);
     overflow: hidden;
     text-decoration: none;
     -webkit-animation: shadow-drop-2-bottom-alt 0.25s cubic-bezier(0, 0, 0, 0) both;
@@ -73,7 +75,7 @@
 
 .accordion-button:focus {
     background-color: #fff;
-    box-shadow: 0 0 0px var(--accent) !important;
+    box-shadow: 0 0 0 var(--accent) !important;
     color: var(--accent);
     border-color: var(--cream);
 }

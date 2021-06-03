@@ -6,6 +6,7 @@
     --carbon: #444444;
     /* SECONDARY COLORS ########################################## */
     --cream-dark: #DEDEDE;
+    --cream-darker: #B8B8B8;
     --carbon-dark: #333333;
     --turquois: #25ced1;
     --mango: #FFBE0B;
@@ -429,16 +430,16 @@ video {
 }
 
 .btn:focus {
-    box-shadow: 0 0 8px transparent;
+    box-shadow: 0 0 0 var(--cream-darker);
 }
 
 .btn:hover {
-    box-shadow: 0 0 12px var(--cream-dark) !important;
+    box-shadow: 0 0 12px var(--cream-darker) !important;
 }
 
 .btn:active{
     border-color: #fff;
-    box-shadow: 0 0 12px var(--cream-dark) !important;
+    box-shadow: 0 0 12px var(--cream-darker) !important;
 }
 
 .heart-btn {

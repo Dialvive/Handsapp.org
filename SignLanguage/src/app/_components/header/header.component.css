@@ -73,7 +73,7 @@
     border-radius: 2rem;
     border-width: 2px !important;
     border-color: var(--cream-dark) !important;
-    box-shadow: 0 0 0 var(--cream);
+    box-shadow: 0 0 0 var(--cream-darker);
 }
 
 .sbwconstraint {
@@ -82,12 +82,12 @@
 
 .mini-searchbar:hover {
     transition: 0.25s;
-    box-shadow: 0 0 12px var(--cream);
+    box-shadow: 0 0 12px var(--cream-darker);
 }
 
 .mini-searchbar:focus-within {
     transition: 0.25s;
-    box-shadow: 0 0 12px var(--cream);
+    box-shadow: 0 0 12px var(--cream-darker);
 }
 
 .header-search-i {
