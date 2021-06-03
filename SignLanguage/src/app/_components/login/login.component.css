@@ -22,19 +22,19 @@
     vertical-align: middle;
     border-color: var(--cream-dark);
     transition: 0.25s;
-    box-shadow: 0 0 0 var(--cream-dark) !important;
+    box-shadow: 0 0 0 var(--cream-darker) !important;
 }
 
 .login-btn:hover {
-    box-shadow: 0 0 8px var(--cream-dark) !important;
+    box-shadow: 0 0 8px var(--cream-darker) !important;
 }
 
 .login-btn:focus {
-    box-shadow: 0 0 8px var(--cream-dark) !important;
+    box-shadow: 0 0 8px var(--cream-darker) !important;
 }
 
 .login-btn:active {
-    box-shadow: 0 0 12px var(--cream-dark) !important;
+    box-shadow: 0 0 12px var(--cream-darker) !important;
 }
 
 .facebook-btn {
