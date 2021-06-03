@@ -289,7 +289,7 @@ ul ol li {
 
 .btn-secondary {
     background-color: var(--accent) !important;
-    color: var(--cream) !important;
+    color: #fff !important;
 }
 
 .btn-success {
