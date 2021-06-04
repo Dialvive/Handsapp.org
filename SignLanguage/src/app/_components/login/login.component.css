@@ -23,6 +23,7 @@
     border-color: var(--cream-dark);
     transition: 0.25s;
     box-shadow: 0 0 0 var(--cream-darker) !important;
+    border-radius: 1rem;
 }
 
 .login-btn:hover {
@@ -51,6 +52,25 @@ svg {
 
 .card {
     box-shadow: 0 6px 24px var(--cream-dark) !important;
+    border-radius: 1rem;
+}
+
+input {
+    transition: 0.25s;
+    border-radius: 1rem;
+    border-color: var(--cream-dark);
+    height: 35px;
+    box-shadow: 0 0 0 var(--cream-darker) !important;
+}
+
+input:focus {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
+}
+
+input:active {
+    box-shadow: 0 0 12px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
 }
 
 .alert-danger {
