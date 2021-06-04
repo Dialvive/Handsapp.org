@@ -10,8 +10,6 @@ export class RegisterComponent {
 
   @Input()
   public inputMail: string = '';
-  @Input()
-  public inputPassword: string = '';
 
   constructor(
     public appComponent: AppComponent,
