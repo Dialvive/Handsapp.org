@@ -48,6 +48,7 @@ import { UserCrudComponent } from './_components/CRUD/user-crud/user-crud.compon
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { ForgotPasswordComponent } from './_components/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './_components/new-password/new-password.component';
 //import { WordByRegionCrudComponent } from './_components/CRUD/word-by-region-crud/word-by-region-crud.component';
 //import { WordCategoryCrudComponent } from './_components/CRUD/word-category-crud/word-category-crud.component';
 
@@ -91,6 +92,7 @@ import { ForgotPasswordComponent } from './_components/forgot-password/forgot-pa
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    NewPasswordComponent,
     //WordByRegionCrudComponent,
     //WordCategoryCrudComponent
   ],

@@ -17,6 +17,7 @@ import { InternalErrorComponent } from './_components/internal-error/internal-er
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { ForgotPasswordComponent } from './_components/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './_components/new-password/new-password.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'forgot', component: ForgotPasswordComponent},
+  { path: 'new-password', component: NewPasswordComponent},
 
   { path: '**', component: NotFoundComponent},
 ];
