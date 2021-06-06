@@ -9,6 +9,7 @@ import { AppComponent } from '../../app.component'
 import { WordCategory } from 'src/app/_models/wordCategory';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
 import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
+import { LinkService } from 'src/app/_services/link/link.service';
 
 @Component({
   selector: 'app-word',
@@ -52,6 +53,7 @@ export class WordComponent implements AfterViewInit {
     public wordCategoryService: WordCategoryService,
     private router: Router,
     public googleAnalyticsService: GoogleAnalyticsService,
+    private linkService: LinkService
   ) {
 
     //const nav = this.router.getCurrentNavigation();
@@ -65,6 +67,7 @@ export class WordComponent implements AfterViewInit {
   //A lifecycle hook that is called after Angular has fully initialized a component's view.
   ngAfterViewInit() {
     this.createVideoURLs();
+    this.linkService.updateCanonicalUrl("http://HandsApp.org/word?id=" + this.wordID);
     this.ready = true;
   }
 
@@ -293,7 +296,3 @@ export class WordComponent implements AfterViewInit {
     }
   }
 }
-
-
-
-
