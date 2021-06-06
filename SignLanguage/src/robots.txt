@@ -1,7 +1,9 @@
 User-agent: *
 Crawl-delay: 1000
 Allow: /*
-Disallow: /account/
+Disallow: /register-continue
+Disallow: /new-password
+Disallow: /existing-account
 Disallow: /404
 Disallow: /502
 Disallow: /coming-soon
