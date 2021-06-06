@@ -55,7 +55,7 @@ svg {
     border-radius: 1rem;
 }
 
-input {
+.form-control {
     transition: 0.25s;
     border-radius: 1rem;
     border-color: var(--cream-dark);
