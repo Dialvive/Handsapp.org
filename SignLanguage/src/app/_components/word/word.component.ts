@@ -10,6 +10,7 @@ import { WordCategory } from 'src/app/_models/wordCategory';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
 import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
 import { LinkService } from 'src/app/_services/link/link.service';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-word',
@@ -53,7 +54,8 @@ export class WordComponent implements AfterViewInit {
     public wordCategoryService: WordCategoryService,
     private router: Router,
     public googleAnalyticsService: GoogleAnalyticsService,
-    private linkService: LinkService
+    private linkService: LinkService,
+    private meta: Meta
   ) {
 
     //const nav = this.router.getCurrentNavigation();
@@ -151,10 +153,6 @@ export class WordComponent implements AfterViewInit {
   private async createVideoURLs() {
     this.getIdTxt();
     await this.getWord()
-    
-    
-    
-    
     //await this.getWordCategories();
     //this.getWordCategories();
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
@@ -174,6 +172,7 @@ export class WordComponent implements AfterViewInit {
   private setVideoSrc() {
     const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
     vidSrc.src = this.videos[0];
+    this.setMeta();
   }
 
   //Opens a video fullscreen.
@@ -294,5 +293,45 @@ export class WordComponent implements AfterViewInit {
       this.vid.src = this.videos[--this.vidIndex];
       this.googleAnalyticsService.eventEmitter("previousVideo", "video", "Previous Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
+  }
+
+  //setMeta assigns meta tags according to the localeInt
+  private setMeta(): void {
+    if(this.meta.getTag("name='og:video'") != null){
+      this.meta.updateTag({property: 'og:video', content: this.videos[0]}, "property='og:video'");
+    } else { 
+      this.meta.addTag({property: 'og:video', content: this.videos[0]});
+    }
+    if(this.meta.getTag("name='og:video:secure_url'") != null){
+      this.meta.updateTag({property: 'og:video:secure_url', content: this.videos[0]}, "property='og:video:secure_url'");
+    } else { 
+      this.meta.addTag({property: 'og:video:secure_url', content: this.videos[0]});
+    }
+    this.meta.addTag({property: 'og:video:type', content: "video/mp4"});
+    this.meta.addTag({property: 'og:video:width', content: "1920"});
+    this.meta.addTag({property: 'og:video:height', content: "1080"});
+    this.meta.addTag({property: 'og:type', content: "video.other"});
+    this.meta.addTag({property: 'og:video:tag', content: "HandsApp"});
+    this.meta.addTag({property: 'og:video:tag', content: "zeichensprache"});
+    this.meta.addTag({property: 'og:video:tag', content: "lengua de señas"});
+    this.meta.addTag({property: 'og:video:tag', content: "Sign Language"});
+    this.meta.addTag({property: 'og:video:tag', content: "langage des signes"});
+    this.meta.addTag({property: 'og:video:tag', content: "linguaggio dei segni"});
+    this.meta.addTag({property: 'og:video:tag', content: "linguagem de sinais"});
+    this.meta.addTag({property: 'og:video:tag', content: "learn"});
+    this.meta.addTag({property: 'og:video:tag', content: "imparare"});
+    this.meta.addTag({property: 'og:video:tag', content: "lernen"});
+    this.meta.addTag({property: 'og:video:tag', content: "apprendre"});
+    this.meta.addTag({property: 'og:video:tag', content: this.appComponent.locale[1]});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_de});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_es});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_en});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_fr});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_it});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_pt});
+    this.meta.addTag({property: 'og:title', content: 
+      this.word.getText()[this.appComponent.localeInt] + ' - ' +
+      this.strTit[this.appComponent.localeInt] +
+      this.appComponent.locale[1]});
   }
 }
