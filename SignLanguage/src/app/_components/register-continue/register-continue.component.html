@@ -1,1 +1,278 @@
-<p>register-continue works!</p>
+
+<head>
+    <link rel="canonical" href="https://handsapp.org/register"/>
+    <title>{{["Neuen Account erstellen","Crear una cuenta nueva","Create a new account","Créer un nouveau compte","Crea un nuovo account","Criar nova conta"][this.appComponent.localeInt]}}</title>
+</head>
+
+<body>
+    <div class="row justify-content-center">
+        
+        <div class="col-12 first-column">
+            <div class="row row-cols-1">
+                <div class="col-12 d-flex justify-content-center handsapp-logo mb-3 w-100"></div>
+                <div class="col-12 d-flex justify-content-center card mt-2 mb-3 p-4">
+                    <form>
+                        <!--FIRST NAME-->
+                        <label for="fname">
+                            <b>
+                                {{["Vorname",
+                                "Nombre",
+                                "First name",
+                                "Prénom",
+                                "Nome",
+                                "Primeiro nome"][this.appComponent.localeInt]}} *
+                            </b>
+                        </label>
+                        <input [(ngModel)]="this.inputFname" #fname="ngModel" 
+                            class="form-control register-in mb-2" type="text" 
+                            name="fname" id="fname" minlength="1" maxlength="64" 
+                            autocomplete="given-name" required/>
+                        <!--LAST NAME-->
+                        <label class="mt-2" for="lname">
+                            <b>
+                                {{["Nachname",
+                                "Apellido",
+                                "Last name",
+                                "Nome utente",
+                                "Cognome",
+                                "Sobrenome"][this.appComponent.localeInt]}}
+                            </b>
+                        </label>
+                        <input [(ngModel)]="this.inputLname" #lname="ngModel" 
+                            class="form-control register-in mb-2" type="text" 
+                            name="lname" id="lname" maxlength="128" 
+                            autocomplete="family-name"/>
+                        <!--BIRTHDATE-->
+                        <label class="mt-2" for="lname">
+                            <b>
+                                {{["Geburtstag",
+                                "Fecha de nacimiento",
+                                "Birthdate",
+                                "Date de naissance",
+                                "Data di nascita",
+                                "Data de nascimento"][this.appComponent.localeInt]}} *
+                            </b>
+                        </label>
+                        <input [(ngModel)]="this.inputDate" #bdate="ngModel" 
+                            class="form-control register-in mb-2" type="date" 
+                            name="bdate" id="bdate" maxlength="128" 
+                            autocomplete="bday" min="01-01-1900"
+                            placeholder="dd-mm-yyyy" pattern="\d{4}-\d{2}-\d{2}" required/>
+                        <!--NICKNAME-->
+                        <label class="mt-2" for="nickname">
+                            <b>
+                                {{["Nutzername",
+                                "Nombre de usuario",
+                                "Username",
+                                "Nom d'utilisateur",
+                                "Nome utente",
+                                "Nome de usuário"][this.appComponent.localeInt]}} *
+                            </b>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input [(ngModel)]="this.inputUser" #username="ngModel" 
+                                class="form-control register-in mb-2" type="text" 
+                                name="nickname" id="nickname" minlength="3" maxlength="30" 
+                                required autocomplete="nickname"
+                                pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$"/>
+                        </div>
+                        <div *ngIf="username.invalid && username.dirty" class="d-flex justify-content-between alert-danger mb-2 w-100">
+                            <div>
+                                {{[ "Der Benutzername muss zwischen 3 und 30 Zeichen lang sein, er kann Klein- und Großbuchstaben, Zahlen, Unterstriche und nicht aufeinander folgende Punkte enthalten.",
+                                "El nombre de usuario debe tener entre 3 y 30 caracteres, puede tener letras minúsculas y mayúsculas, números, guiones bajos y puntos no consecutivos.",
+                                "The username must be between 3 and 30 characters long, it can have lowercase and uppercase letters, numbers, underscores, and non-consecutive periods.",
+                                "Le nom d'utilisateur doit comporter entre 3 et 30 caractères, il peut contenir des lettres minuscules et majuscules, des chiffres, des traits de soulignement et des points non consécutifs.",
+                                "Il nome utente deve avere una lunghezza compresa tra 3 e 30 caratteri, può contenere lettere minuscole e maiuscole, numeri, trattini bassi e punti non consecutivi.",
+                                "O nome de usuário deve ter entre 3 e 30 caracteres, pode conter letras maiúsculas e minúsculas, números, sublinhados e pontos não consecutivos."
+                                ][this.appComponent.localeInt]}}
+                            </div>
+                            <svg aria-hidden="true" class="bi svg-icon iconAlertCircle" width="18" height="18" viewBox="0 0 18 18">
+                                <path d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8zM8 4v6h2V4H8zm0 8v2h2v-2H8z" fill="var(--red)"></path>
+                            </svg>
+                        </div>
+                        <!--EMAIL-->
+                        <label class="mt-2" for="email">
+                            <b>
+                                {{["Email",
+                                "Correo electrónico",
+                                "Email",
+                                "Courrier électronique",
+                                "E-mail",
+                                "Correio eletrônico"][this.appComponent.localeInt]}} *
+                            </b>
+                        </label>
+                        <input [(ngModel)]="this.inputMail" #mail="ngModel" 
+                            class="form-control register-in mb-2" type="email" 
+                            name="email" id="email" pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b"
+                            minlength="6" maxlength="250" 
+                            required [email]="true" autocomplete="username"/>
+                        <div *ngIf="mail.invalid && mail.dirty" class="d-flex justify-content-between alert-danger mb-2 w-100">
+                            <div>
+                                {{[ "Ungültige E-Mail.",
+                                "Correo electrónico inválido.",
+                                "Invalid E-mail.",
+                                "Courrier électronique invalide.",
+                                "E-mail non valido.",
+                                "E-mail inválido."
+                                ][this.appComponent.localeInt]}}
+                            </div>
+                            <svg aria-hidden="true" class="bi svg-icon iconAlertCircle" width="18" height="18" viewBox="0 0 18 18">
+                                <path d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8zM8 4v6h2V4H8zm0 8v2h2v-2H8z" fill="var(--red)"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <label class="mt-2" for="password1">
+                                <b>
+                                    {{["Passwort",
+                                    "Contraseña",
+                                    "Password",
+                                    "Mot de passe",
+                                    "Parola d'ordine",
+                                    "Senha"][this.appComponent.localeInt]}} *
+                                </b>
+                            </label>
+                            <input [(ngModel)]="this.inputPassword1" #password1="ngModel" 
+                                class="form-control forgot-in mb-2"
+                                type="text" name="password1" id="password1" 
+                                minlength="8" maxlength="1024" 
+                                autocomplete="new-password" required/>
+                            <div *ngIf="password1.dirty && this.inputPassword1.length < 8" class="d-flex justify-content-between alert-danger mb-2 w-100">
+                                <div>
+                                    {{["Muss 8 oder mehr Zeichen lang sein.",
+                                    "Tiene que tener 8 o más caracteres.",
+                                    "Must be 8 or more characters.",
+                                    "Doit comporter au moins 8 caractères.",
+                                    "Deve contenere 8 o più caratteri.",
+                                    "Deve ter 8 ou mais caracteres."
+                                    ][this.appComponent.localeInt]}}
+                                </div>
+                                <svg aria-hidden="true" class="bi svg-icon iconAlertCircle" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8zM8 4v6h2V4H8zm0 8v2h2v-2H8z" fill="var(--red)"></path>
+                                </svg>
+                            </div>
+                            <div *ngIf="password1.dirty && this.inputPassword1.includes('`')" class="d-flex justify-content-between alert-danger mb-2 w-100">
+                                <div>
+                                    {{["Das Zeichen ( ` ) ist nicht zulässig.",
+                                    "El caracter ( ` ) no es permitido.",
+                                    "The character ( ` ) is not allowed.",
+                                    "Le caractère ( ` ) n'est pas autorisé.",
+                                    "Il carattere ( ` ) non è consentito.",
+                                    "O caractere ( ` ) não é permitido."
+                                    ][this.appComponent.localeInt]}}
+                                </div>
+                                <svg aria-hidden="true" class="bi svg-icon iconAlertCircle" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8zM8 4v6h2V4H8zm0 8v2h2v-2H8z" fill="var(--red)"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="mt-2" for="password2">
+                                <b>
+                                    {{["Wiederhole das Passwort",
+                                    "Repite la contraseña",
+                                    "Repeat the password",
+                                    "Répéter le mot de passe",
+                                    "Ripeti la parola d'ordine",
+                                    "Repita a senha"][this.appComponent.localeInt]}} *
+                                </b>
+                            </label>
+                            <input [(ngModel)]="this.inputPassword2" #password2="ngModel" 
+                                class="form-control forgot-in mb-2" type="password" 
+                                name="password2" id="password2" 
+                                minlength="8" maxlength="1024" 
+                                required autocomplete="new-password"/>
+                            <div *ngIf="password2.value != password1.value && password2.dirty" class="d-flex justify-content-between alert-danger mb-2 w-100">
+                                <div>
+                                    {{[ "Passwörter stimmen nicht überein.",
+                                    "Las contraseñas no coinciden.",
+                                    "Passwords do not match.",
+                                    "Les mots de passe ne correspondent pas.",
+                                    "Le passwords non corrispondono.",
+                                    "As senhas não correspondem."
+                                    ][this.appComponent.localeInt]}}
+                                </div>
+                                <svg aria-hidden="true" class="bi svg-icon iconAlertCircle" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8zM8 4v6h2V4H8zm0 8v2h2v-2H8z" fill="var(--red)"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="form-check m-2">
+                            <input class="form-check-input" type="checkbox"
+                             [(ngModel)]="this.inputNotChild" #notChild="ngModel"  
+                             name="notChild" id="notChild" required>
+                            <label class="form-check-label" for="notChild">
+                                {{["Ich bin über 12 Jahre alt",
+                                "Tengo más de 12 años",
+                                "I am over 12 years old",
+                                "Je suis âgé de plus de 12 ans",
+                                "Ho più di 12 anni",
+                                "Eu tenho mais de 12 anos"][this.appComponent.localeInt]}} *
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <input class="form-check-input" type="checkbox" 
+                            [(ngModel)]="this.inputTOC" #toc="ngModel"
+                            name="toc" id="toc" required>
+                            <label class="form-check-label" for="toc">
+                                {{["Ich habe die Allgemeinen Geschäftsbedingungen und die Datenschutzerklärung gelesen und akzeptiere sie",
+                                "He leido y acepto los términos y condiciones, y la política de privacidad",
+                                "I have read and I accept the terms and conditions, and the privacy policy",
+                                "J'ai lu et j'accepte les termes et conditions, et la politique de confidentialité",
+                                "Ho letto e accetto i termini e le condizioni e l'informativa sulla privacy",
+                                "Eu li e aceito os termos e condições e a política de privacidade"][this.appComponent.localeInt]}} *
+                            </label>
+                        </div>
+                        
+
+                        <ng-container 
+                            *ngIf="fname.valid &&
+                            lname.valid &&
+                            bdate.valid &&
+                            username.valid &&
+                            mail.valid &&
+                            password1.valid && 
+                            this.inputPassword1 == this.inputPassword2 && 
+                            !this.inputPassword1.includes('`') &&
+                            this.inputNotChild &&
+                            this.inputTOC; 
+                            else btndisabled">
+                            <button type="button" class="btn btn-secondary w-100 forgot-btn mt-3" (click)="this.register()">
+                                <b>
+                                    {{["Fortsetzen",
+                                    "Continuar",
+                                    "Continue",
+                                    "Continuer",
+                                    "Continua",
+                                    "Prosseguir"][this.appComponent.localeInt]}}
+                                </b>
+                            </button>
+                        </ng-container>
+                        <ng-template #btndisabled>
+                            <button type="button" disabled class="btn btn-dark w-100 forgot-btn mt-3">
+                                <b>
+                                    {{["Fortsetzen",
+                                    "Continuar",
+                                    "Continue",
+                                    "Continuer",
+                                    "Continua",
+                                    "Prosseguir"][this.appComponent.localeInt]}}
+                                </b>
+                            </button>
+                        </ng-template>
+                    </form>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <a class="mb-1" href="/login?loc={{this.appComponent.localeTxt}}">
+                        {{["Hast du eine Rechnung? Einloggen.",
+                        "¿Ya tienes una cuenta? Inicia sesión.",
+                        "Already have an account? Log in.",
+                        "Vous avez une facture? Connectez-vous.",
+                        "Hai una fattura? Accedi.",
+                        "Você já tem uma conta? Conecte-se."][this.appComponent.localeInt]}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
