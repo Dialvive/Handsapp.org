@@ -263,6 +263,7 @@ body {
     overflow-x: hidden;
     background-color: var(--cream);
     min-height: 100vh;
+    padding-right: 0 !important;
 }
 
 a {
@@ -455,6 +456,7 @@ video {
 }
 
 .flag-btn {
+    background-color: #fff;
     top: 0;
     border-radius: 2rem;
     border-color: var(--cream-dark);
@@ -463,8 +465,6 @@ video {
     align-content: center;
     padding-bottom: 10px;
     margin-left: 16px;
-    margin-right: 16px;
-    background-color: #fff;
 }
 
 .flag-btn:hover {

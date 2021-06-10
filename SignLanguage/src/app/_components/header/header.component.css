@@ -14,6 +14,7 @@
     left: 0px;
     right: 0px;
     border-bottom: 2px solid var(--carbon);
+    padding-right: 0 !important;
 }
 
 .nav-link {
