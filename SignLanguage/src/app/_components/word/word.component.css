@@ -108,6 +108,27 @@ video[poster] {
 
 .twitter-share-button {
     background-color: #3BA9EE !important;
+    color: #fff !important;
+}
+
+.mail-share-button {
+    background-color: var(--cream-darker) !important;
+    color: #fff !important;
+}
+
+.whatsapp-share-button {
+    background-color: #128C7E !important;
+    color: #fff !important;
+}
+
+.facebook-share-button {
+    background-color: #4167B2 !important;
+    color: #fff !important;
+}
+
+.linkedin-share-button {
+    background-color: #0072b1 !important;
+    color: #fff !important;
 }
 
 svg {

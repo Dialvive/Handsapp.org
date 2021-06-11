@@ -46,7 +46,14 @@ export class WordComponent implements AfterViewInit {
   public strRep: String[] = [];
   public strTit: string[] = ["Wort in ", "Palabra en ", "Word in ", "Mot en ", "Parola in ", "Palavra em "];
   public strComSoon: string[] = ["kommt bald", "Próximamente", "Coming soon", "Bientôt disponible", "Prossimamente", "Em breve"];
+  public strTitShare: string[] = ["Wort%20in%20", "Palabra%20en%20", "Word%20in%20", "Mot%20en%20", "Parola%20in%20", "Palavra%20em%20"];
   public strShare: string[] = ["Teilen", "Compartir", "Share", "Partager", "Condividere", "Compartilhar"];
+  public strMail: string[] = ["Dieses%20Wort%20in%20Gebärdensprache%20wird%20Sie%20sicher%20interessieren!%20Schaut%20es%20euch%20unter%20diesem%20Link%20an:%20", 
+  "¡Estoy%20seguro%20que%20te%20va%20a%20interesar%20ésta%20palabra%20en%20lengua%20de%20señas!%20Mirala%20en%20este%20enlace:%20",
+  "I'm%20sure%20you%20are%20going%20to%20be%20interested%20in%20this%20word%20in%20sign%20language!%20Check%20it%20out%20at%20this%20link:%20", 
+  "Je%20suis%20sûr%20que%20vous%20allez%20être%20intéressé%20par%20ce%20mot%20en%20langue%20des%20signes!%20A%20découvrir%20sur%20ce%20lien:%20",
+  "Sono%20sicuro%20che%20sarai%20interessato%20a%20questa%20parola%20nella%20lingua%20dei%20segni!%20Dai%20un'occhiata%20a%20questo%20link:%20",
+  "Tenho%20certeza%20de%20que%20você%20vai%20se%20interessar%20por%20essa%20palavra%20em%20linguagem%20de%20sinais!%20Confira%20neste%20link:%20"];
 
   constructor(
     private wordService: WordService,
