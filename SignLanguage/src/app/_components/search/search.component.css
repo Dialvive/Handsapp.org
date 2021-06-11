@@ -27,17 +27,17 @@
     border-width: 2px !important;
     border-color: var(--cream-dark) !important;
     transition: 0.25s;
-    box-shadow: 0 0 0 var(--cream-dark);
+    box-shadow: 0 0 0 var(--cream-darker);
 }
 
 .search-searchbar:hover {
     transition: 0.25s;
-    box-shadow: 0 0 14px var(--cream-dark);
+    box-shadow: 0 0 14px var(--cream-darker);
 }
 
 .search-searchbar:focus-within {
     transition: 0.25s;
-    box-shadow: 0 0 14px var(--cream-dark);
+    box-shadow: 0 0 14px var(--cream-darker);
 }
 
 .searchbar-i {

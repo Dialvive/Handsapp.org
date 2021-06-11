@@ -28,6 +28,12 @@
         <loc>https://handsapp.org/privacy</loc>
     </url>
     <url>
-        <loc>https://handsapp.org/3rdpartylicences</loc>
+        <loc>https://handsapp.org/login</loc>
+    </url>
+    <url>
+        <loc>https://handsapp.org/register</loc>
+    </url>
+    <url>
+        <loc>https://handsapp.org/forgot</loc>
     </url>
 </urlset>

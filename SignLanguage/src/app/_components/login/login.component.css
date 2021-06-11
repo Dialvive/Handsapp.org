@@ -1,0 +1,79 @@
+.first-column {
+    width: 384px !important;
+}
+
+.handsapp-logo {
+    width: 80px;
+    height: 80px;
+    margin-top: 10vh;
+    margin-bottom: 0;
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(/assets/img/logo.png);
+}
+
+.login-btn {
+    min-width: 140px;
+    min-height: 37px;
+    font-size: 16px;
+    margin: 3.7px;
+    vertical-align: middle;
+    border-color: var(--cream-dark);
+    transition: 0.25s;
+    box-shadow: 0 0 0 var(--cream-darker) !important;
+    border-radius: 1rem;
+}
+
+.login-btn:hover {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+}
+
+.login-btn:focus {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+}
+
+.login-btn:active {
+    box-shadow: 0 0 12px var(--cream-darker) !important;
+}
+
+.facebook-btn {
+    background-color: #4167B2 !important;
+}
+
+.google-btn {
+    background-color: #fff !important;
+}
+
+svg {
+    margin-bottom: 2px;
+}
+
+.card {
+    box-shadow: 0 6px 24px var(--cream-dark) !important;
+    border-radius: 1rem;
+}
+
+.form-control {
+    transition: 0.25s;
+    border-radius: 1rem;
+    border-color: var(--cream-dark);
+    height: 35px;
+    box-shadow: 0 0 0 var(--cream-darker) !important;
+}
+
+input:focus {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
+}
+
+input:active {
+    box-shadow: 0 0 12px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
+}
+
+.alert-danger {
+    background-color: transparent !important;
+    color: var(--red);
+}

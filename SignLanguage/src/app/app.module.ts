@@ -45,6 +45,12 @@ import { InternalErrorComponent } from './_components/internal-error/internal-er
 //import { SignLanguageCrudComponent } from './_components/CRUD/sign-language-crud/sign-language-crud.component';
 //import { SpokenLanguageCrudComponent } from './_components/CRUD/spoken-language-crud/spoken-language-crud.component';
 import { UserCrudComponent } from './_components/CRUD/user-crud/user-crud.component';
+import { LoginComponent } from './_components/login/login.component';
+import { RegisterComponent } from './_components/register/register.component';
+import { ForgotPasswordComponent } from './_components/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './_components/new-password/new-password.component';
+import { ExistingAccountComponent } from './_components/existing-account/existing-account.component';
+import { RegisterContinueComponent } from './_components/register-continue/register-continue.component';
 //import { WordByRegionCrudComponent } from './_components/CRUD/word-by-region-crud/word-by-region-crud.component';
 //import { WordCategoryCrudComponent } from './_components/CRUD/word-category-crud/word-category-crud.component';
 
@@ -85,6 +91,12 @@ import { UserCrudComponent } from './_components/CRUD/user-crud/user-crud.compon
     //SignLanguageCrudComponent,
     //SpokenLanguageCrudComponent,
     UserCrudComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    NewPasswordComponent,
+    ExistingAccountComponent,
+    RegisterContinueComponent,
     //WordByRegionCrudComponent,
     //WordCategoryCrudComponent
   ],

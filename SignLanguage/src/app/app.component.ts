@@ -3,6 +3,8 @@ import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
+import { Meta } from '@angular/platform-browser';
+
 
 declare let gtag: (property: string, value: any, configs: any) => {};
 
@@ -13,18 +15,27 @@ declare let gtag: (property: string, value: any, configs: any) => {};
 })
 export class AppComponent {
 
+  public description: string[] = [
+    "Lernen Sie Gebärdensprachen aus der ganzen Welt auf Deutsch 🇩🇪, Englisch, Spanisch, Portugiesisch, Französisch und Italienisch. Kostenlos lernen mit dem HandsApp Wörterbuch!",
+    "Aprende lenguas de señas de todo el mundo en español 🇪🇸, inglés, portugués, francés, alemán, e italiano. ¡Aprende de forma gratuita con el diccionario HandsApp!",
+    "Learn sign languages from around the world in English 🇬🇧 🇺🇸, Spanish, French, Portuguese, German, and Italian. Learn for free with the HandsApp dictionary!",
+    "Apprenez les langues des signes du monde entier en français 🇫🇷, anglais, espagnol, portugais, allemand et italien. Apprenez gratuitement avec le dictionnaire HandsApp!",
+    "Impara le lingue dei segni di tutto il mondo in italiano 🇮🇹, francese, spagnolo, inglese, portoghese e tedesco. Impara gratuitamente con il dizionario HandsApp!",
+    "Aprenda línguas de sinais de todo o mundo em português 🇵🇹 🇧🇷, espanhol, inglês, francês, alemão e italiano. Aprenda gratuitamente com o dicionário HandsApp!"
+  ];
+
   public locale: string[] | any; // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
   public localeInt: number | any; // 0: de, 1: es, 2: en, 3: fr, 4: it, 5: pt
   public localeTxt: string | any;
   public page: string = '';
   public params: HttpParams = this.getParams();
 
-
   constructor(
     public route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    public Location:Location
+    public Location:Location,
+    private meta: Meta
     ) {
       this.router.events.subscribe(
         event => {
@@ -124,9 +135,9 @@ export class AppComponent {
       routeStr += "&txt=" + this.params.get("txt");
     }
     this.Location.replaceState(this.page + routeStr);
+    this.setMeta();
   }
   
-
   //updateLocaleInt() updates LocaleInt value
   public updateLocaleInt(id: number): void { 
     this.localeInt = id;
@@ -140,4 +151,38 @@ export class AppComponent {
   public navigateParams(page: String, locP: string[], idP: String, txtP: String): void {
     this.router.navigate([page], {queryParams: {loc: locP[0] + "_" + locP[1] + "_" + locP[2], id: idP, txt: txtP}});
   }
+
+  //setMeta assigns meta tags according to the localeInt
+  private setMeta(): void {
+    if(this.meta.getTag("name='description'") != null){
+      this.meta.updateTag({name: 'description', content: this.description[this.localeInt]}, "name='description'");
+      console.log("update description")
+    } else { 
+      console.log("add description")
+      this.meta.addTag({name: 'description', content: this.description[this.localeInt]});
+    }
+    if(this.meta.getTag("property='og:description'") != null){
+      this.meta.updateTag({property: 'og:description', content: this.description[this.localeInt]}, "property='og:description'");
+      console.log("Update og:description")
+    } else {
+      console.log("add og:description")
+      this.meta.addTag({property: 'og:description', content: this.description[this.localeInt]});
+    }
+    if(this.meta.getTag("property='og:locale'") != null){
+      this.meta.updateTag({property: 'og:locale', content: this.locale[0] + "_" + this.locale[2]}, "property='og:locale'");
+    } else {
+      this.meta.addTag({property: 'og:locale', content: this.locale[0] + "_" + this.locale[2]});
+    }
+    if(this.meta.getTag("property='og:url'") != null){
+      this.meta.updateTag({property: 'og:url', content:"https://HandsApp.org" + this.Location.path()}, "property='og:url'");
+    } else {
+      this.meta.addTag({property: 'og:url', content:"https://HandsApp.org" + this.Location.path()});
+    }
+  }
+
+  //Sanitizes URIs in templates
+  public encodeURIComponent(URI: string): string {
+    return encodeURIComponent(URI);
+  }
+
 }

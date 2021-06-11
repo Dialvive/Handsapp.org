@@ -14,6 +14,12 @@ import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { ThirdPartiesComponent } from './_components/third-parties/third-parties.component';
 import { BugSubmitComponent } from './_components/bug-submit/bug-submit.component';
 import { InternalErrorComponent } from './_components/internal-error/internal-error.component';
+import { LoginComponent } from './_components/login/login.component';
+import { RegisterComponent } from './_components/register/register.component';
+import { ForgotPasswordComponent } from './_components/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './_components/new-password/new-password.component';
+import { ExistingAccountComponent } from './_components/existing-account/existing-account.component';
+import { RegisterContinueComponent } from './_components/register-continue/register-continue.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },
@@ -30,6 +36,13 @@ const routes: Routes = [
   { path: 'bug', component: BugSubmitComponent},
   { path: '404', component: NotFoundComponent},
   { path: '502', component: InternalErrorComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'register-continue', component: RegisterContinueComponent},
+  { path: 'forgot', component: ForgotPasswordComponent},
+  { path: 'new-password', component: NewPasswordComponent},
+  { path: 'existing-account', component: ExistingAccountComponent},
+
   { path: '**', component: NotFoundComponent},
 ];
 

@@ -9,6 +9,8 @@ import { AppComponent } from '../../app.component'
 import { WordCategory } from 'src/app/_models/wordCategory';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
 import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
+import { LinkService } from 'src/app/_services/link/link.service';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-word',
@@ -38,11 +40,20 @@ export class WordComponent implements AfterViewInit {
   public strFot: string[] = ["Ähnliche fotos", "Fotografías relacionadas", "Related photos", "Photos connexes", "Foto correlate", "Fotos relacionadas"];
   public strCat: string[] = ["Kategorie", "Categoría", "Category", "Catégorie", "Categoria", "Categoria"];
   public strLen: string[] = ["Zeichensprache", "Lengua de señas", "Sign Language", "Langage des signes", "Linguaggio dei segni", "Linguagem de sinais"];
+  public strHash: string[] = ["Zeichensprache", "LenguaDeSeñas", "SignLanguage", "LangageDesSignes", "LinguaggioDeiSegni", "LinguagemDeSinais"];
   public strReg: string[] = ["Region", "Región", "Region", "Région", "Regione", "Região"];
   public nfRes: String[] = ["Definition nicht verfügbar", "Definición no disponible", "Definition not available", "Définition non disponible", "Definizione non disponibile", "Definição não disponível"]
   public strRep: String[] = [];
   public strTit: string[] = ["Wort in ", "Palabra en ", "Word in ", "Mot en ", "Parola in ", "Palavra em "];
   public strComSoon: string[] = ["kommt bald", "Próximamente", "Coming soon", "Bientôt disponible", "Prossimamente", "Em breve"];
+  public strTitShare: string[] = ["Wort%20in%20", "Palabra%20en%20", "Word%20in%20", "Mot%20en%20", "Parola%20in%20", "Palavra%20em%20"];
+  public strShare: string[] = ["Teilen", "Compartir", "Share", "Partager", "Condividere", "Compartilhar"];
+  public strMail: string[] = ["Dieses%20Wort%20in%20Gebärdensprache%20wird%20Sie%20sicher%20interessieren!%20Schaut%20es%20euch%20unter%20diesem%20Link%20an:%20", 
+  "¡Estoy%20seguro%20que%20te%20va%20a%20interesar%20ésta%20palabra%20en%20lengua%20de%20señas!%20Mirala%20en%20este%20enlace:%20",
+  "I'm%20sure%20you%20are%20going%20to%20be%20interested%20in%20this%20word%20in%20sign%20language!%20Check%20it%20out%20at%20this%20link:%20", 
+  "Je%20suis%20sûr%20que%20vous%20allez%20être%20intéressé%20par%20ce%20mot%20en%20langue%20des%20signes!%20A%20découvrir%20sur%20ce%20lien:%20",
+  "Sono%20sicuro%20che%20sarai%20interessato%20a%20questa%20parola%20nella%20lingua%20dei%20segni!%20Dai%20un'occhiata%20a%20questo%20link:%20",
+  "Tenho%20certeza%20de%20que%20você%20vai%20se%20interessar%20por%20essa%20palavra%20em%20linguagem%20de%20sinais!%20Confira%20neste%20link:%20"];
 
   constructor(
     private wordService: WordService,
@@ -52,6 +63,8 @@ export class WordComponent implements AfterViewInit {
     public wordCategoryService: WordCategoryService,
     private router: Router,
     public googleAnalyticsService: GoogleAnalyticsService,
+    private linkService: LinkService,
+    private meta: Meta
   ) {
 
     //const nav = this.router.getCurrentNavigation();
@@ -65,6 +78,7 @@ export class WordComponent implements AfterViewInit {
   //A lifecycle hook that is called after Angular has fully initialized a component's view.
   ngAfterViewInit() {
     this.createVideoURLs();
+    this.linkService.updateCanonicalUrl("http://HandsApp.org/word?id=" + this.wordID);
     this.ready = true;
   }
 
@@ -148,10 +162,6 @@ export class WordComponent implements AfterViewInit {
   private async createVideoURLs() {
     this.getIdTxt();
     await this.getWord()
-    
-    
-    
-    
     //await this.getWordCategories();
     //this.getWordCategories();
     const version: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
@@ -171,6 +181,7 @@ export class WordComponent implements AfterViewInit {
   private setVideoSrc() {
     const vidSrc: HTMLVideoElement | any = document.getElementById('sign-video');
     vidSrc.src = this.videos[0];
+    this.setMeta();
   }
 
   //Opens a video fullscreen.
@@ -292,8 +303,44 @@ export class WordComponent implements AfterViewInit {
       this.googleAnalyticsService.eventEmitter("previousVideo", "video", "Previous Video", "WordID:" + this.word.wordID, this.vid.currentTime);
     }
   }
+
+  //setMeta assigns meta tags according to the localeInt
+  private setMeta(): void {
+    if(this.meta.getTag("name='og:video'") != null){
+      this.meta.updateTag({property: 'og:video', content: this.videos[0]}, "property='og:video'");
+    } else { 
+      this.meta.addTag({property: 'og:video', content: this.videos[0]});
+    }
+    if(this.meta.getTag("name='og:video:secure_url'") != null){
+      this.meta.updateTag({property: 'og:video:secure_url', content: this.videos[0]}, "property='og:video:secure_url'");
+    } else { 
+      this.meta.addTag({property: 'og:video:secure_url', content: this.videos[0]});
+    }
+    this.meta.addTag({property: 'og:video:type', content: "video/mp4"});
+    this.meta.addTag({property: 'og:video:width', content: "1920"});
+    this.meta.addTag({property: 'og:video:height', content: "1080"});
+    this.meta.addTag({property: 'og:type', content: "video.other"});
+    this.meta.addTag({property: 'og:video:tag', content: "HandsApp"});
+    this.meta.addTag({property: 'og:video:tag', content: "zeichensprache"});
+    this.meta.addTag({property: 'og:video:tag', content: "lengua de señas"});
+    this.meta.addTag({property: 'og:video:tag', content: "Sign Language"});
+    this.meta.addTag({property: 'og:video:tag', content: "langage des signes"});
+    this.meta.addTag({property: 'og:video:tag', content: "linguaggio dei segni"});
+    this.meta.addTag({property: 'og:video:tag', content: "linguagem de sinais"});
+    this.meta.addTag({property: 'og:video:tag', content: "learn"});
+    this.meta.addTag({property: 'og:video:tag', content: "imparare"});
+    this.meta.addTag({property: 'og:video:tag', content: "lernen"});
+    this.meta.addTag({property: 'og:video:tag', content: "apprendre"});
+    this.meta.addTag({property: 'og:video:tag', content: this.appComponent.locale[1]});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_de});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_es});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_en});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_fr});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_it});
+    this.meta.addTag({property: 'og:video:tag', content: this.word.text_pt});
+    this.meta.addTag({property: 'og:title', content: 
+      this.word.getText()[this.appComponent.localeInt] + ' - ' +
+      this.strTit[this.appComponent.localeInt] +
+      this.appComponent.locale[1]});
+  }
 }
-
-
-
-
