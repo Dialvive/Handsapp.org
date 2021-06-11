@@ -179,4 +179,10 @@ export class AppComponent {
       this.meta.addTag({property: 'og:url', content:"https://HandsApp.org" + this.Location.path()});
     }
   }
+
+  //Sanitizes URIs in templates
+  public encodeURIComponent(URI: string): string {
+    return encodeURIComponent(URI);
+  }
+
 }
