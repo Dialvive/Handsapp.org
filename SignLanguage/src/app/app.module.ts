@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppRoutingModule } from './app-routing.module';
 import { JsonLdModule } from './_modules/json-ld/json-ld.module';
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { GoogleAnalyticsService } from './_services/GoogleAnalytics/google-analytics.service';
 
@@ -111,7 +112,8 @@ import { RegisterContinueComponent } from './_components/register-continue/regis
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
-    JsonLdModule
+    JsonLdModule,
+    ClipboardModule
   ],
   providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent]

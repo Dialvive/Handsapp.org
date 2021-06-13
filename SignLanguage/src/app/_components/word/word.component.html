@@ -29,9 +29,9 @@
 
 
         <!-- VIDEO CONTAINER -->
-        <div oncontextmenu="return false" class="d-flex justify-content-center video-container">
+        <div oncontextmenu="return false" class="d-flex justify-content-center video-container mb-3">
             <div class="mycarousel">
-                <video preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
+                <video oncontextmenu="return false" preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
                     onloadedmetadata="this.muted = true">
                     <ng-container *ngIf="this.category && this.word">
                         <app-json-ld [json]="this.setSchema()"></app-json-ld>
@@ -40,10 +40,10 @@
                 <div class="control">
                     <ng-container *ngIf="videos.length > 1 && ready">
                         <span class="arrow left">
-                            <i class="bi bi-chevron-compact-left" (click)="previousVideo()" type="button"></i>
+                            <i class="bi bi-chevron-compact-left" (click)="this.previousVideo()" type="button"></i>
                         </span>
                         <span class="arrow right">
-                            <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button"></i>
+                            <i class="bi bi-chevron-compact-right" (click)="this.nextVideo()" type="button"></i>
                         </span>
                         <ul>
                             <ng-container *ngFor="let video of videos; let index = index">
@@ -60,46 +60,41 @@
                     </ng-container>
                 </div>
             </div>
-                    <!-- VIDEO CONTROLS -->
-        <div class="video-controls d-inline-flex">
-            <button type="button" class="btn video-btn" (click)="setPlay()" name="playpause">
-                <i #icon class="video-bi bi bi-pause-fill"></i>
-            </button>
-            <button type="button" class="btn video-btn" (click)="setTurtle()" name="turtle">
-                0.5x
-            </button>
-            <button type="button" class="btn video-btn" (click)="setRabbit()" name="rabbit" value="2">
-                1.0x
-            </button>
-            <button type="button" class="btn video-btn" (click)="setFox()" name="fox" value="2">
-                1.5x
-            </button>
-            <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
-                <i class="video-bi bi bi-arrows-fullscreen"></i>
-            </button>
+            <!-- VIDEO CONTROLS -->
+            <div class="video-controls d-inline-flex">
+                <button type="button" class="btn video-btn" (click)="setPlay()" name="playpause">
+                    <i #icon class="video-bi bi bi-pause-fill"></i>
+                </button>
+                <button type="button" class="btn video-btn" (click)="setTurtle()" name="turtle">
+                    0.5x
+                </button>
+                <button type="button" class="btn video-btn" (click)="setRabbit()" name="rabbit" value="2">
+                    1.0x
+                </button>
+                <button type="button" class="btn video-btn" (click)="setFox()" name="fox" value="2">
+                    1.5x
+                </button>
+                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                    <i class="video-bi bi bi-arrows-fullscreen"></i>
+                </button>
+            </div>
         </div>
-        </div>
 
-
-        
-
-        <!--INTERACTION BUTTONS-->
-        <div class="row d-flex w-100 justify-content-around mt-4 mb-2">
-            <button type="button" class="col-6 interaction-btn d-inline btn" title={{strComSoon[this.appComponent.localeInt]}}
-                titname="heart block" unable>
+        <!--INTERACTION BUTTONS
+        <div class="row d-flex justify-content-around mt-4 mb-2">
+            <button type="button" class="col-6 interaction-btn d-inline btn" title={{strComSoon[this.appComponent.localeInt]}} disabled>
                 <i class="bi bi-hand-thumbs-up"></i>
                 <b class="d-none d-sm-inline">
                     Me gusta
                 </b>
             </button>
-            <button type="button" class="col-6 interaction-btn d-inline btn" title={{strComSoon[this.appComponent.localeInt]}}
-                titname="heart block" unable>
+            <button type="button" class="col-6 interaction-btn d-inline btn" title={{strComSoon[this.appComponent.localeInt]}} disabled>
                 <i class="bi bi-bookmarks"></i>
                 <b class="d-none d-sm-inline">
                     Guardar
                 </b>
             </button>
-        </div>
+        </div>-->
 
         <!-- WORD DEFINITIONS -->
         <ng-container
@@ -184,40 +179,40 @@
                         <div class="row w-100 d-flex justify-content-center">
                             <div class="row w-100">
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
-                                    <a type="button" class="d-inline btn btn-secondary social-btn whatsapp-share-button" target="_blank"
-                                    href="https://api.whatsapp.com/send?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTitShare[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}.%20{{this.strMail[this.appComponent.localeInt]}}https://handsapp.org{{this.appComponent.Location.path()}}">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn whatsapp-share-button" target="_blank" (click)="eventShareWhatsApp()"
+                                    href="https://api.whatsapp.com/send?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}.%20{{this.appComponent.encodeURIComponent(this.strShareTxt[this.appComponent.localeInt])}}https://handsapp.org{{this.appComponent.encodeURIComponent(this.appComponent.Location.path())}}">
                                         <i class="bi bi-whatsapp"></i>
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
-                                    <a type="button" class="d-inline btn btn-secondary social-btn facebook-share-button" target="_blank"
+                                    <a type="button" class="d-inline btn btn-secondary social-btn facebook-share-button" target="_blank" (click)="eventShareFacebook()"
                                     href="https://www.facebook.com/dialog/share?app_id=376926787434148&display=popup&href=https://handsapp.org{{this.appComponent.encodeURIComponent(appComponent.Location.path())}}">
                                         <i class="bi bi-facebook"></i>
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
-                                    <a type="button" class="d-inline btn btn-secondary social-btn twitter-share-button" target="_blank"
-                                    href="https://twitter.com/intent/tweet?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTitShare[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&url=https://handsapp.org{{this.appComponent.encodeURIComponent(appComponent.Location.path())}}&hashtags={{this.appComponent.locale[1]}},{{this.strHash[this.appComponent.localeInt]}},HandsApp&via=HandsAppOrg">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn twitter-share-button" target="_blank" (click)="eventShareTwitter()"
+                                    href="https://twitter.com/intent/tweet?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&url=https://handsapp.org{{this.appComponent.encodeURIComponent(appComponent.Location.path())}}&hashtags={{this.appComponent.locale[1]}},{{this.strHash[this.appComponent.localeInt]}},HandsApp&via=HandsAppOrg">
                                         <i class="bi bi-twitter"></i>
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
-                                    <a type="button" class="d-inline btn btn-secondary social-btn linkedin-share-button" target="_blank"
+                                    <a type="button" class="d-inline btn btn-secondary social-btn linkedin-share-button" target="_blank" (click)="eventShareLinkedIn()"
                                     href="https://www.linkedin.com/sharing/share-offsite/?url=https://handsapp.org{{this.appComponent.encodeURIComponent(appComponent.Location.path())}}">
                                         <i class="bi bi-linkedin"></i>
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
-                                    <a type="button" class="d-inline btn btn-secondary social-btn mail-share-button" target="_blank"
-                                    href="mailto:?subject={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTitShare[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&body={{this.strMail[this.appComponent.localeInt]}}https://handsapp.org{{this.appComponent.Location.path()}}">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn mail-share-button" target="_blank" (click)="eventShareEmail()"
+                                    href="mailto:?subject={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&body={{this.appComponent.encodeURIComponent(this.strShareTxt[this.appComponent.localeInt])}}https://handsapp.org{{this.appComponent.Location.path()}}">
                                         <i class="bi bi-envelope-fill"></i>
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
-                                    <a type="button" class="d-inline btn btn-secondary social-btn mail-share-button" target="_blank"
-                                    href="mailto:?subject={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTitShare[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&body={{this.strMail[this.appComponent.localeInt]}}https://handsapp.org{{this.appComponent.Location.path()}}">
+                                    <button ngxClipboard class="d-inline btn btn-secondary social-btn mail-share-button" (click)="eventShareClipboard()"
+                                    [cbContent]="word?.getText()[this.appComponent.localeInt] + ' - ' + this.strTit[this.appComponent.localeInt] + this.appComponent.locale[1] + '. ' + this.strShareTxt[this.appComponent.localeInt] + 'https://handsapp.org' + this.appComponent.Location.path()">
                                         <i class="bi bi-stickies-fill"></i>
-                                    </a>
+                                </button>
                                 </div>
                             </div>
                         </div>

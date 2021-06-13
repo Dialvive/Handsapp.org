@@ -23,6 +23,7 @@ video {
     background-image: url(/assets/img/loader.gif);
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    background-size: 60%;
     border-radius: 2rem;
 }
 
@@ -70,34 +71,6 @@ video {
 .video-btn:active {
     border-color: var(--cream-darker);
     background-color: var(--carbon-dark);
-}
-
-.heart-btn {
-    background-color: #fff;
-    top: 0;
-    border-radius: 2rem;
-    border-color: var(--cream-dark);
-    border-width: 3px;
-    justify-content: center;
-    align-content: center;
-    padding-bottom: 10px;
-    margin-left: 16px;
-}
-
-.flag-btn {
-    background-color: #fff;
-    top: 0;
-    border-radius: 2rem;
-    border-color: var(--cream-dark);
-    border-width: 3px;
-    justify-content: center;
-    align-content: center;
-    padding-bottom: 10px;
-    margin-left: 16px;
-}
-
-.flag-btn:hover {
-    color: var(--red);
 }
 
 
@@ -223,8 +196,7 @@ video {
     border-color: var(--cream-dark);
     border-radius: 2rem;
     transition: 0.25s;
-    box-shadow: 0 0 0 var(--cream-darker) !important;
-    transition: .25s;
+    cursor:not-allowed;
 }
 
 .social-btn:hover {
