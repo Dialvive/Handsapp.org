@@ -36,12 +36,12 @@ const routes: Routes = [
   { path: 'bug', component: BugSubmitComponent},
   { path: '404', component: NotFoundComponent},
   { path: '502', component: InternalErrorComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'register-continue', component: RegisterContinueComponent},
-  { path: 'forgot', component: ForgotPasswordComponent},
-  { path: 'new-password', component: NewPasswordComponent},
-  { path: 'existing-account', component: ExistingAccountComponent},
+  //{ path: 'login', component: LoginComponent},
+  //{ path: 'register', component: RegisterComponent},
+  //{ path: 'register-continue', component: RegisterContinueComponent},
+  //{ path: 'forgot', component: ForgotPasswordComponent},
+  //{ path: 'new-password', component: NewPasswordComponent},
+  //{ path: 'existing-account', component: ExistingAccountComponent},
 
   { path: '**', component: NotFoundComponent},
 ];
