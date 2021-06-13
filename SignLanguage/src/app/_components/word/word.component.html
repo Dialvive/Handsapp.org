@@ -29,9 +29,9 @@
 
 
         <!-- VIDEO CONTAINER -->
-        <div oncontextmenu="return false" class="d-flex justify-content-center video-container">
+        <div oncontextmenu="return false" class="d-flex justify-content-center video-container mb-3">
             <div class="mycarousel">
-                <video preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
+                <video oncontextmenu="return false" preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
                     onloadedmetadata="this.muted = true">
                     <ng-container *ngIf="this.category && this.word">
                         <app-json-ld [json]="this.setSchema()"></app-json-ld>
@@ -99,7 +99,7 @@
         <!-- WORD DEFINITIONS -->
         <ng-container
             *ngIf="(word?.getDefinitions()[this.appComponent.localeInt] !='.' && word?.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
-            <div class="row mt-3">
+            <div class="row">
                 <div class="col-12">
                     <div class="card word-card">
                         <div class="card-body">
@@ -180,7 +180,7 @@
                             <div class="row w-100">
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
                                     <a type="button" class="d-inline btn btn-secondary social-btn whatsapp-share-button" target="_blank" (click)="eventShareWhatsApp()"
-                                    href="https://api.whatsapp.com/send?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}.%20{{this.appComponent.encodeURIComponent(this.strShareTxt[this.appComponent.localeInt])}}https://handsapp.org{{this.appComponent.Location.path()}}">
+                                    href="https://api.whatsapp.com/send?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}.%20{{this.appComponent.encodeURIComponent(this.strShareTxt[this.appComponent.localeInt])}}https://handsapp.org{{this.appComponent.encodeURIComponent(this.appComponent.Location.path())}}">
                                         <i class="bi bi-whatsapp"></i>
                                     </a>
                                 </div>
@@ -209,10 +209,10 @@
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
-                                    <a type="button" class="d-inline btn btn-secondary social-btn mail-share-button" target="_blank"
-                                    href="mailto:?subject={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&body={{this.appComponent.encodeURIComponent(this.strShareTxt[this.appComponent.localeInt])}}https://handsapp.org{{this.appComponent.Location.path()}}">
+                                    <button ngxClipboard class="d-inline btn btn-secondary social-btn mail-share-button" (click)="eventShareClipboard()"
+                                    [cbContent]="word?.getText()[this.appComponent.localeInt] + ' - ' + this.strTit[this.appComponent.localeInt] + this.appComponent.locale[1] + '. ' + this.strShareTxt[this.appComponent.localeInt] + 'https://handsapp.org' + this.appComponent.Location.path()">
                                         <i class="bi bi-stickies-fill"></i>
-                                    </a>
+                                </button>
                                 </div>
                             </div>
                         </div>
