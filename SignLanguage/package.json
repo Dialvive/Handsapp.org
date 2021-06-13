@@ -33,6 +33,7 @@
     "gulp-rename": "^2.0.0",
     "ng2-adsense": "^9.1.0",
     "ngx-captcha": "^9.0.1",
+    "ngx-clipboard": "^14.0.1",
     "punycode": "^2.1.1",
     "rxjs": "~6.6.7",
     "stripe": "^8.144.0",
