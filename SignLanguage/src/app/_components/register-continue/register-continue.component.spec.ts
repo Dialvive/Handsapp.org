@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuperUserHomeComponent } from './super-user-home.component';
+import { RegisterContinueComponent } from './register-continue.component';
 
-describe('SuperUserHomeComponent', () => {
-  let component: SuperUserHomeComponent;
-  let fixture: ComponentFixture<SuperUserHomeComponent>;
+describe('RegisterContinueComponent', () => {
+  let component: RegisterContinueComponent;
+  let fixture: ComponentFixture<RegisterContinueComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuperUserHomeComponent ]
+      declarations: [ RegisterContinueComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuperUserHomeComponent);
+    fixture = TestBed.createComponent(RegisterContinueComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

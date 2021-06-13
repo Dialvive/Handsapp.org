@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
@@ -8,7 +8,7 @@ import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-a
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   public strWord: string[] = ["Wörter", "Palabras", "Words", "Mots", "Parole", "Palavras"];
   public strPhrase: string[] = ["Sätze", "Frases", "Phrases", "Phrases", "Frasi", "Frases"];
   public strTool: string[] = ["Werkzeuge", "Herramientas", "Tools", "Outils", "Utensili", "Ferramentas"];
@@ -30,9 +30,6 @@ export class HeaderComponent implements OnInit {
     public appComponent: AppComponent,
     public googleAnalyticsService: GoogleAnalyticsService) {
     this.txt = "";
-  }
-  
-  ngOnInit(): void {
   }
   
   public submit(type : number) {

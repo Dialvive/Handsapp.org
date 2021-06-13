@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -6,15 +6,12 @@ import { AppComponent } from 'src/app/app.component';
   templateUrl: './donations.component.html',
   styleUrls: ['./donations.component.css']
 })
-export class DonationsComponent implements OnInit {
+export class DonationsComponent {
 
   public strTitle: string[] = [ "Spenden", "Donaciones", "Donations", "Des Dons", "Donazioni ", "Doações"];
 
   constructor(
     public appComponent: AppComponent,
   ) { }
-
-  ngOnInit(): void {
-  }
 
 }

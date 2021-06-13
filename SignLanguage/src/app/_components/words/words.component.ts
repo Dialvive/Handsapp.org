@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Word } from 'src/app/_models/word';
 import { WordCategory } from 'src/app/_models/wordCategory';
@@ -11,7 +11,7 @@ import { WordService } from 'src/app/_services/word/word.service';
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css']
 })
-export class WordsComponent implements OnInit {
+export class WordsComponent implements AfterViewInit {
   public strTitle: string[] = ["Thematischer Wortindex", "Índice temático de palabras", "Thematic index of words", "Index thématique des mots", "Indice tematico delle parole", "Índice temático de palavras"];
   public prox: string[] = ["Kommt bald!", "¡Próximamente!", "Coming soon!", "Bientôt disponible!", "Prossimamente!", "Em breve!"]
   public categories: WordCategory[] | any;
@@ -25,7 +25,7 @@ export class WordsComponent implements OnInit {
     public appComponent: AppComponent,
     public wordCategoryService: WordCategoryService) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.getWords();
   }
 

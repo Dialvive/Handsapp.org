@@ -14,8 +14,6 @@
     <div class="col-12 col-md-8 col-xl-6 first-column">
 
         <!-- WORD TITLE -->
-
-
         <div class="d-flex justify-content-between align-items-start">
 
             <h1>
@@ -23,36 +21,29 @@
             </h1>
 
             <div class="d-flex align-items-start">
-
-                <a type="button" class="btn flag-btn" title="Reportar" name="flag" href="bug?url=word">
+                <a type="button" class="social-btn btn" title="Reportar" name="flag" href="bug?url=word">
                     <i class="bi bi-flag-fill"></i>
                 </a>
-                <button type="button" class="btn heart-btn" title={{strComSoon[this.appComponent.localeInt]}}
-                    titname="heart block" unable>
-                    <i class="bi bi-heart-fill"></i>
-                </button>
             </div>
         </div>
 
 
         <!-- VIDEO CONTAINER -->
-
-        <div oncontextmenu="return false" class="d-flex justify-content-center video-container">
+        <div oncontextmenu="return false" class="d-flex justify-content-center video-container mb-3">
             <div class="mycarousel">
-                <video preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
+                <video oncontextmenu="return false" preload="auto" id="sign-video" autoplay muted loop oncanplay="this.play()"
                     onloadedmetadata="this.muted = true">
                     <ng-container *ngIf="this.category && this.word">
                         <app-json-ld [json]="this.setSchema()"></app-json-ld>
                     </ng-container>
                 </video>
                 <div class="control">
-
-                    <ng-container *ngIf="videos.length > 1">
+                    <ng-container *ngIf="videos.length > 1 && ready">
                         <span class="arrow left">
-                            <i class="bi bi-chevron-compact-left" (click)="previousVideo()" type="button"></i>
+                            <i class="bi bi-chevron-compact-left" (click)="this.previousVideo()" type="button"></i>
                         </span>
                         <span class="arrow right">
-                            <i class="bi bi-chevron-compact-right" (click)="nextVideo()" type="button"></i>
+                            <i class="bi bi-chevron-compact-right" (click)="this.nextVideo()" type="button"></i>
                         </span>
                         <ul>
                             <ng-container *ngFor="let video of videos; let index = index">
@@ -67,34 +58,45 @@
                             </ng-container>
                         </ul>
                     </ng-container>
-
                 </div>
+            </div>
+            <!-- VIDEO CONTROLS -->
+            <div class="video-controls d-inline-flex">
+                <button type="button" class="btn video-btn" (click)="setPlay()" name="playpause">
+                    <i #icon class="video-bi bi bi-pause-fill"></i>
+                </button>
+                <button type="button" class="btn video-btn" (click)="setTurtle()" name="turtle">
+                    0.5x
+                </button>
+                <button type="button" class="btn video-btn" (click)="setRabbit()" name="rabbit" value="2">
+                    1.0x
+                </button>
+                <button type="button" class="btn video-btn" (click)="setFox()" name="fox" value="2">
+                    1.5x
+                </button>
+                <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
+                    <i class="video-bi bi bi-arrows-fullscreen"></i>
+                </button>
             </div>
         </div>
 
-        <!-- VIDEO CONTROLS -->
-        <div class="video-controls d-flex justify-content-center align-items-center">
-
-            <button type="button" class="btn video-btn" (click)="setPlay()" name="playpause">
-                <i #icon class="video-bi bi bi-pause-fill"></i>
+        <!--INTERACTION BUTTONS
+        <div class="row d-flex justify-content-around mt-4 mb-2">
+            <button type="button" class="col-6 interaction-btn d-inline btn" title={{strComSoon[this.appComponent.localeInt]}} disabled>
+                <i class="bi bi-hand-thumbs-up"></i>
+                <b class="d-none d-sm-inline">
+                    Me gusta
+                </b>
             </button>
-            <button type="button" class="btn video-btn" (click)="setTurtle()" name="turtle">
-                0.5x
+            <button type="button" class="col-6 interaction-btn d-inline btn" title={{strComSoon[this.appComponent.localeInt]}} disabled>
+                <i class="bi bi-bookmarks"></i>
+                <b class="d-none d-sm-inline">
+                    Guardar
+                </b>
             </button>
-            <button type="button" class="btn video-btn" (click)="setRabbit()" name="rabbit" value="2">
-                1.0x
-            </button>
-            <button type="button" class="btn video-btn" (click)="setFox()" name="fox" value="2">
-                1.5x
-            </button>
-            <button type="button" class="btn video-btn" value="2" (click)="openFullscreen()">
-                <i class="video-bi bi bi-arrows-fullscreen"></i>
-            </button>
-        </div>
+        </div>-->
 
         <!-- WORD DEFINITIONS -->
-
-
         <ng-container
             *ngIf="(word?.getDefinitions()[this.appComponent.localeInt] !='.' && word?.getDefinitions()[this.appComponent.localeInt] !='') ; else elseblock2">
             <div class="row">
@@ -169,13 +171,63 @@
             </div>
         </div>
 
+        <!--SHARE BUTTONS-->
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex card word-card">
+                    <div class="w-100 card-body d-flex justify-content-center">
+                        <div class="row w-100 d-flex justify-content-center">
+                            <div class="row w-100">
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn whatsapp-share-button" target="_blank" (click)="eventShareWhatsApp()"
+                                    href="https://api.whatsapp.com/send?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}.%20{{this.appComponent.encodeURIComponent(this.strShareTxt[this.appComponent.localeInt])}}https://handsapp.org{{this.appComponent.encodeURIComponent(this.appComponent.Location.path())}}">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn facebook-share-button" target="_blank" (click)="eventShareFacebook()"
+                                    href="https://www.facebook.com/dialog/share?app_id=376926787434148&display=popup&href=https://handsapp.org{{this.appComponent.encodeURIComponent(appComponent.Location.path())}}">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn twitter-share-button" target="_blank" (click)="eventShareTwitter()"
+                                    href="https://twitter.com/intent/tweet?text={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&url=https://handsapp.org{{this.appComponent.encodeURIComponent(appComponent.Location.path())}}&hashtags={{this.appComponent.locale[1]}},{{this.strHash[this.appComponent.localeInt]}},HandsApp&via=HandsAppOrg">
+                                        <i class="bi bi-twitter"></i>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn linkedin-share-button" target="_blank" (click)="eventShareLinkedIn()"
+                                    href="https://www.linkedin.com/sharing/share-offsite/?url=https://handsapp.org{{this.appComponent.encodeURIComponent(appComponent.Location.path())}}">
+                                        <i class="bi bi-linkedin"></i>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <a type="button" class="d-inline btn btn-secondary social-btn mail-share-button" target="_blank" (click)="eventShareEmail()"
+                                    href="mailto:?subject={{word?.getText()[this.appComponent.localeInt]}}%20-%20{{this.strTit[this.appComponent.localeInt]}}{{this.appComponent.locale[1]}}&body={{this.appComponent.encodeURIComponent(this.strShareTxt[this.appComponent.localeInt])}}https://handsapp.org{{this.appComponent.Location.path()}}">
+                                        <i class="bi bi-envelope-fill"></i>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <button ngxClipboard class="d-inline btn btn-secondary social-btn mail-share-button" (click)="eventShareClipboard()"
+                                    [cbContent]="word?.getText()[this.appComponent.localeInt] + ' - ' + this.strTit[this.appComponent.localeInt] + this.appComponent.locale[1] + '. ' + this.strShareTxt[this.appComponent.localeInt] + 'https://handsapp.org' + this.appComponent.Location.path()">
+                                        <i class="bi bi-stickies-fill"></i>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <ng-adsense [width]="300" [height]="600"></ng-adsense>
+        <!--<ng-adsense [width]="300" [height]="600"></ng-adsense>-->
     </div>
 
     <div class="col-md-2 col-xl-2"></div>
