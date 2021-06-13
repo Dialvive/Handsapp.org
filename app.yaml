@@ -1,5 +1,7 @@
 runtime: nodejs10
 
+default_expiration: 1d
+
 env_variables:
   environment: "--prod"
 
@@ -37,6 +39,7 @@ handlers:
   upload: SignLanguage/dist/SignLanguage/.*\.woff2
   http_headers:
     vary: Accept-Encoding
+  expiration: 2d
 
 - url: /(.*\.woff)
   secure: always
@@ -46,6 +49,7 @@ handlers:
   upload: SignLanguage/dist/SignLanguage/.*\.woff
   http_headers:
     vary: Accept-Encoding
+  expiration: 2d
 
 - url: /(.*\.png)
   secure: always
@@ -95,7 +99,7 @@ handlers:
   upload: SignLanguage/dist/SignLanguage/.*\.ico
   http_headers:
     vary: Accept-Encoding
-  expiration: 1d
+  expiration: 7d
 
 - url: /(.*\.txt)
   secure: always
