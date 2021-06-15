@@ -56,12 +56,7 @@ export class AppComponent {
         var locale: string[] = navigator.language.split('-')
         this.locale = [locale[0].substring(0,2), '', locale[1].substring(0,2)]
       } else { // navigator.language ~ 'es'
-        country = await this.http.get("https://api.ipgeolocationapi.com/geolocate/")
-        .pipe(map((json: any): 
-          Object => {
-            return (json['alpha2'] as string)
-          })).toPromise();
-        this.locale = [navigator.language, '', country];
+        this.locale = [navigator.language, '', '00'];
       }
     } else { // There's loc in URL
       this.locale = locStr.split('_');
