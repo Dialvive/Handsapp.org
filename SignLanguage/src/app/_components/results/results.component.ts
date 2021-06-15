@@ -1,6 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 import { WordSearchResult } from 'src/app/_models/search';
 import { Word } from 'src/app/_models/word';

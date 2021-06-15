@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WordSignService } from 'src/app/_services/word-sign/word-sign.service';
 import { Word } from '../../_models/word';

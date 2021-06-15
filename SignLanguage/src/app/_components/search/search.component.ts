@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { AppComponent } from '../../app.component';
-import { HttpParams, HttpClient } from '@angular/common/http'
+import { HttpParams } from '@angular/common/http'
 import { Router } from '@angular/router'
 import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
 
