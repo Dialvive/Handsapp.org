@@ -52,7 +52,6 @@ export class AppComponent {
     var country: string | any;
     var locStr: string | null = this.params.get("loc");
     if (locStr == null || locStr == '' ) { // There's no loc in URL
-      console.log("Inferring Locale...");
       if (navigator.language.includes('-')) { // navigator.language ~ 'es-MX'
         var locale: string[] = navigator.language.split('-')
         this.locale = [locale[0].substring(0,2), '', locale[1].substring(0,2)]
@@ -143,7 +142,6 @@ export class AppComponent {
     this.localeInt = id;
     this.locale = new Array(new Array("de","es","en","fr","it","pt")[id], this.locale[1], this.locale[2]);
     this.localeTxt = this.locale[0] + "_" + this.locale[1] + "_" + this.locale[2];
-    console.log("appComponent.updateLocaleInt(): " + this.locale[0])
     this.updateRoute();
   }
 
@@ -156,16 +154,12 @@ export class AppComponent {
   private setMeta(): void {
     if(this.meta.getTag("name='description'") != null){
       this.meta.updateTag({name: 'description', content: this.description[this.localeInt]}, "name='description'");
-      console.log("update description")
     } else { 
-      console.log("add description")
       this.meta.addTag({name: 'description', content: this.description[this.localeInt]});
     }
     if(this.meta.getTag("property='og:description'") != null){
       this.meta.updateTag({property: 'og:description', content: this.description[this.localeInt]}, "property='og:description'");
-      console.log("Update og:description")
     } else {
-      console.log("add og:description")
       this.meta.addTag({property: 'og:description', content: this.description[this.localeInt]});
     }
     if(this.meta.getTag("property='og:locale'") != null){

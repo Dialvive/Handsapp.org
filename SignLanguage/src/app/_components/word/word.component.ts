@@ -246,7 +246,6 @@ export class WordComponent implements AfterViewInit {
     this.vid.src = url;
     this.vidIndex = vidPos;
     //video.play();
-    console.log(url);
   }
 
   /* METADATA & JSON-LD SCHEMA ################################################################# */

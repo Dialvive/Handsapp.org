@@ -100,7 +100,6 @@ export class BugSubmitComponent implements OnInit {
     this.mailService.sendMail(mail).subscribe(
       response => {
         this.sent = "TRUE";
-        console.log(response);
       }, 
       err => {
         this.sent = "FALSE";
