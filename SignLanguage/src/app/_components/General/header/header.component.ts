@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
-import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
+import { AppComponent } from '../../../app.component';
+import { GoogleAnalyticsService } from '../../../_services/GoogleAnalytics/google-analytics.service'
 
 @Component({
   selector: 'app-header',

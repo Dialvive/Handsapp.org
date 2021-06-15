@@ -2,13 +2,13 @@ import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WordSignService } from 'src/app/_services/word-sign/word-sign.service';
-import { Word } from '../../_models/word';
-import { WordService } from '../../_services/word/word.service';
+import { Word } from '../../../_models/word';
+import { WordService } from '../../../_services/word/word.service';
 import { ViewChild } from '@angular/core';
-import { AppComponent } from '../../app.component'
+import { AppComponent } from '../../../app.component'
 import { WordCategory } from 'src/app/_models/wordCategory';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
-import { GoogleAnalyticsService } from '../../_services/GoogleAnalytics/google-analytics.service'
+import { GoogleAnalyticsService } from '../../../_services/GoogleAnalytics/google-analytics.service'
 import { LinkService } from 'src/app/_services/link/link.service';
 import { Meta } from '@angular/platform-browser';
 

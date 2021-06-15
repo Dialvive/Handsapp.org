@@ -7,7 +7,7 @@ import { WordCategory } from 'src/app/_models/wordCategory';
 import { SearchService } from 'src/app/_services/search/search.service';
 import { WordCategoryService } from 'src/app/_services/word-category/word-category.service';
 import { WordSignService } from 'src/app/_services/word-sign/word-sign.service';
-import { AppComponent } from '../../app.component'
+import { AppComponent } from '../../../app.component'
 
 @Component({
   selector: 'app-results',
