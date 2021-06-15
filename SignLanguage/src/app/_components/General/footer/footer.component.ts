@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-footer',
@@ -27,7 +25,6 @@ export class FooterComponent implements OnInit {
   public sgLanguages: string[] = [" 🇺🇳 International Sign Language (ISL) ", " 🇲🇽 Lengua de Señas Mexicana (LSM) "]
   public spSelected: number | undefined;
   public sgSelected: number | undefined;
-  private loc: string[] = [];
 
   constructor(
     public appComponent: AppComponent

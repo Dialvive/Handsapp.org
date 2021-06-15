@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {JsonLdComponent } from '../../_components/json-ld/json-ld.component'
+import { JsonLdComponent } from '../../_components/FunctionalComponents/json-ld/json-ld.component'
 
 
 

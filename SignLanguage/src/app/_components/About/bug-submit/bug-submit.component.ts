@@ -21,7 +21,6 @@ export class BugSubmitComponent implements OnInit {
   public inputAgree: boolean = false;
   public inputResponse: boolean = false;
   public inputMail: string = '';
-  private mail: Mail | null = null;
   public sent: string = '';
   public strTitle: string[] = 
     [ "Melden Sie einen Fehler, einen Vorschlag oder einen unangemessenen Inhalt",
@@ -100,7 +99,6 @@ export class BugSubmitComponent implements OnInit {
     this.mailService.sendMail(mail).subscribe(
       response => {
         this.sent = "TRUE";
-        console.log(response);
       }, 
       err => {
         this.sent = "FALSE";
