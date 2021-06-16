@@ -51,6 +51,7 @@ export class AppComponent {
   public async getLocale(): Promise<boolean> {
     var country: string | any;
     var locStr: string | null = this.params.get("loc");
+    console.log("LOCALE")
     if (locStr == null || locStr == '' ) { // There's no loc in URL
       if (navigator.language.includes('-')) { // navigator.language ~ 'es-MX'
         var locale: string[] = navigator.language.split('-')
