@@ -19,6 +19,8 @@ export class RegisterContinueComponent implements OnInit {
   @Input()
   public inputMail: string = '';
   @Input()
+  public inputCountry: string = '';
+  @Input()
   public inputPassword1: string = '';
   @Input()
   public inputPassword2: string = '';

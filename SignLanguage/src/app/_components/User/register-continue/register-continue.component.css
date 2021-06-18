@@ -79,6 +79,24 @@ input:active {
     border-color: var(--cream-dark);
 }
 
+select {
+    transition: 0.25s;
+    border-radius: 0.5rem;
+    border-color: var(--cream-dark);
+    height: 35px;
+    box-shadow: 0 0 0 var(--cream-darker) !important;
+}
+
+select:focus {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
+}
+
+select:active {
+    box-shadow: 0 0 12px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
+}
+
 .form-check-input {
     height: 16px;
     width: 16px;
