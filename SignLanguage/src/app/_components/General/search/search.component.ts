@@ -73,7 +73,7 @@ export class SearchComponent implements AfterViewInit {
   public strIndex: string[] = ["den thematischer Wortindex", "el índice temático de palabras", "the thematic index of words", "l'index thématique des mots", "l'indice tematico delle parole", "o índice temático de palavras"];
 
   public input : string = "";
-  public params : HttpParams = this.appComponent.getParams();
+  public params : HttpParams = this.appComponent.params;
 
   constructor(
     public appComponent: AppComponent, 

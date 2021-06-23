@@ -1,1 +1,93 @@
-<p>user-home works!</p>
+
+<head>
+    <link rel="canonical" href="https://handsapp.org/account"/>
+    <title>{{["HandsApp-Konto","Cuenta HandsApp","HandsApp Account","Compte HandsApp","Conto HandsApp","Conta HandsApp"][this.appComponent.localeInt]}}</title>
+</head>
+
+<body>
+    <div class="row justify-content-center">
+        
+        <div class="col-12 first-column">
+            <div class="row row-cols-1">
+                <div class="col-12 d-flex justify-content-center w-100">
+                    <img class="user-photo" src="" alt="">
+                </div>
+                <div class="col-12 d-flex justify-content-center card mb-3 p-4">
+                    <!--NAME-->
+                    <p class="user-var-txt mt-2 name-txt text-center" name="fname" id="fname">
+                        {{this.userVarFname}} {{this.userVarLname}}
+                    </p>
+                    <!--NICKNAME-->
+                    <p class="user-var-txt user-txt text-center" name="nickname" id="nickname">
+                        @{{this.userVarUser}}
+                    </p>
+                    <!--POINTS-->
+                    <p class="user-var-txt mb-1 points-txt text-center" name="nickname" id="nickname">
+                        <i class="bi bi-stars"></i> {{this.userVarPoints}} pt
+                    </p>
+                    <hr>
+                    
+                    <div class="row">
+                        <!--Friends-->
+                        <div class="col-6 text-center">
+                            <label class="mt-2" for="friends">
+                                <i class="bi bi-people-fill"></i>
+                                <b>
+                                    {{["Freunde",
+                                    "Amigos",
+                                    "Friends",
+                                    "Amis",
+                                    "Amici",
+                                    "Amigos"][this.appComponent.localeInt]}}
+                                </b>
+                            </label>
+                            <p class="user-var-txt mb-2" name="friends" id="friends">
+                                {{this.userVarFriends}}
+                            </p>
+                        </div>
+
+                        <!--EMAIL-->
+                        <div class="col-6 text-center">
+                            <label class="mt-2" for="country">
+                                <i class="bi bi-geo-fill"></i>
+                                <b>
+                                    {{["Lage",
+                                    "Ubicación",
+                                    "Location",
+                                    "Localisation",
+                                    "Posizione",
+                                    "Localização"][this.appComponent.localeInt]}}
+                                </b>
+                            </label>
+                            <p class="user-var-txt mb-2" name="country" id="country">
+                               {{this.userVarCountry}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary w-100 config-btn mt-3">
+                    <b>
+                        {{["Einstellungen",
+                        "Configuración",
+                        "Settings",
+                        "Paramètres",
+                        "Impostazioni",
+                        "Configurações"][this.appComponent.localeInt]}}
+                    </b>
+                    <i class="bi bi-gear-wide-connected"></i>
+                </button>
+                <a class="text-center link-danger w-100 mt-3">
+                    <b>
+                        {{["Ausloggen",
+                        "Cerrar sesión",
+                        "Log out",
+                        "Se déconnecter",
+                        "Disconnettersi",
+                        "Deslogar"][this.appComponent.localeInt]}}
+                    </b>
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>

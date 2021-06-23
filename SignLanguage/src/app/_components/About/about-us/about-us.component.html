@@ -11,203 +11,198 @@
         <div class="col-1 col-xl-2"></div>
 
         <div class="col-10 col-xl-8 first-column">
-            <ng-container *ngIf="this.appComponent.localeInt == 1;else english">
-                <div class="row row-cols-2">
-                    <div class="col-12">
-                        <h1 class="title">Acerca de Nosotros</h1>
-                        <p class="grt nice-p">
-                            HandsApp nació en 2020 cuando un estudiante tomaba clases de Lengua de Señas por
-                            videollamada, al
-                            platicar con su amigo, se propusieron crear juntos el ambiente aprendizaje de Lengua de
-                            Señas más
-                            completo e inclusivo en el mundo.
-                        </p>
-                        <h2 class="h1grt">Nuestra Misión</h2>
-                        <ul class="grt nice-p">
-                            <li class="li-grt">
-                                Ser el ecosistema tecnológico de aprendizaje de lengua de señas más incluyente y
-                                completo, tomando las necesidades de las personas sordas y difíciles
-                                de oír como nuestra prioridad.
-                            </li>
-                            <li class="li-grt">
-                                Hacer nuestro contenido fácilmente disponible a los que más lo necesitan.
-                            </li>
-                            <li class="li-grt">
-                                Desarrollar herramientas que hagan una diferencia real en la vida de las personas sordas
-                                y difíciles de oír.
-                            </li>
-                            <li class="li-grt">
-                                Empoderar a nuestros usuarios para poder comunicarse con todas las personas sordas,
-                                difíciles de oír, y oyentes.
-                            </li>
-                            <li class="li-grt">
-                                Ofrecer nuestras plataformas en una multitud de idiomas y lenguas de señas.
-                            </li>
-                            <li class="li-grt">
-                                Ser líderes en el proceso de inclusión de las personas sordas y difíciles de oír en el
-                                mundo.
-                            </li>
-                        </ul>
-                    </div>
+            <div class="row row-cols-2">
+                <div class="col-12">
+                    <h1 class="title">
+                        {{this.strTitle[this.appComponent.localeInt]}}
+                    </h1>
+                    <p class="grt nice-p">
+                        {{["HandsApp wurde 2020 geboren, als ein Schüler per Videoanruf an Gebärdensprachkursen teilnahm. Nach einem Gespräch mit seinem Freund machten sie sich daran, gemeinsam die umfassendste und umfassendste Lernumgebung für Gebärdensprache der Welt zu schaffen.",
+                        "HandsApp nació en 2020 cuando un estudiante tomaba clases de Lengua de Señas por videollamada, después de platicar con su amigo, se propusieron crear juntos el ambiente aprendizaje de Lengua de Señas más completo e inclusivo en el mundo.",
+                        "HandsApp was born in 2020 when a student took Sign Language classes by video call, after talking with his friend, they set out to create together the most complete and inclusive Sign Language learning environment in the world.",
+                        "HandsApp est né en 2020 lorsqu'un étudiant a suivi des cours de langue des signes par appel vidéo, après avoir parlé avec son ami, ils ont décidé de créer ensemble l'environnement d'apprentissage de la langue des signes le plus complet et le plus inclusif au monde.",
+                        "HandsApp è nata nel 2020 quando uno studente ha preso lezioni di lingua dei segni tramite videochiamata, dopo aver parlato con un suo amico, hanno deciso di creare insieme l'ambiente di apprendimento della lingua dei segni più completo e inclusivo al mondo.",
+                        "A HandsApp nasceu em 2020 quando um aluno fez aulas de Língua de Sinais por videochamada, depois de conversar com seu amigo, eles se propuseram a criar juntos o ambiente de aprendizagem de Língua de Sinais mais completo e inclusivo do mundo."][this.appComponent.localeInt]}}
+                    </p>
+                    <h2 class="h1grt">
+                        {{["Unsere Aufgabe",
+                        "Nuestra Misión",
+                        "Our Mission",
+                        "Notre Mission",
+                        "La Nostra Missione",
+                        "Nossa Missão"][this.appComponent.localeInt]}}
+                    </h2>
+                    <ul class="grt nice-p">
+                        <li class="li-grt">
+                            {{["Das umfassendste und umfassendste technologische Ökosystem für das Erlernen der Gebärdensprache zu sein, wobei die Bedürfnisse gehörloser und schwerhöriger Menschen als unsere Priorität gelten.",
+                            "Ser el ecosistema tecnológico de aprendizaje de lengua de señas más incluyente y completo, tomando las necesidades de las personas sordas y difíciles de oír como nuestra prioridad.",
+                            "To be the most inclusive and complete technological ecosystem for learning sign language, taking the needs of deaf and hard of hearing people as our priority.",
+                            "Être l'écosystème technologique le plus inclusif et le plus complet pour l'apprentissage de la langue des signes, en faisant des besoins des personnes sourdes et malentendantes notre priorité.",
+                            "Essere l'ecosistema tecnologico più inclusivo e completo per l'apprendimento della lingua dei segni, prendendo come priorità le esigenze delle persone non udenti e con problemi di udito.",
+                            "Ser o ecossistema tecnológico mais inclusivo e completo para o aprendizado da língua de sinais, tendo como prioridade as necessidades dos surdos e deficientes auditivos."][this.appComponent.localeInt]}}
+                        </li>
+                        <li class="li-grt">
+                            {{["Machen Sie unsere Inhalte für diejenigen zugänglich, die sie am dringendsten benötigen.",
+                            "Hacer nuestro contenido fácilmente disponible a los que más lo necesitan.",
+                            "Make our content easily available to those who need it most.",
+                            "Rendez notre contenu facilement accessible à ceux qui en ont le plus besoin.",
+                            "Rendi i nostri contenuti facilmente disponibili a coloro che ne hanno più bisogno.",
+                            "Disponibilize nosso conteúdo facilmente para quem mais precisa."][this.appComponent.localeInt]}}
+                        </li>
+                        <li class="li-grt">
+                            {{["Entwickeln Sie Werkzeuge, die das Leben gehörloser und schwerhöriger Menschen wirklich verbessern.",
+                            "Desarrollar herramientas que hagan una diferencia real en la vida de las personas sordas y difíciles de oír.",
+                            "Develop tools that make a real difference in the lives of deaf and hard of hearing people.",
+                            "Développer des outils qui font une réelle différence dans la vie des personnes sourdes et malentendantes.",
+                            "Sviluppa strumenti che fanno davvero la differenza nella vita delle persone non udenti e con problemi di udito.",
+                            "Desenvolva ferramentas que façam uma diferença real na vida de pessoas surdas e com deficiência auditiva."][this.appComponent.localeInt]}}
+                        </li>
+                        <li class="li-grt">
+                            {{["Empower unsere Benutzer mit allen Menschen kommunizieren können",
+                            "Empoderar a nuestros usuarios para poder comunicarse con todas las personas sordas, difíciles de oír, y oyentes.",
+                            "Empower our users to be able to communicate with all deaf, hard of hearing, and hearing people.",
+                            "Empower nos utilisateurs d'être en mesure de communiquer avec toutes les personnes.",
+                            "Consenti ai nostri utenti di essere in grado di comunicare con tutte le persone.",
+                            "Capacite nossos usuários a se comunicarem com todas as pessoas."][this.appComponent.localeInt]}}
+                        </li>
+                        <li class="li-grt">
+                            {{["Bieten Sie unsere Plattformen in einer Vielzahl von Sprachen und Gebärdensprachen an.",
+                            "Ofrecer nuestras plataformas en una multitud de idiomas y las lenguas de signos.",
+                            "Offer our platforms in a multitude of languages and sign languages.",
+                            "Proposez nos plateformes dans une multitude de langues et de langues des signes.",
+                            "Offri le nostre piattaforme in una moltitudine di lingue e lingue dei segni.",
+                            "Oferecer nossas plataformas em uma infinidade de linguagens e línguas de sinais."][this.appComponent.localeInt]}}
+                        </li>
+                        <li class="li-grt">
+                            {{["Seien Sie Führer in dem Prozess des mit tauben und schwerhörigen Menschen in der Welt.",
+                            "Ser líderes en el proceso de inclusión de personas sordas y con problemas de audición en el mundo.",
+                            "Be leaders in the process of including deaf and hard of hearing people in the world.",
+                            "Soyez des leaders dans le processus d'inclusion des personnes sourdes et malentendantes dans le monde.",
+                            "Siate leader nel processo di inclusione delle persone sorde e con problemi di udito nel mondo.",
+                            "Seja líder no processo de inclusão de surdos e deficientes auditivos no mundo."][this.appComponent.localeInt]}}
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
-                <h2 class="h1grt">Equipo</h2>
+            <h2 class="h1grt">
+                {{["Triff das Team",
+                "Conoce al equipo",
+                "Meet the team",
+                "Rencontrer l'équipe",
+                "Incontrare la squadra",
+                "Conheça a equipe"][this.appComponent.localeInt]}}</h2>
 
-                <div class="d-flex justify-content-evenly row">
-                    <div class="team col-12 col-md-6">
-                        <img class="team-img" src="/assets/img/Diego.jpg" alt="Diego Villalpando">
-                        <h3 class="team-name">
-                            Diego Villalpando
-                        </h3>
-                        <h4 class="team-title">
-                            Co-fundador y desarrollador
-                        </h4>
-                        <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
-                            <li class="list-inline-item"><a href="https://github.com/Dialvive/" target="_blank"
-                                    class="social-link"><i class="bi bi-github"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/diegovillalpando/"
-                                    target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="team col-12 col-md-6">
-                        <img class="team-img" src="/assets/img/Marco.jpg" alt="Marco Blancas">
-                        <h3 class="team-name">
-                            Marco Blancas
-                        </h3>
-                        <h4 class="team-title">
-                            Co-fundador y desarrollador
-                        </h4>
-                        <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
-                            <li class="list-inline-item"><a href="https://github.com/tokumago" target="_blank"
-                                    class="social-link"><i class="bi bi-github"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/marco-tokunaga/"
-                                    target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                   <!--  <div class="team col-12 col-md-6">
-                        <img class="team-img" src="/assets/img/Carlos.jpg" alt="Carlos Calvillo">
-                        <h3 class="team-name">
-                            Carlos Calvillo
-                        </h3>
-                        <h4 class="team-title">
-                            Lorem ipsum dolor sit amet
-                        </h4>
-                        <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
-                            <li class="list-inline-item"><a
-                                    href="https://www.youtube.com/channel/UC7zHmdwI1D7AcETiURmwG-A" target="_blank"
-                                    class="social-link"><i class="bi bi-youtube"></i></a></li>
-                            <li class="list-inline-item"><a href="mailto:Carlangasnaruto@gmail.com"
-                                    class="social-link"><i class="bi bi-envelope"></i></a></li>
-                        </ul>
-                    </div> -->
+            <div class="d-flex justify-content-evenly row">
+                <div class="team col-12 col-md-6">
+                    <img class="team-img" src="/assets/img/Diego.jpg" alt="Diego Villalpando">
+                    <h3 class="team-name">
+                        Diego Villalpando
+                    </h3>
+                    <h4 class="team-title">
+                        {{["Mitgründer und Softwareentwickler",
+                        "Co-fundador y desarrollador de software",
+                        "Co-founder and software developer",
+                        "Co-fondateur et développeur de logiciels",
+                        "Co-fondatore e sviluppatore di software",
+                        "Co-fundador e desenvolvedor de software"][this.appComponent.localeInt]}}
+                    </h4>
+                    <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="https://github.com/Dialvive/" target="_blank"
+                                class="social-link"><i class="bi bi-github"></i></a></li>
+                        <li class="list-inline-item"><a href="https://dialvive.dev"
+                            target="_blank" class="social-link"><i class="bi bi-globe"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/diegovillalpando/"
+                                target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
                 </div>
+                <div class="team col-12 col-md-6">
+                    <img class="team-img" src="/assets/img/Marco.jpg" alt="Marco Blancas">
+                    <h3 class="team-name">
+                        Marco Blancas
+                    </h3>
+                    <h4 class="team-title">
+                        {{["Mitgründer und Softwareentwickler",
+                        "Co-fundador y desarrollador de software",
+                        "Co-founder and software developer",
+                        "Co-fondateur et développeur de logiciels",
+                        "Co-fondatore e sviluppatore di software",
+                        "Co-fundador e desenvolvedor de software"][this.appComponent.localeInt]}}
+                    </h4>
+                    <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="https://github.com/tokumago" target="_blank"
+                                class="social-link"><i class="bi bi-github"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/marco-tokunaga/"
+                                target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="team col-12 col-md-6">
+                    <img class="team-img" src="/assets/img/Brayan.jpg" alt="Carlos Calvillo">
+                    <h3 class="team-name">
+                        Brayan Martinez
+                    </h3>
+                    <h4 class="team-title">
+                        {{["Softwareentwickler",
+                        "Desarrollador de software",
+                        "Software developer",
+                        "Développeur de logiciels",
+                        "Sviluppatore di software",
+                        "Desenvolvedor de software"][this.appComponent.localeInt]}}
+                    </h4>
+                    <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="https://github.com/BrayanCaro" target="_blank"
+                                class="social-link"><i class="bi bi-github"></i></a></li>
+                    </ul>
+                </div>
+                <div class="team col-12 col-md-6">
+                    <img class="team-img" src="/assets/img/Carlos.jpg" alt="Carlos Calvillo">
+                    <h3 class="team-name">
+                        Carlos Calvillo
+                    </h3>
+                    <h4 class="team-title">
+                        {{["Mitarbeiter der mexikanischen Gebärdensprache",
+                        "Colaborador de Lengua de Señas Mexicana",
+                        "Collaborator of Mexican Sign Language",
+                        "Collaborateur de la langue des signes mexicaine",
+                        "Collaboratore della lingua dei segni messicana",
+                        "Colaborador da língua de sinais mexicana"][this.appComponent.localeInt]}}
+                    </h4>
+                    <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a
+                                href="https://www.youtube.com/channel/UC7zHmdwI1D7AcETiURmwG-A" target="_blank"
+                                class="social-link"><i class="bi bi-youtube"></i></a></li>
+                        <li class="list-inline-item"><a href="mailto:Carlangasnaruto@gmail.com"
+                                class="social-link"><i class="bi bi-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
 
-                <h2 class="h1grt">Contáctanos</h2>
-                <p class="grt nice-p">
-                    ¿Problemas, errores, sugerencias, más información, o quieres decir hola?
-                    <br><br>
-                    Síguenos y contáctanos en nuestras redes sociales, o ponte en contacto con nosotros en
-                    <a href="mailto:hola@handsapp.org">hola@handsapp.org</a>.
-                </p>
-            </ng-container>
+            <h2 class="h1grt">
+                {{["Kontaktiere uns",
+                "Contáctanos",
+                "Contact us",
+                "Contactez-nous",
+                "Contattaci",
+                "Contacte-nos"][this.appComponent.localeInt]}}
+            </h2>
+            <p class="grt nice-p">
+                {{["Probleme, Bugs, Vorschläge, weitere Informationen oder möchten Sie Hallo sagen?",
+                "¿Problemas, errores, sugerencias, más información, o quieres decir hola?",
+                "Problems, bugs, suggestions, more information, or do you want to say hello?",
+                "Problèmes, bugs, suggestions, plus d'informations, ou voulez-vous dire bonjour?",
+                "Problemi, bug, suggerimenti, maggiori informazioni o vuoi salutarci?",
+                "Problemas, bugs, sugestões, mais informações ou deseja dizer olá?"][this.appComponent.localeInt]}}
+                <br><br>
+                {{["Folgen Sie uns und kontaktieren Sie uns in unseren sozialen Netzwerken oder kontaktieren Sie uns unter",
+                "Síguenos y contáctanos en nuestras redes sociales, o ponte en contacto con nosotros en",
+                "Follow us and contact us on our social networks, or get in touch with us at",
+                "Suivez-nous et contactez-nous sur nos réseaux sociaux, ou contactez-nous à",
+                "Seguici e contattaci sui nostri social network, oppure mettiti in contatto con noi a",
+                "Siga-nos e entre em contato conosco em nossas redes sociais, ou entre em contato conosco pelo e-mail"][this.appComponent.localeInt]}}
+                <a href="mailto:hola@handsapp.org">hola@handsapp.org</a>.
+            </p>
         </div>
 
         <div class="col-1 col-xl-2"></div>
     </div>
-
-    <ng-template #english>
-        <div class="row row-cols-2">
-            <div class="col-12">
-                <h1 class="h1grt">About Us</h1>
-                <p class="grt nice-p">
-                    HandsApp was born in 2020, when a student was learning Sign Language through video call,
-                    after talking to a friend about it, they committed to create the most inclusive and complete
-                    Sign Language learning environment in the world.
-                </p>
-                <h2 class="h1grt">Our Mission</h2>
-                <ul class="grt nice-p">
-                    <li class="li-grt">
-                        To be the most inclusive and complete sign language learning ecosystem, with the needs of Deaf
-                        and hard of hearing people as our main priority.
-                    </li>
-                    <li class="li-grt">
-                        To make our content easily available to the people who needs it the most.
-                    </li>
-                    <li class="li-grt">
-                        To develop tools that make a real difference in the life of Deaf and hard of hearing people.
-                    </li>
-                    <li class="li-grt">
-                        To empower our users to be able to communicate with all the people.
-                    </li>
-                    <li class="li-grt">
-                        To offer our platforms in a multitude of written languages and sign languages.
-                    </li>
-                    <li class="li-grt">
-                        To be leaders in the process of inclusion of Deaf and hard of hearing people in the world.
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <h2 class="h1grt">Team</h2>
-
-        <div class="d-flex justify-content-evenly row">
-
-            <div class="team col-12 col-md-6">
-                <img class="team-img" src="/assets/img/Diego.jpg" alt="Diego Villalpando">
-                <h3 class="team-name">
-                    Diego Villalpando
-                </h3>
-                <h4 class="team-title">
-                    Co-founder and developer
-                </h4>
-                <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="https://github.com/Dialvive/" target="_blank"
-                            class="social-link"><i class="bi bi-github"></i></a></li>
-                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/diegovillalpando/" target="_blank"
-                            class="social-link"><i class="bi bi-linkedin"></i></a></li>
-                </ul>
-            </div>
-
-            <div class="team col-12 col-md-6">
-                <img class="team-img" src="/assets/img/Marco.jpg" alt="Marco Blancas">
-                <h3 class="team-name">
-                    Marco Blancas
-                </h3>
-                <h2 class="team-title">
-                    Co-founder and developer
-                </h2>
-                <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="https://github.com/tokumago" target="_blank"
-                            class="social-link"><i class="bi bi-github"></i></a></li>
-                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/marco-tokunaga/" target="_blank"
-                            class="social-link"><i class="bi bi-linkedin"></i></a></li>
-                </ul>
-            </div>
-
-            <!-- <div class="team col-12 col-md-6">
-                <img class="team-img" src="/assets/img/Carlos.jpg" alt="Carlos Calvillo">
-                <h3 class="team-name">
-                    Carlos Calvillo
-                </h3>
-                <h2 class="team-title">
-                    Lorem ipsum dolor sit amet
-                </h2>
-                <ul class="d-flex justify-content-center social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="https://www.youtube.com/channel/UC7zHmdwI1D7AcETiURmwG-A"
-                            target="_blank" class="social-link"><i class="bi bi-youtube"></i></a></li>
-                    <li class="list-inline-item"><a href="mailto:Carlangasnaruto@gmail.com" class="social-link"><i
-                                class="bi bi-envelope"></i></a></li>
-                </ul>
-            </div> -->
-        </div>
-
-        <h2 class="h1grt">Contact Us</h2>
-        <p class="nice-p">
-            Problems, errors, suggestions, more information, or want to say hi?
-            <br><br>
-            Follow and contact us on our social media websites, or email us at
-            <a href="mailto:hola@handsapp.org">hola@handsapp.org</a>.
-        </p>
-    </ng-template>
 </body>

@@ -20,6 +20,8 @@ import { ForgotPasswordComponent } from './_components/User/forgot-password/forg
 import { NewPasswordComponent } from './_components/User/new-password/new-password.component';
 import { ExistingAccountComponent } from './_components/User/existing-account/existing-account.component';
 import { RegisterContinueComponent } from './_components/User/register-continue/register-continue.component';
+import { UserHomeComponent } from './_components/User/user-home/user-home.component';
+import { UserCrudComponent } from './_components/User/user-crud/user-crud.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },
@@ -42,6 +44,8 @@ const routes: Routes = [
   { path: 'forgot', component: ForgotPasswordComponent},
   { path: 'new-password', component: NewPasswordComponent},
   { path: 'existing-account', component: ExistingAccountComponent},
+  { path: 'account', component: UserHomeComponent},
+  { path: 'account/settings', component: UserCrudComponent},
 
   { path: '**', component: NotFoundComponent},
 ];
