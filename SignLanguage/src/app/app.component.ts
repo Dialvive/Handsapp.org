@@ -27,42 +27,45 @@ export class AppComponent {
   public locale: string[] | any; // Locale is expected to have three values: [0]spokenLang [1]signLang [2]country
   public localeInt: number | any; // 0: de, 1: es, 2: en, 3: fr, 4: it, 5: pt
   public localeTxt: string | any;
-  public page: string = '';
-  public params: HttpParams = this.getParams();
+  public page: string;
+  public params: HttpParams;
 
   constructor(
     public route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient,
     public Location:Location,
-    private meta: Meta
-    ) {
+    private meta: Meta) 
+    {
       this.router.events.subscribe(
         event => {
           if(event instanceof NavigationEnd){
             gtag('config', 'G-DMRJ6K1JHB', { 'page_path': event.urlAfterRedirects });
           }
-        });
+        }
+      );
+      this.page = this.Location.path();
+      if (this.page.includes('?')) {
+        var paramIndex = this.page.indexOf('?');
+        var params = this.page.substring(paramIndex+1, this.page.length);
+        this.params =  new HttpParams({ fromString: params });
+        this.page = this.page.substring(0, paramIndex);
+      } else {
+        this.params = new HttpParams({ fromString: '' });
       }
+    }
     
-
   //Gets locale through params, or infers it using navigator or IP address.
   // TODO: infer sign language.
   public async getLocale(): Promise<boolean> {
     var country: string | any;
     var locStr: string | null = this.params.get("loc");
+    console.log("LOCALE")
     if (locStr == null || locStr == '' ) { // There's no loc in URL
-      console.log("Inferring Locale...");
       if (navigator.language.includes('-')) { // navigator.language ~ 'es-MX'
         var locale: string[] = navigator.language.split('-')
         this.locale = [locale[0].substring(0,2), '', locale[1].substring(0,2)]
       } else { // navigator.language ~ 'es'
-        country = await this.http.get("https://api.ipgeolocationapi.com/geolocate/")
-        .pipe(map((json: any): 
-          Object => {
-            return (json['alpha2'] as string)
-          })).toPromise();
-        this.locale = [navigator.language, '', country];
+        this.locale = [navigator.language, '', '00'];
       }
     } else { // There's loc in URL
       this.locale = locStr.split('_');
@@ -74,14 +77,6 @@ export class AppComponent {
     this.updateRoute();
     document.documentElement.lang = this.locale[0];
     return true
-  }
-
-  //getParams Gets the parameters from the current URL
-  public getParams(): HttpParams {
-    var route = this.Location.path();
-    this.page = route.substring(0,route.indexOf('?'));
-    route = route.substring(route.indexOf('?')+1,route.length);
-    return new HttpParams({ fromString: route });
   }
 
   //Sets the LocaleInt globally depending on a given alpha2 country code.
@@ -143,7 +138,6 @@ export class AppComponent {
     this.localeInt = id;
     this.locale = new Array(new Array("de","es","en","fr","it","pt")[id], this.locale[1], this.locale[2]);
     this.localeTxt = this.locale[0] + "_" + this.locale[1] + "_" + this.locale[2];
-    console.log("appComponent.updateLocaleInt(): " + this.locale[0])
     this.updateRoute();
   }
 
@@ -156,16 +150,12 @@ export class AppComponent {
   private setMeta(): void {
     if(this.meta.getTag("name='description'") != null){
       this.meta.updateTag({name: 'description', content: this.description[this.localeInt]}, "name='description'");
-      console.log("update description")
     } else { 
-      console.log("add description")
       this.meta.addTag({name: 'description', content: this.description[this.localeInt]});
     }
     if(this.meta.getTag("property='og:description'") != null){
       this.meta.updateTag({property: 'og:description', content: this.description[this.localeInt]}, "property='og:description'");
-      console.log("Update og:description")
     } else {
-      console.log("add og:description")
       this.meta.addTag({property: 'og:description', content: this.description[this.localeInt]});
     }
     if(this.meta.getTag("property='og:locale'") != null){

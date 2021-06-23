@@ -1,0 +1,125 @@
+.first-column {
+    width: 384px !important;    
+    margin-bottom: 10vh;
+}
+
+.user-photo {
+    width: 180px !important;
+    height: 180px !important;
+    margin-top: 5vh;
+    margin-bottom: -25px;
+    padding-bottom: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 100%;
+    border-color: #fff;
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(/assets/img/logo.png);
+    box-shadow: 0 0 12px var(--cream-darker) !important;
+    z-index: 1000;
+}
+
+.name-txt {
+    height: auto;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.user-txt {
+    margin: 0;
+}
+
+.points-txt {
+    color: var(--tangerine);
+    text-shadow: 0px 0px 1.5px var(--cream-darker);
+    margin: 0;
+}
+
+.user-var-txt {
+    min-height: 21px;
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.config-btn {
+    min-width: 140px;
+    min-height: 37px;
+    font-size: 16px;
+    margin: 3.7px;
+    vertical-align: middle;
+    border-color: var(--cream-dark);
+    border-radius: 1rem;
+    transition: 0.25s;
+    box-shadow: 0 0 0 var(--cream-darker) !important;
+}
+
+.config-btn:hover {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+}
+
+.config-btn:focus {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+}
+
+.config-btn:active {
+    box-shadow: 0 0 12px var(--cream-darker) !important;
+}
+
+.facebook-btn {
+    background-color: #4167B2 !important;
+}
+
+.google-btn {
+    background-color: #fff !important;
+}
+
+svg {
+    margin-bottom: 2px;
+}
+
+.card {
+    box-shadow: 0 6px 24px var(--cream-dark) !important;
+    border-radius: 1rem;
+    z-index: 100;
+}
+
+.input-group-text {
+    height: 35px;
+    border-radius: 1rem;
+}
+
+input {
+    transition: 0.25s;
+    border-radius: 1rem;
+    border-color: var(--cream-dark);
+    height: 35px;
+    box-shadow: 0 0 0 var(--cream-darker) !important;
+}
+
+input:focus {
+    box-shadow: 0 0 8px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
+}
+
+input:active {
+    box-shadow: 0 0 12px var(--cream-darker) !important;
+    border-color: var(--cream-dark);
+}
+
+.form-check-input {
+    height: 16px;
+    width: 16px;
+}
+
+.alert-danger {
+    background-color: transparent !important;
+    color: var(--red);
+}
