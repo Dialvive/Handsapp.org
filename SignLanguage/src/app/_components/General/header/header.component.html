@@ -38,59 +38,27 @@
             </form>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav me-auto d-flex justify-content-around header-list" role="navigation">
+            <ul class="navbar-nav me-auto d-flex justify-content-start header-list" role="navigation">
                 <li class="nav-item">
                     <a class="nav-link" href="/words?loc={{this.appComponent.localeTxt}}">
-                        {{strWord[this.appComponent.localeInt]}}<i class="bi bi-chat-square-quote header-i"></i>
+                        {{strWord[this.appComponent.localeInt]}}<i class="bi bi-chat-square-quote header-i"></i> &nbsp;
                     </a>
-                </li>
+                </li><!--
                 <li class="nav-item">
                     <a class="nav-link" href="/coming-soon?loc={{this.appComponent.localeTxt}}" tabindex="-1" aria-disabled="true">
                         {{strPhrase[this.appComponent.localeInt]}}<i class="bi bi-chat-square-text header-i"></i>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="products/?loc={{this.appComponent.localeTxt}}" tabindex="-1" aria-disabled="true">
-                        {{strTool[this.appComponent.localeInt]}}<i class="bi bi-tools header-i"></i>
+                        {{strTool[this.appComponent.localeInt]}}<i class="bi bi-tools header-i"></i> &nbsp;
                     </a>
-                </li>
+                </li><!--
                 <li class="nav-item">
-                    <a class="nav-link" tabindex="-1" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" href="login/?loc={{this.appComponent.localeTxt}}" tabindex="-1" aria-disabled="true">
                         {{strAccount[this.appComponent.localeInt]}}<i class="bi bi-person-circle header-i"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <form class="px-4 py-4 header-login">
-                            <div class="mb-3">
-                                <label for="loginEmailInput" class="form-label">
-                                    {{strEmail[this.appComponent.localeInt]}}
-                                </label>
-                                <input type="email" class="form-control" id="loginEmailInput" placeholder={{strComSoon[this.appComponent.localeInt]}} autocomplete="username" disabled>
-                            </div>
-                            <div class="mb-3">
-                                <label for="loginPasswordInput" class="form-label">
-                                    {{strPsw[this.appComponent.localeInt]}}
-                                </label>
-                                <input type="password" class="form-control" id="loginPasswordInput" placeholder={{strComSoon[this.appComponent.localeInt]}} autocomplete="current-password" disabled>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="dropdownCheck" checked disabled>
-                                    <label class="form-check-label" for="dropdownCheck">
-                                            {{strRemDat[this.appComponent.localeInt]}}
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary" disabled>{{strLogIn[this.appComponent.localeInt]}}</button>
-                        </form>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/coming-soon?loc={{this.appComponent.localeTxt}}">
-                            {{strFistTime[this.appComponent.localeInt]}}
-                        </a>
-                        <a class="dropdown-item" href="/coming-soon?loc={{this.appComponent.localeTxt}}">
-                            {{strForgotPsw[this.appComponent.localeInt]}}
-                        </a>
-                    </div>
-                </li>
+                </li>-->
             </ul>
             <!-- MINI SEARCHBAR XL-->
             <div class="d-none d-xl-block sbwconstraint">
