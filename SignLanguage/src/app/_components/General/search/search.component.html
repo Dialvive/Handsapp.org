@@ -9,15 +9,13 @@
         "Il mondo a portata di mano",
         "O mundo em suas mãos."][this.appComponent.localeInt]}}
     </title>
-    <meta name="description"
-        content="{{
-        ['Lerne mit Zeichen zu kommunizieren! Sucht nach Wörtern und Phrasen in mehreren Gebärdensprachen. Verfügbar in Deutsch, Spanisch, Englisch, Französisch, Italienisch und Portugiesisch.',
-        '¡Aprende a comunicarte con señas! Busca palabras y frases múltiples lenguas de señas. Disponible en alemán, español, inglés, francés, italiano y portugués.',
-        'Learn to communicate with sign language! Searches for words and phrases in multiple sign languages. Available in German, Spanish, English, French, Italian and Portuguese.',
-        'Apprenez à communiquer avec des signes! Recherche des mots et des phrases dans plusieurs langues des signes. Disponible en allemand, espagnol, anglais, français, italien et portugais.',
-        'Impara a comunicare con i segni! Cerca parole e frasi in più lingue dei segni. Disponibile in tedesco, spagnolo, inglese, francese, italiano e portoghese.',
-        'Aprender a se comunicar com sinais! Pesquisa palavras e frases em várias línguas de sinais. Disponível em alemão, espanhol, inglês, francês, italiano e português.'][this.appComponent.localeInt]}}">
-        <app-json-ld [json]="schema"></app-json-ld>
+    <meta name="description" lang="de" content="Lerne mit Zeichen zu kommunizieren! Sucht nach Wörtern und Phrasen in mehreren Gebärdensprachen. Verfügbar in Deutsch, Spanisch, Englisch, Französisch, Italienisch und Portugiesisch.">
+    <meta name="description" lang="es" content="¡Aprende a comunicarte con señas! Busca palabras y frases múltiples lenguas de señas. Disponible en alemán, español, inglés, francés, italiano y portugués.">
+    <meta name="description" lang="en" content="Learn to communicate with sign language! Searches for words and phrases in multiple sign languages. Available in German, Spanish, English, French, Italian and Portuguese.">
+    <meta name="description" lang="fr" content="Apprenez à communiquer avec des signes! Recherche des mots et des phrases dans plusieurs langues des signes. Disponible en allemand, espagnol, anglais, français, italien et portugais.">
+    <meta name="description" lang="it" content="Impara a comunicare con i segni! Cerca parole e frasi in più lingue dei segni. Disponibile in tedesco, spagnolo, inglese, francese, italiano e portoghese.">
+    <meta name="description" lang="pt" content="Aprender a se comunicar com sinais! Pesquisa palavras e frases em várias línguas de sinais. Disponível em alemão, espanhol, inglês, francês, italiano e português.">
+    <app-json-ld [json]="schema"></app-json-ld>
 </head>
 
 <body>
@@ -60,7 +58,7 @@
                     <div class=btn-container>
                         <button (onclick)="submit(1)" type="submit" class="btn search-btn" name="typ"
                             value="1">{{strWord[this.appComponent.localeInt]}}</button>
-                        <button (onclick)="submit(2)" type="submit" class="btn search-btn" name="typ"
+                        <button (onclick)="submit(2)" type="submit" class="btn search-btn" name="typ" disabled
                             value="2">{{strPhrase[this.appComponent.localeInt]}}</button>
                     </div>
 
