@@ -101,8 +101,7 @@ import { RegisterContinueComponent } from './_components/User/register-continue/
   ],
   imports: [
     AdsenseModule.forRoot({
-      adClient: 'ca-pub-7365943596040772',
-      adSlot: '7085061232',
+      adClient: 'ca-pub-7365943596040772'
     }),
     BrowserModule,
     AppRoutingModule,
