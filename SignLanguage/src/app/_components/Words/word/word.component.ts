@@ -30,6 +30,7 @@ export class WordComponent implements AfterViewInit {
   public vidIndex: number = 0;
   public progress: number = 0;
   public category: WordCategory | any;
+  public copied: boolean = false;
 
   vid: any | HTMLVideoElement
   @ViewChild("icon") icon: any;
@@ -374,6 +375,7 @@ export class WordComponent implements AfterViewInit {
 
   // Click on share with clipboard
   public eventShareClipboard(): void {
+    this.copied = true;
     this.googleAnalyticsService.eventEmitter(
       "shareCB", "Share", "Share with clipboard", "Word", parseInt(this.wordID));
   }

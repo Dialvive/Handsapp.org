@@ -6,10 +6,10 @@
     </title>
 </head>
 
-<app-ad-banner></app-ad-banner>
 <div class="row">
     <div class="col-md-2 col-xl-2"></div>
     <div class="col-12 col-md-8 col-xl-6 first-column">
+        <app-ad-banner></app-ad-banner>
         <h1 class="mb-5">
             {{strTitle[this.appComponent.localeInt] }}
         </h1>
@@ -69,16 +69,16 @@
                 </div>
             </ng-container>
         </ng-container>
+        <app-ad-banner></app-ad-banner>
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <ng-adsense [width]="300" [height]="600"></ng-adsense>
+        <ng-adsense class="ad-column" [width]="300" [height]="600"></ng-adsense>
     </div>
 
     <div class="col-md-2 col-xl-2"></div>
 </div>
-<app-ad-banner></app-ad-banner>
 
 <ng-template #loading>
-    <!--<img class="loading-img" src="/assets/img/loader.gif" alt="Loading">-->
+    <img class="loading-img" src="/assets/img/loader2.gif" alt="Loading...">
 </ng-template>

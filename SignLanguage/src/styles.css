@@ -347,6 +347,7 @@ ul ol li {
 .ad-column {
     margin-top: 58px;
     width: 300px;
+    position: fixed;
 }
 
 
@@ -439,10 +440,14 @@ video {
 /* LOADING ####################################################### */
 
 .loading-img {
+    position: fixed;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    height: 200px;
+    width: 200px;
     text-align: center;
+    box-shadow: 1px solid black;
 }
 
 /* ANIMATIONS #################################################### */

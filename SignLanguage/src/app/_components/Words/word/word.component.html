@@ -6,12 +6,13 @@
     </title>
 </head>
 
-<app-ad-banner></app-ad-banner>
 <div class="row">
 
     <div class="col-md-2 col-xl-2"></div>
 
     <div class="col-12 col-md-8 col-xl-6 first-column">
+
+        <app-ad-banner></app-ad-banner>
 
         <!-- WORD TITLE -->
         <div class="d-flex justify-content-between align-items-start">
@@ -211,7 +212,8 @@
                                 <div class="col-4 col-md-2 d-flex justify-content-center">
                                     <button ngxClipboard class="d-inline btn btn-secondary social-btn mail-share-button" (click)="eventShareClipboard()"
                                     [cbContent]="word?.getText()[this.appComponent.localeInt] + ' - ' + this.strTit[this.appComponent.localeInt] + this.appComponent.locale[1] + '. ' + this.strShareTxt[this.appComponent.localeInt] + 'https://handsapp.org' + this.appComponent.Location.path()">
-                                        <i class="bi bi-stickies-fill"></i>
+                                        <i *ngIf="!this.copied" class="bi bi-stickies-fill"></i>
+                                        <span *ngIf="copied">{{["Kopiert!","¡Copiado!","Copied!","Copié!","Copiato!","Copiado!"][this.appComponent.localeInt]}}</span>
                                 </button>
                                 </div>
                             </div>
@@ -222,14 +224,13 @@
             </div>
         </div>
 
-
+        <app-ad-banner></app-ad-banner>
 
     </div>
 
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <!--<ng-adsense [width]="300" [height]="600"></ng-adsense>-->
+        <ng-adsense class="ad-column" [width]="300" [height]="600"></ng-adsense>
     </div>
 
     <div class="col-md-2 col-xl-2"></div>
 </div>
-<app-ad-banner></app-ad-banner>
