@@ -9,11 +9,11 @@
 <div class="row">
     <div class="col-md-2 col-xl-2"></div>
     <div class="col-12 col-md-8 col-xl-6 first-column">
-        <h1 class="mb-5">
+        <h1 class="mb-4">
             {{strTitle[this.appComponent.localeInt] }}
         </h1>
-        <div class="row d-inline-block d-xl-none adsbygoogle justify-content-center">
-            <ng-adsense class="upper-ad-banner" [adSlot]="7670893613" [height]="90"></ng-adsense>
+        <div class="row d-inline-block d-xl-none upper-ad-banner adsbygoogle justify-content-center">
+            <ng-adsense [adSlot]="8150818845"></ng-adsense>
         </div>
         {{ sortCategories(this.appComponent.localeInt) }}
         <ng-container *ngIf="progress >= 100; else loading">
@@ -71,10 +71,19 @@
                 </div>
             </ng-container>
         </ng-container>
+        <div class="row d-inline-block d-xl-none lower-ad-banner adsbygoogle justify-content-center">
+            <ng-adsense [adSlot]="7023238304"></ng-adsense>
+        </div>
     </div>
 
+    <!--AD COLUMN-->
     <div class="d-none d-xl-block col-xl-2 second-column">
-        <ng-adsense class="adsbygoogle ad-column" [adSlot]="1217018481" [width]="300" [height]="600"></ng-adsense>
+        <div class="ad-skyscraper mb-5 mt-3">
+            <ng-adsense class="adsbygoogle ad-skyscraper" [adSlot]="2431394784" [width]="300" [height]="600"></ng-adsense>
+        </div>
+        <div class="ad-square">
+            <ng-adsense class="adsbygoogle ad-square" [adSlot]="1217018481" [width]="300" [height]="300"></ng-adsense>
+        </div>
     </div>
 
     <div class="col-md-2 col-xl-2"></div>
