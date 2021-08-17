@@ -11,7 +11,6 @@
         <div class="col-md-2 col-xl-2"></div>
 
         <div class="col-12 col-md-8 col-xl-6 first-column">
-            <app-ad-banner></app-ad-banner>
             <ng-container *ngIf = "this.ready && this.result">
 
                 <div *ngIf = "this.result!.hits.length < 1; then noBlock"></div>
@@ -19,12 +18,10 @@
                 <div *ngIf = "this.result!.hits.length > 1; then moreBlock;"></div>
 
             </ng-container>
-            <app-ad-banner></app-ad-banner>
         </div>
 
         <div class="d-none d-xl-block col-xl-2 second-column">
-            <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://iclickcdn.com/tag.min.js',4258282,document.body||document.documentElement)</script>
-            <ng-adsense class="adsbygoogle ad-column" [adSlot]="5399135259" [width]="300" [height]="600"></ng-adsense>
+            <ng-adsense class="adsbygoogle ad-column" [adSlot]="2431394784" [width]="300" [height]="600"></ng-adsense>
         </div>
 
         <div class="col-md-2 col-xl-2"></div>
@@ -55,6 +52,9 @@
     <h2 class="text-sm-center text-md-start">
         &nbsp;  {{oneRes[this.appComponent.localeInt]}}: {{this.txt}}
     </h2>
+    <div class="row d-inline-block d-xl-none adsbygoogle justify-content-center">
+        <ng-adsense class="upper-ad-banner" [adSlot]="8150818845" [height]="90"></ng-adsense>
+    </div>
     <ng-container 
         *ngTemplateOutlet="resultsT">
     </ng-container>
@@ -64,6 +64,9 @@
     <h2 class="text-sm-center text-md-start">
         &nbsp; {{this.result!.hits.length >= 50 ? "+50" : this.result!.hits.length}} {{strRes[this.appComponent.localeInt]}}: {{this.txt}}
     </h2>
+    <div class="row d-inline-block d-xl-none upper-ad-banner adsbygoogle justify-content-center">
+        <ng-adsense class="upper-ad-banner" [adSlot]="8150818845" [height]="90"></ng-adsense>
+    </div>
     <ng-container 
         *ngTemplateOutlet="resultsT">
     </ng-container>
