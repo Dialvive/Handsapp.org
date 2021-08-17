@@ -13,7 +13,6 @@ import { GoogleAnalyticsService } from './_services/GoogleAnalytics/google-analy
 import { AppComponent } from './app.component';
 import { FooterComponent } from './_components/General/footer/footer.component';
 import { HeaderComponent } from './_components/General/header/header.component';
-import { AdBannerComponent } from './_components/FunctionalComponents/ad-banner/ad-banner.component';
 import { WordComponent } from './_components/Words/word/word.component';
 import { SearchComponent } from './_components/General/search/search.component';
 import { ResultsComponent } from './_components/General/results/results.component';
@@ -59,7 +58,6 @@ import { RegisterContinueComponent } from './_components/User/register-continue/
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    AdBannerComponent,
     WordComponent,
     SearchComponent,
     ResultsComponent,
