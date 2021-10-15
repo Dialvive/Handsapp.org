@@ -17,11 +17,6 @@ Briefly describe the reason(s) for the change(s).
 Ex. When X happens, Y happens next, and [...]
 (Use an ordered list that match the previous list for multiple changes)
 
-**What is changing?**
-Briefly describe the scope of the change(s) and new behavior or expected impacts.
-Ex. X page's css attribute has been replaced with [...]
-(Use an ordered list that match the previous list for multiple changes)
-
 **Where can we see the result of these changes?**
 List the main browsers, pages, url's, etc where we can validate the changes.
 Ex. Firefox 12.3 MacOS, /words
