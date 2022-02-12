@@ -65,7 +65,7 @@ interface SearchResult {
 //SearchResult represents a search result
 abstract class SearchResult implements SearchResult {
 
-    constructor (result: SearchResult) {
+    protected constructor (result: SearchResult) {
         this.nbHits = result.nbHits;
         this.offset = result.offset;
         this.limit = result.limit;

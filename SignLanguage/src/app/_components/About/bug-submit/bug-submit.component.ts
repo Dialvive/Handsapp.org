@@ -43,7 +43,7 @@ export class BugSubmitComponent implements OnInit {
   }
 
   private getURL(): void {
-    var url: string | null = null
+    let url: string | null = null;
     if (this.appComponent.params.has("url")) {
       url = document.referrer;
       if (url != null && url != '') {
@@ -51,7 +51,6 @@ export class BugSubmitComponent implements OnInit {
         this.hasParamUrl = true;
       }
     } else {
-      url = "";
       this.hasParamUrl = false;
     }
   }
@@ -77,19 +76,19 @@ export class BugSubmitComponent implements OnInit {
   }
 
   public register(): void {
-    var mail: Mail;
+    let mail: Mail;
     const divider: string = "\n#########################\n";
-    var myDate = new Date();
-    var strDate = this.datePipe.transform(myDate, 'dd-MM-yyyy');
+    const myDate = new Date();
+    const strDate = this.datePipe.transform(myDate, 'dd-MM-yyyy');
 
-    var body = "-Report Type: \n" + this.inputType + divider +
-      "-HasParamURL? \n" + this.hasParamUrl + divider +
-      "-Input URL: \n" + this.inputURL + divider +
-      "-Input Description: \n" + this.inputDescription + divider +
-      "-Input NavData: \n" + this.inputNavData + divider +
-      "-AgreedPrivacy? \n" + this.inputAgree + divider +
-      "-Reply? \n" + this.inputResponse + divider
-    var subject = this.inputType + " " + strDate;
+    const body = "-Report Type: \n" + this.inputType + divider +
+        "-HasParamURL? \n" + this.hasParamUrl + divider +
+        "-Input URL: \n" + this.inputURL + divider +
+        "-Input Description: \n" + this.inputDescription + divider +
+        "-Input NavData: \n" + this.inputNavData + divider +
+        "-AgreedPrivacy? \n" + this.inputAgree + divider +
+        "-Reply? \n" + this.inputResponse + divider;
+    const subject = this.inputType + " " + strDate;
     mail = new Mail(subject, this.inputMail, body);
     this.sendMail(mail);
   }

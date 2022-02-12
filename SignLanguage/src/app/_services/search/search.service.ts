@@ -15,7 +15,7 @@ export class SearchService {
     ) { }
 
   public searchWords(q: string, limit: number): Observable<WordSearchResult> {
-    var search: Search = new Search(q, limit);
+    const search: Search = new Search(q, limit);
     return this.http.post<WordSearchResult>(URI+"words", search)
   }
 }

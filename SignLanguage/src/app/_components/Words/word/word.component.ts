@@ -69,7 +69,7 @@ export class WordComponent implements AfterViewInit {
   //A lifecycle hook that is called after Angular has fully initialized a component's view.
   ngAfterViewInit() {
     this.createVideoURLs();
-    this.linkService.updateCanonicalUrl("http://HandsApp.org/word?id=" + this.wordID);
+    this.linkService.updateCanonicalUrl("https://HandsApp.org/word?id=" + this.wordID);
     this.ready = true;
   }
 
@@ -80,7 +80,7 @@ export class WordComponent implements AfterViewInit {
     this.wordID = this.route.snapshot.queryParamMap.get('id') || 'ERR';
     if (this.wordID == null || this.wordID == '' && this.wordTXT == null || this.wordTXT == '') {
       this.appComponent.navigateParams("/404", this.appComponent.locale, this.wordID, this.wordTXT);
-    } else if (this.wordTXT != null && this.wordID == null) {
+    } else if (this.wordTXT != null && false) {
       this.appComponent.navigateParams("/search", this.appComponent.locale, this.wordID, this.wordTXT);
     }
   }

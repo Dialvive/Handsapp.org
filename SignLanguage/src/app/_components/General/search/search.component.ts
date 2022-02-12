@@ -81,8 +81,8 @@ export class SearchComponent implements AfterViewInit {
     public googleAnalyticsService: GoogleAnalyticsService) { }
 
     ngAfterViewInit(): void {
-    var searchbox: any = document.getElementById("bg-search");
-    searchbox.focus();
+      const searchbox: any = document.getElementById("bg-search");
+      searchbox.focus();
   }
 
   public submit(type : number) {

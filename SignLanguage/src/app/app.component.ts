@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { Meta } from '@angular/platform-browser';
@@ -45,8 +44,8 @@ export class AppComponent {
       );
       this.page = this.Location.path();
       if (this.page.includes('?')) {
-        var paramIndex = this.page.indexOf('?');
-        var params = this.page.substring(paramIndex+1, this.page.length);
+        const paramIndex = this.page.indexOf('?');
+        const params = this.page.substring(paramIndex + 1, this.page.length);
         this.params =  new HttpParams({ fromString: params });
         this.page = this.page.substring(0, paramIndex);
       } else {
@@ -57,12 +56,12 @@ export class AppComponent {
   //Gets locale through params, or infers it using navigator or IP address.
   // TODO: infer sign language.
   public async getLocale(): Promise<boolean> {
-    var country: string | any;
-    var locStr: string | null = this.params.get("loc");
+    let country: string | any;
+    const locStr: string | null = this.params.get("loc");
     console.log("LOCALE")
     if (locStr == null || locStr == '' ) { // There's no loc in URL
       if (navigator.language.includes('-')) { // navigator.language ~ 'es-MX'
-        var locale: string[] = navigator.language.split('-')
+        const locale: string[] = navigator.language.split('-');
         this.locale = [locale[0].substring(0,2), '', locale[1].substring(0,2)]
       } else { // navigator.language ~ 'es'
         this.locale = [navigator.language, '', '00'];
@@ -121,7 +120,7 @@ export class AppComponent {
 
   //updateRoute() updates the URL to explicitly tell the locale
   private updateRoute(): void {
-    var routeStr: string = '?';
+    let routeStr: string = '?';
     routeStr += "loc=" + this.locale[0]+'_'+this.locale[1]+'_'+this.locale[2];
     if (this.params.has("id")){
       routeStr += "&id=" + this.params.get("id");
@@ -136,7 +135,7 @@ export class AppComponent {
   //updateLocaleInt() updates LocaleInt value
   public updateLocaleInt(id: number): void { 
     this.localeInt = id;
-    this.locale = new Array(new Array("de","es","en","fr","it","pt")[id], this.locale[1], this.locale[2]);
+    this.locale = [["de","es","en","fr","it","pt"][id], this.locale[1], this.locale[2]];
     this.localeTxt = this.locale[0] + "_" + this.locale[1] + "_" + this.locale[2];
     this.updateRoute();
   }

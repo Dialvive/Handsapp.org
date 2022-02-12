@@ -8,20 +8,11 @@ import { AboutUsComponent } from './_components/About/about-us/about-us.componen
 import { ProductsComponent } from './_components/About/products/products.component';
 import { TermsComponent } from './_components/Legal/terms/terms.component';
 import { PrivacyComponent } from './_components/Legal/privacy/privacy.component'
-import { ProximamenteComponent } from './_components/Errors/proximamente/proximamente.component';
 import { DonationsComponent } from './_components/About/donations/donations.component';
 import { NotFoundComponent } from './_components/Errors/not-found/not-found.component';
 import { ThirdPartiesComponent } from './_components/Legal/third-parties/third-parties.component';
 import { BugSubmitComponent } from './_components/About/bug-submit/bug-submit.component';
 import { InternalErrorComponent } from './_components/Errors/internal-error/internal-error.component';
-import { LoginComponent } from './_components/User/login/login.component';
-import { RegisterComponent } from './_components/User/register/register.component';
-import { ForgotPasswordComponent } from './_components/User/forgot-password/forgot-password.component';
-import { NewPasswordComponent } from './_components/User/new-password/new-password.component';
-import { ExistingAccountComponent } from './_components/User/existing-account/existing-account.component';
-import { RegisterContinueComponent } from './_components/User/register-continue/register-continue.component';
-import { UserHomeComponent } from './_components/User/user-home/user-home.component';
-import { UserCrudComponent } from './_components/User/user-crud/user-crud.component';
 
 const routes: Routes = [
   { path: '', component:  SearchComponent },

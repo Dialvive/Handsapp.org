@@ -24,18 +24,16 @@ export class WordCategory {
 
     //Returns a WordCategory as a string array
     public getNames(): string[] {
-        return new Array(
-            this.name_de,
+        return [this.name_de,
             this.name_es,
             this.name_en,
             this.name_fr,
             this.name_it,
-            this.name_pt
-        )
+            this.name_pt]
     }
 
     public getNameByIdiom(lang: any) : string{
-        var langAux : number = parseInt(lang);
+        const langAux: number = parseInt(lang);
         switch(langAux) {
             case 0:{
                 return this.name_de;

@@ -53,7 +53,7 @@ export class WordsComponent implements AfterViewInit {
       response => {
         this.words = response;
         this.progress += 50;
-        var lastID = this.categories.length;
+        const lastID = this.categories.length;
         this.hits = new Array(lastID);
         this.sortByCategory();
         this.progress += 25;
@@ -63,7 +63,7 @@ export class WordsComponent implements AfterViewInit {
 
   //Sort strCat categories by name_es 
   public sortCategories(lang: any) {
-    var langAux: number = parseInt(lang);
+    const langAux: number = parseInt(lang);
 
     switch (langAux) {
       case 0: {
@@ -132,17 +132,17 @@ export class WordsComponent implements AfterViewInit {
   }
 
   public getCategoryByIdiom(cat: WordCategory, id: number) {
-    var auxCat = new WordCategory(cat);
+    const auxCat = new WordCategory(cat);
     return auxCat.getNameByIdiom(id);
   }
   public getWordByIdiom(word: Word, id: number) {
-    var auxWord = new Word(word);
+    const auxWord = new Word(word);
     return auxWord.getTextByIdiom(id);
   }
 
   public sortByCategory() {
     try {
-      for (var i = 0; i < this.hits?.length - 1; i++) {
+      for (let i = 0; i < this.hits?.length - 1; i++) {
         this.hits?.splice(this.categories[i]?.ID, 1, this.getWordsByCategory(this.categories[i]?.ID));
       }
     } catch (e) {
@@ -151,7 +151,7 @@ export class WordsComponent implements AfterViewInit {
   }
 
   public getWordsByCategory(cat: number): Word[] {
-    var arr = this.words.filter((i: Word) => i.word_category_ID == cat);
+    const arr = this.words.filter((i: Word) => i.word_category_ID == cat);
     return arr;
   }
 

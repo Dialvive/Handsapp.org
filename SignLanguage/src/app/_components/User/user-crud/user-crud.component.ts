@@ -40,10 +40,10 @@ export class UserCrudComponent implements OnInit {
 
   //Sets the max date to today 13 years ago.
   private setMaxDate(): void {
-    var today: Date = new Date();
-    var dd: string = String(today.getDate());
-    var mm: string = String(today.getMonth()+1); //January is 0!
-    var yyyy = today.getFullYear()-13;
+    const today: Date = new Date();
+    let dd: string = String(today.getDate());
+    let mm: string = String(today.getMonth() + 1); //January is 0!
+    const yyyy = today.getFullYear() - 13;
     if(+dd<10){
         dd = '0' + dd
     } 

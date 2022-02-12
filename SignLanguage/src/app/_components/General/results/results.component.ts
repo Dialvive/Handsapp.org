@@ -55,7 +55,7 @@ export class ResultsComponent implements AfterViewInit {
   //TODO: manage incorrect id's
 
   private async getTxt(): Promise<boolean> {
-    var txt: string | null = this.route.snapshot.queryParamMap.get('txt');
+    const txt: string | null = this.route.snapshot.queryParamMap.get('txt');
     if (txt == null || txt == '' ) {
       //TODO: handle error
       this.txt = "Error";
@@ -93,12 +93,12 @@ export class ResultsComponent implements AfterViewInit {
     }
 
   public getWordByIdiom(word : Word, id:number){
-    var auxWord = new Word(word);
+    const auxWord = new Word(word);
     return auxWord.getTextByIdiom(id);
   }
 
   public getDefinitionByIdiom(word: Word, id: number) {
-    var auxWord = new Word(word);
+    const auxWord = new Word(word);
     return auxWord.getDefByIdiom(id);
   }
 }

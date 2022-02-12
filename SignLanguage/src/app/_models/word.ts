@@ -57,7 +57,7 @@ export class Word {
     }
 
     public getText(): string[] {
-        var texts: string[] = [
+        const texts: string[] = [
             this.text_de,
             this.text_es,
             this.text_en,
@@ -69,7 +69,7 @@ export class Word {
     }
 
     public getContext(): string[] {
-        var contexts: string[] = [
+        const contexts: string[] = [
             this.context_de,
             this.context_es,
             this.context_en,
@@ -81,7 +81,7 @@ export class Word {
     }
 
     public getDefinitions(): string[] {
-        var definitions: string[] = [
+        const definitions: string[] = [
             this.definition_de,
             this.definition_es,
             this.definition_en,
@@ -97,7 +97,7 @@ export class Word {
     }
 
     public getTextByIdiom(lang: any) : string{
-        var langAux : number = parseInt(lang);
+        const langAux: number = parseInt(lang);
         switch(langAux) {
             case 0:{
                 return this.text_de;
@@ -124,7 +124,7 @@ export class Word {
     }
     
     getDefByIdiom(lang: any) {
-        var langAux : number = parseInt(lang);
+        const langAux: number = parseInt(lang);
         switch(langAux) {
             case 0:{
                 return this.definition_de;
