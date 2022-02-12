@@ -1,186 +1,198 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "version": 1,
-    "newProjectRoot": "projects",
-    "projects": {
-        "SignLanguage": {
-            "projectType": "application",
-            "schematics": {},
-            "root": "",
-            "sourceRoot": "src",
-            "prefix": "app",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
-                    "options": {
-                        "outputPath": "dist/SignLanguage",
-                        "index": "src/index.html",
-                        "main": "src/main.ts",
-                        "polyfills": "src/polyfills.ts",
-                        "tsConfig": "tsconfig.app.json",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/robots.txt",
-                            "src/ads.txt",
-                            "src/sitemap.xml",
-                            "src/site.webmanifest",
-                            "src/assets/fnt/bootstrap-icons.woff",
-                            "src/assets/fnt/bootstrap-icons.woff2",
-                            "src/assets/fnt/Nunito-Black.woff",
-                            "src/assets/fnt/Nunito-Black.woff2",
-                            "src/assets/fnt/Nunito-Bold.woff",
-                            "src/assets/fnt/Nunito-Bold.woff2",
-                            "src/assets/fnt/Nunito-ExtraBold.woff",
-                            "src/assets/fnt/Nunito-ExtraBold.woff2",
-                            "src/assets/fnt/Nunito-ExtraLight.woff",
-                            "src/assets/fnt/Nunito-ExtraLight.woff2",
-                            "src/assets/fnt/NunitoHeavy-Regular.woff",
-                            "src/assets/fnt/NunitoHeavy-Regular.woff2",
-                            "src/assets/fnt/Nunito-Light.woff",
-                            "src/assets/fnt/Nunito-Light.woff2",
-                            "src/assets/fnt/Nunito-Regular.woff",
-                            "src/assets/fnt/Nunito-Regular.woff2",
-                            "src/assets/fnt/Nunito-SemiBold.woff",
-                            "src/assets/fnt/Nunito-SemiBold.woff2",
-                            "src/assets/svg/memphis_dark.svg",
-                            "src/assets/svg/logo.svg",
-                            "src/assets/svg/safari-pinned-tab.svg",
-                            "src/assets/img/HandsApp.png",
-                            "src/assets/img/love-hands.jpg",
-                            "src/assets/img/logo.png",
-                            "src/assets/img/300x600.png",
-                            "src/assets/img/320x100.png",
-                            "src/assets/img/468x60.png",
-                            "src/assets/img/728x90.png",
-                            "src/assets/img/og_image.png",
-                            "src/assets/img/apple-touch-icon.png",
-                            "src/assets/img/apple-touch-icon-precomposed.png",
-                            "src/assets/img/android-chorme-512x12.png",
-                            "src/assets/img/android-chrome-192x192.png",
-                            "src/assets/img/mstile-310x150.png",
-                            "src/assets/img/mstile-310x310.png",
-                            "src/assets/img/loader.gif",
-                            "src/assets/img/loader2.gif",
-                            "src/assets/img/static.gif",
-                            "src/assets/img/hatdog.png",
-                            "src/assets/img/curiousdog.png",
-                            "src/assets/img/construction.png",
-                            "src/assets/img/privacydog.png",
-                            "src/assets/img/curiousbeagle.png",
-                            "src/assets/img/appstore_de.png",
-                            "src/assets/img/appstore_es.png",
-                            "src/assets/img/appstore_en.png",
-                            "src/assets/img/appstore_fr.png",
-                            "src/assets/img/appstore_it.png",
-                            "src/assets/img/appstore_pt.png",
-                            "src/assets/img/googleplay_de.png",
-                            "src/assets/img/googleplay_es.png",
-                            "src/assets/img/googleplay_en.png",
-                            "src/assets/img/googleplay_fr.png",
-                            "src/assets/img/googleplay_it.png",
-                            "src/assets/img/googleplay_pt.png",
-                            "src/assets/img/Diego.jpg",
-                            "src/assets/img/Marco.jpg",
-                            "src/assets/img/Brayan.jpg",
-                            "src/assets/img/Carlos.jpg",
-                            "src/assets/img/alien.png",
-                            "src/assets/img/terceros/manosqueescuchan.png"
-                        ],
-                        "styles": [
-                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "src/assets/css/bootstrap-icons.css",
-                            "src/assets/css/nunito.css",
-                            "src/styles.css"
-                        ],
-                        "scripts": [
-                            "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-                        ],
-                        "vendorChunk": true,
-                        "extractLicenses": true,
-                        "buildOptimizer": false,
-                        "sourceMap": true,
-                        "optimization": false,
-                        "namedChunks": true
-                    },
-                    "configurations": {
-                        "production": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.prod.ts"
-                                }
-                            ],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "namedChunks": false,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "2mb",
-                                    "maximumError": "5mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb",
-                                    "maximumError": "10kb"
-                                }
-                            ]
-                        }
-                    }
-                },
-                "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "SignLanguage:build"
-                    },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "SignLanguage:build:production"
-                        }
-                    }
-                },
-                "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
-                    "options": {
-                        "browserTarget": "SignLanguage:build"
-                    }
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "src/test.ts",
-                        "polyfills": "src/polyfills.ts",
-                        "tsConfig": "tsconfig.spec.json",
-                        "karmaConfig": "karma.conf.js",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
-                        "styles": [
-                            "node_modules/bootstrap/scss/bootstrap.scss",
-                            "src/styles.css"
-                        ],
-                        "scripts": []
-                    }
-                },
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "SignLanguage:serve"
-                    },
-                    "configurations": {
-                        "production": {
-                            "devServerTarget": "SignLanguage:serve:production"
-                        }
-                    }
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "SignLanguage": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/SignLanguage",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/robots.txt",
+              "src/ads.txt",
+              "src/sitemap.xml",
+              "src/site.webmanifest",
+              "src/assets/fnt/bootstrap-icons.woff",
+              "src/assets/fnt/bootstrap-icons.woff2",
+              "src/assets/fnt/Nunito-Black.woff",
+              "src/assets/fnt/Nunito-Black.woff2",
+              "src/assets/fnt/Nunito-Bold.woff",
+              "src/assets/fnt/Nunito-Bold.woff2",
+              "src/assets/fnt/Nunito-ExtraBold.woff",
+              "src/assets/fnt/Nunito-ExtraBold.woff2",
+              "src/assets/fnt/Nunito-ExtraLight.woff",
+              "src/assets/fnt/Nunito-ExtraLight.woff2",
+              "src/assets/fnt/NunitoHeavy-Regular.woff",
+              "src/assets/fnt/NunitoHeavy-Regular.woff2",
+              "src/assets/fnt/Nunito-Light.woff",
+              "src/assets/fnt/Nunito-Light.woff2",
+              "src/assets/fnt/Nunito-Regular.woff",
+              "src/assets/fnt/Nunito-Regular.woff2",
+              "src/assets/fnt/Nunito-SemiBold.woff",
+              "src/assets/fnt/Nunito-SemiBold.woff2",
+              "src/assets/svg/memphis_dark.svg",
+              "src/assets/svg/logo.svg",
+              "src/assets/svg/safari-pinned-tab.svg",
+              "src/assets/img/HandsApp.png",
+              "src/assets/img/love-hands.jpg",
+              "src/assets/img/logo.png",
+              "src/assets/img/300x600.png",
+              "src/assets/img/320x100.png",
+              "src/assets/img/468x60.png",
+              "src/assets/img/728x90.png",
+              "src/assets/img/og_image.png",
+              "src/assets/img/apple-touch-icon.png",
+              "src/assets/img/apple-touch-icon-precomposed.png",
+              "src/assets/img/android-chorme-512x12.png",
+              "src/assets/img/android-chrome-192x192.png",
+              "src/assets/img/mstile-310x150.png",
+              "src/assets/img/mstile-310x310.png",
+              "src/assets/img/loader.gif",
+              "src/assets/img/loader2.gif",
+              "src/assets/img/static.gif",
+              "src/assets/img/hatdog.png",
+              "src/assets/img/curiousdog.png",
+              "src/assets/img/construction.png",
+              "src/assets/img/privacydog.png",
+              "src/assets/img/curiousbeagle.png",
+              "src/assets/img/appstore_de.png",
+              "src/assets/img/appstore_es.png",
+              "src/assets/img/appstore_en.png",
+              "src/assets/img/appstore_fr.png",
+              "src/assets/img/appstore_it.png",
+              "src/assets/img/appstore_pt.png",
+              "src/assets/img/googleplay_de.png",
+              "src/assets/img/googleplay_es.png",
+              "src/assets/img/googleplay_en.png",
+              "src/assets/img/googleplay_fr.png",
+              "src/assets/img/googleplay_it.png",
+              "src/assets/img/googleplay_pt.png",
+              "src/assets/img/Diego.jpg",
+              "src/assets/img/Marco.jpg",
+              "src/assets/img/Brayan.jpg",
+              "src/assets/img/Carlos.jpg",
+              "src/assets/img/alien.png",
+              "src/assets/img/terceros/manosqueescuchan.png"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/css/bootstrap-icons.css",
+              "src/assets/css/nunito.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
+            "vendorChunk": true,
+            "extractLicenses": true,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "SignLanguage:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "SignLanguage:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "SignLanguage:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "SignLanguage:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "SignLanguage:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
-    },
-    "defaultProject": "SignLanguage"
+      }
+    }
+  },
+  "defaultProject": "SignLanguage",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
